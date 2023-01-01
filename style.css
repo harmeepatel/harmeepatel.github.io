@@ -4,9 +4,19 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-h1{
-    height: 100%;
+html{
+    background: #000;
+}
+
+body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+h1{
+    font-size: 6rem;
+    background: -webkit-linear-gradient(160deg, #05a14a, #3f51b5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
