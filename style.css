@@ -1,4 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
