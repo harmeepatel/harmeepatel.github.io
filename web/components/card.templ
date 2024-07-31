@@ -1,0 +1,62 @@
+package components;
+
+type imgInfo struct {
+	src string
+	alt string
+}
+
+type card struct {
+	cardTitle string
+	cardInfo  string
+	image     imgInfo
+}
+
+var cards = []card{
+	{
+		cardTitle: "Student Visa",
+		cardInfo:  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam numquam accusantium saepe aut facere a, ab expedita minus cum ipsa velit beatae illum, autem, quis placeat doloremque error debitis. Obcaecati eveniet repudiandae illum iusto, unde doloremque architecto ut porro beatae perspiciatis accusantium sapiente blanditiis, earum",
+		image: imgInfo{
+			src: "/static/media/images/main-page/temp-student-visa.webp",
+			alt: "Student Visa Image",
+		},
+	},
+	{
+		cardTitle: "Visitor Visa",
+		cardInfo:  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam numquam accusantium saepe aut facere a, ab expedita minus cum ipsa velit beatae illum, autem, quis placeat doloremque error debitis. Obcaecati eveniet repudiandae illum iusto, unde doloremque architecto ut porro beatae perspiciatis accusantium sapiente blanditiis, earum",
+		image: imgInfo{
+			src: "/static/media/images/main-page/temp-visitor-visa.webp",
+			alt: "Student Visa Image",
+		},
+	},
+
+	{
+		cardTitle: "Student Visa",
+		cardInfo:  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam numquam accusantium saepe aut facere a, ab expedita minus cum ipsa velit beatae illum, autem, quis placeat doloremque error debitis. Obcaecati eveniet repudiandae illum iusto, unde doloremque architecto ut porro beatae perspiciatis accusantium sapiente blanditiis, earum",
+		image: imgInfo{
+			src: "/static/media/images/main-page/temp-student-visa.webp",
+			alt: "Student Visa Image",
+		},
+	},
+	{
+		cardTitle: "Visitor Visa",
+		cardInfo:  "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam numquam accusantium saepe aut facere a, ab expedita minus cum ipsa velit beatae illum, autem, quis placeat doloremque error debitis. Obcaecati eveniet repudiandae illum iusto, unde doloremque architecto ut porro beatae perspiciatis accusantium sapiente blanditiis, earum",
+		image: imgInfo{
+			src: "/static/media/images/main-page/temp-visitor-visa.webp",
+			alt: "Student Visa Image",
+		},
+	},
+}
+
+templ Cards() {
+	for _, card := range cards {
+		<div class="card-wrapper">
+			<div id="card-img-container" class="blurred-img">
+				<img class="rounded-lg lg:rounded-xl" src={ card.image.src } alt={ card.image.alt } width="720" height="720" decoding="async"/>
+			</div>
+			<div id="card-info-container" class="w-4/5 md:max-w-[calc(min(100%,34rem))]">
+				<h3 class="md:text-left pb-6 pt-6 md:pt-0">{ card.cardTitle }</h3>
+				<p>{ card.cardInfo }</p>
+			</div>
+		</div>
+	}
+}

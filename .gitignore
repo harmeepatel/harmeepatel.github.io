@@ -1,1 +1,13 @@
 assets/
+
+bin/
+tmp/
+.air*
+
+bun.lockb
+*.fiber.gz
+
+node_modules/
+package-lock.json
+
+.env*
