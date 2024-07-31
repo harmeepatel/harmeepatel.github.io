@@ -22,4 +22,7 @@ jobs:
         go-version: '1.22'
 
     - name: Build
-      run: go build -o ./bin/main && ./bin/main ${{ secrets.PORT }}
+      run: go build -o ./bin/main 
+
+    - name: Run
+      run: ./bin/main ${{ secrets.PORT }}
