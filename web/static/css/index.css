@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* theme */
+.theme-light {
+    background: #fff;
+    color: #000;
+}
+
+/* theme - dark mode */
+@media (prefers-color-scheme: dark) {
+    .theme-light.adaptive {
+        background: #111;
+        color: #fff;
+    }
+}
+
+@layer utilities {
+    .nav-glass {
+        @apply bg-white/30 shadow-blurShadow backdrop-blur-lg lg:backdrop-blur-xl
+    }
+}
