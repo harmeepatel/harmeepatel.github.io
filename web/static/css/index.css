@@ -16,8 +16,6 @@
     }
 }
 
-@layer utilities {
-    .nav-glass {
-        @apply bg-white/30 shadow-blurShadow backdrop-blur-lg lg:backdrop-blur-xl
-    }
+#nav-mask {
+    mask-image: linear-gradient(rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 70%, transparent 90%);
 }

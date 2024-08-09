@@ -1,20 +1,35 @@
 package components;
 
+const (
+	NAV_HEIGHT  = " h-[6rem] xl:h-[10rem] "
+	NAV_WIDTH   = " w-dvw "
+	NAV_PADDING = " pt-6 px-6 md:px-14 "
+
+	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
+)
+
+templ navLink(name string) {
+	<li>
+		<a href="#" class="text-sm md:text-xl font-normal group">
+			{ name }
+			<span
+				class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 rounded-md bg-sky-500"
+			></span>
+		</a>
+	</li>
+}
+
 templ Nav() {
-<nav id="nav" class="nav-glass py-2 px-8 sticky top-0 z-50 rounded-xj">
-    <div class="max-w-screen-2xl m-auto flex justify-between">
-        <a class="" href="/index.html">
-            <img class="dark:filter dark:invert" src="./web/static/media/images/hp-black.svg" alt="My initials HP"
-                sizes="(max-width: 400px) 200px, 300px" />
-        </a>
-        <ul class="flex justify-evenly self-center gap-16">
-            <li class="btn btn-neutral btn-sm ml-4">
-                <a href="/index.html" class="text-sm md:text-xl font-normal">Home</a>
-            </li>
-            <li class="btn btn-neutral btn-sm ml-4">
-                <a href="/#about" class="text-sm md:text-xl font-normal">About</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+	<div id="nav-mask" class={ "fixed top-0 left-0 z-[49] backdrop-blur-md md:backdrop-blur-lg" + NAV_HEIGHT + NAV_WIDTH }></div>
+	<nav id=" nav" class={ "sticky top-0 z-50" + NAV_HEIGHT + NAV_PADDING }>
+		<div class="m-auto flex justify-between">
+			<a class="" href="https://harmeepatel.dev">
+				@Icon(IconInfo{"./web/static/media/images/hp-black.svg", 80, IMAGE_WIDTH, "My initials HP"})
+			</a>
+			<ul class="flex justify-evenly self-center gap-6 md:gap-16">
+				@navLink("Resume")
+				@navLink("Blog")
+			</ul>
+		</div>
+	</nav>
 }
