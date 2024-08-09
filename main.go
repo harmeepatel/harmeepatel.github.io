@@ -8,8 +8,7 @@ import (
 	"harmeepatel.dev/web/pages"
 )
 
-func main() {
-
+func init() {
 	if err := os.MkdirAll("dist", os.ModePerm); err != nil {
 		log.Fatalf("failed to create output directory: %v", err)
 	}
@@ -23,4 +22,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to write output file: %v", err)
 	}
+}
+
+func main() {
 }
