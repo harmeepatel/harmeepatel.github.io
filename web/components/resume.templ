@@ -1,0 +1,25 @@
+package components;
+
+import "strconv"
+
+type IconInfo struct {
+	Src    string
+	Width  int
+	Class  string
+	Alt    string
+}
+
+templ Icon(icon IconInfo) {
+	<img
+		class={ "dark:filter dark:invert inline " + icon.Class }
+		src={ icon.Src }
+		alt={ icon.Alt }
+		width={ strconv.Itoa(icon.Width) }
+	/>
+}
+
+templ Section() {
+    <section>
+        <h3>Education</h3>
+    </section>
+}
