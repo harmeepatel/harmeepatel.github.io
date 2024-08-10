@@ -1,13 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-// const colors = require('tailwindcss/colors')
+
+const colors = require('tailwindcss/colors')
 module.exports = {
     darkMode: 'media',
-    content: ["./**/*.html", "./static/**/*.js", "./**/*.templ", "./**/*.go"],
+    content: ["./**/*.html", "./**/*.templ", "./**/*.go", "./static/**/*.js"],
     theme: {
-        extend: {},
-        // colors: {
-        //     ...colors
-        // },
+        extend: {
+            screens: {
+                '3xl': '1792px',
+            },
+        },
+        colors: {
+            ...colors
+        },
     },
     plugins: [],
 }
