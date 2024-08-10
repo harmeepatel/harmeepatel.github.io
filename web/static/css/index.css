@@ -4,10 +4,41 @@
 
 @layer base {
     h2 {
-        @apply text-2xl md:text-4xl xl:text-6xl
+        @apply text-2xl md:text-4xl xl:text-6xl py-2 lg:py-4
     }
+
     h3 {
-        @apply text-lg md:text-2xl xl:text-4xl
+        @apply text-lg md:text-2xl xl:text-4xl py-1 lg:py-2 overflow-x-hidden
+    }
+
+    h5 {
+        span:nth-child(2) {
+            @apply text-2xs md:text-sm xl:text-lg font-light italic flex items-center
+        }
+
+        @apply text-sm md:text-base xl:text-xl font-semibold py-0.5 lg:py-1
+    }
+
+    p {
+        @apply text-xs md:text-sm xl:text-lg
+    }
+}
+
+
+h3::after {
+    content: "";
+    display: inline-block;
+    height: 0.5em;
+    width: 100%;
+    margin-right: -100%;
+    margin-left: 0.32rem;
+    border-bottom: 1px solid white;
+}
+
+
+@layer utilities {
+    .vertical-seperator {
+        @apply w-[1px] lg:w-[2px] h-3 md:h-6 dark:bg-white bg-black
     }
 }
 

@@ -2,11 +2,12 @@ package components;
 
 import "strconv"
 
+// icon
 type IconInfo struct {
-	Src    string
-	Width  int
-	Class  string
-	Alt    string
+	Src   string
+	Width int
+	Class string
+	Alt   string
 }
 
 templ Icon(icon IconInfo) {
@@ -18,8 +19,20 @@ templ Icon(icon IconInfo) {
 	/>
 }
 
-templ Section(heading string) {
-    <section>
-        <h3>{ heading }</h3>
-    </section>
+// sections
+const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
+
+templ SectionItemHeader(left string, right string) {
+	<h5 class="flex justify-between">
+		<span>{ left }</span>
+		<span>{ right }</span>
+	</h5>
+}
+
+templ Section(id string, heading string) {
+	<section id={ id } class="pt-3 lg:pt-6">
+		<h3>{ heading }</h3>
+		//@templ.Raw(hr)
+		{ children... }
+	</section>
 }

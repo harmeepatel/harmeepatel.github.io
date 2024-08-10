@@ -9,6 +9,9 @@ module.exports = {
             screens: {
                 '3xl': '1792px',
             },
+            fontSize: {
+                '2xs': ['0.5rem', { lineHeight: '0.75rem' }],
+            },
         },
         colors: {
             ...colors
