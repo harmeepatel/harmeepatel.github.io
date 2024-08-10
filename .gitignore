@@ -2,7 +2,7 @@ assets/
 
 bin/
 tmp/
-.air*
+.air/
 
 bun.lockb
 *.fiber.gz

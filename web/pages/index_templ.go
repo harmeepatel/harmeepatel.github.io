@@ -43,7 +43,7 @@ func Index(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-screen mx-8 md:mx-14 3xl:mx-0\"><h2 class=\"text-center\">Harmee Patel</h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-8 md:mx-14 3xl:mx-0\"><h2 class=\"text-center\">Harmee Patel</h2>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -51,7 +51,7 @@ func Index(title string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.Section().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.Section("Education").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -91,7 +91,7 @@ func infoBar() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section id=\"contact-bar\" class=\"flex justify-center gap-2 md:gap-4 py-4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section id=\"contact-bar\" class=\"flex justify-center items-center gap-2 md:gap-4 py-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -117,11 +117,11 @@ func infoBar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Icon(components.IconInfo{icon_path + "phone.svg", 12, "md:w-[16px] xl:w-[24px]", "phone icon"}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Icon(components.IconInfo{Src: icon_path + "phone.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "phone icon"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("+1 (647) 832 - 1245</a> <span class=\"w-[1px] dark:bg-white bg-black\"></span> ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("+1 (647) 832 - 1245</a> <span class=\"w-[1px] h-3 md:h-6 dark:bg-white bg-black\"></span> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -147,11 +147,11 @@ func infoBar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Icon(components.IconInfo{icon_path + "github.svg", 12, "md:w-[16px] xl:w-[24px]", "github icon"}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Icon(components.IconInfo{Src: icon_path + "github.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "github icon"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("Github</a> <span class=\"w-[1px] dark:bg-white bg-black\"></span> ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("Github</a> <span class=\"w-[1px] h-3 md:h-6 dark:bg-white bg-black\"></span> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -177,11 +177,11 @@ func infoBar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Icon(components.IconInfo{icon_path + "linkedin.svg", 12, "md:w-[16px] xl:w-[24px]", "linkedin icon"}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Icon(components.IconInfo{Src: icon_path + "linkedin.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "linkedin icon"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("Linkedin</a> <span class=\"w-[1px] dark:bg-white bg-black\"></span> ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("Linkedin</a> <span class=\"w-[1px] h-3 md:h-6 dark:bg-white bg-black\"></span> ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -207,7 +207,7 @@ func infoBar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.Icon(components.IconInfo{icon_path + "email.svg", 12, "md:w-[16px] xl:w-[24px]", "email icon"}).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Icon(components.IconInfo{Src: icon_path + "email.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "email icon"}).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

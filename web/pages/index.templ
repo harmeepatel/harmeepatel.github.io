@@ -7,10 +7,10 @@ import (
 
 templ Index(title string) {
 	@layouts.Base(title) {
-		<main id="resume" class="h-screen mx-8 md:mx-14 3xl:mx-0">
+		<main id="resume" class="h-dvh mx-8 md:mx-14 3xl:mx-0">
 			<h2 class="text-center">Harmee Patel</h2>
 			@infoBar()
-			@components.Section()
+			@components.Section("Education")
 		</main>
 	}
 }
@@ -20,30 +20,25 @@ const icon_path = "./web/static/media/icons/"
 const info_link_class = "hover:text-indigo-300 text-[0.5rem] md:text-md xl:text-base flex gap-1 md:gap-2 items-center"
 
 templ infoBar() {
-	<section id="contact-bar" class="flex justify-center gap-2 md:gap-4 py-4">
-        <a href="tel:+16478321245" class={ info_link_class }>
-            @components.Icon(components.IconInfo{icon_path + "phone.svg", 12, "md:w-[16px] xl:w-[24px]", "phone icon"})
-            +1 (647) 832 - 1245
-        </a>
-		<span class="w-[1px] dark:bg-white bg-black"></span>
-
-        <a href="https://github.com/harmeepatel" class={ info_link_class }>
-            @components.Icon(components.IconInfo{icon_path + "github.svg", 12, "md:w-[16px] xl:w-[24px]", "github icon"})
-            Github
-        </a>
-		<span class="w-[1px] dark:bg-white bg-black"></span>
-
-			
-        <a href="https://ca.linkedin.com/in/harmeepatel" class={ info_link_class }>
-            @components.Icon(components.IconInfo{icon_path + "linkedin.svg", 12, "md:w-[16px] xl:w-[24px]", "linkedin icon"})
-            Linkedin
-        </a>
-		<span class="w-[1px] dark:bg-white bg-black"></span>
-
-			
-        <a href="mailto:harmeeworks@gmail.com" class={ info_link_class + " text-wrap" }>
-            @components.Icon(components.IconInfo{icon_path + "email.svg", 12, "md:w-[16px] xl:w-[24px]", "email icon"})
-            harmeeworks@gmail.com
-        </a>
+	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 py-4">
+		<a href="tel:+16478321245" class={ info_link_class }>
+			@components.Icon(components.IconInfo{Src: icon_path + "phone.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "phone icon"})
+			+1 (647) 832 - 1245
+		</a>
+		<span class="w-[1px] h-3 md:h-6 dark:bg-white bg-black"></span>
+		<a href="https://github.com/harmeepatel" class={ info_link_class }>
+			@components.Icon(components.IconInfo{Src: icon_path + "github.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]",Alt:  "github icon"})
+			Github
+		</a>
+		<span class="w-[1px] h-3 md:h-6 dark:bg-white bg-black"></span>
+		<a href="https://ca.linkedin.com/in/harmeepatel" class={ info_link_class }>
+			@components.Icon(components.IconInfo{Src: icon_path + "linkedin.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "linkedin icon"})
+			Linkedin
+		</a>
+		<span class="w-[1px] h-3 md:h-6 dark:bg-white bg-black"></span>
+		<a href="mailto:harmeeworks@gmail.com" class={ info_link_class + " text-wrap" }>
+			@components.Icon(components.IconInfo{Src: icon_path + "email.svg", Width: 12, Class: "md:w-[16px] xl:w-[24px]", Alt: "email icon"})
+			harmeeworks@gmail.com
+		</a>
 	</section>
 }
