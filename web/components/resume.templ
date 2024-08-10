@@ -20,8 +20,6 @@ templ Icon(icon IconInfo) {
 }
 
 // sections
-const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
-
 templ SectionItemHeader(left string, right string) {
 	<h5 class="flex justify-between">
 		<span>{ left }</span>
@@ -29,6 +27,7 @@ templ SectionItemHeader(left string, right string) {
 	</h5>
 }
 
+const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
 templ Section(id string, heading string) {
 	<section id={ id } class="pt-3 lg:pt-6">
 		<h3>{ heading }</h3>

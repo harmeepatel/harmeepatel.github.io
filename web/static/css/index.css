@@ -11,6 +11,16 @@
         @apply text-lg md:text-2xl xl:text-4xl py-1 lg:py-2 overflow-x-hidden
     }
 
+    h3::after {
+        content: "";
+        display: inline-block;
+        height: 0.5em;
+        width: 100%;
+        margin-right: -100%;
+        margin-left: 0.32rem;
+        @apply border-b border-black dark:border-white
+    }
+
     h5 {
         span:nth-child(2) {
             @apply text-2xs md:text-sm xl:text-lg font-light italic flex items-center
@@ -24,35 +34,9 @@
     }
 }
 
-
-h3::after {
-    content: "";
-    display: inline-block;
-    height: 0.5em;
-    width: 100%;
-    margin-right: -100%;
-    margin-left: 0.32rem;
-    border-bottom: 1px solid white;
-}
-
-
 @layer utilities {
     .vertical-seperator {
         @apply w-[1px] lg:w-[2px] h-3 md:h-6 dark:bg-white bg-black
-    }
-}
-
-/* theme */
-.theme-light {
-    background: #fff;
-    color: #000;
-}
-
-/* theme - dark mode */
-@media (prefers-color-scheme: dark) {
-    .theme-light.adaptive {
-        background: #111;
-        color: #fff;
     }
 }
 
