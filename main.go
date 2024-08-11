@@ -18,13 +18,10 @@ func init() {
 		log.Fatalf("failed to create output file: %v", err)
 	}
 
-    log.Println("INJECTING HTML")
 	err = pages.Index("harmeepatel").Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write output file: %v", err)
 	}
-    log.Println("INJECTION DONE")
 }
 
-func main() {
-}
+func main() {}
