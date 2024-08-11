@@ -11,7 +11,7 @@ import templruntime "github.com/a-h/templ/runtime"
 const (
 	NAV_HEIGHT  = " h-[5rem] xl:h-[10rem] "
 	NAV_WIDTH   = " w-dvw "
-	NAV_PADDING = " pt-6 px-4 md:px-14 3xl:px-0"
+	NAV_PADDING = " pt-6 px-6 md:px-14 3xl:px-0"
 
 	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
 )

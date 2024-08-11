@@ -120,7 +120,7 @@ func SectionItemHeader(left string, right string) templ.Component {
 			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h5 class=\"flex justify-between pb-2 lg:pb-1\"><span class=\"w-1/2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h5 class=\"flex justify-between\"><span class=\"w-1/2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -187,7 +187,7 @@ func Section(id string, heading string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"pt-2 lg:pt-4\"><h3>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><h3>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

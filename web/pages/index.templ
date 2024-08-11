@@ -7,15 +7,15 @@ import (
 
 templ Index(title string) {
 	@layouts.Base(title) {
-		<main id="resume" class="h-dvh mx-4 md:mx-14 3xl:mx-0">
+		<main id="resume" class="h-dvh mx-6 md:mx-14 3xl:mx-0">
 			<h2 class="text-center">Harmee Patel</h2>
 			@infoBar()
 			@components.Section("education", "Education") {
-				<div class="pb-4 lg:pb-8">
+				<div class="pb-4 lg:pb-6">
 					@components.SectionItemHeader("Master's in Computer Science (CS)", "September 2021 - May 2023")
 					<p>Lakehead University</p>
 				</div>
-				<div class="py-1 lg:py-2">
+				<div class="pb-4 lg:pb-6">
 					@components.SectionItemHeader("Bachelor's in Computer Engineering (CE)", "June 2016 - June 2020")
 					<p>LDRP Institute of Technology and Research</p>
 				</div>
@@ -32,7 +32,7 @@ const iconPath = "./web/static/media/icons/"
 const infoLinkClass = "hover:text-indigo-300 text-2xs md:text-sm xl:text-base flex gap-1 md:gap-2 items-center"
 
 templ infoBar() {
-	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4">
+	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-2 lg:pb-4">
 		<a href="tel:+16478321245" class={ infoLinkClass }>
 			@components.Icon(components.IconInfo{
 				Src:   iconPath + "phone.svg",
