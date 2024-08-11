@@ -43,7 +43,7 @@ func Index(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-8 md:mx-14 3xl:mx-0\"><h2 class=\"text-center\">Harmee Patel</h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-4 md:mx-14 3xl:mx-0\"><h2 class=\"text-center\">Harmee Patel</h2>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -123,7 +123,7 @@ func Index(title string) templ.Component {
 
 // contact bar
 const iconPath = "./web/static/media/icons/"
-const infoLinkClass = "hover:text-indigo-300 text-[0.5rem] md:text-md xl:text-base flex gap-1 md:gap-2 items-center"
+const infoLinkClass = "hover:text-indigo-300 text-xs md:text-md xl:text-base flex gap-1 md:gap-2 items-center"
 
 func infoBar() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
