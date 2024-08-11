@@ -9,7 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 const (
-	NAV_HEIGHT  = " h-[6rem] xl:h-[10rem] "
+	NAV_HEIGHT  = " h-[5rem] xl:h-[10rem] "
 	NAV_WIDTH   = " w-dvw "
 	NAV_PADDING = " pt-6 px-4 md:px-14 3xl:px-0"
 
@@ -34,7 +34,7 @@ func navLink(name string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li><a href=\"#\" class=\"text-sm md:text-xl font-normal group\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<li><a href=\"#\" class=\"text-sm md:text-base xl:text-xl font-normal group\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

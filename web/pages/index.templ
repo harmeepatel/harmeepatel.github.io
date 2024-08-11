@@ -11,7 +11,7 @@ templ Index(title string) {
 			<h2 class="text-center">Harmee Patel</h2>
 			@infoBar()
 			@components.Section("education", "Education") {
-				<div class="py-1 lg:py-2">
+				<div class="pb-4 lg:pb-8">
 					@components.SectionItemHeader("Master's in Computer Science (CS)", "September 2021 - May 2023")
 					<p>Lakehead University</p>
 				</div>
@@ -29,7 +29,7 @@ templ Index(title string) {
 
 // contact bar
 const iconPath = "./web/static/media/icons/"
-const infoLinkClass = "hover:text-indigo-300 text-xs md:text-md xl:text-base flex gap-1 md:gap-2 items-center"
+const infoLinkClass = "hover:text-indigo-300 text-2xs md:text-sm xl:text-base flex gap-1 md:gap-2 items-center"
 
 templ infoBar() {
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4">
