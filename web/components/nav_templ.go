@@ -9,7 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 const (
-	NAV_HEIGHT  = " h-[5rem] xl:h-[10rem] "
+	NAV_HEIGHT  = " h-[6.5rem] xl:h-[10rem] "
 	NAV_WIDTH   = " w-dvw "
 	NAV_PADDING = " pt-6 px-6 md:px-14 3xl:px-0"
 
