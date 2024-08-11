@@ -43,7 +43,7 @@ func Index(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-6 md:mx-14 3xl:mx-0\"><h2 class=\"text-center\">Harmee Patel</h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-6 md:mx-14 3xl:mx-0 mt-[-1rem] xl:mt-[-2rem]\"><h2 class=\"text-center\">Harmee Patel</h2>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

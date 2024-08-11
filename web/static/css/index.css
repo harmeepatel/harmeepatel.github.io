@@ -4,7 +4,7 @@
 
 @layer base {
     h2 {
-        @apply text-3xl md:text-5xl xl:text-6xl py-3 lg:py-6
+        @apply text-3xl md:text-5xl xl:text-6xl py-2 lg:py-4
     }
 
     h3 {
