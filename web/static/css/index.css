@@ -17,13 +17,12 @@
         height: 0.5em;
         width: 100%;
         margin-right: -100%;
-        margin-left: 0.32rem;
-        @apply border-b border-black dark:border-white
+        @apply border-b border-black dark:border-white ml-1 lg:ml-[0.32rem]
     }
 
     h5 {
         span:nth-child(2) {
-            @apply text-2xs md:text-sm xl:text-lg font-light italic flex items-center
+            @apply text-2xs md:text-sm xl:text-lg font-normal italic flex items-center
         }
 
         @apply text-sm md:text-base xl:text-xl font-semibold py-0.5 lg:py-1
