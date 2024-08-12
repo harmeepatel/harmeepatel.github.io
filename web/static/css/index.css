@@ -21,15 +21,20 @@
     }
 
     h5 {
-        span:nth-child(2) {
-            @apply text-xs md:text-sm xl:text-base font-normal italic flex items-center justify-end text-gray-200
-        }
 
-        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold py-1 lg:py-2
+        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold py-0.5 lg:py-1
     }
 
     p {
-        @apply text-[0.8rem] md:text-sm xl:text-lg font-light
+        @apply text-[0.92rem] md:text-lg xl:text-xl font-light
+    }
+
+    span {
+        @apply text-xs md:text-sm xl:text-base font-normal text-gray-200
+    }
+
+    ul {
+        @apply text-xs md:text-sm xl:text-base
     }
 }
 

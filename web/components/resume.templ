@@ -20,14 +20,23 @@ templ Icon(icon IconInfo) {
 }
 
 // sections
-templ SectionItemHeader(left string, right string) {
-	<h5 class="flex justify-between">
-		<span class="w-1/2">{ left }</span>
-		<span class="w-1/2">{ right }</span>
-	</h5>
+templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
+	<div class="flex justify-between">
+		<h5 class={ leftClass }>
+			{ left }
+		</h5>
+		<span class={ rightClass }>{ right }</span>
+	</div>
+}
+
+templ SectionContent(divClass string) {
+	<div class={ divClass }>
+		{ children... }
+	</div>
 }
 
 const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
+
 templ Section(id string, heading string) {
 	<section id={ id }>
 		<h3>{ heading }</h3>
