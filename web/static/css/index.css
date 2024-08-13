@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+    b {
+        @apply font-semibold
+    }
+
     h2 {
         @apply text-3xl md:text-5xl xl:text-6xl py-2 lg:py-4
     }
@@ -35,6 +39,10 @@
 
     ul {
         @apply text-xs md:text-sm xl:text-base
+    }
+
+    li {
+        @apply indent-[-17px] md:indent-[-21px] pl-[19px]
     }
 }
 
