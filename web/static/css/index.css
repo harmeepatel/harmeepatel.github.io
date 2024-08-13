@@ -34,10 +34,10 @@
     }
 
     span {
-        @apply text-xs md:text-sm xl:text-base font-normal text-gray-200
+        @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
-    ul {
+    kl {
         @apply text-xs md:text-sm xl:text-base
     }
 
