@@ -642,8 +642,7 @@ func academicProjects() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-3 xl:pb-5", "September 2020 - August 2021",
-					"italic").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.SectionItemHeader("Music Player", "pb-3 xl:pb-5", "", "").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
