@@ -328,7 +328,7 @@ func education() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p class=\"w-1/2\">LDRP Institute of Technology and Research <span class=\"text-xs md:text-sm xl:text-base pl-1 md:pl-2\">(7.9/10)</span></p>     ")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p class=\"w-1/2\">LDRP Institute of Technology and Research <span class=\"text-xs md:text-sm xl:text-base pl-1 md:pl-2\">(7.9/10)</span></p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -350,7 +350,7 @@ func education() templ.Component {
 
 // technical skills
 const techSkillSectionContentClass = "grid items-center grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
-const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-4 md:pl-8"
+const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
 
 func technicalSkills() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -646,7 +646,7 @@ func academicProjects() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li></ul>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li></ul>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
