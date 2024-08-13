@@ -73,7 +73,7 @@ func Nav() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var4 = []any{"fixed top-0 left-0 z-[49] backdrop-blur-xl md:backdrop-blur-2xl" + NAV_HEIGHT + NAV_WIDTH}
+		var templ_7745c5c3_Var4 = []any{"fixed top-0 left-0 z-[49] backdrop-blur-xl md:backdrop-blur-2xl blur" + NAV_HEIGHT + NAV_WIDTH}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

@@ -580,7 +580,33 @@ func workex() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Building and maintaining a ticketing platform for all kinds of events, using PHP and jQuery.</li><li>Redesigning and developing a <a href=\"https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing\" class=\"text-indigo-500 dark:text-blue-400 hover:underline\">pricing page</a> as a part of our website design change plan.</li><li>Creating a <a href=\"https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events\" class=\"text-indigo-500 dark:text-blue-400 hover:underline\">publish event</a> page for hosts to help them choose AllEvents as their platform of choice, along with designing illustrations using Figma for better UI.</li><li>Developed notification system for the hosts dashboard and making it look consistent with our design philosophy.</li><li>Adding quality of life features to event page for people to engage with the event.</li><li>Improving performance of our backend APIs by decreasing the payload size by 2%-5% for many services.</li><li>Adding a Get Ticket ticket booking modal on event pages for easy ticket booking.</li><li>Adding and Interests you may like to follow recommendation/search system for people to add interests to their profile for better event recommendations.</li></ul>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li><b>Developed and maintained</b> a comprehensive ticketing platform for various events, utilizing <b>PHP</b> and <b>jQuery</b>.</li><li><b>Redesigned and implemented</b> a new  Redesigning and developing a <a href=\"https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing\" class=\"text-indigo-500 dark:text-blue-400 hover:underline\" target=\"_blank\">pricing page</a> , contributing to the website's overall design enhancement strategy.</li><li><b>Created and designed</b> a user-friendly  Creating a <a href=\"https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events\" class=\"text-indigo-500 dark:text-blue-400 hover:underline\" target=\"_blank\">publish event page</a> ")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var30 string
+				templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs("for")
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 175, Col: 26}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" hosts, incorporating <b>Figma</b> to enhance UI/UX, resulting in increased host engagement.</li><li><b>Developed</b> a <b>notification system</b> ")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var31 string
+				templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs("for")
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 178, Col: 72}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" the host dashboard, ensuring consistency with the platform's design philosophy.</li><li><b>Enhanced user experience</b> by adding quality-of-life features to event pages, leading to higher user interaction and satisfaction.</li><li><b>Optimized backend API performance</b>, reducing payload size by <b>2%-5%</b> across multiple services, improving speed and efficiency.</li><li><b>Implemented</b> a <b>\"Get Ticket\" booking modal</b> on event pages, streamlining the ticket purchasing process for users.</li><li><b>Developed a recommendation/search system</b> based on user interests, using <b>personalized recommendations</b> to increase user engagement and event relevance.</li></ul>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -613,12 +639,12 @@ func academicProjects() templ.Component {
 			}()
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var30 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var30 == nil {
-			templ_7745c5c3_Var30 = templ.NopComponent
+		templ_7745c5c3_Var32 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var32 == nil {
+			templ_7745c5c3_Var32 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Var31 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_Var33 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
 			if !templ_7745c5c3_IsBuffer {
@@ -630,7 +656,7 @@ func academicProjects() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Var32 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_Var34 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 				templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 				templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
 				if !templ_7745c5c3_IsBuffer {
@@ -652,13 +678,13 @@ func academicProjects() templ.Component {
 				}
 				return templ_7745c5c3_Err
 			})
-			templ_7745c5c3_Err = components.SectionContent("").Render(templ.WithChildren(ctx, templ_7745c5c3_Var32), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.SectionContent("").Render(templ.WithChildren(ctx, templ_7745c5c3_Var34), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = components.Section("academic-projects", "Academic Projects").Render(templ.WithChildren(ctx, templ_7745c5c3_Var31), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.Section("academic-projects", "Academic Projects").Render(templ.WithChildren(ctx, templ_7745c5c3_Var33), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
