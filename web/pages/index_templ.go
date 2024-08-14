@@ -43,7 +43,7 @@ func Index(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-6 md:mx-14 3xl:mx-0 mt-[-1.5rem] xl:mt-[-2rem]\"><h2 class=\"text-center\">Harmee Patel</h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <main id=\"resume\" class=\"h-dvh mx-6 md:mx-14 3xl:mx-0\"><h2 class=\"text-center\">Harmee Patel</h2>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -349,8 +349,10 @@ func education() templ.Component {
 }
 
 // technical skills
-const techSkillSectionContentClass = "grid items-center grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
-const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
+const techSkillSectionContentClass = "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
+
+// const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
+const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-4"
 
 func technicalSkills() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -587,7 +589,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var30 string
 				templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs("for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 175, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 177, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 				if templ_7745c5c3_Err != nil {
@@ -600,7 +602,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var31 string
 				templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs("for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 178, Col: 72}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 180, Col: 72}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 				if templ_7745c5c3_Err != nil {
