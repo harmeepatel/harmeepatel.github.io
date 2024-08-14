@@ -42,7 +42,7 @@
     }
 
     .list-disc li {
-        @apply indent-[-17px] md:indent-[-21px] pl-[19px]
+        @apply indent-[-17px] md:indent-[-21px] pl-[19px] font-light
     }
 }
 
