@@ -26,7 +26,7 @@
 
     h5 {
 
-        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold py-0.5 lg:py-1
+        @apply text-[0.92rem] md:text-xl xl:text-2xl font-semibold py-0.5 lg:py-1
     }
 
     p {
@@ -54,4 +54,17 @@
 
 #nav-mask {
     mask-image: linear-gradient(rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 70%, transparent 90%);
+}
+
+@media print {
+    #nav-mask {
+        display: none !important;
+    }
+    nav {
+        display: none !important;
+    }
+    main {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
 }
