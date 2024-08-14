@@ -8,21 +8,10 @@ const (
 	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
 )
 
-templ navLink(name string) {
-	<li>
-		<a href="#" class="text-sm md:text-base xl:text-xl font-normal group">
-			{ name }
-			<span
-				class="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 rounded-md bg-sky-500"
-			></span>
-		</a>
-	</li>
-}
-
 templ Nav() {
 	<div
 		id="nav-mask"
-		class={ "fixed top-0 left-0 z-[49] backdrop-blur-xl md:backdrop-blur-2xl blur" + NAV_HEIGHT + NAV_WIDTH }
+		class={ "fixed top-0 left-0 z-[49] backdrop-blur-xl md:backdrop-blur-2xl" + NAV_HEIGHT + NAV_WIDTH }
 	></div>
 	<nav id=" nav" class={ "sticky top-0 z-50" + NAV_HEIGHT + NAV_PADDING }>
 		<div class="m-auto flex justify-between">
@@ -30,8 +19,8 @@ templ Nav() {
 				@Icon(IconInfo{"./web/static/media/images/hp-black.svg", 80, IMAGE_WIDTH, "My initials HP"})
 			</a>
 			<ul class="flex justify-evenly self-center gap-6 md:gap-16">
-				@navLink("Resume")
-				@navLink("Blog")
+				@NavLink("Resume")
+				@NavLink("Blog")
 			</ul>
 		</div>
 	</nav>
