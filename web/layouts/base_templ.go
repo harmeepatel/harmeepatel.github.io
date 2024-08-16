@@ -28,7 +28,7 @@ func Base(title string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" data-theme=\"dark\" class=\"scroll-smooth\"><head><meta charset=\"utf-8\"><link rel=\"icon\" href=\"./web/static/media/images/hp-white.svg\"><meta name=\"viewport\" content=\"width=device-width\"><meta name=\"description\" content=\"This is the landing page for Infinity Immigration, a visa consultancy service.\"><title>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\" data-theme=\"dark\" class=\"scroll-smooth\"><head><meta charset=\"utf-8\"><link rel=\"icon\" href=\"./web/static/media/images/hp-white.svg\"><meta name=\"viewport\" content=\"width=device-width\"><meta name=\"description\" content=\"Protfolio website with my resume and some useful blogs.\"><title>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
