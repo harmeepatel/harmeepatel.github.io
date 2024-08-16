@@ -8,11 +8,11 @@
     }
 
     h2 {
-        @apply text-3xl md:text-5xl xl:text-6xl py-2 lg:py-4
+        @apply text-2xl md:text-4xl xl:text-5xl py-2 lg:py-4
     }
 
     h3 {
-        @apply text-xl md:text-3xl xl:text-4xl py-1.5 lg:py-3 overflow-x-hidden
+        @apply text-lg md:text-2xl xl:text-3xl pb-[0.125rem] lg:pb-2 overflow-x-hidden
     }
 
     h3::after {
@@ -25,20 +25,19 @@
     }
 
     h5 {
-
-        @apply text-[0.92rem] md:text-xl xl:text-2xl font-semibold py-0.5 lg:py-1
-    }
-
-    p {
-        @apply text-[0.92rem] md:text-lg xl:text-xl font-light
+        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold 
     }
 
     span {
         @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
-    kl {
-        @apply text-xs md:text-sm xl:text-base
+    p {
+        @apply font-medium
+    }
+
+    p, ul {
+        @apply text-[0.80rem] md:text-base xl:text-lg
     }
 
     .list-disc li {
