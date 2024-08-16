@@ -297,17 +297,17 @@ func education() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = components.SectionItemHeader("Master's in Computer Science (CS)", "", "September 2021 - May 2023", "italic").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.SectionItemHeader("Master's in Computer Science (CS)", "", "September 2021 - May 2023", "italic w-1/3 text-end").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p class=\"w-1/2\">Lakehead University <span class=\"text-xs md:text-sm xl:text-base pl-1 md:pl-2\">(3.9/4)</span></p>           ")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p class=\"w-1/2\">Lakehead University <span class=\"text-xs md:text-sm xl:text-base pl-1 md:pl-2\">(3.9/4)</span></p><ul class=\"list-disc list-inside\"><li>Focus on Machine Learning Courses i.e. DeepLearning, ComputerVision, PatternRecognition, etc.</li><li>Learned how to work in teams, leadingateam, and also managing roles within a team.</li><li>Using Rust to parse and preprocess all the data for different machine learning courses using libraries like clap, serde_json, itertools, etc.</li></ul>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return templ_7745c5c3_Err
 			})
-			templ_7745c5c3_Err = components.SectionContent("pb-7 xl:pb-9").Render(templ.WithChildren(ctx, templ_7745c5c3_Var10), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.SectionContent("pb-3 xl:pb-5").Render(templ.WithChildren(ctx, templ_7745c5c3_Var10), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -327,7 +327,7 @@ func education() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = components.SectionItemHeader("Bachelor's in Computer Engineering (CE)", "", "June 2016 - June 2020", "italic").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.SectionItemHeader("Bachelor's in Computer Engineering (CE)", "", "June 2016 - June 2020", "italic w-1/3 text-end").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -737,7 +737,7 @@ func academicProjects() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li></ul>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li></ul>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
