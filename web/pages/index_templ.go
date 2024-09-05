@@ -43,7 +43,7 @@ func Index(title string) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-dvh mx-6 md:mx-14 3xl:mx-0 mt-[-1.5rem] xl:mt-[-2rem]\"><h2 class=\"text-center\">Harmee Patel</h2>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<main id=\"resume\" class=\"h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-1.5rem] xl:mt-[-2rem]\"><h2 class=\"text-center\">Harmee Patel</h2>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -56,14 +56,6 @@ func Index(title string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = technicalSkills().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = workex().Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = workex().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -660,7 +652,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var28 string
 				templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(" for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 184, Col: 13}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 182, Col: 13}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 				if templ_7745c5c3_Err != nil {
@@ -673,7 +665,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var29 string
 				templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs("for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 187, Col: 58}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 185, Col: 58}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 				if templ_7745c5c3_Err != nil {
