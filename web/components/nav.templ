@@ -1,22 +1,24 @@
 package components;
 
 const (
-	NAV_HEIGHT  = " h-[6.5rem] xl:h-[10rem] "
 	NAV_WIDTH   = " w-dvw "
-	NAV_PADDING = " pt-6 px-6 md:px-14 3xl:px-0"
+	NAV_HEIGHT  = " h-[4rem] xl:h-[6rem] "
+	NAV_PADDING = " pt-4 px-6 md:px-14 3xl:px-0"
+
+	// don't put spaces around "+" sign breaks tailwind apparently
+	MASK_WIDTH  = " w-[calc(100dvw+8rem)] "
+	MASK_HEIGHT = " h-[5rem] xl:h-[9rem] "
+	MASK_BLUR   = " from-white dark:from-[#111111] via-white dark:via-[#111111] via-80% to-white/0 dark:to-[#111111]/0 pointer-events-none z-[9k] bg-gradient-to-b via-50% blur "
 
 	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
 )
 
 templ Nav() {
-	<div
-		id="nav-mask"
-		class={ "fixed top-0 left-0 z-[49] backdrop-blur-xl md:backdrop-blur-2xl" + NAV_HEIGHT + NAV_WIDTH }
-	></div>
-	<nav id=" nav" class={ "sticky top-0 z-50" + NAV_HEIGHT + NAV_PADDING }>
+	<nav id="nav" class={ "sticky top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
+		<div class={ "absolute top-[-2rem] left-[-4rem]  z-[-1]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 		<div class="m-auto flex justify-between">
 			<a class="" href="https://harmeepatel.dev">
-				@Icon(IconInfo{"./web/static/media/images/hp-black.svg", 80, IMAGE_WIDTH, "My initials HP"})
+				@Icon(IconInfo{"./web/static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
 			</a>
 			<ul class="flex justify-evenly self-center gap-6 md:gap-16">
 				@NavLink("Resume")
