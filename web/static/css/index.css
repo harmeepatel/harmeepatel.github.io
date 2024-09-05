@@ -52,7 +52,8 @@
 }
 
 #nav-mask {
-    mask-image: linear-gradient(rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 70%, transparent 90%);
+    /* mask-image: linear-gradient(rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.8) 70%, transparent 90%); */
+    width: calc(100dvw + 6rem);
 }
 
 @media print {
