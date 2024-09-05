@@ -6,7 +6,7 @@ const (
 	NAV_PADDING = " pt-4 px-6 md:px-14 3xl:px-0"
 
 	// don't put spaces around "+" sign breaks tailwind apparently
-    // don't increase the extra padding from 6rem max we can add 
+  // don't increase the extra padding from 6rem max we can add 
 	MASK_WIDTH  = " w-dvw "
 	MASK_HEIGHT = " h-[6.4rem] xl:h-[9rem] "
 	MASK_BLUR   = " from-light-bg via-light-bg via-90% xl:via-80% to-light-bg/0 dark:from-dark-bg dark:via-dark-bg dark:to-dark-bg/0 pointer-events-none bg-gradient-to-b via-50% blur "
@@ -15,7 +15,7 @@ const (
 )
 
 templ Nav() {
-    <div id="nav-mask" class={ "fixed top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
+  <div id="nav-mask" class={ "fixed top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 	<nav id="nav" class={ "sticky top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
 		//<div class={ "absolute top-[-2rem] left-[-4rem] lg:left-[-8rem] 2xl:left-[-22rem]  z-[-1]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 		<div class="m-auto flex justify-between">
