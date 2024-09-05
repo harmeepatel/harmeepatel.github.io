@@ -41,7 +41,7 @@ func Base(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"stylesheet\" href=\"./web/static/css/main.css\"></head><body class=\"max-w-screen-xl m-auto dark:bg-[#111111] dark:text-[#eee]\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><link rel=\"stylesheet\" href=\"./web/static/css/main.css\"></head><body class=\"max-w-screen-xl m-auto dark:bg-dark-bg dark:text-light-bg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

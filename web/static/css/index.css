@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --dark-bg: #111;
+    --light-bg: #eee;
+}
+
 @layer base {
     b {
         @apply font-semibold
@@ -25,7 +30,7 @@
     }
 
     h5 {
-        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold 
+        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold
     }
 
     span {
@@ -60,9 +65,11 @@
     #nav-mask {
         display: none !important;
     }
+
     nav {
         display: none !important;
     }
+
     main {
         margin-top: 2rem !important;
         margin-bottom: 2rem !important;

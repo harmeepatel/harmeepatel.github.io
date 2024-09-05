@@ -12,6 +12,10 @@ module.exports = {
             fontSize: {
                 '2xs': ['0.5rem', { lineHeight: '0.75rem' }],
             },
+            colors: {
+                "dark-bg": "var(--dark-bg)",
+                "light-bg": "var(--light-bg)"
+            },
         },
         colors: {
             ...colors

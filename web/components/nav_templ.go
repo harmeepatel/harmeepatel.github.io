@@ -16,7 +16,7 @@ const (
 	// don't put spaces around "+" sign breaks tailwind apparently
 	MASK_WIDTH  = " w-[calc(100dvw+8rem)] "
 	MASK_HEIGHT = " h-[5rem] xl:h-[9rem] "
-	MASK_BLUR   = " from-white dark:from-[#111111] via-white dark:via-[#111111] via-80% to-white/0 dark:to-[#111111]/0 pointer-events-none z-[9k] bg-gradient-to-b via-50% blur "
+	MASK_BLUR   = " from-light-bg dark:from-dark-bg via-light-bg dark:via-dark-bg via-80% to-light-bg/0 dark:to-dark-bg/0 pointer-events-none z-[9k] bg-gradient-to-b via-50% blur "
 
 	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
 )
