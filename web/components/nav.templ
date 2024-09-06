@@ -15,9 +15,8 @@ const (
 )
 
 templ Nav() {
-  <div id="nav-mask" class={ "fixed top-[-4.875rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
+  <div id="nav-mask" class={ "fixed top-[-3rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 	<nav id="nav" class={ "sticky top-[-0.875rem] sm:top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
-		//<div class={ "absolute top-[-2rem] left-[-4rem] lg:left-[-8rem] 2xl:left-[-22rem]  z-[-1]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 		<div class="m-auto flex justify-between">
 			<a class="" href="https://harmeepatel.dev">
 				@Icon(IconInfo{"./web/static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
