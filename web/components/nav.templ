@@ -8,15 +8,15 @@ const (
 	// don't put spaces around "+" sign breaks tailwind apparently
   // don't increase the extra padding from 6rem max we can add 
 	MASK_WIDTH  = " w-dvw "
-	MASK_HEIGHT = " h-[6.4rem] xl:h-[9rem] "
+	MASK_HEIGHT = " h-[7rem] xl:h-[9rem] "
 	MASK_BLUR   = " from-light-bg via-light-bg via-90% xl:via-80% to-light-bg/0 dark:from-dark-bg dark:via-dark-bg dark:to-dark-bg/0 pointer-events-none bg-gradient-to-b via-50% blur "
 
 	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
 )
 
 templ Nav() {
-  <div id="nav-mask" class={ "fixed top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
-	<nav id="nav" class={ "sticky top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
+  <div id="nav-mask" class={ "fixed top-[-2.875rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
+	<nav id="nav" class={ "sticky top-[-1.875rem] sm:top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
 		//<div class={ "absolute top-[-2rem] left-[-4rem] lg:left-[-8rem] 2xl:left-[-22rem]  z-[-1]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 		<div class="m-auto flex justify-between">
 			<a class="" href="https://harmeepatel.dev">
