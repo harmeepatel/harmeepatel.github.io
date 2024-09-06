@@ -16,7 +16,7 @@ const (
 	// don't put spaces around "+" sign breaks tailwind apparently
 	// don't increase the extra padding from 6rem max we can add
 	MASK_WIDTH  = " w-dvw "
-	MASK_HEIGHT = " h-[7rem] xl:h-[9rem] "
+	MASK_HEIGHT = " h-[7rem] xl:h-[8.4rem] "
 	MASK_BLUR   = " from-light-bg via-light-bg via-90% xl:via-80% to-light-bg/0 dark:from-dark-bg dark:via-dark-bg dark:to-dark-bg/0 pointer-events-none bg-gradient-to-b via-50% blur "
 
 	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
@@ -40,7 +40,7 @@ func Nav() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var2 = []any{"fixed top-[-2.875rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT}
+		var templ_7745c5c3_Var2 = []any{"fixed top-[-4.875rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -62,7 +62,7 @@ func Nav() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var4 = []any{"sticky top-[-1.875rem] sm:top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING}
+		var templ_7745c5c3_Var4 = []any{"sticky top-[-0.875rem] sm:top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
