@@ -40,7 +40,7 @@ func Nav() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var2 = []any{"fixed top-[-4.875rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT}
+		var templ_7745c5c3_Var2 = []any{"fixed top-[-3rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
