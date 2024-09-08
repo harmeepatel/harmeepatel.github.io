@@ -13,6 +13,18 @@ import (
 	"harmeepatel.dev/web/layouts"
 )
 
+const (
+	iconPath      = "./web/static/media/icons/"
+	infoLinkClass = `hover:!text-indigo-700 dark:hover:!text-blue-500 
+                  !text-black dark:!text-white text-2xs md:text-sm xl:text-base 
+                  flex gap-1 md:gap-2 items-center`
+	infoIconClass = "md:w-[16px] xl:w-[24px]"
+
+	techSkillSectionContentClass = "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
+	// techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
+	techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-4"
+)
+
 func Index(title string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -67,7 +79,20 @@ func Index(title string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</main>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button type=\"button\" id=\"download-resume-btn\" class=\"download-resume-btn\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.Icon(components.IconInfo{
+				Src:   iconPath + "arrow-down-tray.svg",
+				Width: 12,
+				Class: infoIconClass,
+				Alt:   "download resume",
+			}).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button></main>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -82,12 +107,6 @@ func Index(title string) templ.Component {
 }
 
 // contact bar
-const iconPath = "./web/static/media/icons/"
-const infoLinkClass = `hover:!text-indigo-700 dark:hover:!text-blue-500 
-                        !text-black dark:!text-white text-2xs md:text-sm xl:text-base 
-                        flex gap-1 md:gap-2 items-center`
-const infoIconClass = "md:w-[16px] xl:w-[24px]"
-
 func infoBar() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -352,11 +371,6 @@ func education() templ.Component {
 }
 
 // technical skills
-const techSkillSectionContentClass = "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
-
-// const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
-const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-4"
-
 func technicalSkills() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -652,7 +666,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var28 string
 				templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(" for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 182, Col: 13}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 191, Col: 13}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 				if templ_7745c5c3_Err != nil {
@@ -665,7 +679,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var29 string
 				templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs("for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 185, Col: 58}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 194, Col: 58}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 				if templ_7745c5c3_Err != nil {
