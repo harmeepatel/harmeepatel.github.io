@@ -5,6 +5,18 @@ import (
 	"harmeepatel.dev/web/layouts"
 )
 
+const (
+	iconPath      = "./web/static/media/icons/"
+	infoLinkClass = `hover:!text-indigo-700 dark:hover:!text-blue-500 
+                  !text-black dark:!text-white text-2xs md:text-sm xl:text-base 
+                  flex gap-1 md:gap-2 items-center`
+	infoIconClass = "md:w-[16px] xl:w-[24px]"
+
+	techSkillSectionContentClass = "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
+	// techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
+	techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-4"
+)
+
 templ Index(title string) {
 	@layouts.Base(title) {
 		<main id="resume" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.5rem] md:mt-[-0.3rem]">
@@ -14,17 +26,19 @@ templ Index(title string) {
 			@technicalSkills()
 			@workex()
 			@academicProjects()
+			<button type="button" id="download-resume-btn" class="download-resume-btn">
+				@components.Icon(components.IconInfo{
+					Src:   iconPath + "arrow-down-tray.svg",
+					Width: 12,
+					Class: infoIconClass,
+					Alt:   "download resume",
+				})
+			</button>
 		</main>
 	}
 }
 
 // contact bar
-const iconPath = "./web/static/media/icons/"
-const infoLinkClass = `hover:!text-indigo-700 dark:hover:!text-blue-500 
-                        !text-black dark:!text-white text-2xs md:text-sm xl:text-base 
-                        flex gap-1 md:gap-2 items-center`
-const infoIconClass = "md:w-[16px] xl:w-[24px]"
-
 templ infoBar() {
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-2 lg:pb-4">
 		@components.Link("tel:+16478321245", infoLinkClass) {
@@ -103,11 +117,6 @@ templ education() {
 }
 
 // technical skills
-const techSkillSectionContentClass = "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
-
-// const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-8"
-const techSkillPClass = "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-4"
-
 templ technicalSkills() {
 	@components.Section("tech-skills", "Technical Skills") {
 		@components.SectionContent(techSkillSectionContentClass) {
@@ -207,11 +216,11 @@ templ academicProjects() {
 			@components.SectionItemHeader("Music Player", "pb-3 xl:pb-5", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-				Created a facial expression based music recommendation system and app as final project using Firebase APIs and
+					Created a facial expression based music recommendation system and app as final project using Firebase APIs and
 					Flutter.
 				</li>
 				<li>
-				Created a facial expression based music recommendation system and app as final project using Firebase APIs and
+					Created a facial expression based music recommendation system and app as final project using Firebase APIs and
 					Flutter.
 				</li>
 			</ul>

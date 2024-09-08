@@ -39,7 +39,7 @@ func NavLink(name string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <span class=\"block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 rounded-md bg-sky-500\"></span></a></li>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <span class=\"block max-w-0 group-hover:max-w-full acc-anim h-0.5 rounded-md bg-sky-500\"></span></a></li>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
