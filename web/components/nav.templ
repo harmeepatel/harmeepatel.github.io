@@ -25,14 +25,14 @@ templ Nav() {
         <div></div>
         <div></div>
     </div>
-	<nav id="nav" class={ "sticky top-[-0.875rem] sm:top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
+	<nav id="nav" class={ "sticky top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING }>
 		<div class="m-auto flex justify-between">
 			<a class="" href="https://harmeepatel.dev">
 				@Icon(IconInfo{"./web/static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
 			</a>
 			<ul class="flex justify-evenly self-center gap-6 md:gap-16">
-				@NavLink("Resume")
-				@NavLink("Blog")
+				@NavLi("Resume")
+				@NavLi("Blog")
 			</ul>
 		</div>
 	</nav>
