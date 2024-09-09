@@ -1,18 +1,18 @@
 package components;
 
-templ NavLink(name string) {
+templ NavLi(name string) {
 	<li>
 		<a href="#" class="text-sm md:text-base xl:text-xl font-normal group">
 			{ name }
 			<span
-				class="block max-w-0 group-hover:max-w-full acc-anim h-0.5 rounded-md bg-sky-500"
+				class="block max-w-0 group-hover:max-w-full acc-anim h-0.5 rounded-md bg-sky-500 touch-none"
 			></span>
 		</a>
 	</li>
 }
 
 templ Link(ref string, class string) {
-	<a href={ templ.URL(ref) } class={"text-indigo-600 dark:text-blue-400 hover:underline hover:text-indigo-700 dark:hover:text-blue-500 " + class} target="_blank">
+	<a href={ templ.URL(ref) } class={"text-indigo-600 dark:text-blue-400 hover:underline hover:text-indigo-700 dark:hover:text-blue-500 touch-none" + class} target="_blank">
 		{ children... }
 	</a>
 }
