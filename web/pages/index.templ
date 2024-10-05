@@ -22,10 +22,11 @@ templ Index(title string) {
 		<main id="resume" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
 			<h2 class="text-center">Harmee Patel</h2>
 			@infoBar()
-			@education()
+			@summary()
 			@technicalSkills()
 			@workex()
 			@academicProjects()
+			@education()
 			<button type="button" id="download-resume-btn" class="download-resume-btn">
 				@components.Icon(components.IconInfo{
 					Src:   iconPath + "arrow-down-tray.svg",
@@ -35,6 +36,26 @@ templ Index(title string) {
 				})
 			</button>
 		</main>
+	}
+}
+
+// summary
+templ summary() {
+	@components.Section("summary", "Summary") {
+		@components.SectionContent("") {
+			<p>
+				I worked as a Full-Stack Developer at AllEvents, where I was responsible for building, 
+				maintaining, and enhancing various parts of a large-scale ticketing platform, 
+				driving user engagement and improving performance through both back-end and front-end improvements.
+
+                <br>
+				1. Created a ticketing platform using **PHP** and **jQuery**, supporting a wide variety of events.<br>
+				2. Redesigned the **pricing page** and implemented UI changes with **Figma**, enhancing user experience and visual appeal.<br>
+				3. Developed a **notification system** for the host dashboard, ensuring design consistency and improved user interaction.<br>
+				4. Optimized backend **API performance**, achieving a **2%-5%** reduction in payload size and improving efficiency.<br>
+				5. Built a personalized **recommendation system** for events, increasing user engagement by suggesting events based on their interests.
+			</p>
+		}
 	}
 }
 
