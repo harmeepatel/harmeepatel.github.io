@@ -4,7 +4,7 @@ import "harmeepatel.dev/web/components"
 
 templ Base(title string) {
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true">
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="icon" href="./web/static/media/images/hp-white.svg"/>
@@ -13,12 +13,12 @@ templ Base(title string) {
 			<title>{ title }</title>
 			<link rel="stylesheet" href="./web/static/css/main.css"/>
 		</head>
-		<body class="max-w-screen-xl m-auto text-dark bg-light dark:bg-dark dark:text-light">
+		<body class="max-w-screen-xl m-auto text-dark bg-light dark:bg-dark dark:text-fg-light">
 			@components.Nav()
 			{ children... }
 			@components.Footer()
 		</body>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="./web/static/js/main.js"></script>
+        <script src="./web/static/js/main.js"></script>
+        // <script src="./web/static/js/htmx.min.js"></script>
 	</html>
 }

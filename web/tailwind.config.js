@@ -17,6 +17,7 @@ module.exports = {
                 "dark": "#111",
                 "dark-btn-p": "#1d1d1d",
                 "light": "#f1f1f1",
+                "fg-light": "#e1e1e1",
                 "light-btn-p": "#fff",
             },
             boxShadow: {
