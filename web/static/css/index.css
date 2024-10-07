@@ -12,7 +12,7 @@
     }
 
     h3 {
-        @apply text-lg md:text-2xl xl:text-3xl pb-[0.125rem] lg:pb-2 overflow-x-hidden
+        @apply text-lg md:text-2xl xl:text-3xl pb-[0.250rem] lg:pb-3 overflow-x-hidden
     }
 
     h3::after {
@@ -41,7 +41,7 @@
     }
 
     .list-disc li {
-        @apply indent-[-17px] md:indent-[-21px] pl-[19px] font-light
+        @apply indent-[-17px] md:indent-[-21px] pl-[19px] font-normal
     }
 }
 

@@ -153,7 +153,7 @@ func summary() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p>I worked as a Full-Stack Developer at AllEvents, where I was responsible for building,  maintaining, and enhancing various parts of a large-scale ticketing platform,  driving user engagement and improving performance through both back-end and front-end improvements.<br>1. Created a ticketing platform using **PHP** and **jQuery**, supporting a wide variety of events.<br>2. Redesigned the **pricing page** and implemented UI changes with **Figma**, enhancing user experience and visual appeal.<br>3. Developed a **notification system** for the host dashboard, ensuring design consistency and improved user interaction.<br>4. Optimized backend **API performance**, achieving a **2%-5%** reduction in payload size and improving efficiency.<br>5. Built a personalized **recommendation system** for events, increasing user engagement by suggesting events based on their interests.</p>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<p>Driven developer with a strong background in  <b>building and enhancing web platforms</b>. Aiming to leverage  <b>strong problem-solving skills </b> with experience in  <b>PHP, jQuery, Figma, NodeJs, MySQL and other techonolgies, with a strong command in UNIX/LINUX systems</b> in  <b>optimizing performance, designing intuitive interfaces, </b> and implementing features that helps company's and user's goals. Looking to learn and improve my working knowledge about emerging languages like  <b>Rust, Go, and Zig</b>.</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -417,13 +417,13 @@ func education() templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p class=\"w-1/2\">LDRP Institute of Technology and Research <span class=\"text-xs md:text-sm xl:text-base pl-1 md:pl-2\">(7.9/10)</span></p>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <p class=\"w-1/2\">LDRP Institute of Technology and Research <span class=\"text-xs md:text-sm xl:text-base pl-1 md:pl-2\">(7.9/10)</span></p><ul class=\"list-disc list-inside\"><li>Focusing on fundamentals of Computer Science i.e. Database Management, Networking, etc.</li><li>Learning and experimenting with then new technologies like React, Vue, Docker, etc.</li></ul>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return templ_7745c5c3_Err
 			})
-			templ_7745c5c3_Err = components.SectionContent("").Render(templ.WithChildren(ctx, templ_7745c5c3_Var14), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.SectionContent("pb-3 xl:pb-5").Render(templ.WithChildren(ctx, templ_7745c5c3_Var14), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -673,7 +673,7 @@ func workex() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-3 xl:pb-5", "September 2020 - August 2021",
+				templ_7745c5c3_Err = components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-0.5 xl:pb-1", "September 2020 - August 2021",
 					"italic").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
@@ -733,7 +733,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var31 string
 				templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(" for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 212, Col: 13}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 221, Col: 13}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 				if templ_7745c5c3_Err != nil {
@@ -746,7 +746,7 @@ func workex() templ.Component {
 				var templ_7745c5c3_Var32 string
 				templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs("for")
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 215, Col: 58}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/index.templ`, Line: 224, Col: 58}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 				if templ_7745c5c3_Err != nil {
@@ -814,11 +814,11 @@ func academicProjects() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = components.SectionItemHeader("Music Player", "pb-3 xl:pb-5", "", "").Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.SectionItemHeader("Music Player", "pb-0.5 xl:pb-1", "", "").Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li><li>Created a facial expression based music recommendation system and app as final project using Firebase APIs and Flutter.</li></ul>")
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <ul class=\"list-disc list-inside\"><li>Desining and implementing a music player integrating machine learning.</li><li>Using <b>Flutter</b> to create a <b>cross platform</b> basic music player app  with two pages songs, and playlists.</li><li>Using <b>SQLite</b> to store song metadata.</li><li>Integrating <b>ML Kit</b> in <b>Firebase</b> to detect facial expression and  using the song metadata like genre to curate a playlist to improve or enhance  user's mood, i.e. creating an uplifting playlist if the user seems to be sad, or  creating an energetic or shuffled playlist if the user seems happy or excited.</li></ul>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
