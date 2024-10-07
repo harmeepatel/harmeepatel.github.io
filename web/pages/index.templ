@@ -44,16 +44,17 @@ templ summary() {
 	@components.Section("summary", "Summary") {
 		@components.SectionContent("") {
 			<p>
-				I worked as a Full-Stack Developer at AllEvents, where I was responsible for building, 
-				maintaining, and enhancing various parts of a large-scale ticketing platform, 
-				driving user engagement and improving performance through both back-end and front-end improvements.
-
-                <br>
-				1. Created a ticketing platform using **PHP** and **jQuery**, supporting a wide variety of events.<br>
-				2. Redesigned the **pricing page** and implemented UI changes with **Figma**, enhancing user experience and visual appeal.<br>
-				3. Developed a **notification system** for the host dashboard, ensuring design consistency and improved user interaction.<br>
-				4. Optimized backend **API performance**, achieving a **2%-5%** reduction in payload size and improving efficiency.<br>
-				5. Built a personalized **recommendation system** for events, increasing user engagement by suggesting events based on their interests.
+				Driven developer with a strong background in 
+                <b>building and enhancing web platforms</b>.
+				Aiming to leverage 
+                <b>strong problem-solving skills </b>
+                with experience in 
+                <b>PHP, jQuery, Figma, NodeJs, MySQL and other techonolgies, with a strong command in UNIX/LINUX systems</b>
+                in 
+                <b>optimizing performance, designing intuitive interfaces, </b>
+                and implementing features that helps company's and user's goals.
+                Looking to learn and improve my working knowledge about emerging languages like 
+                <b>Rust, Go, and Zig</b>.
 			</p>
 		}
 	}
@@ -127,12 +128,20 @@ templ education() {
 				</li>
 			</ul>
 		}
-		@components.SectionContent("") {
+		@components.SectionContent("pb-3 xl:pb-5") {
 			@components.SectionItemHeader("Bachelor's in Computer Engineering (CE)", "", "June 2016 - June 2020", "italic w-1/3 text-end")
 			<p class="w-1/2">
 				LDRP Institute of Technology and Research
 				<span class="text-xs md:text-sm xl:text-base pl-1 md:pl-2">(7.9/10)</span>
 			</p>
+			<ul class="list-disc list-inside">
+				<li>
+					Focusing on fundamentals of Computer Science i.e. Database Management, Networking, etc.
+				</li>
+                <li>
+                    Learning and experimenting with then new technologies like React, Vue, Docker, etc.
+                </li>
+			</ul>
 		}
 	}
 }
@@ -191,7 +200,7 @@ templ technicalSkills() {
 templ workex() {
 	@components.Section("work-ex", "Work Experience") {
 		@components.SectionContent("") {
-			@components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-3 xl:pb-5", "September 2020 - August 2021",
+			@components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-0.5 xl:pb-1", "September 2020 - August 2021",
 				"italic")
 			<ul class="list-disc list-inside">
 				<li>
@@ -234,15 +243,23 @@ templ workex() {
 templ academicProjects() {
 	@components.Section("academic-projects", "Academic Projects") {
 		@components.SectionContent("") {
-			@components.SectionItemHeader("Music Player", "pb-3 xl:pb-5", "", "")
+			@components.SectionItemHeader("Music Player", "pb-0.5 xl:pb-1", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-					Created a facial expression based music recommendation system and app as final project using Firebase APIs and
-					Flutter.
+                    Desining and implementing a music player integrating machine learning.
 				</li>
 				<li>
-					Created a facial expression based music recommendation system and app as final project using Firebase APIs and
-					Flutter.
+                    Using <b>Flutter</b> to create a <b>cross platform</b> basic music player app 
+                    with two pages songs, and playlists.
+				</li>
+				<li>
+                    Using <b>SQLite</b> to store song metadata.
+				</li>
+				<li>
+                    Integrating <b>ML Kit</b> in <b>Firebase</b> to detect facial expression and 
+                    using the song metadata like genre to curate a playlist to improve or enhance 
+                    user's mood, i.e. creating an uplifting playlist if the user seems to be sad, or 
+                    creating an energetic or shuffled playlist if the user seems happy or excited.
 				</li>
 			</ul>
 		}
