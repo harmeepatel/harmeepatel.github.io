@@ -1,6 +1,5 @@
-assets/
+.DS_Store
 
-bin/
 tmp/
 .air/
 

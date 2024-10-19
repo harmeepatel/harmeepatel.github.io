@@ -28,6 +28,7 @@ func init() {
 
 	generateFile(pages.Index("HarmeePatel"), "index.html")
 	generateFile(pages.Blog("Blog"), "blog.html")
+	generateFile(pages.Photos("Photos"), "photos.html")
 }
 
 func main() {}

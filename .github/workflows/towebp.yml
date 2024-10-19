@@ -1,0 +1,31 @@
+name: Convert photos to webp
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup cwebp
+        run: |
+          pwd
+          sudo apt-get install libjpeg-dev libpng-dev
+          echo "wget webp"
+          wget https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0-linux-x86-64.tar.gz
+          
+          echo "unzipping"
+          tar xzvf libwebp-1.4.0-linux-x86-64.tar.gz
+  
+          echo "moving cwebp bin to gh workspace"
+          cd libwebp-1.4.0-linux-x86-64/bin
+          mv cwebp ${{ github.workspace }}
+          cd ../..
+  
+          echo "removing the tar ball and the unzipped folder"
+          rm -rf libwebp-1.4.0-linux-x86-64
+          rm -rf libwebp-1.4.0-linux-x86-64.tar.gz
+  
+          echo "moving cwebp to /bin"
+          sudo mv cwebp /bin
+      - name: Converting to webp
+        run: ./bin/towebp-l ./web/static/media/images/gallery/ 800000
