@@ -1,6 +1,11 @@
 name: Convert photos to webp
 run-name: convert photos to webp
-on: [push]
+on: 
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+      
 jobs:
   PNG-to-WebP:
     runs-on: ubuntu-22.04
