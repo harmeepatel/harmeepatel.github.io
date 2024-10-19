@@ -3,25 +3,26 @@ package pages;
 import (
 	"fmt"
 	"harmeepatel.dev/web/layouts"
-    "os"
+	"os"
+    "strings"
 )
 
 const imgPath = "web/static/media/images/gallery/"
+
 var imgArr = []string{}
 
 // "harmeepatel.dev/web/components"
 templ Photos(title string) {
-
-    {{ 
+	{{
         files, err := os.ReadDir(imgPath)
         if err != nil {
             fmt.Printf("%s dir not found\n", imgPath)
         }
         for _, file := range files {
-            imgArr = append(imgArr, imgPath + file.Name())
+            file_split := strings.Split(file.Name(), ".")
+            imgArr = append(imgArr, imgPath+file_split[0]+".webp")
         }
-    }}
-
+	}}
 	@layouts.PhotoBase(title) {
 		<main id="photos" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
 			<style>
