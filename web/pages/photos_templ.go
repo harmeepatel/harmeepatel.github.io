@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"harmeepatel.dev/web/layouts"
 	"os"
+	"strings"
 )
 
 const imgPath = "web/static/media/images/gallery/"
@@ -43,7 +44,8 @@ func Photos(title string) templ.Component {
 			fmt.Printf("%s dir not found\n", imgPath)
 		}
 		for _, file := range files {
-			imgArr = append(imgArr, imgPath+file.Name())
+			file_split := strings.Split(file.Name(), ".")
+			imgArr = append(imgArr, imgPath+file_split[0]+".webp")
 		}
 		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -74,7 +76,7 @@ func Photos(title string) templ.Component {
 					var templ_7745c5c3_Var3 string
 					templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(imgArr[j])
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/photos.templ`, Line: 73, Col: 27}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/pages/photos.templ`, Line: 74, Col: 27}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 					if templ_7745c5c3_Err != nil {
