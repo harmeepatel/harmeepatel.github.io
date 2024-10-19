@@ -1,5 +1,5 @@
 name: Convert photos to webp
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: converting photos to webp
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -28,4 +28,4 @@ jobs:
           echo "moving cwebp to /bin"
           sudo mv cwebp /bin
       - name: Converting to webp
-        run: ./bin/towebp-l ./web/static/media/images/gallery/ 800000
+        run: ./bin/towebp-l ./web/static/media/images/gallery 800000
