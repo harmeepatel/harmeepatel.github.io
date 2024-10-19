@@ -63,7 +63,7 @@ func Nav() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var4 = []any{"sticky top-0 z-[100]" + NAV_HEIGHT + NAV_PADDING}
+		var templ_7745c5c3_Var4 = []any{"sticky top-0 z-[100] max-w-screen-xl m-auto" + NAV_HEIGHT + NAV_PADDING}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -98,6 +98,10 @@ func Nav() templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = NavLi("Blog", "blog.html").Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = NavLi("Photos", "photos.html").Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

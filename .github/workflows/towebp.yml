@@ -1,0 +1,53 @@
+name: Convert photos to webp
+run-name: convert photos to webp
+on: 
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+      
+jobs:
+  PNG-to-WebP:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+
+      - name: Setup cwebp
+        run: |
+          pwd
+          sudo apt-get install libjpeg-dev libpng-dev
+          echo "wget webp"
+          wget https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0-linux-x86-64.tar.gz
+          
+          echo "unzipping"
+          tar xzvf libwebp-1.4.0-linux-x86-64.tar.gz
+
+          echo "moving cwebp bin to gh workspace"
+          cd libwebp-1.4.0-linux-x86-64/bin
+          mv cwebp ${{ github.workspace }}
+          cd ../..
+
+          echo "removing the tar ball and the unzipped folder"
+          rm -rf libwebp-1.4.0-linux-x86-64
+          rm -rf libwebp-1.4.0-linux-x86-64.tar.gz
+
+          echo "moving cwebp to /bin"
+          sudo mv cwebp /bin
+          ls
+
+      - name: Converting to webp
+        run: |
+          ./bin/towebp-l ./web/static/media/images/gallery 800000
+          ls
+
+      - name: Amend the last commit
+        run: |
+          git config --global user.email "harmeepatel@gmail.com"
+          git config --global user.name "harmeepatel"
+          git add .
+          git commit -a --amend --no-edit
+          git push --force-with-lease
+          echo "Complete"
