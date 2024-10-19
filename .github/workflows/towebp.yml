@@ -34,7 +34,9 @@ jobs:
           ls
 
       - name: Converting to webp
-        run: ./bin/towebp-l ./web/static/media/images/gallery 800000
+        run: |
+          ./bin/towebp-l ./web/static/media/images/gallery 800000
+          ls
 
       - name: Amend the last commit
         run: |
