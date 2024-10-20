@@ -110,6 +110,7 @@ jobs:
         run: |
           go mod tidy
           go install github.com/a-h/templ/cmd/templ@latest
+          templ version
           templ generate
 
       - name: Amend the last commit
@@ -121,7 +122,7 @@ jobs:
           git push --force-with-lease
           echo "Complete"
 
-  go-run-main:
+  generate-html:
     needs: [png-to-webp, generate-templ]
     runs-on: ubuntu-22.04
     steps:
