@@ -1,7 +1,7 @@
 name: Convert photos to webp
 run-name: convert photos to webp
 on: 
-  pull_request:
+  pull_request_target:
     branches:
       - main
     types: [closed]
