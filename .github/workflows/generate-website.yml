@@ -49,7 +49,7 @@ jobs:
           git config --global user.name "harmeepatel"
           git add .
           git commit -a --amend --no-edit
-          # git push --force-with-lease
+          git push --force-with-lease
           echo "Complete"
 
   generate-templ:
@@ -73,10 +73,10 @@ jobs:
           git config --global user.name "harmeepatel"
           git add .
           git commit -a --amend --no-edit
-          # git push --force-with-lease
+          git push --force-with-lease
           echo "Complete"
 
-  go-run-main:
+  generate-html:
     needs: [png-to-webp, generate-templ]
     runs-on: ubuntu-22.04
     steps:
@@ -95,7 +95,7 @@ jobs:
           git config --global user.name "harmeepatel"
           git add .
           git commit -a --amend --no-edit
-          # git push --force-with-lease
+          git push --force-with-lease
           echo "Complete"
 
   generate-templ:
