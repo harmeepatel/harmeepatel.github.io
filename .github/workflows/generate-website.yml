@@ -49,53 +49,7 @@ jobs:
           git config --global user.name "harmeepatel"
           git add .
           git commit -a --amend --no-edit
-          # git push --force-with-lease
-          echo "Complete"
-
-  generate-templ:
-    needs: png-to-webp
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '^1.23.2' # The Go version to download (if necessary) and use.
-      - name: install templ
-        run: |
-          go mod tidy
-          go install github.com/a-h/templ/cmd/templ@latest
-          templ version
-          templ generate
-
-      - name: Amend the last commit
-        run: |
-          git config --global user.email "harmeepatel@gmail.com"
-          git config --global user.name "harmeepatel"
-          git add .
-          git commit -a --amend --no-edit
-          # git push --force-with-lease
-          echo "Complete"
-
-  go-run-main:
-    needs: [png-to-webp, generate-templ]
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '^1.23.2' # The Go version to download (if necessary) and use.
-      - name: go run main.go
-        run: |
-          go mod tidy
-          go run main.go
-
-      - name: Amend the last commit
-        run: |
-          git config --global user.email "harmeepatel@gmail.com"
-          git config --global user.name "harmeepatel"
-          git add .
-          git commit -a --amend --no-edit
-          # git push --force-with-lease
+          git push --force-with-lease
           echo "Complete"
 
   generate-templ:
