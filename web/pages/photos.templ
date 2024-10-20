@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"harmeepatel.dev/web/layouts"
 	"os"
-    "strings"
 )
 
 const imgPath = "web/static/media/images/gallery/"
@@ -18,8 +17,8 @@ templ Photos(title string) {
             fmt.Printf("%s dir not found\n", imgPath)
         }
         for _, file := range files {
-            file_split := strings.Split(file.Name(), ".")
-            imgArr = append(imgArr, imgPath+file_split[0]+".webp")
+            /* file_split := strings.Split(file.Name(), ".") */
+            imgArr = append(imgArr, file.Name())
         }
 	}}
 	@layouts.PhotoBase(title) {
