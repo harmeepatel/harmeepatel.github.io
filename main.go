@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -28,7 +29,23 @@ func init() {
 
 	generateFile(pages.Index("HarmeePatel"), "index.html")
 	generateFile(pages.Blog("Blog"), "blog.html")
-	generateFile(pages.Photos("Photos"), "photos.html")
+	generateFile(pages.Photos("Photos", getImages()), "photos.html")
+}
+
+// get all the images in imgPath
+func getImages() []string {
+	const imgPath = "web/static/media/images/gallery/"
+	var imgArr = []string{}
+
+	files, err := os.ReadDir(imgPath)
+	if err != nil {
+		fmt.Printf("%s dir not found\n", imgPath)
+	}
+	for _, file := range files {
+		/* file_split := strings.Split(file.Name(), ".") */
+		imgArr = append(imgArr, file.Name())
+	}
+    return imgArr
 }
 
 func main() {}
