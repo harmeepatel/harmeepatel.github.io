@@ -48,7 +48,7 @@ jobs:
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
           git add .
-          git commit -a --no-edit
+          git commit -a --amend --no-edit
           git push --force-with-lease
           echo "Complete"
 
@@ -77,6 +77,6 @@ jobs:
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
           git add .
-          git commit -a -amend --no-edit
+          git commit -a --amend --no-edit
           git push --force-with-lease
           echo "Complete"
