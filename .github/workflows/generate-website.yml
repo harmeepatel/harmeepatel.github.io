@@ -94,7 +94,7 @@ jobs:
         run: |
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
-          git pull --rebase origin main
+          git pull --rebase
           git add .
           git commit -a --amend --no-edit
           git push --force-with-lease
