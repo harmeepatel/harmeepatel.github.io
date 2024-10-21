@@ -69,19 +69,19 @@ jobs:
       - name: main branch cleanup
         run: |
           rm ./index.html ./blog.html ./photos.html
-          find ./ -name '*_templ.go' | rm
+          find ./ -name '*_templ.go' -delete
 
       - name: Go setup
         run:
           go mod tidy
           go install github.com/a-h/templ/cmd/templ@latest
           
-      - name: Templ generaet
+      - name: Generating go files from templ
         run:
           templ version
           templ generate
 
-      - name: Generating static files
+      - name: Generating html files
         run:
           go run main.go
 
