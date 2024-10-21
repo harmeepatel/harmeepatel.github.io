@@ -2,7 +2,7 @@ root = "."
 tmp_dir = ".air"
 
 [build]
-cmd = "go run main.go"
+cmd = "go build -o ./bin/main"
 # Customize binary, can setup environment variables when run your app. eg: APP_ENV=dev APP_USER=air ./bin/main
 full_bin = "./bin/main"
 # Add additional arguments when running binary (bin/full_bin). Will run './tmp/main hello world'.

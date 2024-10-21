@@ -34,7 +34,7 @@ func init() {
 
 // get all the images in imgPath
 func getImages() []string {
-	const imgPath = "web/static/media/images/gallery/"
+	const imgPath = "./static/media/images/gallery/"
 	var imgArr = []string{}
 
 	files, err := os.ReadDir(imgPath)
