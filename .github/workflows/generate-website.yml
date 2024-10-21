@@ -65,6 +65,7 @@ jobs:
       - name: Install templ
         run: |
           sudo apt-get install tree
+          git pull --rebase -f
           go mod tidy
           go install github.com/a-h/templ/cmd/templ@latest
           templ version
