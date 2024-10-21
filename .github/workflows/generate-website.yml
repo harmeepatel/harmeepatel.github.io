@@ -72,21 +72,21 @@ jobs:
           find ./ -name '*_templ.go' -delete
 
       - name: Go setup
-        run:
+        run: |
           go mod tidy
           go install github.com/a-h/templ/cmd/templ@latest
           
       - name: Generating go files from templ
-        run:
+        run: |
           templ version
           templ generate
 
       - name: Generating html files
-        run:
+        run: |
           go run main.go
 
       - name: See work tree
-        run:
+        run: |
           sudo apt-get install tree
           tree
 
