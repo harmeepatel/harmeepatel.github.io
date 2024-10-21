@@ -104,6 +104,7 @@ jobs:
 
       - name: Cleanup main branch
         run: |
+          git pull --rebase -f
           rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go
 
       - name: Amend the last commit
@@ -112,6 +113,5 @@ jobs:
           git config --global user.name "harmeepatel"
           git add .
           git commit -v -a --amend --no-edit
-          git pull --rebase -f
           git push --force-with-lease origin main
           echo "Complete"
