@@ -73,7 +73,7 @@ jobs:
 
       - name: main branch cleanup
         run: |
-          rm ./index.html ./blog.html ./photos.html
+          rm -f ./index.html ./blog.html ./photos.html
           find ./ -name '*_templ.go' -delete
 
       - name: See work tree
