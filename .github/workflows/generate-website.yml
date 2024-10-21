@@ -48,7 +48,7 @@ jobs:
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
           git add .
-          git commit -a --amend --no-edit
+          git commit -a --no-edit
           git push --force-with-lease
           echo "Complete"
 
@@ -62,19 +62,19 @@ jobs:
           go-version: '^1.23.2' # The Go version to download (if necessary) and use.
       - name: install templ
         run: |
+          sudo apt-get install tree
           go mod tidy
           go install github.com/a-h/templ/cmd/templ@latest
           templ version
           templ generate
-          ls ./web/pages
+          tree
 
       - name: Amend the last commit
         run: |
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
-          git pull --rebase origin main
           git add .
-          git commit -a --amend --no-edit
+          git commit -a --no-edit
           git push --force-with-lease
           echo "Complete"
 
@@ -96,8 +96,8 @@ jobs:
         run: |
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
-          git pull --rebase origin main
+          git pull --rebase
           git add .
-          git commit -a --amend --no-edit
+          git commit -a --no-edit
           git push --force-with-lease
           echo "Complete"
