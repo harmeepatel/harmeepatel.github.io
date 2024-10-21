@@ -66,10 +66,20 @@ jobs:
         run: |
           git pull --rebase -f
 
+      - name: See work tree
+        run: |
+          sudo apt-get install tree
+          tree
+
       - name: main branch cleanup
         run: |
           rm ./index.html ./blog.html ./photos.html
           find ./ -name '*_templ.go' -delete
+
+      - name: See work tree
+        run: |
+          sudo apt-get install tree
+          tree
 
       - name: Go setup
         run: |
@@ -80,6 +90,11 @@ jobs:
         run: |
           templ version
           templ generate
+
+      - name: See work tree
+        run: |
+          sudo apt-get install tree
+          tree
 
       - name: Generating html files
         run: |

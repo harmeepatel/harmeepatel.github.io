@@ -48,6 +48,7 @@ func getImages() []string {
         }
 		imgArr = append(imgArr, file.Name())
 	}
+    fmt.Println(imgArr)
     return imgArr
 }
 
