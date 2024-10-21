@@ -78,6 +78,6 @@ jobs:
           git config --global user.name "harmeepatel"
           git add .
           git commit -v -a --amend --no-edit
-          git pull --rebase
+          git pull --rebase -f
           git push --force-with-lease origin main
           echo "Complete"
