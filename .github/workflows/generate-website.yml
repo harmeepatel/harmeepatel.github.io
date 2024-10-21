@@ -87,6 +87,7 @@ jobs:
           go-version: '^1.23.2' # The Go version to download (if necessary) and use.
       - name: go run main.go
         run: |
+          git pull --rebase
           go mod tidy
           go run main.go
 
@@ -94,7 +95,6 @@ jobs:
         run: |
           git config --global user.email "harmeepatel@gmail.com"
           git config --global user.name "harmeepatel"
-          git pull --rebase
           git add .
           git commit -a --amend --no-edit
           git push --force-with-lease
