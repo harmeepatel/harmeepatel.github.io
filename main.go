@@ -46,7 +46,7 @@ func getImages() []string {
         if (file.Name() == ".DS_Store") {
             continue
         }
-		imgArr = append(imgArr, file.Name())
+		imgArr = append(imgArr, imgPath + file.Name())
 	}
     fmt.Println(imgArr)
     return imgArr
