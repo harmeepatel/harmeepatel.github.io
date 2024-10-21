@@ -43,6 +43,9 @@ func getImages() []string {
 	}
 	for _, file := range files {
 		/* file_split := strings.Split(file.Name(), ".") */
+        if (file.Name() == ".DS_Store") {
+            continue
+        }
 		imgArr = append(imgArr, file.Name())
 	}
     return imgArr
