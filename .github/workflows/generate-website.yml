@@ -71,14 +71,13 @@ jobs:
           sudo apt-get install tree
           tree
 
-      - name: main branch cleanup
+      - name: Main branch cleanup
         run: |
           rm -f ./index.html ./blog.html ./photos.html
           find ./ -name '*_templ.go' -delete
 
       - name: See work tree
         run: |
-          sudo apt-get install tree
           tree
 
       - name: Go setup
@@ -93,7 +92,6 @@ jobs:
 
       - name: See work tree
         run: |
-          sudo apt-get install tree
           tree
 
       - name: Generating html files
@@ -102,8 +100,11 @@ jobs:
 
       - name: See work tree
         run: |
-          sudo apt-get install tree
           tree
+
+      - name: Cleanup main branch
+        run: |
+          rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go
 
       - name: Amend the last commit
         run: |
