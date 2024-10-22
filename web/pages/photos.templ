@@ -8,53 +8,11 @@ import (
 templ Photos(title string, photos []string) {
 	@layouts.PhotoBase(title) {
 		<main id="photos" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
-			<style>
-                .row {
-                    display: flex;
-                    flex-wrap: wrap;
-                    /* padding: 0 4px; */
-                }
-
-                /* Create four equal columns that sits next to each other */
-                .column {
-                    flex: 25%;
-                    max-width: 25%;
-                    padding: 0 4px;
-                }
-
-                .column img {
-                    margin-top: 8px;
-                    vertical-align: middle;
-                    width: 100%;
-                    border-radius: 8px;
-                }
-
-                @media screen and (max-width: 1350px) {
-                    .column {
-                        flex: 33.33%;
-                        max-width: 33.33%;
-                    }
-                }
-
-                @media screen and (max-width: 800px) {
-                    .column {
-                        flex: 50%;
-                        max-width: 50%;
-                    }
-                }
-
-                @media screen and (max-width: 600px) {
-                    .column {
-                        flex: 100%;
-                        max-width: 100%;
-                    }
-                }
-            </style>
-			<div class="row">
+			<div class="flex flex-wrap">
 				for i := range [4]int{} {
-					<div class="column">
+					<div class="px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] lg:flex-[33.33%] lg:max-w-[33.33%] 2xl:flex-[25%] 2xl:max-w-[25%]">
 						for j := i; j < len(photos) ; j+=4 {
-							<img src={ photos[j] }/>
+							<img src={ photos[j] } class="mt-[8px] align-middle w-full rounded-[8px]"/>
 						}
 					</div>
 				}
