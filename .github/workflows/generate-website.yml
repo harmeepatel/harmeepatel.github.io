@@ -104,7 +104,7 @@ jobs:
 
       - name: Cleanup main branch
         run: |
-          rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go .gitignore
+          rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go .gitignore .air.toml
 
       - name: Amend the last commit
         run: |
