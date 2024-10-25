@@ -1,0 +1,32 @@
+package components;
+
+const (
+	NAV_WIDTH   = " w-dvw "
+	NAV_HEIGHT  = " h-[4rem] xl:h-[6rem] "
+	NAV_PADDING = " pt-4 px-6 md:px-14 3xl:px-0"
+
+	// don't put spaces around "+" sign breaks tailwind apparently
+	// don't increase the extra padding from 6rem max we can add
+	MASK_WIDTH  = " w-dvw "
+	MASK_HEIGHT = " h-[7rem] xl:h-[8.4rem] "
+	MASK_BLUR   = " from-light via-light via-90% xl:via-80% to-light/0 dark:from-dark dark:via-dark dark:to-dark/0 pointer-events-none bg-gradient-to-b via-50% blur "
+
+	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
+)
+
+// background with blur edge
+templ Nav() {
+	<div id="nav-mask" class={ "fixed top-[-3rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
+	<nav id="nav" class={ "sticky top-0 z-[100] max-w-screen-xl m-auto" + NAV_HEIGHT + NAV_PADDING }>
+		<div class="m-auto flex justify-between">
+			<a class="" href="/">
+				@Icon(IconInfo{"./static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
+			</a>
+			<ul class="flex justify-evenly self-center gap-6 md:gap-16">
+				@NavLi("Resume", "/")
+				@NavLi("Blog", "blog.html")
+				@NavLi("Photos", "photos.html")
+			</ul>
+		</div>
+	</nav>
+}

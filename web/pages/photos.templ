@@ -1,0 +1,58 @@
+package pages;
+
+import (
+	"harmeepatel.dev/web/layouts"
+	"log"
+	"strings"
+    "strconv"
+)
+
+const imgPath = "./static/media/images/gallery/"
+
+func genPhotoId(s string) string {
+	before, found := strings.CutSuffix(s, ".webp")
+	if !found {
+		log.Fatal("prefix not found")
+	}
+	return before
+}
+
+// "harmeepatel.dev/web/components"
+templ Photos(title string, photos []string) {
+	@layouts.PhotoBase(title) {
+		<dialog id="image_modal" class="h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
+			<form method="dialog">
+				<button class="w-8 h-8 ring-2 ring-white hover:bg-gray-600 duration-100 rounded-full text-white fixed right-4 top-4 md:right-8 md:top-8 unselectable">✕</button>
+			</form>
+			<div class="h-full flex">
+				<button id="dialog-arrow-left" class="h-fit self-center" onclick="leftImage()">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="size-5 md:size-7">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
+					</svg>
+				</button>
+				<img id="modal_image" class="mx-8 border-8 border-white" src=""/>
+				<button id="dialog-arrow-right" class="h-fit self-center" onclick="rightImage()">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="size-5 md:size-7">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+					</svg>
+				</button>
+			</div>
+		</dialog>
+		<main id="photos" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
+			<div id="image-grid" class="flex flex-wrap">
+				for i := range [4]int{} {
+					<div class="column px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] lg:flex-[33.33%] lg:max-w-[33.33%] 2xl:flex-[25%] 2xl:max-w-[25%]">
+						for j := i; j < len(photos) ; j+=4 {
+							<img
+								id={ strconv.Itoa(j)+"-"+genPhotoId(photos[j]) }
+								src={ imgPath + photos[j] }
+								class="mt-[8px] align-middle w-full rounded-[8px] md:hover:duration-300 md:hover:translate-y-2 md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.56)] md:hover:scale-110"
+								onclick="openImageModal(this)"
+							/>
+						}
+					</div>
+				}
+			</div>
+		</main>
+	}
+}
