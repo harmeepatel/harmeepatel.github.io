@@ -12,3 +12,4 @@ package-lock.json
 .env*
 
 web/*_templ.go
+bin/main
