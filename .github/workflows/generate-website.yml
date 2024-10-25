@@ -104,7 +104,6 @@ jobs:
 
       - name: Cleanup main branch
         run: |
-          git pull --rebase -f
           rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go
 
       - name: Amend the last commit
