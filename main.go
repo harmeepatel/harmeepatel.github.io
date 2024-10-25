@@ -34,19 +34,19 @@ func init() {
 
 // get all the images in imgPath
 func getImages() []string {
-	const imgPath = "./static/media/images/gallery/"
+	const imgDirPath = "./static/media/images/gallery/"
 	var imgArr = []string{}
 
-	files, err := os.ReadDir(imgPath)
+	files, err := os.ReadDir(imgDirPath)
 	if err != nil {
-		fmt.Printf("%s dir not found\n", imgPath)
+		fmt.Printf("%s dir not found\n", imgDirPath)
 	}
 	for _, file := range files {
 		/* file_split := strings.Split(file.Name(), ".") */
         if (file.Name() == ".DS_Store") {
             continue
         }
-		imgArr = append(imgArr, imgPath + file.Name())
+		imgArr = append(imgArr, file.Name())
 	}
     return imgArr
 }
