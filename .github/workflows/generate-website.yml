@@ -82,13 +82,13 @@ jobs:
 
       - name: Go setup
         run: |
-          go mod tidy
           go install github.com/a-h/templ/cmd/templ@latest
           
       - name: Generating go files from templ
         run: |
           templ version
           templ generate
+          go mod tidy
 
       - name: See work tree
         run: |
