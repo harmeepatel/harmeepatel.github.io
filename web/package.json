@@ -1,0 +1,14 @@
+{
+    "name": "harmeepatel.dev",
+    "version": "0.0.1",
+    "description": "Portfolio website",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "harmeepatel",
+    "license": "ISC",
+    "devDependencies": {
+        "tailwindcss": "^3.4.7"
+    }
+}

@@ -13,4 +13,4 @@ package-lock.json
 
 web/**/*_templ.go
 bin/main
-*.html
+**/*.html
