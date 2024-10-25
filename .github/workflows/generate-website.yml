@@ -69,7 +69,7 @@ jobs:
       - name: See work tree
         run: |
           sudo apt-get install tree
-          tree
+          tree -a
 
       - name: Main branch cleanup
         run: |
@@ -78,7 +78,7 @@ jobs:
 
       - name: See work tree
         run: |
-          tree
+          tree -a
 
       - name: Go setup
         run: |
@@ -92,7 +92,7 @@ jobs:
 
       - name: See work tree
         run: |
-          tree
+          tree -a
 
       - name: Generating html files
         run: |
@@ -100,11 +100,11 @@ jobs:
 
       - name: See work tree
         run: |
-          tree
+          tree -a
 
       - name: Cleanup main branch
         run: |
-          rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go
+          rm -rf ./bin ./dist ./web go.mod go.sum main.go utils.go .gitignore
 
       - name: Amend the last commit
         run: |
