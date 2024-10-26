@@ -3,7 +3,7 @@ package components;
 const (
 	NAV_WIDTH   = " w-dvw "
 	NAV_HEIGHT  = " h-[4rem] xl:h-[6rem] "
-	NAV_PADDING = " pt-4 px-6 md:px-14 3xl:px-0"
+	NAV_PADDING = " pt-2 px-6 md:pt-4 md:px-14 3xl:px-0 "
 
 	// don't put spaces around "+" sign breaks tailwind apparently
 	// don't increase the extra padding from 6rem max we can add
@@ -16,8 +16,8 @@ const (
 
 // background with blur edge
 templ Nav() {
-	<div id="nav-mask" class={ "fixed top-[-3rem] sm:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
-	<nav id="nav" class={ "sticky top-0 z-[100] max-w-screen-xl m-auto" + NAV_HEIGHT + NAV_PADDING }>
+	<div id="nav-mask" class={ "fixed top-[-4rem] md:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
+	<nav id="nav" class={ "sticky top-[-1rem] md:top-0 z-[100] max-w-screen-xl m-auto" + NAV_HEIGHT + NAV_PADDING }>
 		<div class="m-auto flex justify-between">
 			<a class="" href="/">
 				@Icon(IconInfo{"./static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})

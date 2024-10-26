@@ -5,7 +5,7 @@ const closeDialogThreshold = 1024
 const modal = document.getElementById("image_modal")
 const modalImg = modal.querySelector("#modal_image");
 
-// open modal on clicking on an image if the screen is bigger than 1024px (tw-md)
+// open modal on clicking on an image if the screen is bigger than 1024px
 function openImageModal(e) {
     if (window.innerWidth >= closeDialogThreshold) {
         modalImg.src = e.src
