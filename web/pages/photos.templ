@@ -38,7 +38,7 @@ templ Photos(title string, photos []string) {
 				</button>
 			</div>
 		</dialog>
-		<main id="photos" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
+		<main id="photos" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-3 md:mt-8">
 			<div id="image-grid" class="flex flex-wrap">
 				for i := range [4]int{} {
 					<div class="column px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]">
@@ -46,7 +46,7 @@ templ Photos(title string, photos []string) {
 							<img
 								id={ strconv.Itoa(j) + "-" + genPhotoId(photos[j]) }
 								src={ imgPath + photos[j] }
-								class="mt-[8px] align-center w-full rounded-[8px] md:hover:duration-300 md:hover:translate-y-2 md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.56)] md:hover:scale-110"
+								class="mt-[8px] align-center w-full rounded-[8px] md:hover:duration-300 md:hover:translate-y-2 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)] md:hover:scale-110"
 								onclick="openImageModal(this)"
 							/>
 						}

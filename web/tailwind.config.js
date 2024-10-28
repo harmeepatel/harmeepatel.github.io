@@ -3,7 +3,7 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
     darkMode: 'media',
-    content: ["./**/*.html", "./**/*.templ", "./**/*.go", "./static/**/*.js"],
+    content: ["../**/*.html", "../**/*.templ", "../**/*.go", "../static/**/*.js"],
     theme: {
         extend: {
             screens: {
@@ -13,7 +13,7 @@ module.exports = {
                 '2xs': ['0.5rem', { lineHeight: '0.75rem' }],
             },
             colors: {
-                "accent-p": "#0ea5e9",
+                "accent-p": "#FF5F1F",
                 "dark": "#111",
                 "dark-btn-p": "#1d1d1d",
                 "light": "#f1f1f1",

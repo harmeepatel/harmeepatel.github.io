@@ -51,11 +51,11 @@
     }
 
     .acc-anim {
-        @apply transition-all duration-300
+        @apply transition-all duration-200
     }
 
     .download-resume-btn {
-        @apply acc-anim fixed z-[100] w-8 md:w-14 xl:w-20 h-8 md:h-14 xl:h-20 bottom-0 right-0 m-4 md:m-8 xl:m-20 flex items-center justify-center rounded-full bg-light-btn-p dark:bg-dark-btn-p hover:shadow-accent-p hover:shadow-lg touch-none
+        @apply acc-anim fixed z-[100] w-10 h-10 md:w-14 md:h-14 xl:w-[4.5rem] xl:h-[4.5rem] bottom-0 right-0 m-6 md:m-8 xl:m-16 flex items-center justify-center rounded-full bg-light-btn-p dark:bg-dark-btn-p hover:ring-2 ring-accent-p touch-none
     }
 
     .unselectable {
@@ -67,6 +67,7 @@
         user-select: none;
     }
 }
+
 
 @media print {
     #nav-mask {
@@ -91,73 +92,3 @@
     clip-path: url(#squircleClip);
     background-image: linear-gradient(135deg, #90F7EC 10%, #32CCBC 100%);
 }
-
-/* gradient backdrop blur */
-/* .gradient-blur { */
-/*   position: fixed; */
-/*   top: 0 !important; */
-/*   z-index: 98; */
-/*   inset: auto 0 0 0; */
-/*   pointer-events: none; */
-/*   @apply h-16 md:h-24 xl:h-32 */
-/* } */
-/**/
-/* .gradient-blur>div, */
-/* .gradient-blur::before, */
-/* .gradient-blur::after { */
-/*   position: absolute; */
-/*   inset: 0; */
-/* } */
-
-/* $iter: 6; */
-/* $percent: calc(100 / ($iter + 2)); */
-/* $percent_inc: calc(100 / ($iter + 2)); */
-/* $blur: 2; */
-/**/
-/* .gradient-blur::before { */
-/*   content: ""; */
-/*   z-index: 1; */
-/*   backdrop-filter: blur(#{$blur}px); */
-/*   mask: linear-gradient(to top, */
-/*       rgba(0, 0, 0, 0) 0%, */
-/*       rgba(0, 0, 0, 1) math.percentage(calc($percent / 100)), */
-/*       rgba(0, 0, 0, 1) math.percentage(calc(($percent + $percent_inc) / 100)), */
-/*       rgba(0, 0, 0, 0) math.percentage(calc(($percent + ($percent_inc * 2)) / 100))) */
-/* } */
-
-/* @for $i from 1 through $iter { */
-/*   .gradient-blur>div:nth-of-type(#{$i}) { */
-/*     z-index: $i + 1; */
-/*     backdrop-filter: blur(#{$blur}px); */
-/**/
-/**/
-/*     @if $i ==$iter { */
-/*       mask: linear-gradient(to top, */
-/*           rgba(0, 0, 0, 0) math.percentage(calc($percent / 100)), */
-/*           rgba(0, 0, 0, 1) math.percentage(calc(($percent + $percent_inc)/100)), */
-/*           rgba(0, 0, 0, 1) math.percentage(calc(($percent + ($percent_inc * 2))/100))), */
-/*     } */
-/**/
-/*     @else { */
-/*       mask: linear-gradient(to top, */
-/*           rgba(0, 0, 0, 0) math.percentage(calc($percent / 100)), */
-/*           rgba(0, 0, 0, 1) math.percentage(calc(($percent + $percent_inc)/100)), */
-/*           rgba(0, 0, 0, 1) math.percentage(calc(($percent + ($percent_inc * 2))/100)), */
-/*           rgba(0, 0, 0, 0) math.percentage(calc(($percent + ($percent_inc * 3))/100))), */
-/*     } */
-/*   } */
-/**/
-/**/
-/*   $blur: $blur * math.$e; */
-/*   $percent: $percent + $percent_inc; */
-/**/
-/* } */
-/**/
-/* .gradient-blur::after { */
-/*   content: ""; */
-/*   z-index: 8; */
-/*   backdrop-filter: blur(58.065px); */
-/*   mask: linear-gradient(to top, */
-/*       rgba(0, 0, 0, 0) 87.5%, */
-/*       rgba(0, 0, 0, 1) 100%); */
-/* } */

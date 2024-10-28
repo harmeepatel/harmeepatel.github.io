@@ -15,14 +15,14 @@ const (
 )
 
 // background with blur edge
+// <div id="nav-mask" class={ "fixed md:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 templ Nav() {
-	<div id="nav-mask" class={ "fixed mt-[-3.6rem] top-0 md:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
-	<nav id="nav" class={ "sticky top-[-0.6rem] md:top-0 z-[100] max-w-screen-xl m-auto" + NAV_HEIGHT + NAV_PADDING }>
-		<div class="m-auto flex justify-between">
+	<nav id="nav" class={ "max-w-screen-lg w-4/5 m-auto flex sticky z-[100] py-5 px-10 top-4 rounded-xl xl:rounded-2xl" }>
+		<div class="m-auto w-full flex justify-between">
 			<a class="" href="/">
 				@Icon(IconInfo{"./static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
 			</a>
-			<ul class="flex justify-evenly self-center gap-6 md:gap-16">
+			<ul class="flex justify-evenly self-center gap-6 md:gap-8">
 				@NavLi("Resume", "/")
 				@NavLi("Blog", "blog.html")
 				@NavLi("Photos", "photos.html")

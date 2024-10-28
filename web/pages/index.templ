@@ -19,7 +19,7 @@ const (
 
 templ Index(title string) {
 	@layouts.Base(title) {
-		<main id="resume" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
+		<main id="resume" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-3 md:mt-4">
 			<h2 class="text-center">Harmee Patel</h2>
 			@infoBar()
 			@summary()
@@ -27,7 +27,7 @@ templ Index(title string) {
 			@workex()
 			@academicProjects()
 			@education()
-			<button type="button" id="download-resume-btn" class="download-resume-btn">
+			<button type="button" id="download-resume-btn" class="download-resume-btn" onmouseover="this.childNodes[0].classList.add('animate-bounce');" onmouseout="this.childNodes[0].classList.remove('animate-bounce')">
 				@components.Icon(components.IconInfo{
 					Src:   iconPath + "arrow-down-tray.svg",
 					Width: 12,
@@ -45,16 +45,16 @@ templ summary() {
 		@components.SectionContent("") {
 			<p>
 				Driven developer with a strong background in 
-                <b>building and enhancing web platforms</b>.
+				<b>building and enhancing web platforms</b>.
 				Aiming to leverage 
-                <b>strong problem-solving skills </b>
-                with experience in 
-                <b>PHP, jQuery, Figma, NodeJs, MySQL and other techonolgies, with a strong command in UNIX/LINUX systems</b>
-                in 
-                <b>optimizing performance, designing intuitive interfaces, </b>
-                and implementing features that helps company's and user's goals.
-                Looking to learn and improve my working knowledge about emerging languages like 
-                <b>Rust, Go, and Zig</b>.
+				<b>strong problem-solving skills </b>
+				with experience in 
+				<b>PHP, jQuery, Figma, NodeJs, MySQL and other techonolgies, with a strong command in UNIX/LINUX systems</b>
+				in 
+				<b>optimizing performance, designing intuitive interfaces, </b>
+				and implementing features that helps company's and user's goals.
+				Looking to learn and improve my working knowledge about emerging languages like 
+				<b>Go, Zig, and Rust</b>.
 			</p>
 		}
 	}
@@ -138,9 +138,9 @@ templ education() {
 				<li>
 					Focusing on fundamentals of Computer Science i.e. Database Management, Networking, etc.
 				</li>
-                <li>
-                    Learning and experimenting with then new technologies like React, Vue, Docker, etc.
-                </li>
+				<li>
+					Learning and experimenting with then new technologies like React, Vue, Docker, etc.
+				</li>
 			</ul>
 		}
 	}
@@ -246,20 +246,20 @@ templ academicProjects() {
 			@components.SectionItemHeader("Music Player", "pb-0.5 xl:pb-1", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-                    Desining and implementing a music player integrating machine learning.
+					Desining and implementing a music player integrating machine learning.
 				</li>
 				<li>
-                    Using <b>Flutter</b> to create a <b>cross platform</b> basic music player app 
-                    with two pages songs, and playlists.
+					Using <b>Flutter</b> to create a <b>cross platform</b> basic music player app 
+					with two pages songs, and playlists.
 				</li>
 				<li>
-                    Using <b>SQLite</b> to store song metadata.
+					Using <b>SQLite</b> to store song metadata.
 				</li>
 				<li>
-                    Integrating <b>ML Kit</b> in <b>Firebase</b> to detect facial expression and 
-                    using the song metadata like genre to curate a playlist to improve or enhance 
-                    user's mood, i.e. creating an uplifting playlist if the user seems to be sad, or 
-                    creating an energetic or shuffled playlist if the user seems happy or excited.
+					Integrating <b>ML Kit</b> in <b>Firebase</b> to detect facial expression and 
+					using the song metadata like genre to curate a playlist to improve or enhance 
+					user's mood, i.e. creating an uplifting playlist if the user seems to be sad, or 
+					creating an energetic or shuffled playlist if the user seems happy or excited.
 				</li>
 			</ul>
 		}
