@@ -23,10 +23,6 @@ func generateFile(comp templ.Component, file string) {
 }
 
 func init() {
-	if err := os.MkdirAll("dist", os.ModePerm); err != nil {
-		log.Fatalf("failed to create output directory: %v", err)
-	}
-
 	generateFile(pages.Index("HarmeePatel"), "index.html")
 	generateFile(pages.Blog("Blog"), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
