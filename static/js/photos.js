@@ -1,5 +1,3 @@
-console.log(window.btoa("Can't take it when you die, but you can't live without it. ~J.Cole"))
-
 // --- modal ---
 const closeDialogThreshold = 1024
 const modal = document.getElementById("image_modal")
