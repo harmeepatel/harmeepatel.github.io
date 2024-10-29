@@ -11,13 +11,13 @@ const (
 	MASK_HEIGHT = " h-[8rem] md:h-[7rem] xl:h-[8.4rem] "
 	MASK_BLUR   = " from-light via-light via-90% xl:via-80% to-light/0 dark:from-dark dark:via-dark dark:to-dark/0 pointer-events-none bg-gradient-to-b via-50% blur "
 
-	IMAGE_WIDTH = " w-[2rem] md:w-[3rem] xl:w-[4rem] "
+	IMAGE_WIDTH = " w-[1.6rem] sm:w-[3rem] xl:w-[4rem] "
 )
 
 // background with blur edge
 // <div id="nav-mask" class={ "fixed md:top-[-2rem] left-0 z-[99]" + MASK_BLUR + MASK_WIDTH + MASK_HEIGHT }></div>
 templ Nav() {
-	<nav id="nav" class={ "max-w-screen-lg w-4/5 m-auto flex sticky z-[100] py-5 px-10 top-4 rounded-xl xl:rounded-2xl" }>
+	<nav id="nav" class={ "max-w-screen-lg w-4/5 m-auto flex sticky z-[100] py-3 px-5 sm:py-5 sm:px-10 top-4 rounded-xl xl:rounded-2xl" }>
 		<div class="m-auto w-full flex justify-between">
 			<a class="" href="/">
 				@Icon(IconInfo{"./static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})

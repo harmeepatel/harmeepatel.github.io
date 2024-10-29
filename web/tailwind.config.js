@@ -7,10 +7,11 @@ module.exports = {
     theme: {
         extend: {
             screens: {
+                'xs': '557px',
                 '3xl': '1792px',
             },
             fontSize: {
-                '2xs': ['0.5rem', { lineHeight: '0.75rem' }],
+                '2xs': ['0.435rem', { lineHeight: '0.70rem' }],
             },
             colors: {
                 "accent-p": "#FF5F1F",
@@ -34,6 +35,9 @@ module.exports = {
                 ...theme('colors'),
             }),
         },
+    },
+    variants: {
+        fill: ['hover', 'focus'], // this line does the trick
     },
     plugins: [],
 }
