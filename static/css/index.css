@@ -8,11 +8,11 @@
     }
 
     h2 {
-        @apply text-2xl sm:text-4xl xl:text-5xl pb-2 sm:pb-4 xl:pb-6
+        @apply text-2xl sm:text-4xl xl:text-5xl pb-2 xl:pb-4
     }
 
     h3 {
-        @apply text-lg sm:text-2xl xl:text-3xl pb-[0.250rem] sm:pb-3 overflow-x-hidden
+        @apply text-lg sm:text-2xl xl:text-3xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
     }
 
     h3::after {
