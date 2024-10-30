@@ -58,13 +58,14 @@
         @apply acc-anim fixed z-[100] w-10 h-10 md:w-14 md:h-14 xl:w-[4.5rem] xl:h-[4.5rem] bottom-0 right-0 m-6 md:m-8 xl:m-16 flex items-center justify-center rounded-full bg-light-btn-p dark:bg-dark-btn-p hover:ring-2 ring-accent-p touch-none
     }
 
-    .unselectable {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
     }
 }
 
