@@ -54,8 +54,8 @@ templ Photos(title string, photos []string) {
 				}
 			</div>
         </main>
-		<main id="photos-sm" class="h-[90vh] flex md:hidden">
-			<div id="image-grid" class="flex items-center direction-rok overflow-x-auto overflow-y-none snap-x snap-mandatory no-scrollbar">
+		<main id="photos-sm" class="h-[90dvh] flex md:hidden">
+			<div id="image-grid" class="flex items-center direction-rok overflow-x-auto overflow-y-none snap-x snap-mandatory touch-pan-x no-scrollbar">
 				for j := 0; j < len(photos) ; j+=1 {
 					<img
 						id={ strconv.Itoa(j) + "-" + genPhotoId(photos[j]) }
