@@ -61,7 +61,7 @@ templ Photos(title string, photos []string) {
 						<img
 							id={ strconv.Itoa(j) + "-" + genPhotoId(photos[j]) }
 							src={ imgPath + photos[j] }
-							class="h-fit align-center w-full rounded-lg snap-center snap-always ring-2 ring-black dark:ring-white"
+							class="align-center w-full rounded-lg snap-center snap-always ring-2 ring-black dark:ring-white"
 							onclick="openImageModal(this)"
 						/>
 					</div>
