@@ -45,9 +45,11 @@ window.addEventListener("load", () => {
         let height = elem.lastChild.height
         if (width > height) {
             elem.classList.add("my-24")
+            elem.classList.add("aspect-[5/4]")
             console.log(elem)
         } else {
             elem.classList.add("my-10")
+            elem.classList.add("aspect-[4/5]")
         }
     })
 
