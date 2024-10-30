@@ -3,6 +3,11 @@ const closeDialogThreshold = 1024
 const modal = document.getElementById("image_modal")
 const modalImg = modal.querySelector("#modal_image")
 
+const photosMd = document.querySelector("#photos-md")
+const photosSm = document.querySelector("#photos-sm")
+
+const imgWraper = document.querySelectorAll(".img-wraper")
+
 const imgGrid = document.getElementById("image-grid")
 const imgGridSrc = Array.from(imgGrid.getElementsByTagName("img"), (i) => i.src)
 const imgGridOrd = Array.from(imgGrid.getElementsByTagName("img"), (i) => i.id[0])
@@ -12,6 +17,42 @@ for (let i = 0; i < imgGridOrd.length; i++) {
     const ord = imgGridOrd[i][0]
     imgSrcArr[parseInt(ord)] = imgGridSrc[i]
 }
+
+const mdScreen = 768
+function imageView() {
+    if (window.innerWidth < mdScreen) {
+        document.body.replaceChild(photosSm, photosMd);
+        // document.body.classList.add("flex")
+        // document.body.classList.add("flex-col")
+        nav.classList.add("mx-auto")
+        nav.classList.add("my-0")
+    }
+    if (window.innerWidth >= mdScreen) {
+        document.body.replaceChild(photosMd, photosSm);
+        // document.body.classList.remove("flex")
+        // document.body.classList.remove("flex-col")
+        nav.classList.remove("mx-auto")
+        nav.classList.remove("my-0")
+    }
+}
+window.addEventListener("load", () => {
+    // change photo viewing mode on small screen
+    imageView()
+
+    // different margin for 5x4 images
+    imgWraper.forEach((elem) => {
+        let width = elem.lastChild.width
+        let height = elem.lastChild.height
+        if (width > height) {
+            elem.classList.add("my-24")
+            console.log(elem)
+        } else {
+            elem.classList.add("my-10")
+        }
+    })
+
+
+})
 
 window.addEventListener("resize", () => {
     // remove modal if screen size less than 768px
