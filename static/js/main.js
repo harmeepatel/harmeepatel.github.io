@@ -10,24 +10,6 @@ const navA = navUl.getElementsByTagName("a")
 const hoverUnderline = Array.from(navUl.getElementsByTagName('span'))
 
 window.addEventListener("load", () => {
-    const pageName = window.location.pathname.split('/')
-    const navAArr = Array.from(navA)
-    const bold = "hover"
-    console.log(navAArr)
-    switch (pageName[pageName.length - 1].split('.')[0]) {
-        case "index":
-            navAArr[0].classList.add(bold);
-            break;
-        case "blog":
-            navAArr[1].classList.add(bold);
-            console.log("blog");
-            break;
-        case "photos":
-            navAArr[2].classList.add(bold);
-            console.log("photos");
-            break;
-    }
-
     if (window.innerWidth < resizeOffset) {
         hoverUnderline.forEach((e) => e.remove())
     }
