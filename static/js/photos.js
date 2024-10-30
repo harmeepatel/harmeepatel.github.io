@@ -53,10 +53,8 @@ window.addEventListener("load", () => {
 
 
 })
-window.addEventListener("resize", () => {
-    // change photo viewing mode on small screen
-    imageView()
 
+window.addEventListener("resize", () => {
     // remove modal if screen size less than 768px
     if (modal.open && window.innerWidth < closeDialogThreshold) {
         modal.close()
