@@ -8,7 +8,7 @@ full_bin = "./bin/main"
 # Add additional arguments when running binary (bin/full_bin). Will run './tmp/main hello world'.
 # args_bin = ["hello", "world"]
 include_ext = ["go", "templ", "css"]
-exclude_dir = ["assets", "tmp", "testdata", "vendor", "web/node_modules"]
+exclude_dir = ["assets", "tmp", "testdata", "vendor", "node_modules", "web/node_modules"]
 exclude_regex = [".*_templ.go"]
 log = "air.log"
 
