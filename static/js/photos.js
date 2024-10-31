@@ -20,19 +20,20 @@ for (let i = 0; i < imgGridOrd.length; i++) {
 
 const mdScreen = 768
 function imageView() {
+    const classes = ["mx-auto", "my-0", "mt-4"]
     if (window.innerWidth < mdScreen) {
         document.body.replaceChild(photosSm, photosMd);
-        // document.body.classList.add("flex")
-        // document.body.classList.add("flex-col")
-        nav.classList.add("mx-auto")
-        nav.classList.add("my-0")
+
+        for (const c of classes) {
+            nav.classList.add(c)
+        }
     }
     if (window.innerWidth >= mdScreen) {
         document.body.replaceChild(photosMd, photosSm);
-        // document.body.classList.remove("flex")
-        // document.body.classList.remove("flex-col")
-        nav.classList.remove("mx-auto")
-        nav.classList.remove("my-0")
+
+        for (const c of classes) {
+            nav.classList.add(c)
+        }
     }
 }
 window.addEventListener("load", () => {
@@ -46,7 +47,6 @@ window.addEventListener("load", () => {
         if (width > height) {
             elem.classList.add("my-24")
             elem.classList.add("aspect-[5/4]")
-            console.log(elem)
         } else {
             elem.classList.add("my-10")
             elem.classList.add("aspect-[4/5]")
@@ -56,11 +56,28 @@ window.addEventListener("load", () => {
 
 })
 
+photosSm.addEventListener("scroll", () => {
+    const scrollOffset = 8
+    const classes = ["ring-1", "dark:ring-white/60", "ring-black/50", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
+    if (photosSm.scrollTop > scrollOffset) {
+        for (let i = 0; i < classes.length; i++) {
+            nav.classList.add(classes[i]);
+        }
+    }
+    if (photosSm.scrollTop < scrollOffset) {
+        for (let i = 0; i < classes.length; i++) {
+            nav.classList.remove(classes[i]);
+        }
+    }
+})
+
 window.addEventListener("resize", () => {
+    // change photo viewing mode on small screen
+    imageView()
+
     // remove modal if screen size less than 768px
     if (modal.open && window.innerWidth < closeDialogThreshold) {
         modal.close()
-        console.log("modal closed (<md)")
     }
 })
 
