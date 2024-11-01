@@ -4,7 +4,7 @@ import "fmt"
 
 const underLineHeight = 0.18;
 templ NavLi(name string, ref string) {
-	<li class={"sm:mt-[" + fmt.Sprintf("%.3f", underLineHeight+0.02) + "rem]"}>
+	<li class={"mt-[" + fmt.Sprintf("%.3f", underLineHeight+0.02) + "rem]"}>
 		<a href={templ.URL(ref)} class="text-sm md:text-base xl:text-xl font-normal group">
 			{ name }
 			<span

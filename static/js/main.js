@@ -26,7 +26,7 @@ window.addEventListener("resize", () => {
 
 // on scroll add nav shadow, blur and ring
 const scrollOffset = 8
-const classes = ["ring-1", "dark:ring-white/60", "ring-black/50", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
+const classes = ["ring-1", "dark:ring-white/80", "ring-black/60", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
 window.addEventListener("load", () => {
     if (window.scrollY > scrollOffset) {
         for (let i = 0; i < classes.length; i++) {
