@@ -37,62 +37,36 @@ function imageSorter(a: Element, b: Element) {
 let imgCollection = document.getElementsByClassName("row")
 let imgArr = Array.from(imgCollection).sort(imageSorter)
 
-function leftImage(e: HTMLButtonElement) {
-    let prevImg: HTMLImageElement = imgArr[0] as HTMLImageElement;
-    let currImg = e.parentElement!.getElementsByTagName("img")[0]
+modal.addEventListener("keydown", (e) => {
+    let prevImg = imgArr[0] as HTMLImageElement;
     let currImgId = -1;
 
     imgArr.forEach((elem) => {
-        let img: HTMLImageElement = elem as HTMLImageElement
-        if (img.src === currImg.src) {
+        let img = elem as HTMLImageElement
+        if (img.src === modalImg.src) {
             currImgId = parseInt(img.id[0])
-        }
-        if (currImgId === 0) {
-            prevImg = img
-        } else {
-            prevImg = imgArr[currImgId - 1] as HTMLImageElement
         }
     })
 
-    if (currImgId === 0) {
-        console.log("reached left edge")
+    if (e.code === "ArrowLeft") {
+        prevImg = imgArr[currImgId - 1] as HTMLImageElement
+    }
+    if (e.code === "ArrowRight") {
+        prevImg = imgArr[currImgId + 1] as HTMLImageElement
     }
 
-    modalImg.src = prevImg.src
+    if (currImgId < 0 || currImgId > imgArr.length - 1) {
+        console.log("reached an edge")
+    }
+
+    if (prevImg != undefined) {
+        modalImg.src = prevImg.src
+    }
 
     if (!modal.open) {
         modalImg.src = ""
     }
-}
-
-function rightImage(e: HTMLButtonElement) {
-    let prevImg: HTMLImageElement = imgArr[0] as HTMLImageElement;
-    let currImg = e.parentElement!.getElementsByTagName("img")[0]
-    let currImgId = -1;
-
-    imgArr.forEach((elem) => {
-        let img: HTMLImageElement = elem as HTMLImageElement
-        if (img.src === currImg.src) {
-            currImgId = parseInt(img.id[0])
-        }
-        if (currImgId === imgArr.length - 1) {
-            prevImg = img
-        } else {
-            prevImg = imgArr[currImgId + 1] as HTMLImageElement
-        }
-    })
-
-    if (currImgId === imgArr.length - 1) {
-        console.log("reached right edge")
-    }
-
-    modalImg.src = prevImg.src
-
-    if (!modal.open) {
-        modalImg.src = ""
-    }
-}
-
+});
 
 // --- main ---
 (function() {// -- utils --
@@ -148,9 +122,9 @@ function rightImage(e: HTMLButtonElement) {
 
     // --- adding nav styles on scroll ---
     const nav: HTMLElement = document.getElementById("nav")!
+    const scrollOffset = 8
+    const classes = ["ring-1", "dark:ring-white/80", "ring-black/60", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
     photosSm.addEventListener("scroll", () => {
-        const scrollOffset = 8
-        const classes = ["ring-1", "dark:ring-white/80", "ring-black/60", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
         if (photosSm.scrollTop > scrollOffset) {
             for (let i = 0; i < classes.length; i++) {
                 nav.classList.add(classes[i]);
