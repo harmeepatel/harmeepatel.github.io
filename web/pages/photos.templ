@@ -50,7 +50,7 @@ templ Photos(title string, photos []string) {
 								class="row mt-[8px] align-center w-full rounded-2xl md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]"
 								onclick="openImageModal(this)"
                                 width="128"
-                                alt={strings.Replace(changeExtentionToWebp(photos[j]), "-", " ", -1)}
+                                alt={ strings.Replace(changeExtentionToWebp(photos[j]), "-", " ", -1) }
 							/>
 						}
 					</div>
@@ -66,7 +66,7 @@ templ Photos(title string, photos []string) {
 						src={ imgPath + photos[i] }
 						class="align-center w-full rounded-lg ring-2 ring-black dark:ring-white"
 						onclick="openImageModal(this)"
-                        alt={strings.Replace(changeExtentionToWebp(photos[i]), "-", " ", -1)}
+                        alt={ strings.Replace(changeExtentionToWebp(photos[i]), "-", " ", -1) }
 					/>
 				</div>
 			}
