@@ -24,18 +24,9 @@ templ Photos(title string, photos []string) {
 			<form method="dialog">
 				<button class="w-8 h-8 ring-2 ring-white hover:bg-gray-600 duration-100 rounded-full text-white fixed right-4 top-4 md:right-8 md:top-8 unselectable">✕</button>
 			</form>
-			<div class="h-full flex justify-center">
-				<button id="dialog-arrow-left" class="h-fit self-center" onclick="leftImage(this)">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="size-5 md:size-7">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
-					</svg>
-				</button>
-				<img id="modal_image" class="max-w-[min(83.6%,100vw)] max-h-[-webkit-fill-available] mx-8 self-center border-8 border-white" src=""/>
-				<button id="dialog-arrow-right" class="h-fit self-center" onclick="rightImage(this)">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="size-5 md:size-7">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
-					</svg>
-				</button>
+			<div class="h-full flex flex-col items-center justify-center">
+				<img id="modal_image" class="max-w-[min(83.6%,100vw)] max-h-[-webkit-fill-available] mx-8 self-center border-8 border-white duration-300" src=""/>
+                <p class="text-white mt-4">Use ← / → arrow keys </p>
 			</div>
 		</dialog>
         // photo gallery >lg
@@ -47,9 +38,10 @@ templ Photos(title string, photos []string) {
 							<img
 								id={ strconv.Itoa(j) }
 								src={ imgPath + photos[j] }
-								class="row mt-[8px] align-center w-full rounded-2xl md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]"
+								class="row mt-[8px] align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]"
 								onclick="openImageModal(this)"
                                 width="128"
+                                height="128"
                                 alt={ strings.Replace(changeExtentionToWebp(photos[j]), "-", " ", -1) }
 							/>
 						}
@@ -66,6 +58,8 @@ templ Photos(title string, photos []string) {
 						src={ imgPath + photos[i] }
 						class="align-center w-full rounded-lg ring-2 ring-black dark:ring-white"
 						onclick="openImageModal(this)"
+                        width="128"
+                        height="128"
                         alt={ strings.Replace(changeExtentionToWebp(photos[i]), "-", " ", -1) }
 					/>
 				</div>
