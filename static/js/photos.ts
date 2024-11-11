@@ -44,6 +44,7 @@ let imgArr = Array.from(imgCollection).sort(imageSorter)
 let prevImg = imgArr[0] as HTMLImageElement;
 let currImgId = -1;
 modal.addEventListener("keydown", (e) => {
+
     imgArr.forEach((elem) => {
         let img = elem as HTMLImageElement
         if (img.src === modalImg.src) {
