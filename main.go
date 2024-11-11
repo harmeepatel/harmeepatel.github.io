@@ -3,8 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
+	image "golang.org/x/image/webp"
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/a-h/templ"
 	"harmeepatel.dev/web/pages"
@@ -29,22 +31,39 @@ func init() {
 }
 
 // get all the images in imgPath
-func getImages() []string {
+func getImages() []pages.ImgInfo {
 	const imgDirPath = "./static/media/images/gallery/"
-	var imgArr = []string{}
+	var imgArr = []pages.ImgInfo{}
 
 	files, err := os.ReadDir(imgDirPath)
 	if err != nil {
 		fmt.Printf("%s dir not found\n", imgDirPath)
 	}
 	for _, file := range files {
-		/* file_split := strings.Split(file.Name(), ".") */
-        if (file.Name() == ".DS_Store") {
-            continue
-        }
-		imgArr = append(imgArr, file.Name())
+		var width, height int
+		if file.Name() == ".DS_Store" {
+			continue
+		}
+
+		if reader, err := os.Open(filepath.Join(imgDirPath, file.Name())); err == nil {
+			defer reader.Close()
+			im, err := image.DecodeConfig(reader)
+			if err != nil {
+				log.Fatalf("%s: %v\n", file.Name(), err)
+			}
+			width = im.Width
+			height = im.Height
+		} else {
+			log.Fatalf("Impossible to open the file: ", err)
+		}
+
+		imgArr = append(imgArr, pages.ImgInfo{
+			Name:   imgDirPath + file.Name(),
+			Width:  width,
+			Height: height,
+		})
 	}
-    return imgArr
+	return imgArr
 }
 
 func main() {}

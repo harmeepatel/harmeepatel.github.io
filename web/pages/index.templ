@@ -26,6 +26,7 @@ templ Index(title string) {
 			@technicalSkills()
 			@workex()
 			@academicProjects()
+			@projects()
 			@education()
 			<button type="button" id="download-resume-btn" class="download-resume-btn" onmouseover="this.childNodes[0].classList.add('animate-bounce');" onmouseout="this.childNodes[0].classList.remove('animate-bounce')">
 				@components.Icon(components.IconInfo{
@@ -109,7 +110,8 @@ templ infoBar() {
 templ education() {
 	@components.Section("education", "Education") {
 		@components.SectionContent("pb-3 xl:pb-5") {
-			@components.SectionItemHeader("Master's in Computer Science (CS)", "", "September 2021 - May 2023", "italic w-1/3 text-end")
+            // September 2021 - May 2023
+			@components.SectionItemHeader("Master's in Computer Science (CS)", "", "", "italic w-1/3 text-end")
 			<p class="w-1/2">
 				//<p class="w-1/2 pb-3 xl:pb-5">
 				Lakehead University
@@ -129,7 +131,8 @@ templ education() {
 			</ul>
 		}
 		@components.SectionContent("pb-3 xl:pb-5") {
-			@components.SectionItemHeader("Bachelor's in Computer Engineering (CE)", "", "June 2016 - June 2020", "italic w-1/3 text-end")
+            // June 2016 - June 2020
+			@components.SectionItemHeader("Bachelor's in Computer Engineering (CE)", "", "", "italic w-1/3 text-end")
 			<p class="w-1/2">
 				LDRP Institute of Technology and Research
 				<span class="text-xs md:text-sm xl:text-base pl-1 md:pl-2">(7.9/10)</span>
@@ -200,7 +203,8 @@ templ technicalSkills() {
 templ workex() {
 	@components.Section("work-ex", "Work Experience") {
 		@components.SectionContent("") {
-			@components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-0.5 xl:pb-1", "September 2020 - August 2021",
+            // September 2020 - August 2021
+			@components.SectionItemHeader("Full-Stack Developer at AllEvents", "pb-0.5 xl:pb-1", "",
 				"italic")
 			<ul class="list-disc list-inside">
 				<li>
@@ -227,7 +231,7 @@ templ workex() {
 					<b>Enhanced user experience</b> by adding quality-of-life features to event pages, leading to higher user interaction and satisfaction.
 				</li>
 				<li>
-					<b>Optimized backend API performance</b>, reducing payload size by <b>2%-5%</b> across multiple services, improving speed and efficiency.
+					<b>Optimized backend API performance</b>, reducing payload size across multiple services, improving speed and efficiency.
 				</li>
 				<li>
 					<b>Implemented</b> a <b>"Get Ticket" booking modal</b> on event pages, streamlining the ticket purchasing process for users.
@@ -256,11 +260,39 @@ templ academicProjects() {
 					Using <b>SQLite</b> to store song metadata.
 				</li>
 				<li>
-					Integrating <b>ML Kit</b> in <b>Firebase</b> to detect facial expression and 
+					Integrating <b>ML Kit</b> by <b>Firebase</b> to detect facial expression and 
 					using the song metadata like genre to curate a playlist to improve or enhance 
 					user's mood, i.e. creating an uplifting playlist if the user seems to be sad, or 
 					creating an energetic or shuffled playlist if the user seems happy or excited.
 				</li>
+			</ul>
+		}
+	}
+}
+
+templ projects() {
+	@components.Section("projects", "Projects") {
+		@components.SectionContent("") {
+			@components.SectionItemHeader("Dockerized Go Website Template", "pb-0.5 xl:pb-1", "", "")
+			<ul class="list-disc list-inside">
+				<li>
+					@components.Link("https://github.com/harmeepatel/template-go-website", "") {
+                        https://github.com/harmeepatel/template-go-website
+					}
+				</li>
+				<li>
+                    Using <b>http</b> package in Go standerd library to create a simple http-server 
+                    with handlers for pages.
+				</li>
+				<li>
+                    Adding <b>HTMX</b> as dependency to have access to AJAX, CSS Transitions, 
+                    WebSockets and Server Sent Events directly in HTML, using attributes, 
+                    to build modern user interfaces with power of hypertext
+				</li>
+                <li>
+                    Using <b>Docker</b> to package the application in a container for fast and efficient
+                    deployment.
+                </li>
 			</ul>
 		}
 	}

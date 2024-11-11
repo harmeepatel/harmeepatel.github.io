@@ -71,6 +71,10 @@
 
 
 @media print {
+    body {
+        background-color: #fff !important;
+    }
+
     #nav-mask {
         display: none !important;
     }
@@ -84,8 +88,11 @@
     }
 
     main {
-        margin-top: 2rem !important;
-        margin-bottom: 2rem !important;
+        background-color: #fff !important;
+        margin-top: 3.18rem !important;
+        margin-right: 5rem !important;
+        margin-bottom: 4rem !important;
+        margin-left: 5rem !important;
     }
 }
 
