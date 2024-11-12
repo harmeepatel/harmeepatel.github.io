@@ -34,10 +34,6 @@ function closeImageModal(e: HTMLButtonElement) {
     const img = parent!.querySelector("#modal_image") as HTMLImageElement
     img.src = ""
 }
-function closeImageModal(e: HTMLButtonElement) {
-    const parent = e.parentNode?.parentNode
-    console.log(parent)
-}
 
 function imageSorter(a: Element, b: Element) {
     const aNum = parseInt(a.id)
@@ -62,7 +58,6 @@ modal.addEventListener("keydown", (e) => {
         let img = elem as HTMLImageElement
         if (img.src === modalImg.src) {
             currImgId = parseInt(img.id)
-            console.log(`currImgId: ${currImgId}`)
         }
     })
 
@@ -83,11 +78,6 @@ modal.addEventListener("keydown", (e) => {
     if (prevImg != undefined) {
         modalImg.src = prevImg.src
     }
-
-    console.log(currImgId)
-    console.log("---")
-    console.log(prevImg.id)
-    console.log(" ")
 
     if (!modal.open) {
         modalImg.src = ""
