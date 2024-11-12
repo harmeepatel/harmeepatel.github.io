@@ -18,6 +18,7 @@ function upscaleImage(name) {
 const modal = document.getElementById("image_modal");
 const modalImg = modal.querySelector("#modal_image");
 const closeDialogThreshold = 768;
+
 let currImgId = -1;
 function openImageModal(e) {
     if (window.innerWidth >= closeDialogThreshold) {
@@ -30,6 +31,11 @@ function closeImageModal(e) {
     const parent = e.parentNode.parentNode;
     const img = parent.querySelector("#modal_image");
     img.src = "";
+}
+function closeImageModal(e) {
+    var _a;
+    const parent = (_a = e.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode;
+    console.log(parent);
 }
 function imageSorter(a, b) {
     const aNum = parseInt(a.id);
@@ -48,6 +54,7 @@ imgArr.map((i) => {
     i.src = upscaleImage(i.src);
 });
 let prevImg = imgArr[0];
+
 modal.addEventListener("keydown", (e) => {
     imgArr.forEach((elem) => {
         let img = elem;
@@ -71,10 +78,15 @@ modal.addEventListener("keydown", (e) => {
     if (prevImg != undefined) {
         modalImg.src = prevImg.src;
     }
+    console.log(currImgId);
+    console.log("---");
+    console.log(prevImg.id);
+    console.log(" ");
     if (!modal.open) {
         modalImg.src = "";
     }
 });
+
 // -- modal --
 // "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar"
 window.addEventListener("resize", () => {
