@@ -32,11 +32,6 @@ function closeImageModal(e) {
     const img = parent.querySelector("#modal_image");
     img.src = "";
 }
-function closeImageModal(e) {
-    var _a;
-    const parent = (_a = e.parentNode) === null || _a === void 0 ? void 0 : _a.parentNode;
-    console.log(parent);
-}
 function imageSorter(a, b) {
     const aNum = parseInt(a.id);
     const bNum = parseInt(b.id);
@@ -54,13 +49,11 @@ imgArr.map((i) => {
     i.src = upscaleImage(i.src);
 });
 let prevImg = imgArr[0];
-
 modal.addEventListener("keydown", (e) => {
     imgArr.forEach((elem) => {
         let img = elem;
         if (img.src === modalImg.src) {
             currImgId = parseInt(img.id);
-            console.log(`currImgId: ${currImgId}`);
         }
     });
     if (e.code === "ArrowLeft") {
@@ -78,15 +71,10 @@ modal.addEventListener("keydown", (e) => {
     if (prevImg != undefined) {
         modalImg.src = prevImg.src;
     }
-    console.log(currImgId);
-    console.log("---");
-    console.log(prevImg.id);
-    console.log(" ");
     if (!modal.open) {
         modalImg.src = "";
     }
 });
-
 // -- modal --
 // "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar"
 window.addEventListener("resize", () => {
