@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/a-h/templ"
 	"harmeepatel.dev/web/pages"
@@ -31,9 +32,11 @@ func init() {
 }
 
 // get all the images in imgPath
-func getImages() []pages.ImgInfo {
+func getImages() [][]pages.ImgInfo {
 	const imgDirPath = "./static/media/images/gallery/"
-	var imgArr = []pages.ImgInfo{}
+	var smImgs = []pages.ImgInfo{}
+	var lgImgs = []pages.ImgInfo{}
+	var output = [][]pages.ImgInfo{}
 
 	files, err := os.ReadDir(imgDirPath)
 	if err != nil {
@@ -57,13 +60,26 @@ func getImages() []pages.ImgInfo {
 			log.Fatalf("Impossible to open the file: ", err)
 		}
 
-		imgArr = append(imgArr, pages.ImgInfo{
-			Name:   imgDirPath + file.Name(),
-			Width:  width,
-			Height: height,
-		})
+		if strings.Contains(file.Name(), "@2x") {
+			lgImgs = append(lgImgs, pages.ImgInfo{
+				Name:   imgDirPath + file.Name(),
+				Width:  width,
+				Height: height,
+			})
+		} else {
+			smImgs = append(smImgs, pages.ImgInfo{
+				Name:   imgDirPath + file.Name(),
+				Width:  width,
+				Height: height,
+			})
+		}
+
 	}
-	return imgArr
+
+	output = append(output, smImgs)
+	output = append(output, lgImgs)
+
+	return output
 }
 
 func main() {}
