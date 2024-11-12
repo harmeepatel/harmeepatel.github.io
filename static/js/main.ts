@@ -63,8 +63,8 @@ window.addEventListener("scroll", () => {
 
 // -- remove animation on touch screens
 const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
+const btnImg = downloadResumeBtn.childNodes[0] as HTMLElement
 if (!("ontouchstart" in window) || navigator.maxTouchPoints === 0) {
-    const btnImg = downloadResumeBtn.childNodes[0] as HTMLElement
     downloadResumeBtn.addEventListener("mouseover", () => {
         btnImg.classList.add('mt-1')
         btnImg.classList.add('animate-bounce')
@@ -73,4 +73,6 @@ if (!("ontouchstart" in window) || navigator.maxTouchPoints === 0) {
         btnImg.classList.remove('mt-1')
         btnImg.classList.remove('animate-bounce')
     })
+} else {
+    btnImg.style.borderWidth = "0px"
 }
