@@ -18,6 +18,7 @@ function upscaleImage(name) {
 const modal = document.getElementById("image_modal");
 const modalImg = modal.querySelector("#modal_image");
 const closeDialogThreshold = 768;
+
 let currImgId = -1;
 function openImageModal(e) {
     if (window.innerWidth >= closeDialogThreshold) {
