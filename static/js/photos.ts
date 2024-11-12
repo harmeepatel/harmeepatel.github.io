@@ -1,3 +1,4 @@
+// -- utils --
 function addClasses(elem: HTMLElement, classes: string[]) {
     for (const c of classes) {
         elem.classList.add(c)
@@ -10,18 +11,28 @@ function removeClasses(elem: HTMLElement, classes: string[]) {
     }
 }
 
+function upscaleImage(name: string): string {
+    return name.replace(".webp", "@2x.webp")
+}
+// -- utils -- 
+
 // open modal on clicking on an image if the screen is bigger than 1024px
 const modal = document.getElementById("image_modal")! as HTMLDialogElement
 const modalImg = modal.querySelector("#modal_image") as HTMLImageElement
 const closeDialogThreshold = 768
+
+let currImgId = -1;
 function openImageModal(e: HTMLImageElement) {
     if (window.innerWidth >= closeDialogThreshold) {
-        modalImg.src = e.src.replace(".webp", "@2x.webp")
+        currImgId = parseInt(e.id)
+        modalImg.src = e.src
         modal.showModal()
     }
-    if (!modal.open) {
-        modalImg.src = ""
-    }
+}
+function closeImageModal(e: HTMLButtonElement) {
+    const parent = e.parentNode!.parentNode
+    const img = parent!.querySelector("#modal_image") as HTMLImageElement
+    img.src = ""
 }
 function closeImageModal(e: HTMLButtonElement) {
     const parent = e.parentNode?.parentNode
@@ -29,8 +40,8 @@ function closeImageModal(e: HTMLButtonElement) {
 }
 
 function imageSorter(a: Element, b: Element) {
-    const aNum = parseInt(a.id[0])
-    const bNum = parseInt(b.id[0])
+    const aNum = parseInt(a.id)
+    const bNum = parseInt(b.id)
     if (aNum < bNum) {
         return -1;
     } else if (aNum > bNum) {
@@ -39,28 +50,34 @@ function imageSorter(a: Element, b: Element) {
     return 0;
 }
 let imgCollection = document.getElementsByClassName("row")
-let imgArr = Array.from(imgCollection).sort(imageSorter)
-
+let imgArr = Array.from(imgCollection).sort(imageSorter) as HTMLImageElement[]
+imgArr.map((i) => {
+    i.src = upscaleImage(i.src)
+})
 let prevImg = imgArr[0] as HTMLImageElement;
-let currImgId = -1;
+
 modal.addEventListener("keydown", (e) => {
 
     imgArr.forEach((elem) => {
         let img = elem as HTMLImageElement
         if (img.src === modalImg.src) {
-            currImgId = parseInt(img.id[0])
+            currImgId = parseInt(img.id)
+            console.log(`currImgId: ${currImgId}`)
         }
     })
 
     if (e.code === "ArrowLeft") {
-        prevImg = imgArr[currImgId - 1] as HTMLImageElement
+        prevImg = imgArr[currImgId - 1]
     }
     if (e.code === "ArrowRight") {
-        prevImg = imgArr[currImgId + 1] as HTMLImageElement
+        prevImg = imgArr[currImgId + 1]
     }
 
-    if (currImgId < 0 || currImgId > imgArr.length - 1) {
-        console.log("reached an edge")
+    if (currImgId < 0) {
+        console.log("left edge reached")
+    }
+    if (currImgId >= imgArr.length) {
+        console.log("right edge reached")
     }
 
     if (prevImg != undefined) {
@@ -77,11 +94,11 @@ modal.addEventListener("keydown", (e) => {
     }
 });
 
-// --- modal ---
+// -- modal --
 // "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar"
 window.addEventListener("resize", () => {
     // remove modal if screen size less than 768px
-    const photosMain = document.getElementById("photos")
+    // const photosMain = document.getElementById("photos")
     if (window.innerWidth < closeDialogThreshold) {
         if (modal.open) {
             modal.close()
