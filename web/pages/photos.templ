@@ -42,7 +42,8 @@ templ Photos(title string, photos [][]ImgInfo) {
 			</div>
 		</dialog>
 
-		<main id="photos" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block">
+		// <main id="photos-sm" class="h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar">
+		<main id="photos" class="h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block">
 			<div id="image-grid" class="hidden md:flex md:flex-wrap md:justify-center">
 				for i := 0; i < 4; i++ {
 					<div class="column px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]">
@@ -74,14 +75,14 @@ templ Photos(title string, photos [][]ImgInfo) {
             // TODO: add scroll snapping
             <div id="image-grid-mobile" class="md:hidden">
                 for i, img := range(lgImgs){
-                    <div class="img-wraper mx-4 my-10 snap-center snap-always">
+                    <div class="img-wraper mx-4 my-[5.5rem] snap-center snap-always">
                         <img
                             id={ strconv.Itoa(i) }
                             src={ img.Name }
                             if i == 0 {
-                                class={ addAspectRatio(smImgs[i], "mt-12 align-center w-full rounded-xl ring-2 ring-black dark:ring-white") }
+                                class={ "mt-[5.5rem] align-center w-full rounded-xl ring-2 ring-black dark:ring-white" }
                             } else {
-                                class={ addAspectRatio(smImgs[i], "align-center w-full rounded-xl ring-2 ring-black dark:ring-white") }
+                                class={ "align-center w-full rounded-xl ring-2 ring-black dark:ring-white" }
                             }
                             if img.Width > img.Height {
                                 width="500"
@@ -98,8 +99,5 @@ templ Photos(title string, photos [][]ImgInfo) {
                 }
             </div>
 		</main>
-
-		// <main id="photos-sm" class="h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar">
-		// </main>
 	}
 }

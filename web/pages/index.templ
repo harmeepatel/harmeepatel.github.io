@@ -7,9 +7,8 @@ import (
 
 const (
 	iconPath      = "./static/media/icons/"
-	infoLinkClass = `hover:!text-indigo-700 dark:hover:!text-blue-500 
-                  !text-black dark:!text-white text-2xs sm:text-sm xl:text-base 
-                  flex gap-1 md:gap-2 items-center`
+	infoLinkClass = `!text-black dark:!text-white text-2xs sm:text-sm xl:text-base 
+                     flex gap-1 md:gap-2 items-center`
 	infoIconClass = "sm:w-[16px] xl:w-[24px]"
 
 	techSkillSectionContentClass = "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
@@ -29,11 +28,11 @@ templ Index(title string) {
 			@projects()
 			@education()
 			<a href="./static/media/HarmeePatel-Resume.pdf" download="HarmeePatel-Resume">
-				<button 
-                    type="submit" 
-                    id="download-resume-btn" 
-                    class="download-resume-btn" 
-                >
+				<button
+					type="submit"
+					id="download-resume-btn"
+					class="download-resume-btn"
+				>
 					@components.Icon(components.IconInfo{
 						Src:   iconPath + "arrow-down-tray.svg",
 						Width: 12,
@@ -159,15 +158,15 @@ templ education() {
 templ technicalSkills() {
 	@components.Section("tech-skills", "Technical Skills") {
 		@components.SectionContent(techSkillSectionContentClass) {
-			<h5 class="inline-block">Languages</h5>
+			<h4 class="inline-block">Languages</h4>
 			<p class={ techSkillPClass }>JavaScript, TypeScript, PHP, Python, Go, Zig, C, Lua, Bash</p>
 		}
 		@components.SectionContent(techSkillSectionContentClass) {
-			<h5 class="inline-block">Database</h5>
+			<h4 class="inline-block">Database</h4>
 			<p class={ techSkillPClass }>MySQL, SQLite, PostgreSQL</p>
 		}
 		@components.SectionContent(techSkillSectionContentClass) {
-			<h5 class="inline-block">Technologies</h5>
+			<h4 class="inline-block">Technologies</h4>
 			<p class={ techSkillPClass }>
 				Astro,
 				CSS,

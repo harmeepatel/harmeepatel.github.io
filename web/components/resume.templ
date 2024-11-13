@@ -21,10 +21,10 @@ templ Icon(icon IconInfo) {
 
 // sections
 templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
-    <h5 class={ "flex justify-between items-baseline " + leftClass }>
+    <h4 class={ "flex justify-between items-baseline " + leftClass }>
         { left }
         <span class={ rightClass }>{ right }</span>
-    </h5>
+    </h4>
 }
 
 templ SectionContent(divClass string) {

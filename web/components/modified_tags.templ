@@ -8,14 +8,14 @@ templ NavLi(name string, ref string) {
 		<a href={templ.URL(ref)} class="text-sm md:text-base xl:text-xl font-normal group">
 			{ name }
 			<span
-                class={"block max-w-0 group-hover:max-w-full acc-anim h-[" + fmt.Sprintf("%.3f", underLineHeight) + "rem] rounded-md bg-accent-p touch-none"}
+                class={"block max-w-0 group-hover:max-w-full h-[" + fmt.Sprintf("%.3f", underLineHeight) + "rem] rounded-md bg-accent-p transition-all duration-200"}
 			></span>
 		</a>
 	</li>
 }
 
 templ Link(ref string, class string) {
-	<a href={ templ.URL(ref) } class={"text-indigo-600 dark:text-blue-400 hover:underline hover:text-indigo-700 dark:hover:text-blue-500 touch-none " + class} target="_blank">
+	<a href={ templ.URL(ref) } class={"transition-all duration-[50ms] underline underline-offset-2 hover:decoration-wavy hover:underline-offset-4 hover:decoration-accent-p font-medium italic" + class} target="_blank">
 		{ children... }
 	</a>
 }
