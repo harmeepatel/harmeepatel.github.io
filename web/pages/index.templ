@@ -34,16 +34,16 @@ templ Index(title string) {
 					class={`
                         transition-all duration-[150ms] 
                         fixed z-[100] bottom-0 right-0 
-                        m-6 md:m-8 xl:m-16 w-10 h-10 md:w-14 md:h-14 xl:w-[4.5rem] xl:h-[4.5rem] 
+                        m-6 md:m-10 xl:m-16 w-12 h-12 md:w-16 md:h-16 xl:w-[4.5rem] xl:h-[4.5rem] 
                         flex items-center justify-center 
-                        rounded-full bg-light-btn-p dark:bg-dark-btn-p 
-                        shadow-[0_0_16px_0px_rgba(0,0,0,0.13)] dark:shadow-[0_0_36px_-3px_rgb(0,0,0)] 
-                        md:hover:ring-2 ring-accent-p
+                        rounded-full bg-white/50 dark:bg-black/40 backdrop-blur-[3px]
+                        shadow-lg md:shadow-md ring-2 ring-accent-p md:ring-0 shadow-black/60 dark:shadow-white/20
+                        md:hover:ring-2 md:hover:scale-110 md:hover:shadow-xl
                     `}
 				>
 					@components.Icon(components.IconInfo{
 						Src:   iconPath + "arrow-down-tray.svg",
-						Width: 12,
+						Width: 14,
 						Class: infoIconClass,
 						Alt:   "download resume",
 					})

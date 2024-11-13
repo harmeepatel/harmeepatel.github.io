@@ -50,7 +50,6 @@ window.addEventListener("load", () => {
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > scrollOffset) {
-        console.log("scroll classes")
         for (let i = 0; i < navScrollClasses.length; i++) {
             nav.classList.add(navScrollClasses[i]);
         }
