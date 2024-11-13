@@ -15,12 +15,17 @@ func generateAlt(s string) string {
 }
 
 func addAspectRatio(image ImgInfo, class string) string {
-    if image.Width > image.Height {
+    if image.IsWide() {
         return class + " aspect-[5/4]"
     } else {
         return class + " aspect-[4/5]"
     }
 }
+
+func (img ImgInfo) IsWide() bool {
+    return img.Width > img.Height
+}
+
 
 type ImgInfo struct {
 	Name   string
@@ -58,7 +63,7 @@ templ Photos(title string, photos [][]ImgInfo) {
                                     class={ addAspectRatio(img, "row mt-[8px] align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
                                 }
 								onclick="openImageModal(this)"
-                                if img.Width > img.Height {
+                                if img.IsWide() {
                                     width="500"
                                     height="400"
                                 } else {
@@ -72,19 +77,18 @@ templ Photos(title string, photos [][]ImgInfo) {
 				}
 			</div>
 
-            // TODO: add scroll snapping
             <div id="image-grid-mobile" class="md:hidden">
                 for i, img := range(lgImgs){
-                    <div class="img-wraper mx-4 my-[5.5rem] snap-center snap-always">
+                    <div class="img-wraper mx-4 my-[5.5rem] snap-center snap-normal">
                         <img
                             id={ strconv.Itoa(i) }
                             src={ img.Name }
                             if i == 0 {
-                                class={ "mt-[5.5rem] align-center w-full rounded-xl ring-2 ring-black dark:ring-white" }
+                                class={ "mt-[8.5rem] align-center w-full rounded-xl ring-2 ring-black dark:ring-white" }
                             } else {
                                 class={ "align-center w-full rounded-xl ring-2 ring-black dark:ring-white" }
                             }
-                            if img.Width > img.Height {
+                            if img.IsWide() {
                                 width="500"
                                 height="400"
                             } else {
