@@ -24,7 +24,7 @@
         @apply border-b border-black dark:border-white ml-1 lg:ml-[0.32rem]
     }
 
-    h5 {
+    h4 {
         @apply text-[0.92rem] sm:text-lg xl:text-xl font-semibold
     }
 
@@ -32,16 +32,12 @@
         @apply text-xs sm:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
-    p {
-        @apply font-normal
-    }
-
-    p, ul {
-        @apply text-[0.80rem] sm:text-base xl:text-lg
+    p, ul, li {
+        @apply font-[300] tracking-wide text-[0.80rem] sm:text-base xl:text-lg
     }
 
     .list-disc li {
-        @apply indent-[-17px] md:indent-[-21px] pl-[19px] font-normal
+        @apply indent-[-17px] md:indent-[-21px] pl-[19px]
     }
 }
 
@@ -50,17 +46,14 @@
         @apply w-[1px] lg:w-[2px] h-3 sm:h-6 dark:bg-white bg-black
     }
 
-    .acc-anim {
-        @apply transition-all duration-200
-    }
-
     .download-resume-btn {
-        @apply acc-anim fixed z-[100] w-10 h-10 md:w-14 md:h-14 xl:w-[4.5rem] xl:h-[4.5rem] bottom-0 right-0 m-6 md:m-8 xl:m-16 flex items-center justify-center rounded-full bg-light-btn-p dark:bg-dark-btn-p hover:border-2 border-accent-p shadow-[0_0_16px_0px_rgba(0,0,0,0.13)] dark:shadow-[0_0_36px_-3px_rgb(0,0,0)]
+        @apply transition-all duration-[150ms] fixed z-[100] bottom-0 right-0 m-6 md:m-8 xl:m-16 w-10 h-10 md:w-14 md:h-14 xl:w-[4.5rem] xl:h-[4.5rem] flex items-center justify-center rounded-full bg-light-btn-p dark:bg-dark-btn-p hover:ring-2 ring-accent-p shadow-[0_0_16px_0px_rgba(0,0,0,0.13)] dark:shadow-[0_0_36px_-3px_rgb(0,0,0)]
     }
 
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
+
     .no-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -94,7 +87,9 @@
     }
 }
 
-#download-resume {
-    clip-path: url(#squircleClip);
-    background-image: linear-gradient(135deg, #90F7EC 10%, #32CCBC 100%);
+@media (hover: hover) and (pointer: fine) {
+  a:hover { text-decoration-style: none }
+    #download-resume-btn img {
+        border-width: 0;
+    }
 }

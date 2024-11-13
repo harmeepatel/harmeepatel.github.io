@@ -39,40 +39,42 @@ window.addEventListener("resize", () => {
 
 // -- on scroll add nav shadow, blur and ring --
 const scrollOffset = 8
-const classes = ["ring-1", "dark:ring-white/80", "ring-black/60", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
+const navScrollClasses = ["ring-1", "dark:ring-white/80", "ring-black/60", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
 window.addEventListener("load", () => {
     if (window.scrollY > scrollOffset) {
-        for (let i = 0; i < classes.length; i++) {
-            nav.classList.add(classes[i]);
+        for (let i = 0; i < navScrollClasses.length; i++) {
+            nav.classList.add(navScrollClasses[i]);
         }
     }
 });
 
 window.addEventListener("scroll", () => {
     if (window.scrollY > scrollOffset) {
-        for (let i = 0; i < classes.length; i++) {
-            nav.classList.add(classes[i]);
+        console.log("scroll classes")
+        for (let i = 0; i < navScrollClasses.length; i++) {
+            nav.classList.add(navScrollClasses[i]);
         }
     }
     if (window.scrollY < scrollOffset) {
-        for (let i = 0; i < classes.length; i++) {
-            nav.classList.remove(classes[i]);
+        for (let i = 0; i < navScrollClasses.length; i++) {
+            nav.classList.remove(navScrollClasses[i]);
         }
     }
 })
 
 // -- remove animation on touch screens
 const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
-const btnImg = downloadResumeBtn.childNodes[0] as HTMLElement
-if (!("ontouchstart" in window) || navigator.maxTouchPoints === 0) {
-    downloadResumeBtn.addEventListener("mouseover", () => {
-        btnImg.classList.add('mt-1')
-        btnImg.classList.add('animate-bounce')
-    })
-    downloadResumeBtn.addEventListener("mouseout", () => {
-        btnImg.classList.remove('mt-1')
-        btnImg.classList.remove('animate-bounce')
-    })
-} else {
-    btnImg.style.borderWidth = "0px"
-}
+if (downloadResumeBtn != null) {
+    const btnImg = downloadResumeBtn.childNodes[0] as HTMLElement
+    if (!("ontouchstart" in window) || navigator.maxTouchPoints === 0) {
+        downloadResumeBtn.addEventListener("mouseover", () => {
+            btnImg.classList.add('mt-1')
+            btnImg.classList.add('animate-bounce')
+        })
+        downloadResumeBtn.addEventListener("mouseout", () => {
+            btnImg.classList.remove('mt-1')
+            btnImg.classList.remove('animate-bounce')
+        })
+    } else {
+        btnImg.style.borderWidth = "0px"
+    }
