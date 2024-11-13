@@ -65,16 +65,26 @@ window.addEventListener("scroll", () => {
 // -- remove animation on touch screens
 const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
 if (downloadResumeBtn != null) {
-    const btnImg = downloadResumeBtn.childNodes[0] as HTMLElement
-    if (!("ontouchstart" in window) || navigator.maxTouchPoints === 0) {
+    const downloadBtnImg = downloadResumeBtn.childNodes[0] as HTMLElement
+    if (!("ontouchstart" in window) || navigator.maxTouchPoints == 0) {
         downloadResumeBtn.addEventListener("mouseover", () => {
-            btnImg.classList.add('mt-1')
-            btnImg.classList.add('animate-bounce')
+            downloadBtnImg.classList.add('mt-1')
+            downloadBtnImg.classList.add('animate-bounce')
         })
         downloadResumeBtn.addEventListener("mouseout", () => {
-            btnImg.classList.remove('mt-1')
-            btnImg.classList.remove('animate-bounce')
+            downloadBtnImg.classList.remove('mt-1')
+            downloadBtnImg.classList.remove('animate-bounce')
         })
     } else {
-        btnImg.style.borderWidth = "0px"
+        for (let c of downloadResumeBtn.classList) {
+            if (c.includes("hover")) {
+                downloadResumeBtn.classList.remove(c)
+            }
+        }
+        for (let c of downloadBtnImg.classList) {
+            if (c.includes("hover")) {
+                downloadResumeBtn.classList.remove(c)
+            }
+        }
     }
+}
