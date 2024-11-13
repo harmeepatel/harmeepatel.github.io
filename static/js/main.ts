@@ -78,4 +78,3 @@ if (downloadResumeBtn != null) {
     } else {
         btnImg.style.borderWidth = "0px"
     }
-}
