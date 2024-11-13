@@ -69,16 +69,4 @@ if (downloadResumeBtn != null) {
             downloadBtnImg.classList.remove('animate-bounce');
         });
     }
-    else {
-        for (let c of downloadResumeBtn.classList) {
-            if (c.includes("hover")) {
-                downloadResumeBtn.classList.remove(c);
-            }
-        }
-        for (let c of downloadBtnImg.classList) {
-            if (c.includes("hover")) {
-                downloadResumeBtn.classList.remove(c);
-            }
-        }
-    }
 }
