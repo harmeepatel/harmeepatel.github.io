@@ -77,7 +77,7 @@ templ summary() {
 // contact bar
 templ infoBar() {
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
-		@components.Link("tel:+16478321245", infoLinkClass) {
+		@components.Link("tel:+16478321245", "_blank", infoLinkClass) {
 			@components.Icon(components.IconInfo{
 				Src:   iconPath + "phone.svg",
 				Width: 12,
@@ -87,7 +87,7 @@ templ infoBar() {
 			+1 (647) 832 - 1245
 		}
 		<span class="vertical-seperator"></span>
-		@components.Link("https://github.com/harmeepatel", infoLinkClass) {
+		@components.Link("https://github.com/harmeepatel", "_blank", infoLinkClass) {
 			@components.Icon(components.IconInfo{
 				Src:   iconPath + "github.svg",
 				Width: 12,
@@ -97,7 +97,7 @@ templ infoBar() {
 			Github
 		}
 		<span class="vertical-seperator"></span>
-		@components.Link("https://ca.linkedin.com/in/harmeepatel", infoLinkClass) {
+		@components.Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass) {
 			@components.Icon(components.IconInfo{
 				Src:   iconPath + "linkedin.svg",
 				Width: 12,
@@ -107,7 +107,7 @@ templ infoBar() {
 			Linkedin
 		}
 		<span class="vertical-seperator"></span>
-		@components.Link("mailto:harmeeworks@gmail.com", infoLinkClass) {
+		@components.Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass) {
 			@components.Icon(components.IconInfo{
 				Src:   iconPath + "email.svg",
 				Width: 12,
@@ -225,14 +225,14 @@ templ workex() {
 				</li>
 				<li>
 					<b>Redesigned and implemented</b> a new 
-					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "") {
+					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "_blank", "") {
 						pricing page
 					}
 					, contributing to the website's overall design enhancement strategy.
 				</li>
 				<li>
 					<b>Created and designed</b> a user-friendly 
-					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "") {
+					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "_blank", "") {
 						publish event page
 					}
 					{ " for" } hosts, using <b>Figma</b> to design UI/UX, resulting in increased host engagement.
@@ -289,7 +289,7 @@ templ projects() {
 			@components.SectionItemHeader("Dockerized Go Website Template", "pb-0.5 xl:pb-1", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-					@components.Link("https://github.com/harmeepatel/template-go-website", "") {
+					@components.Link("https://github.com/harmeepatel/template-go-website", "_blank", "") {
 						https://github.com/harmeepatel/template-go-website
 					}
 				</li>

@@ -44,7 +44,7 @@ func init() {
 	generateFile(pages.Blog("Blog"), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
-	generateFile(blogs.TestBlog("Test Blog"), "blogs/test_blog.html")
+	generateFile(blogs.TestBlog("Test Blog"), "blog/test_blog.html")
 }
 
 // get all the images in imgPath

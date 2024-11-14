@@ -14,11 +14,11 @@ const (
 	IMAGE_WIDTH = " w-[1.6rem] sm:w-[3rem] xl:w-[4rem] "
 )
 
-templ Nav() {
+templ Nav(static string) {
     <nav id="nav" class={ `max-w-screen-lg w-4/5 mx-auto my-0 mt-4 md:m-auto py-3 px-5 sm:py-5 sm:px-10 flex sticky z-[100] top-4 rounded-xl xl:rounded-2x` }>
 		<div class="m-auto w-full flex justify-between">
 			<a class="" href="/">
-				@Icon(IconInfo{"./static/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
+				@Icon(IconInfo{static + "/media/images/hp-black.svg", 0, IMAGE_WIDTH, "My initials HP"})
 			</a>
 			<ul class="flex justify-evenly self-center gap-6 md:gap-8">
 				@NavLi("Resume", "/")
