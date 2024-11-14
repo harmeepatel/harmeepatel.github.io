@@ -1,67 +1,59 @@
+<div align="center">
+  <a href="https://nextjs.org">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png">
+      <img alt="Next.js logo" src="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png" height="128">
+    </picture>
+  </a>
+  <h1>Next.js</h1>
+
+<a href="https://vercel.com"><img alt="Vercel logo" src="https://img.shields.io/badge/MADE%20BY%20Vercel-000000.svg?style=for-the-badge&logo=Vercel&labelColor=000"></a>
+<a href="https://www.npmjs.com/package/next"><img alt="NPM version" src="https://img.shields.io/npm/v/next.svg?style=for-the-badge&labelColor=000000"></a>
+<a href="https://github.com/vercel/next.js/blob/canary/license.md"><img alt="License" src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=000000"></a>
+<a href="https://github.com/vercel/next.js/discussions"><img alt="Join the community on GitHub" src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&logo=Next.js&labelColor=000000&logoWidth=20"></a>
+
+</div>
+
+## Getting Started
+
+Used by some of the world's largest companies, Next.js enables you to create full-stack web applications by extending the latest React features, and integrating powerful Rust-based JavaScript tooling for the fastest builds.
+
+- Visit our [Learn Next.js](https://nextjs.org/learn) course to get started with Next.js.
+- Visit the [Next.js Showcase](https://nextjs.org/showcase) to see more sites built with Next.js.
+
+## Documentation
+
+Visit [https://nextjs.org/docs](https://nextjs.org/docs) to view the full documentation.
+
+## Community
+
+The Next.js community can be found on [GitHub Discussions](https://github.com/vercel/next.js/discussions) where you can ask questions, voice ideas, and share your projects with other people.
+
+To chat with other community members you can join the Next.js [Discord](https://nextjs.org/discord) server.
+
+Do note that our [Code of Conduct](https://github.com/vercel/next.js/blob/canary/CODE_OF_CONDUCT.md) applies to all Next.js community channels. Users are **highly encouraged** to read and adhere to them to avoid repercussions.
+
+## Contributing
+
+Contributions to Next.js are welcome and highly appreciated. However, before you jump right into it, we would like you to review our [Contribution Guidelines](/contributing.md) to make sure you have a smooth experience contributing to Next.js.
+
+### Good First Issues:
+
+We have a list of **[good first issues](https://github.com/vercel/next.js/labels/good%20first%20issue)** that contain bugs that have a relatively limited scope. This is a great place for newcomers and beginners alike to get started, gain experience, and get familiar with our contribution process.
+
+## Authors
+
+A list of the original co-authors of Next.js that helped bring this amazing framework to life!
+
+- Tim Neutkens ([@timneutkens](https://x.com/timneutkens))
+- Naoyuki Kanezawa ([@nkzawa](https://x.com/nkzawa))
+- Guillermo Rauch ([@rauchg](https://x.com/rauchg))
+- Arunoda Susiripala ([@arunoda](https://x.com/arunoda))
+- Tony Kovanen ([@tonykovanen](https://x.com/tonykovanen))
+- Dan Zajdband ([@impronunciable](https://x.com/impronunciable))
+
 ---
-title: TEST
-layout: template
-filename: test.md
---- 
-# Hanc meliore
 
-## Udaeque colebas
+## Security
 
-Lorem markdownum geniti **bellum missus** falcato tamen ponderibus Iphide
-moenibus Pittheia partus, Pergama Mimasque instruis; ramos aut. Tibi corpore
-arguit **in securum etiam** temptata terras expers negant aeterna tu coniunx
-voce nulli visa *sceptrum subit in* parce? Vocabant quid et monstrare *villae
-plebi sensi* festum sic virginibus mille; nisi siqua.
-
-    if (3) {
-        rte = modem.slashdot_osi.read_tcp(tftp_microcomputer);
-        webmasterPpp(extension_shortcut, asciiXp - suffix, minicomputerXmlBing);
-    }
-    compressionParity.dayClient.computingHdmiLeopard(-2, retinaGif);
-    resourcesActive(crm, meta_affiliate, vdu.characterUp(piracy_sequence, 3 + 4,
-            pretestTape.nntp(wiki_xhtml_spyware)));
-
-## Deos patruus carpe miseranda delapsus in enim
-
-Crus ipsa enixa membra *omne* Erigonen femina et videns modo et *amicis*
-patulis? Aliquid nescio alis; venio ipse ordinibus furtum possumus urbis **tum**
-quod quantusque: dis et occuluit patris pariterque Nerea. Fugit per custodia,
-edidicitque tamen Maeonia sequentes **animus tyranni**, cum terras atque sponte
-de potentia, senumque. **Gemunt offert** Iuppiter artus vobis vertisse Elinque;
-Pelia timido pater; inpatiens *arcus induco* ius.
-
-Lacertos mortale adhuc; vincla qui iussis cortice **patri et tardis**.
-[Ocius](http://astringiin.io/) unum fatentis, per ore, hic prioribus **acer**.
-Nereida haec *Munychiosque* certe tua draconi iuvenem inquit quae, fuit mirator
-conbiberat, qua vola tellurem. Continet et [carcere](http://www.fastus.com/)
-levabas abnuit Aeacidis quam adventu **latitantia**, fuit conclamat petentem
-cupit cadat altius, te. Arborea haerenti.
-
-## Tenebas hostibus sit cum
-
-Irascentemque multae, agricolam soporem medias. *Sum simul* et parili facundia
-Aeson voca, experientia tempora absumptis colloque ab exit Dulichiae. Sparsi
-lauru illa esse obicit neque frustraque et ignara arcus primos spretarumque
-bimembres vastatoremque.
-
-> Tangamque ut solidae quibus. Conscendit gravi moratos solo Ithacis Io ullus
-> extrema de repperit, retexite *adultera*? Numerandos portus, concutit accipe.
-> Deflevere si liquida, si delicta paene. Imitamina quae adimit totum venae
-> vivacisque induruit robore, rubenti ille eligit?
-
-## Finitimi ipsa silvae coniecit
-
-Quam cursum agmina, lentosque ex iubet temerasse cognovit. Dicunt alios
-Aesoniden errans nequiquam genuit. Quid auso de genas insigne habeto undae utque
-postquam facta.
-
-## Posset obest solum
-
-Tantorum quid in tegi, [alte secum](http://www.tinus-venus.net/tamenautumnalia),
-enim in, ulla unde animalia stratum invenies celebrandaque sustinui *temptamina*
-aliter. Virus dicta media cum est legi et orbam Liberfemineae violenta, arva
-[regia](http://ipsafugit.net/).
-
-Viscera bibulaque urbem haustus frigus. Haec contortum *nemora* adplauso, et
-primis cuncta metuens et quantumque gerit flavusque, Diti. Ad qua inque
-totidemque hunc, de poenam vultumque *torique* fidem.
+If you believe you have found a security vulnerability in Next.js, we encourage you to **_responsibly disclose this and NOT open a public issue_**. We will investigate all legitimate reports. Email `security@vercel.com` to disclose any security vulnerabilities. Alternatively, you can visit this [link](https://vercel.com/security) to know more about Vercel's security and report any security vulnerabilities.
