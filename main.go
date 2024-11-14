@@ -11,10 +11,24 @@ import (
 
 	"github.com/a-h/templ"
 	"harmeepatel.dev/web/pages"
+	"harmeepatel.dev/web/pages/blogs"
 )
 
-func generateFile(comp templ.Component, file string) {
-	f, err := os.Create(file)
+func generateFile(comp templ.Component, path string) {
+
+	lastSlash := strings.LastIndex(path, "/")
+
+	if lastSlash > 0 {
+		dirs := path[:lastSlash]
+		err := os.MkdirAll(dirs, 0760)
+		if err != nil {
+			log.Fatalf("failed to create dir: %s", path[:lastSlash])
+		}
+	}
+
+	f, err := os.Create(path)
+	defer f.Close()
+
 	if err != nil {
 		log.Fatalf("failed to create output file: %v", err)
 	}
@@ -29,6 +43,8 @@ func init() {
 	generateFile(pages.Index("HarmeePatel"), "index.html")
 	generateFile(pages.Blog("Blog"), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
+	generateFile(pages.Photos("Photos", getImages()), "photos.html")
+	generateFile(blogs.TestBlog("Test Blog"), "blogs/test_blog.html")
 }
 
 // get all the images in imgPath
