@@ -3,11 +3,11 @@
 const colors = require('tailwindcss/colors')
 module.exports = {
     darkMode: 'media',
-    content: ["../**/*.html", "../**/*.templ", "../**/*.go", "../static/**/*.js", "!./node_modules/"],
+    content: ["../**/*.html", "../**/*.templ", "../**/*.svg", "../**/*.go", "../static/**/*.js", "!./node_modules/"],
     theme: {
         extend: {
             screens: {
-                'xs': '557px',
+                'xs': '532px',
                 '3xl': '1792px',
             },
             fontSize: {
@@ -16,8 +16,10 @@ module.exports = {
             colors: {
                 "accent-p": "#FF5F1F",
                 "dark": "#111",
+                // "dark": "#0F172A",
                 "dark-btn-p": "#1d1d1d",
                 "light": "#fafafa",
+                // "light": "#ddf5ff",
                 "fg-light": "#e1e1e1",
                 "light-btn-p": "#fff",
             },

@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"github.com/a-h/templ"
-	"harmeepatel.dev/web/pages"
-	"harmeepatel.dev/web/pages/blogs"
+	pages "harmeepatel.dev/web/pages"
+	blogs "harmeepatel.dev/web/pages/blogs"
 )
 
 func generateFile(comp templ.Component, path string) {

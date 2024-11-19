@@ -1,17 +1,29 @@
 package pages;
 
 import (
+    "log"
+    "os/exec"
+    "strings"
 	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/layouts"
 )
 
+func getUploadDate(blogPath string) string {
+    gitLogDates, err := exec.Command("git", "log", "--format=%as", blogPath).Output()
+    if err != nil {
+        log.Fatal(err)
+    }
+    dates := strings.Split(strings.Trim(string(gitLogDates), "\n"), "\n")
+    return dates[len(dates)-1]
+}
+
 // "harmeepatel.dev/web/components"
 templ Blog(title string) {
 	@layouts.Base(title) {
-		<main id="blog" class="h-vh mx-6 md:mx-14 3xl:mx-0 mt-[-0.3rem] md:mt-[0.8rem] lg:mt-[0.5rem]">
-			<h2>BLOG</h2>
-			@components.Link("/blog/test_blog.html", "", "") {
-                test blog
+		<main id="blog" class=" h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6">
+            <time>{ getUploadDate("./main.go") }</time>
+			@components.BlogLink("/blog/test_blog.html", "", "block") {
+                Test blog with a long and sensible title
 			}
 		</main>
 	}

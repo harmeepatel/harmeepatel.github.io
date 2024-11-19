@@ -1,24 +1,5 @@
 package components;
 
-import "strconv"
-
-// icon
-type IconInfo struct {
-	Src   string
-	Width int
-	Class string
-	Alt   string
-}
-
-templ Icon(icon IconInfo) {
-	<img
-		class={ "dark:filter dark:invert inline " + icon.Class }
-		src={ icon.Src }
-		alt={ icon.Alt }
-		width={ strconv.Itoa(icon.Width) }
-	/>
-}
-
 // sections
 templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
     <h4 class={ "flex justify-between items-baseline " + leftClass }>

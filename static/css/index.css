@@ -8,11 +8,11 @@
     }
 
     h2 {
-        @apply text-2xl sm:text-4xl xl:text-5xl pb-2 xl:pb-4
+        @apply text-2xl md:text-4xl xl:text-5xl pb-2 xl:pb-4
     }
 
     h3 {
-        @apply text-lg sm:text-2xl xl:text-3xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
+        @apply text-lg md:text-2xl xl:text-3xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
     }
 
     h3::after {
@@ -25,15 +25,22 @@
     }
 
     h4 {
-        @apply text-[0.92rem] sm:text-lg xl:text-xl font-semibold
+        @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold
     }
 
     span {
-        @apply text-xs sm:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
+        @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
-    p, ul, li {
-        @apply font-[300] tracking-wide text-[0.80rem] sm:text-base xl:text-lg
+    p, ul, li, code {
+        @apply font-[300] tracking-wide text-[0.80rem] md:text-base xl:text-lg
+    }
+
+    a {
+        @apply font-[300] tracking-wide text-2xs xs:text-xs md:text-sm xl:text-lg
+    }
+    nav>div>ul>li>a {
+        @apply font-[300] tracking-wide text-xs md:text-base xl:text-lg
     }
 
     .list-disc li {
@@ -80,12 +87,5 @@
         margin-right: 5rem !important;
         margin-bottom: 4rem !important;
         margin-left: 5rem !important;
-    }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  a:hover { text-decoration-style: none }
-    #download-resume-btn img {
-        border-width: 0;
     }
 }

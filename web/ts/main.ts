@@ -1,6 +1,5 @@
 console.log(window.btoa("Can't take it when you die, but you can't live without it. ~J.Cole"))
 
-
 // -- remove hover underline in nav --
 const nav: HTMLElement = document.getElementById("nav")!
 const resizeOffset: number = 768
@@ -76,3 +75,12 @@ if (downloadResumeBtn != null) {
         })
     }
 }
+
+document.body.addEventListener('htmx:afterSwap', function(evt) {
+    const parser = new DOMParser();
+    const parsedResponse = parser.parseFromString(evt.detail.xhr.response, "text/html");
+    const bodyAttributes = parsedResponse.getElementsByTagName('body')[0].attributes;
+    for (const attribute of bodyAttributes) {
+        evt.detail.target.setAttribute(attribute.name, attribute.value);
+    }
+});

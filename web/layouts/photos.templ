@@ -3,13 +3,12 @@ package layouts;
 import "harmeepatel.dev/web/components"
 
 templ PhotoBase(title string) {
-	{{ static := "./static" }}
+	{{ const static = "./static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true" hx-swap="outerHTML">
 		<head>
 			<meta charset="utf-8"/>
-            <link rel="icon" href={ static + "/media/icons/favicon.ico" }>
-			<link rel="icon" href={ static + "/media/images/hp-white.svg" }/>
+			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<meta name="description" content="Protfolio website with my resume and some useful blogs."/>
 			<title>{ title }</title>
@@ -20,6 +19,8 @@ templ PhotoBase(title string) {
 			{ children... }
 			@components.Footer(static)
 		</body>
-        <script defer src={ static + "/js/photos.js" }></script>
+		<script defer src={ static + "/js/main.js" }></script>
+		<script defer src={ static + "/js/photos.js" }></script>
+        <script defer src={ static + "/js/htmx.min.js" }></script>
 	</html>
 }
