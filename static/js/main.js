@@ -69,11 +69,3 @@ if (downloadResumeBtn != null) {
         });
     }
 }
-document.body.addEventListener('htmx:afterSwap', function (evt) {
-    const parser = new DOMParser();
-    const parsedResponse = parser.parseFromString(evt.detail.xhr.response, "text/html");
-    const bodyAttributes = parsedResponse.getElementsByTagName('body')[0].attributes;
-    for (const attribute of bodyAttributes) {
-        evt.detail.target.setAttribute(attribute.name, attribute.value);
-    }
-});
