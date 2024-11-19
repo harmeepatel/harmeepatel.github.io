@@ -5,7 +5,7 @@ import "harmeepatel.dev/web/components"
 templ Base(title string) {
 	{{ const static = "./static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true" hx-swap="outerHTML">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
 		<head>
 			<meta charset="utf-8"/>
             <link rel="icon" href={ static + "/media/icons/favicon.ico" }>
@@ -20,6 +20,5 @@ templ Base(title string) {
 			@components.Footer(static)
 		</body>
 		<script defer src={ static + "/js/main.js" }></script>
-        <script defer src={ static + "/js/htmx.min.js" }></script>
 	</html>
 }

@@ -7,7 +7,7 @@ import (
 templ BlogBase(title string) {
 	{{ const static = "../static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
@@ -28,6 +28,5 @@ templ BlogBase(title string) {
         {{ const highlight = static + "/js/highlight.min.js" }}
 		<script src={ highlight }></script>
 		@templ.Raw(`<script>hljs.highlightAll();</script>`)
-        <script defer src={ static + "/js/htmx.min.js" }></script>
 	</html>
 }
