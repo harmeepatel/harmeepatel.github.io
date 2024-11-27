@@ -1,7 +1,7 @@
 package layouts
 
-import "fmt"
+import "log"
 
 func init() {
-    fmt.Println("init layouts")
+    log.Println("init layouts")
 }

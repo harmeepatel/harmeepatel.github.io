@@ -1,7 +1,7 @@
 package pages;
 
-import "fmt"
+import "log"
 
 func init() {
-    fmt.Println("init pages");
+    log.Println("init pages");
 }

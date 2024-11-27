@@ -1,14 +1,14 @@
 package components;
 
 import (
-    "fmt"
+    "log"
     "strings"
     "golang.org/x/text/cases"
     "golang.org/x/text/language"
 )
 
 func init() {
-    fmt.Println("init components")
+    log.Println("init components")
 }
 
 func FixTitle(title string) string {

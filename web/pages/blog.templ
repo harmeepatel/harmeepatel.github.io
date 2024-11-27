@@ -4,6 +4,8 @@ import (
 	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/layouts"
 	"log"
+    "iter"
+    "slices"
 	"os/exec"
 	"strings"
 )
@@ -18,10 +20,10 @@ func getUploadDate(blogPath string) string {
 }
 
 // "harmeepatel.dev/web/components"
-templ Blog(title string, blogList map[string]interface{}) {
+templ Blog(title string, blogList iter.Seq[string]) {
 	@layouts.Base(title) {
 		<main id="blog" class=" h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6">
-			for bName, _:= range blogList {
+			for _, bName:= range slices.Sorted(blogList) {
 				<div class="blog-li mt-8">
 					<time>{ getUploadDate("./main.go") }</time>
 					<span class="bg-red-500 mx-2 px-4 py-0.5 rounded-full">pill</span>

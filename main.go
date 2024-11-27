@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+    "maps"
 
 	"github.com/a-h/templ"
 	pages "harmeepatel.dev/web/pages"
@@ -15,16 +16,6 @@ import (
 )
 
 func generateFile(template templ.Component, path string) {
-	lastSlash := strings.LastIndex(path, "/")
-
-	if lastSlash > 0 {
-		dirs := path[:lastSlash]
-		err := os.MkdirAll(dirs, 0760)
-		if err != nil {
-			log.Fatalf("failed to create dir: %s", path[:lastSlash])
-		}
-	}
-
 	f, err := os.Create(path)
 	defer f.Close()
 	if err != nil {
@@ -37,18 +28,22 @@ func generateFile(template templ.Component, path string) {
 	}
 }
 
-// TODO: fix this
+var blogList = map[string]interface{}{
+	"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test":   blogs.Blog1,
+	"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test_2": blogs.Blog2,
+}
+
 func init() {
-	var blogList = map[string]interface{} {
-		"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test":   blogs.Blog1,
-		"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test_2": blogs.Blog2,
-	}
 	generateFile(pages.Index("HarmeePatel"), "index.html")
-	generateFile(pages.Blog("Blog", blogList), "blog.html")
+	generateFile(pages.Blog("Blog", maps.Keys(blogList)), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
-	for bName, _ := range blogList {
-		generateFile(blogs.Blog1(bName), "blog/"+bName+".html")
+
+	for bName, bFunc := range blogList {
+		switch bName {
+		default:
+			generateFile(bFunc.(func(string) templ.Component)(bName), "blog/"+bName+".html")
+		}
 	}
 }
 
