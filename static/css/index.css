@@ -28,7 +28,7 @@
         @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold
     }
 
-    span {
+    span, time {
         @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
@@ -39,12 +39,29 @@
     a {
         @apply font-[300] tracking-wide text-2xs xs:text-xs md:text-sm xl:text-lg
     }
+
     nav>div>ul>li>a {
         @apply font-[300] tracking-wide text-xs md:text-base xl:text-lg
     }
 
     .list-disc li {
         @apply indent-[-17px] md:indent-[-21px] pl-[19px]
+    }
+
+    #blog>:not(pre):not(.blog-li) {
+        @apply max-w-screen-md m-auto
+    }
+
+    #blog>ul {
+        @apply list-disc list-inside
+    }
+
+    #blog>h2 {
+        @apply font-serif font-light tracking-wide leading-tight
+    }
+
+    #blog>pre {
+        @apply mt-5
     }
 }
 
