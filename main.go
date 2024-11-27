@@ -14,8 +14,7 @@ import (
 	blogs "harmeepatel.dev/web/pages/blogs"
 )
 
-func generateFile(comp templ.Component, path string) {
-
+func generateFile(template templ.Component, path string) {
 	lastSlash := strings.LastIndex(path, "/")
 
 	if lastSlash > 0 {
@@ -28,23 +27,29 @@ func generateFile(comp templ.Component, path string) {
 
 	f, err := os.Create(path)
 	defer f.Close()
-
 	if err != nil {
 		log.Fatalf("failed to create output file: %v", err)
 	}
 
-	err = comp.Render(context.Background(), f)
+	err = template.Render(context.Background(), f)
 	if err != nil {
 		log.Fatalf("failed to write output file: %v", err)
 	}
 }
 
+// TODO: fix this
 func init() {
+	var blogList = map[string]interface{} {
+		"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test":   blogs.Blog1,
+		"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test_2": blogs.Blog2,
+	}
 	generateFile(pages.Index("HarmeePatel"), "index.html")
-	generateFile(pages.Blog("Blog"), "blog.html")
+	generateFile(pages.Blog("Blog", blogList), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
-	generateFile(blogs.TestBlog("Test Blog"), "blog/test_blog.html")
+	for bName, _ := range blogList {
+		generateFile(blogs.Blog1(bName), "blog/"+bName+".html")
+	}
 }
 
 // get all the images in imgPath

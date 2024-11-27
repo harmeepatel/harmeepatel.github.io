@@ -19,6 +19,12 @@ templ Base(title string) {
 			{ children... }
 			@components.Footer(static)
 		</body>
-		<script defer src={ static + "/js/main.js" }></script>
+        <script type="text/javascript" src="https://unpkg.com/album-art"></script>
+		<script src={ static + "/js/main.js" }></script>
+
+		/* @templ.Raw(`<script> */
+  /*           (async function(){await albumArt( 'Kendrick Lamar', {album: 'GNX', size: 'large'} ) */
+  /*             .then( console.log )})(); */
+  /*       </script>`) */
 	</html>
 }
