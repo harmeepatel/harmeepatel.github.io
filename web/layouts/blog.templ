@@ -1,0 +1,36 @@
+package layouts;
+
+import (
+	"harmeepatel.dev/web/components"
+)
+
+templ BlogBase(title string) {
+	{{ const static = "../static" }}
+	<!DOCTYPE html>
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
+		<head>
+			<meta charset="utf-8"/>
+			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<meta name="description" content="Protfolio website with my resume and some useful blogs."/>
+			<title>{ components.FixTitle(title) }</title>
+			<link rel="stylesheet" href={ static + "/css/main.css" }/>
+			<link rel="stylesheet" href={ static + "/css/catppuccin_mocha.css" }/>
+		</head>
+		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-white">
+			@components.Nav(static)
+			<main id="blog" class="w-[-webkit-fill-available] md:w-4/5 h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6">
+				<h2>
+					{ components.FixTitle(title) }
+				</h2>
+				{ children... }
+			</main>
+			@components.Footer(static)
+		</body>
+		<script src={ static + "/js/main.js" }></script>
+		{{ const highlight = static + "/js/highlight.min.js" }}
+		<script src={ highlight }></script>
+		@templ.Raw(`
+<script>hljs.highlightAll();</script>`)
+	</html>
+}
