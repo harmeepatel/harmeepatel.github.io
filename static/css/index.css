@@ -105,4 +105,8 @@
         margin-bottom: 4rem !important;
         margin-left: 5rem !important;
     }
+
+    footer {
+        display: none !important;
+    }
 }

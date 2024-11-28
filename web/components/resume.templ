@@ -1,11 +1,13 @@
 package components;
 
+import "strings"
+
 // sections
 templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
-    <h4 class={ "flex justify-between items-baseline " + leftClass }>
-        { left }
-        <span class={ rightClass }>{ right }</span>
-    </h4>
+	<h4 class={ "flex justify-between items-baseline " + leftClass }>
+		{ left }
+		<span class={ rightClass }>{ right }</span>
+	</h4>
 }
 
 templ SectionContent(divClass string) {
@@ -22,4 +24,9 @@ templ Section(id string, heading string) {
 		//@templ.Raw(hr)
 		{ children... }
 	</section>
+}
+
+templ LangTag(lang string) {
+	<i class={ "devicon-" + strings.ToLower(lang) + "-original colored" }></i>
+	{ lang }
 }
