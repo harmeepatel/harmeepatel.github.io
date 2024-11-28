@@ -27,6 +27,16 @@ templ Section(id string, heading string) {
 }
 
 templ LangTag(lang string) {
-	<i class={ "devicon-" + strings.ToLower(lang) + "-original colored" }></i>
-	{ lang }
+	<div class="inline-block">
+		if strings.ToLower(lang) == "nextjs" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
+		} else if strings.ToLower(lang) == "bash" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
+		} else if strings.ToLower(lang) == "pandas" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
+		} else {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-original colored" }></i>
+		}
+		{ lang }
+	</div>
 }

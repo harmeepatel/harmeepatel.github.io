@@ -154,42 +154,60 @@ templ education() {
 // technical skills
 templ technicalSkills() {
 	{{
-	techSkillSectionContentClass := "grid items-baseline grid-cols-5 md:grid-cols-6 lg:grid-cols-8 pb-2 md:pb-0.5"
-	techSkillPClass := "col-span-4 md:col-span-5 lg:col-span-7 pl-12 md:pl-4"
+        tdClass := "pl-8"
+        thClass := "text-left"
 	}}
 	@components.Section("tech-skills", "Technical Skills") {
-		@components.SectionContent(techSkillSectionContentClass) {
-			<h4 class="inline-block">Languages</h4>
-			<p class={ techSkillPClass }>
-				for _, lang := range []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} {
-					@components.LangTag(lang)
-					,  
-				}
-			</p>
-		}
-		@components.SectionContent(techSkillSectionContentClass) {
-			<h4 class="inline-block">Database</h4>
-			<p class={ techSkillPClass }>
-				for _, lang := range []string{"MySQL", "SQLite", "PostgreSQL"} {
-					@components.LangTag(lang)
-					,  
-				}
-			</p>
-		}
-		@components.SectionContent(techSkillSectionContentClass) {
-			<h4 class="inline-block">Technologies</h4>
-			<p class={ techSkillPClass }>
-				for _, lang := range []string{"Angular", "Astro", "CSS", "Git", "GithubActions", "HTML5", "JSON", "jQuery", "Keras", "Laravel", "Next.js", "NodeJs", "NumPy", "Pandas", "REST", "React", "Redux", "TailwindCSS", "Tensorflow" } {
-					@components.LangTag(lang),  
-				}
-			</p>
-		}
-	}
+        <table>
+            <tr>
+                <th class={ thClass }>
+                    <h4 class="inline-block">Languages</h4>
+                </th>
+                <td class={ tdClass }>
+                    {{ langs := []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
+                    for i, lang := range langs {
+                        @components.LangTag(lang)
+                        if i < len(langs) - 1 {
+                            ,  
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th class={ thClass }>
+                    <h4 class="inline-block">Database</h4>
+                </th>
+                <td class={ tdClass }>
+                    {{ dbs := []string{"MySQL", "SQLite", "PostgreSQL"} }}
+                    for i, db := range dbs {
+                        @components.LangTag(db)
+                        if i < len(dbs) - 1 {
+                            ,  
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <th class={ thClass }>
+                    <h4 class="inline-block">Technologies</h4>
+                </th>
+                <td class={ tdClass }>
+                    {{ techs := []string{"AngularJs", "Astro", "CSS3", "Git", "GithubActions", "HTML5", "JSON", "jQuery", "Keras", "Laravel", "NextJs", "NodeJs", "NumPy", "Pandas", "React", "Redux", "TailwindCSS", "Tensorflow" } }}
+                    for i, tech := range techs {
+                        @components.LangTag(tech)
+                        if i < len(techs) - 1 {
+                            ,  
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+    }
 	<script type="text/javascript">
         let an = document.getElementsByClassName("colored")
         for (let a of an) {
-            let content = window.getComputedStyle(a, "before").getPropertyValue("content")
-            if (content === 'none') {
+            let logoContent = window.getComputedStyle(a, "before").getPropertyValue("content")
+            if (logoContent === 'none') {
                 a.className = a.className.replace("original", "plain")
             }
         }
