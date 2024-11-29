@@ -154,8 +154,8 @@ templ education() {
 // technical skills
 templ technicalSkills() {
 	{{
-	tdClass := "pl-8"
-	thClass := "text-left"
+	thClass := "text-left align-baseline "
+	tdClass := "pl-8 "
 	}}
 	@components.Section("tech-skills", "Technical Skills") {
 		<table>
@@ -163,7 +163,7 @@ templ technicalSkills() {
 				<th class={ thClass }>
 					<h4 class="inline-block">Languages</h4>
 				</th>
-				<td class={ tdClass }>
+				<td class={ tdClass + "pb-4 md:pb-3" }>
 					{{ langs := []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
 					for i, lang := range langs {
 						@components.LangTag(lang)
@@ -177,7 +177,7 @@ templ technicalSkills() {
 				<th class={ thClass }>
 					<h4 class="inline-block">Database</h4>
 				</th>
-				<td class={ tdClass }>
+				<td class={ tdClass + "pb-4 md:pb-3" }>
 					{{ dbs := []string{"MySQL", "SQLite", "PostgreSQL"} }}
 					for i, db := range dbs {
 						@components.LangTag(db)
