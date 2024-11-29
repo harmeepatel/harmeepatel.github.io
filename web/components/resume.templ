@@ -34,8 +34,10 @@ templ LangTag(lang string) {
 			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
 		} else if strings.ToLower(lang) == "pandas" {
 			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
-		} else {
+		} else if strings.ToLower(lang) == "tensorflow" {
 			<i class={ "devicon-" + strings.ToLower(lang) + "-original colored" }></i>
+		} else {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain colored" }></i>
 		}
 		{ lang }
 	</div>
