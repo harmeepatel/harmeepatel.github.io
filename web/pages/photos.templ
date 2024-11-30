@@ -49,6 +49,7 @@ templ Photos(title string, photos [][]ImgInfo) {
 
 		// <main id="photos-sm" class="h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar">
 		<main id="photos" class="h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block">
+
 			<div id="image-grid" class="hidden md:flex md:flex-wrap md:justify-center">
 				for i := 0; i < 4; i++ {
 					<div class="column px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]">

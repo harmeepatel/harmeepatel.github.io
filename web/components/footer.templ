@@ -1,9 +1,67 @@
 package components;
 
 templ Footer(static string) {
-	<footer id="footer" class="bg-light dark:bg-dark ring-1 ring-white mb-4 lg:mb-8 rounded-xl xl:rounded-2xl">
-        <div class="py-3.5 px-6 md:py-5 md:px-10">
-		<p class="text-6xl">Footer</p>
-        </div>
+	{{
+        iconPath := static + "/media/icons/"
+        iconClass := "w-full sm:h-[16px] xl:h-[24px] opacity-75 hover:opacity-100"
+        infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center"
+	}}
+	<footer
+		id="footer"
+		class="max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/80 ring-black/80 rounded-xl xl:rounded-2xl"
+	>
+		<div class="py-3.5 px-6 md:py-5 md:px-10">
+			<div class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
+				@Link("/", "", infoLinkClass) {
+                    @Icon(IconInfo{
+                        Src: static + "/media/images/hp-black.svg", 
+                        Width: 0, 
+                        Class: iconClass,
+                        Alt: "My initials HP",
+                    })
+				}
+				@Link("tel:+16478321245", "_blank", infoLinkClass) {
+					@Icon(IconInfo{
+						Src:   iconPath + "phone.svg",
+						Width: 12,
+						Class: iconClass,
+						Alt:   "phone icon",
+					})
+				}
+				@Link("https://github.com/harmeepatel", "_blank", infoLinkClass) {
+					@Icon(IconInfo{
+						Src:   iconPath + "github.svg",
+						Width: 12,
+						Class: iconClass,
+						Alt:   "github icon",
+					})
+				}
+				@Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass) {
+					@Icon(IconInfo{
+						Src:   iconPath + "linkedin.svg",
+						Width: 12,
+						Class: iconClass,
+						Alt:   "linkedin icon",
+					})
+				}
+				@Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass) {
+					@Icon(IconInfo{
+						Src:   iconPath + "email.svg",
+						Width: 12,
+						Class: iconClass,
+						Alt:   "email icon",
+					})
+				}
+				@Link("https://www.instagram.com/harmee.png/", "_blank", infoLinkClass) {
+					@Icon(IconInfo{
+						Src:   iconPath + "ig.svg",
+						Width: 12,
+						Class: iconClass,
+						Alt:   "instagram icon",
+					})
+				}
+			</div>
+			<p class="text-center opacity-75">© 2024 Harmee Patel. All rights reserved.</p>
+		</div>
 	</footer>
 }

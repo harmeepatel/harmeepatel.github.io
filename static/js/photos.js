@@ -73,7 +73,7 @@ modal.addEventListener("keydown", (e) => {
 // -- modal --
 // "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar"
 const lgMainClasses = "h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block";
-const smMainClasses = "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar";
+const smMainClasses = "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y no-scrollbar";
 const photos = document.getElementById("photos");
 function mainPhotosClasses() {
     if (window.innerWidth < closeDialogThreshold) {
