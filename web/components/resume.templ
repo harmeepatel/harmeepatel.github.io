@@ -1,0 +1,44 @@
+package components;
+
+import "strings"
+
+// sections
+templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
+	<h4 class={ "flex justify-between items-baseline " + leftClass }>
+		{ left }
+		<span class={ rightClass }>{ right }</span>
+	</h4>
+}
+
+templ SectionContent(divClass string) {
+	<div class={ divClass }>
+		{ children... }
+	</div>
+}
+
+const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
+
+templ Section(id string, heading string) {
+	<section id={ id } class="pb-4 md:pb-6 xl:pb-8">
+		<h3>{ heading }</h3>
+		//@templ.Raw(hr)
+		{ children... }
+	</section>
+}
+
+templ LangTag(lang string) {
+	<div class="inline-block">
+		if strings.ToLower(lang) == "nextjs" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
+		} else if strings.ToLower(lang) == "bash" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
+		} else if strings.ToLower(lang) == "pandas" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
+		} else if strings.ToLower(lang) == "tensorflow" {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-original colored" }></i>
+		} else {
+			<i class={ "devicon-" + strings.ToLower(lang) + "-plain colored" }></i>
+		}
+		{ lang }
+	</div>
+}
