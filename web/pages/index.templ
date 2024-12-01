@@ -63,7 +63,7 @@ templ summary() {
 // contact bar
 templ infoBar() {
 	{{
-	infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center"
+        infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center"
 	}}
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
 		@components.Link("tel:+16478321245", "_blank", infoLinkClass) {
@@ -230,14 +230,14 @@ templ workex() {
 				</li>
 				<li>
 					<b>Redesigned and implemented</b> a new 
-					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "_blank", "") {
+					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "_blank", "text-[0.80rem] md:text-base xl:text-lg italic") {
 						pricing page
 					}
 					, contributing to the website's overall design enhancement strategy.
 				</li>
 				<li>
 					<b>Created and designed</b> a user-friendly 
-					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "_blank", "") {
+					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "_blank", "text-[0.80rem] md:text-base xl:text-lg") {
 						publish event page
 					}
 					{ " for" } hosts, using <b>Figma</b> to design UI/UX, resulting in increased host engagement.
@@ -294,7 +294,7 @@ templ projects() {
 			@components.SectionItemHeader("Dockerized Go Website Template", "pb-0.5 xl:pb-1", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-					@components.Link("https://github.com/harmeepatel/template-go-website", "_blank", "") {
+					@components.Link("https://github.com/harmeepatel/template-go-website", "_blank", "text-[0.80rem] md:text-base xl:text-lg") {
 						https://github.com/harmeepatel/template-go-website
 					}
 				</li>

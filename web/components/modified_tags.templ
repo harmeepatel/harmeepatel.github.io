@@ -18,7 +18,7 @@ templ NavLi(name string, ref string) {
 }
 
 templ Link(ref string, target string, class string) {
-	<a href={ templ.URL(ref) } target={ target } class={"transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic" + class}>
+	<a href={ templ.URL(ref) } target={ target } class={"transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic " + class}>
 		{ children... }
 	</a>
 }
