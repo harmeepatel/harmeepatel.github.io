@@ -12,7 +12,7 @@
     }
 
     h3 {
-        @apply text-lg md:text-2xl xl:text-3xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
+        @apply text-xl md:text-3xl xl:text-4xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
     }
 
     h3::after {
@@ -48,21 +48,6 @@
         @apply indent-[-17px] md:indent-[-21px] pl-[19px]
     }
 
-    #blog>:not(pre):not(.blog-li) {
-        @apply max-w-screen-md m-auto
-    }
-
-    #blog>ul {
-        @apply list-disc list-inside
-    }
-
-    #blog>h2 {
-        @apply font-serif font-light tracking-wide leading-tight
-    }
-
-    #blog>pre {
-        @apply mt-5
-    }
 }
 
 @layer utilities {
@@ -80,6 +65,31 @@
     }
 }
 
+
+/* #blog>:not(pre):not(.blog-li) { */
+#blog>* {
+    @apply max-w-screen-sm mx-auto
+}
+
+#blog>ul {
+    @apply list-disc list-inside
+}
+
+#blog>h3 {
+    @apply font-serif font-light tracking-wide leading-tight text-left
+}
+
+#blog>pre {
+    @apply mt-1
+}
+
+#blog>pre>code, #blog>pre>code * {
+    @apply font-[100] tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base
+}
+
+#blog>p {
+    @apply mb-4 tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base
+}
 
 @media print {
     body {

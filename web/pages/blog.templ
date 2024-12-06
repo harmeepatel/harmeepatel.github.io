@@ -22,7 +22,7 @@ func getUploadDate(blogPath string) string {
 // "harmeepatel.dev/web/components"
 templ Blog(title string, blogList iter.Seq[string]) {
 	@layouts.Base(title) {
-		<main id="blog" class=" h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6">
+		<main id="blog-list" class=" max-w-screen-lg m-auto h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6">
 			for i,bName:= range slices.Collect(blogList) {
 				{{ wrapper := "blog-li mb-8" }}
                 if i == 0 {
