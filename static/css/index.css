@@ -84,11 +84,11 @@
 }
 
 #blog>pre>code, #blog>pre>code * {
-    @apply font-serif font-[100] tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base leading-snug
+    @apply font-[100] tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base leading-snug
 }
 
 #blog>p {
-    @apply font-serif mb-4 tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base leading-snug
+    @apply font-serif font-light mb-4 tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base leading-snug
 }
 
 @media print {

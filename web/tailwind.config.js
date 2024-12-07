@@ -13,6 +13,9 @@ module.exports = {
             fontSize: {
                 '2xs': ['0.435rem', { lineHeight: '0.70rem' }],
             },
+            fontFamily: {
+                'serif': ['Trirong', 'ui-serif', 'Georgia']
+            },
             colors: {
                 "accent-p": "#FF5F1F",
                 "dark": "#111",
