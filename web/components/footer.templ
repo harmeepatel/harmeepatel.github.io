@@ -3,15 +3,15 @@ package components;
 templ Footer(static string) {
 	{{
         iconPath := static + "/media/icons/"
-        iconClass := "w-full h-[16px] xl:h-[24px] opacity-80 hover:opacity-100"
-        infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center"
+        iconClass := "w-full h-[12px] md:h-[16px] opacity-80 hover:opacity-100"
+        infoLinkClass := "!text-black dark:!text-white flex items-center"
 	}}
 	<footer
 		id="footer"
 		class="max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/80 ring-black/80 rounded-xl xl:rounded-2xl"
 	>
 		<div class="py-3.5 px-6 md:py-5 md:px-10">
-			<div class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
+			<div class="flex justify-center items-center gap-3 md:gap-6 pb-3 sm:pb-6">
 				@Link("/", "", infoLinkClass) {
                     @Icon(IconInfo{
                         Src: static + "/media/images/hp-black.svg", 
@@ -23,7 +23,7 @@ templ Footer(static string) {
 				@Link("tel:+16478321245", "_blank", infoLinkClass) {
 					@Icon(IconInfo{
 						Src:   iconPath + "phone.svg",
-						Width: 12,
+						Width: 0,
 						Class: iconClass,
 						Alt:   "phone icon",
 					})
@@ -31,7 +31,7 @@ templ Footer(static string) {
 				@Link("https://github.com/harmeepatel", "_blank", infoLinkClass) {
 					@Icon(IconInfo{
 						Src:   iconPath + "github.svg",
-						Width: 12,
+						Width: 0,
 						Class: iconClass,
 						Alt:   "github icon",
 					})
@@ -39,7 +39,7 @@ templ Footer(static string) {
 				@Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass) {
 					@Icon(IconInfo{
 						Src:   iconPath + "linkedin.svg",
-						Width: 12,
+						Width: 0,
 						Class: iconClass,
 						Alt:   "linkedin icon",
 					})
@@ -47,7 +47,7 @@ templ Footer(static string) {
 				@Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass) {
 					@Icon(IconInfo{
 						Src:   iconPath + "email.svg",
-						Width: 12,
+						Width: 0,
 						Class: iconClass,
 						Alt:   "email icon",
 					})
@@ -55,7 +55,7 @@ templ Footer(static string) {
 				@Link("https://www.instagram.com/harmee.png/", "_blank", infoLinkClass) {
 					@Icon(IconInfo{
 						Src:   iconPath + "ig.svg",
-						Width: 12,
+						Width: 0,
 						Class: iconClass,
 						Alt:   "instagram icon",
 					})
