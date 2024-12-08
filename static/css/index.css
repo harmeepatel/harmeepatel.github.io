@@ -32,7 +32,7 @@
         @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
-    p, ul, li, code {
+    p, ul, li, code, tbody {
         @apply font-[300] tracking-wide text-[0.80rem] md:text-base xl:text-lg
     }
 
