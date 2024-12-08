@@ -7,7 +7,7 @@ import (
 
 const (
 	iconPath  = "./static/media/icons/"
-	iconClass = "sm:w-[16px] xl:w-[24px]"
+	iconClass = "w-[12px] sm:w-[14px] xl:w-[18px]"
 )
 
 templ Index(title string) {
@@ -168,7 +168,7 @@ templ technicalSkills() {
 					for i, lang := range langs {
 						@components.LangTag(lang)
 						if i < len(langs) - 1 {
-							,  
+                            ,
 						}
 					}
 				</td>
@@ -182,7 +182,7 @@ templ technicalSkills() {
 					for i, db := range dbs {
 						@components.LangTag(db)
 						if i < len(dbs) - 1 {
-							,  
+                            ,
 						}
 					}
 				</td>
@@ -196,7 +196,7 @@ templ technicalSkills() {
 					for i, tech := range techs {
 						@components.LangTag(tech)
 						if i < len(techs) - 1 {
-							,  
+                            ,
 						}
 					}
 				</td>
