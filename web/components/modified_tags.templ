@@ -24,7 +24,7 @@ templ Link(ref string, target string, class string) {
 }
 
 templ BlogLink(ref string, target string, class string) {
-	<a href={ templ.URL(ref) } target={ target } class={"block transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-extrabold tracking-wide italic text-lg xs:text-xl md:text-2xl xl:text-3xl " + class}>
+	<a href={ templ.URL(ref) } target={ target } class={"block transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wider !leading-relaxed italic text-pretty text-sm xs:text-base md:text-lg xl:text-xl " + class}>
 		{ children... }
 	</a>
 }

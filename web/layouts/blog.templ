@@ -30,7 +30,7 @@ templ BlogBase(title string) {
 				</h1>
 				{ children... }
 			</main>
-			@components.Footer(static)
+			@components.Footer(static, "")
 		</body>
 		<script src={ static + "/js/main.js" }></script>
 		{{ const highlight = static + "/js/highlight.min.js" }}

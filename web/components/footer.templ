@@ -1,24 +1,24 @@
 package components;
 
-templ Footer(static string) {
+templ Footer(static string, class string) {
 	{{
-        iconPath := static + "/media/icons/"
-        iconClass := "w-[12px] md:w-[16px] opacity-80 hover:opacity-100"
-        infoLinkClass := "!text-black dark:!text-white flex items-center"
+	iconPath := static + "/media/icons/"
+	iconClass := "w-[12px] md:w-[16px] opacity-60 hover:opacity-100"
+	infoLinkClass := "!text-black dark:!text-white flex items-center"
 	}}
 	<footer
 		id="footer"
-		class="max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/80 ring-black/80 rounded-xl xl:rounded-2xl"
+		class={ "max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/60 ring-black/60 rounded-xl xl:rounded-2xl " + class }
 	>
 		<div class="py-3.5 px-6 md:py-5 md:px-10">
 			<div class="flex justify-center items-center gap-3 md:gap-6 pb-3 sm:pb-6">
 				@Link("/", "", infoLinkClass) {
-                    @Icon(IconInfo{
-                        Src: static + "/media/images/hp-black.svg", 
-                        Width: 0, 
-                        Class: "w-[14px] md:w-[20px] opacity-80 hover:opacity-100",
-                        Alt: "My initials HP",
-                    })
+					@Icon(IconInfo{
+						Src:   static + "/media/images/hp-black.svg",
+						Width: 0,
+						Class: "w-[14px] md:w-[20px] opacity-60 hover:opacity-100",
+						Alt:   "My initials HP",
+					})
 				}
 				@Link("tel:+16478321245", "_blank", infoLinkClass) {
 					@Icon(IconInfo{
@@ -61,7 +61,7 @@ templ Footer(static string) {
 					})
 				}
 			</div>
-			<p class="text-center opacity-80">© 2024 Harmee Patel. All rights reserved.</p>
+			<p class="text-center opacity-60">© 2024 Harmee Patel. All rights reserved.</p>
 		</div>
 	</footer>
 }

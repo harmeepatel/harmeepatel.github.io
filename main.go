@@ -37,7 +37,6 @@ func init() {
 	generateFile(pages.Index("HarmeePatel"), "index.html")
 	generateFile(pages.Blog("Blog", maps.Keys(blogList)), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
-	generateFile(pages.Photos("Photos", getImages()), "photos.html")
 
 	for bName, bFunc := range blogList {
 		switch bName {

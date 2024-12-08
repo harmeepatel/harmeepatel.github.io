@@ -2,6 +2,7 @@ package pages;
 
 import (
 	"harmeepatel.dev/web/layouts"
+	"harmeepatel.dev/web/components"
 	"strconv"
 	"strings"
 )
@@ -10,22 +11,21 @@ import (
 
 func generateAlt(s string) string {
 	before, _ := strings.CutSuffix(s, ".webp")
-    frag := strings.Split(before, "/")
-	return frag[ len(frag) - 1 ]
+	frag := strings.Split(before, "/")
+	return frag[len(frag)-1]
 }
 
 func addAspectRatio(image ImgInfo, class string) string {
-    if image.IsWide() {
-        return class + " aspect-[5/4]"
-    } else {
-        return class + " aspect-[4/5]"
-    }
+	if image.IsWide() {
+		return class + " aspect-[5/4]"
+	} else {
+		return class + " aspect-[4/5]"
+	}
 }
 
 func (img ImgInfo) IsWide() bool {
-    return img.Width > img.Height
+	return img.Width > img.Height
 }
-
 
 type ImgInfo struct {
 	Name   string
@@ -35,7 +35,8 @@ type ImgInfo struct {
 
 // "harmeepatel.dev/web/components"
 templ Photos(title string, photos [][]ImgInfo) {
-    {{ smImgs := photos[0]; lgImgs := photos[1]  }}
+	{{ smImgs := photos[0]
+lgImgs := photos[1] }}
 	@layouts.PhotoBase(title) {
 		<dialog id="image_modal" class="h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
 			<form method="dialog">
@@ -43,67 +44,128 @@ templ Photos(title string, photos [][]ImgInfo) {
 			</form>
 			<div class="h-full flex flex-col items-center justify-evenly">
 				<img id="modal_image" class="max-w-[min(83.6%,100vw)] max-h-[-webkit-fill-available] mx-8 self-center border-8 border-white duration-300" data-loading-class="bg-gray-100 opacity-80" src=""/>
-                <p class="text-white">Use ← / → arrow keys </p>
+				<p class="text-white">Use ← / → arrow keys </p>
 			</div>
 		</dialog>
-
 		// <main id="photos-sm" class="h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar">
 		<main id="photos" class="h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block">
-
 			<div id="image-grid" class="hidden md:flex md:flex-wrap md:justify-center">
 				for i := 0; i < 4; i++ {
 					<div class="column px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]">
 						for j := i; j < len(smImgs) ; j+=4 {
-                            {{ img := smImgs[j] }}
+							{{ img := smImgs[j] }}
 							<img
 								id={ strconv.Itoa(j) }
 								src={ img.Name }
-                                if j == 0 || j == 1 || j == 2 || j == 3 {
-                                    class={ addAspectRatio(img, "row align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
-                                } else {
-                                    class={ addAspectRatio(img, "row mt-[8px] align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
-                                }
+								if j == 0 || j == 1 || j == 2 || j == 3 {
+									class={ addAspectRatio(img, "row align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
+								} else {
+									class={ addAspectRatio(img, "row mt-[8px] align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
+								}
 								onclick="openImageModal(this)"
-                                if img.IsWide() {
-                                    width="500"
-                                    height="400"
-                                } else {
-                                    width="400"
-                                    height="500"
-                                }
-                                alt={ strings.Replace(generateAlt(img.Name), "-", " ", -1) }
+								if img.IsWide() {
+									width="500"
+									height="400"
+								} else {
+									width="400"
+									height="500"
+								}
+								alt={ strings.Replace(generateAlt(img.Name), "-", " ", -1) }
 							/>
 						}
 					</div>
 				}
 			</div>
-
-            {{imgClass := "m-auto w-full xs:w-4/5 lg:w-full align-center rounded-xl ring-2 ring-black dark:ring-white"}}
-            <div id="image-grid-mobile" class="md:hidden">
-                for i, img := range(lgImgs){
-                    <div class="img-wraper mx-4 my-[5.5rem] snap-center snap-normal">
-                        <img
-                            id={ strconv.Itoa(i) }
-                            src={ img.Name }
-                            if i == 0 {
-                                class={ "mt-[8.5rem] " + imgClass }
-                            } else {
-                                class={ imgClass }
-                            }
-                            if img.IsWide() {
-                                width="500"
-                                height="400"
-                            } else {
-                                width="400"
-                                height="500"
-                            }
-                            onclick="openImageModal(this)"
-                            alt={ strings.Replace(generateAlt(smImgs[i].Name), "-", " ", -1) }
-                            loading="lazy"
-                        />
-                    </div>
-                }
-            </div>
+			{{ imgClass := "m-auto w-full xs:w-4/5 lg:w-full align-center rounded-xl ring-2 ring-black dark:ring-white" }}
+			<div id="image-grid-mobile" class="md:hidden">
+				for i, img := range(lgImgs) {
+					<div class="img-wraper mx-4 my-[5.5rem] snap-center snap-normal">
+						<img
+							id={ strconv.Itoa(i) }
+							src={ img.Name }
+							if i == 0 {
+								class={ "mt-[8.5rem] " + imgClass }
+							} else {
+								class={ imgClass }
+							}
+							if img.IsWide() {
+								width="500"
+								height="400"
+							} else {
+								width="400"
+								height="500"
+							}
+							onclick="openImageModal(this)"
+							alt={ strings.Replace(generateAlt(smImgs[i].Name), "-", " ", -1) }
+							loading="lazy"
+						/>
+					</div>
+				}
+			</div>
+			{{
+                static := "./static"
+	iconPath := static + "/media/icons/"
+	iconClass := "w-[12px] md:w-[16px] opacity-60 hover:opacity-100"
+	infoLinkClass := "!text-black dark:!text-white flex items-center"
+			}}
+			<footer
+				id="footer"
+				class="max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/60 ring-black/60 rounded-xl xl:rounded-2xl"
+			>
+				<div class="py-3.5 px-6 md:py-5 md:px-10">
+					<div class="flex justify-center items-center gap-3 md:gap-6 pb-3 sm:pb-6">
+						@components.Link("/", "", infoLinkClass) {
+							@components.Icon(components.IconInfo{
+								Src:   static + "/media/images/hp-black.svg",
+								Width: 0,
+								Class: "w-[14px] md:w-[20px] opacity-60 hover:opacity-100",
+								Alt:   "My initials HP",
+							})
+						}
+						@components.Link("tel:+16478321245", "_blank", infoLinkClass) {
+							@components.Icon(components.IconInfo{
+								Src:   iconPath + "phone.svg",
+								Width: 0,
+								Class: iconClass,
+								Alt:   "phone icon",
+							})
+						}
+						@components.Link("https://github.com/harmeepatel", "_blank", infoLinkClass) {
+							@components.Icon(components.IconInfo{
+								Src:   iconPath + "github.svg",
+								Width: 0,
+								Class: iconClass,
+								Alt:   "github icon",
+							})
+						}
+						@components.Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass) {
+							@components.Icon(components.IconInfo{
+								Src:   iconPath + "linkedin.svg",
+								Width: 0,
+								Class: iconClass,
+								Alt:   "linkedin icon",
+							})
+						}
+						@components.Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass) {
+							@components.Icon(components.IconInfo{
+								Src:   iconPath + "email.svg",
+								Width: 0,
+								Class: iconClass,
+								Alt:   "email icon",
+							})
+						}
+						@components.Link("https://www.instagram.com/harmee.png/", "_blank", infoLinkClass) {
+							@components.Icon(components.IconInfo{
+								Src:   iconPath + "ig.svg",
+								Width: 0,
+								Class: iconClass,
+								Alt:   "instagram icon",
+							})
+						}
+					</div>
+					<p class="text-center opacity-60">© 2024 Harmee Patel. All rights reserved.</p>
+				</div>
+			</footer>
 		</main>
 	}
 }

@@ -18,7 +18,7 @@ templ PhotoBase(title string) {
 		<body class="max-w-screen-3xl m-auto text-black bg-light dark:bg-dark dark:text-white">
 			@components.Nav(static)
 			{ children... }
-			@components.Footer(static)
+			@components.Footer(static, "gaayab")
 		</body>
 		<script src={ static + "/js/main.js" }></script>
 		<script src={ static + "/js/photos.js" }></script>
