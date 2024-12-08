@@ -63,11 +63,15 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+
+    .gaayab {
+        @apply hidden
+    }
 }
 
 
 /* #blog>:not(pre):not(.blog-li) { */
-#blog>* {
+#blog * {
     @apply max-w-screen-sm mx-auto
 }
 
