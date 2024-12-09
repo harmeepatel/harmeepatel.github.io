@@ -2,6 +2,7 @@ package pages;
 
 import (
 	"harmeepatel.dev/web/components"
+	"harmeepatel.dev/web/icons"
 	"harmeepatel.dev/web/layouts"
 )
 
@@ -25,14 +26,10 @@ templ Index(title string) {
 				<button
 					type="submit"
 					id="download-resume-btn"
-					class={ "transition-all duration-[150ms] fixed z-[100] bottom-0 right-0 m-6 md:m-10 xl:m-16 w-12 h-12 md:w-16 md:h-16 xl:w-[4.5rem] xl:h-[4.5rem] flex items-center justify-center rounded-full bg-white/50 dark:bg-black/40 backdrop-blur-[3px] shadow-lg md:shadow-md ring-1 ring-accent-p md:ring-0 shadow-black/60 dark:shadow-white/20 md:hover:ring-2 md:hover:scale-110 md:hover:shadow-xl" }
+					class={ "transition-all duration-[150ms] fixed z-[100] bottom-0 right-0 m-6 md:m-10 xl:m-16 w-12 md:w-16 aspect-square flex items-center justify-center rounded-full bg-white/50 dark:bg-black/40 backdrop-blur-[3px] shadow-md ring-1 ring-accent-p md:ring-0 shadow-black/40 dark:shadow-white/30 hover:shadow-accent-p md:hover:ring-2 md:hover:scale-110 md:hover:shadow-xl" }
+                    aria-label="download resume button"
 				>
-					@components.Icon(components.IconInfo{
-						Src:   iconPath + "arrow-down-tray.svg",
-						Width: 14,
-						Class: iconClass,
-						Alt:   "download resume",
-					})
+                @icons.ArrowDownTray(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Download button for my resume."})
 				</button>
 			</a>
 		</main>
@@ -66,43 +63,23 @@ templ infoBar() {
         infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center"
 	}}
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
-		@components.Link("tel:+16478321245", "_blank", infoLinkClass) {
-			@components.Icon(components.IconInfo{
-				Src:   iconPath + "phone.svg",
-				Width: 12,
-				Class: iconClass,
-				Alt:   "phone icon",
-			})
+		@components.Link("tel:+16478321245", "_blank", infoLinkClass, "phone") {
+            @icons.Phone(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Phone icon"})
 			+1&hairsp;(647)&hairsp;832&hairsp;-&hairsp;1245
 		}
 		<span class="vertical-seperator"></span>
-		@components.Link("https://github.com/harmeepatel", "_blank", infoLinkClass) {
-			@components.Icon(components.IconInfo{
-				Src:   iconPath + "github.svg",
-				Width: 12,
-				Class: iconClass,
-				Alt:   "github icon",
-			})
+		@components.Link("https://github.com/harmeepatel", "_blank", infoLinkClass, "github") {
+            @icons.Github(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Github icon"})
 			Github
 		}
 		<span class="vertical-seperator"></span>
-		@components.Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass) {
-			@components.Icon(components.IconInfo{
-				Src:   iconPath + "linkedin.svg",
-				Width: 12,
-				Class: iconClass,
-				Alt:   "linkedin icon",
-			})
+		@components.Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass, "linkedin") {
+            @icons.Linkedin(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Linkedin icon"})
 			Linkedin
 		}
 		<span class="vertical-seperator"></span>
-		@components.Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass) {
-			@components.Icon(components.IconInfo{
-				Src:   iconPath + "email.svg",
-				Width: 12,
-				Class: iconClass,
-				Alt:   "email icon",
-			})
+		@components.Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass, "email") {
+            @icons.Email(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Email icon"})
 			harmeeworks@gmail.com
 		}
 	</section>
@@ -161,7 +138,7 @@ templ technicalSkills() {
 		<table>
 			<tr>
 				<th class={ thClass }>
-					<h4 class="inline-block">Languages</h4>
+					<h3 class="inline-block">Languages</h3>
 				</th>
 				<td class={ tdClass + "pb-4 md:pb-3" }>
 					{{ langs := []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
@@ -175,7 +152,7 @@ templ technicalSkills() {
 			</tr>
 			<tr>
 				<th class={ thClass }>
-					<h4 class="inline-block">Database</h4>
+					<h3 class="inline-block">Database</h3>
 				</th>
 				<td class={ tdClass + "pb-4 md:pb-3" }>
 					{{ dbs := []string{"MySQL", "SQLite", "PostgreSQL"} }}
@@ -189,7 +166,7 @@ templ technicalSkills() {
 			</tr>
 			<tr>
 				<th class={ thClass }>
-					<h4 class="inline-block">Technologies</h4>
+					<h3 class="inline-block">Technologies</h3>
 				</th>
 				<td class={ tdClass }>
 					{{ techs := []string{"AngularJs", "Astro", "CSS3", "Git", "GithubActions", "HTML5", "JSON", "jQuery", "Keras", "Laravel", "NextJs", "NodeJs", "NumPy", "Pandas", "React", "Redux", "TailwindCSS", "Tensorflow"} }}
@@ -230,14 +207,14 @@ templ workex() {
 				</li>
 				<li>
 					<b>Redesigned and implemented</b> a new 
-					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "_blank", "text-[0.80rem] md:text-base xl:text-lg italic") {
+					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "_blank", "text-[0.80rem] md:text-base xl:text-lg italic", "pricingPageOfAllEvents") {
 						pricing page
 					}
 					, contributing to the website's overall design enhancement strategy.
 				</li>
 				<li>
 					<b>Created and designed</b> a user-friendly 
-					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "_blank", "text-[0.80rem] md:text-base xl:text-lg") {
+					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "_blank", "text-[0.80rem] md:text-base xl:text-lg", "publishEventPageOfAllEvents") {
 						publish event page
 					}
 					{ " for" } hosts, using <b>Figma</b> to design UI/UX, resulting in increased host engagement.
@@ -294,7 +271,7 @@ templ projects() {
 			@components.SectionItemHeader("Dockerized Go Website Template", "pb-0.5 xl:pb-1", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-					@components.Link("https://github.com/harmeepatel/template-go-website", "_blank", "text-[0.80rem] md:text-base xl:text-lg") {
+					@components.Link("https://github.com/harmeepatel/template-go-website", "_blank", "text-[0.80rem] md:text-base xl:text-lg", "goTemplateWebsite") {
 						https://github.com/harmeepatel/template-go-website
 					}
 				</li>

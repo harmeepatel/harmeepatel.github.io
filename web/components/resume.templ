@@ -4,10 +4,10 @@ import "strings"
 
 // sections
 templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
-	<h4 class={ "flex justify-between items-baseline " + leftClass }>
+	<h3 class={ "flex justify-between items-baseline " + leftClass }>
 		{ left }
 		<span class={ rightClass }>{ right }</span>
-	</h4>
+	</h3>
 }
 
 templ SectionContent(divClass string) {
@@ -20,7 +20,7 @@ const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
 
 templ Section(id string, heading string) {
 	<section id={ id } class="pb-4 md:pb-6 xl:pb-8">
-		<h3>{ heading }</h3>
+		<h2>{ heading }</h2>
 		//@templ.Raw(hr)
 		{ children... }
 	</section>

@@ -17,14 +17,19 @@ templ NavLi(name string, ref string) {
 	</li>
 }
 
-templ Link(ref string, target string, class string) {
-	<a href={ templ.URL(ref) } target={ target } class={"transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic " + class}>
+templ Link(ref string, target string, class string, ariaLable string) {
+	<a 
+        href={ templ.URL(ref) } 
+        target={ target } 
+        class={"transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic " + class}
+        aria-label={ ariaLable }
+    >
 		{ children... }
 	</a>
 }
 
 templ BlogLink(ref string, target string, class string) {
-	<a href={ templ.URL(ref) } target={ target } class={"block transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wider !leading-relaxed italic text-pretty text-sm xs:text-base md:text-lg xl:text-xl " + class}>
+	<a href={ templ.URL(ref) } target={ target } class={"block transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug !md:leading-relaxed italic text-pretty text-sm xs:text-base md:text-lg xl:text-xl " + class}>
 		{ children... }
 	</a>
 }
