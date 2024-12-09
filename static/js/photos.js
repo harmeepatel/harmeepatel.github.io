@@ -70,8 +70,38 @@ modal.addEventListener("keydown", (e) => {
         modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
-// -- modal --
-// "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar"
+// -- touch modal --
+const MOVE_THRESHOLD = 50;
+let initialX = 0;
+let moveX = 0;
+let isDeleteButtonOpen = false;
+modal.addEventListener("touchstart", e => {
+    initialX = e.touches[0].pageX;
+});
+modal.addEventListener("touchmove", e => {
+    let currentX = e.touches[0].pageX;
+    moveX = currentX - initialX;
+});
+modal.addEventListener("touchend", () => {
+    imgArr.forEach((elem) => {
+        let img = elem;
+        if (img.src === stripUpscaleSuffix(modalImg.src)) {
+            currImgId = parseInt(img.id);
+        }
+    });
+    if (Math.abs(moveX) > MOVE_THRESHOLD && modal.open) {
+        if (moveX < 0) { // right
+            prevImg = imgArr[currImgId + 1];
+        }
+        else { // left
+            prevImg = imgArr[currImgId - 1];
+        }
+    }
+    console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
+    if (prevImg != undefined) {
+        modalImg.src = addUpscaleSuffix(prevImg.src);
+    }
+});
 const lgMainClasses = "h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block";
 const smMainClasses = "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y no-scrollbar";
 const photos = document.getElementById("photos");
