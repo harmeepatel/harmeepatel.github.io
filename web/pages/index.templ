@@ -144,9 +144,9 @@ templ technicalSkills() {
 					{{ langs := []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
 					for i, lang := range langs {
 						@components.LangTag(lang)
-						if i < len(langs) - 1 {
+						if i < len(langs) - 1 { 
                             ,
-						}
+                        }
 					}
 				</td>
 			</tr>
