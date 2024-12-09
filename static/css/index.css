@@ -28,8 +28,12 @@
         @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold
     }
 
-    span, time {
+    span {
         @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
+    }
+
+    time {
+        @apply text-[0.55rem] md:text-xs xl:text-sm font-normal text-[#747474] dark:text-[#c5c5c5]
     }
 
     p, ul, li, code, tbody {

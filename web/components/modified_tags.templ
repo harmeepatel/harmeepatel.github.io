@@ -28,8 +28,13 @@ templ Link(ref string, target string, class string, ariaLable string) {
 	</a>
 }
 
-templ BlogLink(ref string, target string, class string) {
-	<a href={ templ.URL(ref) } target={ target } class={"block transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug !md:leading-relaxed italic text-pretty text-sm xs:text-base md:text-lg xl:text-xl " + class}>
+templ BlogLink(ref string, target string, class string, ariaLable string) {
+	<a 
+        href={ templ.URL(ref) } 
+        target={ target } 
+        class={"block transition-all duration-75 underline underline-offset-2 decoration-[12%] md:hover:decoration-wavy md:hover:underline-offset-[6px] md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-sm xs:text-base md:text-lg xl:text-xl " + class}
+        aria-label={ ariaLable }
+    >
 		{ children... }
 	</a>
 }

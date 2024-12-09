@@ -30,7 +30,7 @@ templ Blog(title string, blogList iter.Seq[string]) {
                 }
 				<div class={ wrapper }>
 					<time>{ getUploadDate("./main.go") }</time>
-					@components.BlogLink("blog/"+bName+".html", "", "") {
+					@components.BlogLink("blog/"+bName+".html", "", "", components.FixTitle(bName)) {
 						{ components.FixTitle(bName) }
 					}
 				</div>
