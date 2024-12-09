@@ -29,8 +29,8 @@ func generateFile(template templ.Component, path string) {
 }
 
 var blogList = map[string]interface{}{
-	"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test":   blogs.Blog1,
-	"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test_2": blogs.Blog2,
+	"small_title":   blogs.Blog1,
+	"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test": blogs.Blog2,
 }
 
 func init() {

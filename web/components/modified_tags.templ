@@ -32,7 +32,7 @@ templ BlogLink(ref string, target string, class string, ariaLable string) {
 	<a 
         href={ templ.URL(ref) } 
         target={ target } 
-        class={"block transition-all duration-75 underline underline-offset-2 decoration-[12%] md:hover:decoration-wavy md:hover:underline-offset-[6px] md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-sm xs:text-base md:text-lg xl:text-xl " + class}
+        class={"block transition-all duration-75 underline underline-offset-2 decoration-[12%] md:hover:decoration-wavy md:hover:underline-offset-[6px] md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-base xs:text-lg md:text-xl xl:text-2xl " + class}
         aria-label={ ariaLable }
     >
 		{ children... }
