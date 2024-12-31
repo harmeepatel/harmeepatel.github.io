@@ -1,6 +1,9 @@
 package components;
 
-import "strings"
+import (
+"strings"
+"strconv"
+)
 
 // sections
 templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
@@ -18,8 +21,13 @@ templ SectionContent(divClass string) {
 
 const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
 
+var ao = 0;
+css animOrder(o int) {
+    --anim-order: {strconv.Itoa(o)};
+}
 templ Section(id string, heading string) {
-	<section id={ id } class="pb-4 md:pb-6 xl:pb-8">
+    {{ ao++ }}
+	<section id={ id } class={"pb-4 md:pb-6 xl:pb-8", animOrder(ao)}>
 		<h2>{ heading }</h2>
 		//@templ.Raw(hr)
 		{ children... }

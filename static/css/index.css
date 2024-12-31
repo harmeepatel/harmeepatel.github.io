@@ -128,3 +128,24 @@
         display: none !important;
     }
 }
+
+
+@keyframes bottomup {
+    0% {
+        transform: translateY(20%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+section {
+    animation-name: bottomup;
+    animation-duration: 400ms;
+    animation-delay: calc(var(--anim-order) * 150ms);
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
