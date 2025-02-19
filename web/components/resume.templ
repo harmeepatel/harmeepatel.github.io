@@ -28,7 +28,7 @@ css animOrder(o int) {
 templ Section(id string, heading string) {
     {{ ao++ }}
 	<section id={ id } class={"pb-4 md:pb-6 xl:pb-8", animOrder(ao)}>
-		<h2>{ heading }</h2>
+		<h2 class="uh">{ heading }</h2>
 		//@templ.Raw(hr)
 		{ children... }
 	</section>

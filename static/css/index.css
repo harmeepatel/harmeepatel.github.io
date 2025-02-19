@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+    * {
+        line-height: normal;
+    }
+
     b {
         @apply font-semibold text-black dark:text-white
     }
@@ -15,7 +19,7 @@
         @apply text-xl md:text-3xl xl:text-4xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
     }
 
-    h2::after {
+    h2.uh::after {
         content: "";
         display: inline-block;
         height: 0.5rem;
@@ -80,7 +84,7 @@
 }
 
 #blog>ul * {
-    @apply font-serif list-disc list-inside text-[0.84rem] md:text-[0.96rem] xl:text-base
+    @apply font-serif list-disc list-inside text-base md:text-lg xl:text-xl
 }
 
 #blog>h1 {
@@ -88,15 +92,15 @@
 }
 
 #blog>pre {
-    @apply mt-1
+    @apply mt-3
 }
 
-#blog>pre>code, #blog>pre>code * {
-    @apply font-[100] tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base leading-snug
+#blog>#block-code>code, #blog>#block-code>code * {
+    @apply font-[100] tracking-wide text-sm md:text-base xl:text-lg !leading-tight
 }
 
 #blog>p {
-    @apply font-serif font-light mb-4 tracking-wide text-[0.84rem] md:text-[0.96rem] xl:text-base leading-snug
+    @apply font-serif font-light mb-4 tracking-wide text-base md:text-lg xl:text-xl leading-snug
 }
 
 @media print {

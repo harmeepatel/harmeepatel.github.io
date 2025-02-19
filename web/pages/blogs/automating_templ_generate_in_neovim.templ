@@ -1,0 +1,77 @@
+package blogs;
+
+import (
+	"harmeepatel.dev/web/components"
+	"harmeepatel.dev/web/layouts"
+)
+
+templ AutomatingTemplGenerateInNeovim(title string) {
+	@layouts.BlogBase(title) {
+		<p>
+			If you're using 
+			@components.Link("https://templ.guide/", "_blank", "", "templ website")
+			@templ.Raw("for ")
+			your Go web application, you might have noticed that every time you modify a 
+			@components.InlineCode(".templ")
+			file, you need to run 
+			@components.InlineCode("templ generate")
+			before running 
+			@components.InlineCode("make dev")
+			. This ensures that your generated Go files reflect the latest changes in your templates.
+		</p>
+		<p>
+			Manually running 
+			@components.InlineCode("templ generate")
+			each time can be tedious, especially if you're iterating quickly. Fortunately, if you're using Neovim, you can automate this process with an autocommand that triggers 
+			@components.InlineCode("templ generate")
+			every time you save a 
+			@components.InlineCode(".templ")
+			file.
+		</p>
+		<h2>
+			Autocommand setup for templ
+		</h2>
+		<p>
+			To automatically run 
+			@components.InlineCode("templ generate")
+			after saving a 
+			@components.InlineCode(".templ")
+			file, add the following autocommand to your Neovim configuration (e.g., in 
+			@components.InlineCode("init.lua")
+			or a Lua configuration file):
+		</p>
+		{{
+	src := []byte(`// GCD
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    desc = 'Running templ generate on save',
+    group = <your-group>, -- Replace with your autocommand group or remove if unnecessary
+    pattern = { '*.templ' },
+    callback = function()
+        vim.cmd(':silent !templ generate')
+    end
+})`)
+		}}
+		@components.Code("language-lua", string(src))
+		<ul>
+			<li>
+				@components.InlineCode("BufWritePost")
+				: Triggers the command after the file is written.
+			</li>
+			<li>
+				@components.InlineCode("pattern = { '*.templ' }")
+				: Ensures this only runs for `.templ` files.
+			</li>
+			<li>
+				@components.InlineCode("vim.cmd(':silent !templ generate')")
+				: Runs the `templ generate` command silently to avoid disrupting your workflow.
+			</li>
+		</ul>
+        <br>
+		<p>If you prefer to keep your autocommands organized, you can create an autocommand group like this:</p>
+		{{
+	src = []byte(`// GCD
+local templ_group = vim.api.nvim_create_augroup('TemplAutoGen', { clear = true })`)
+		}}
+		@components.Code("language-lua", string(src))
+	}
+}

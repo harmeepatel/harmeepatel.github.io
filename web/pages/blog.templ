@@ -25,9 +25,9 @@ templ Blog(title string, blogList iter.Seq[string]) {
 		<main id="blog-list" class=" max-w-screen-sm h-vh mx-6 sm:mx-12 md:m-auto mt-4 sm:mt-6">
 			for i,bName:= range slices.Collect(blogList) {
 				{{ wrapper := "blog-li mb-8" }}
-                if i == 0 {
-                    {{ wrapper += " mt-8" }}
-                }
+				if i == 0 {
+					{{ wrapper += " mt-8" }}
+				}
 				<div class={ wrapper }>
 					<time>{ getUploadDate("./main.go") }</time>
 					@components.BlogLink("blog/"+bName+".html", "", "", components.FixTitle(bName)) {
