@@ -30,7 +30,6 @@ func generateFile(template templ.Component, path string) {
 
 var blogList = map[string]interface{}{
     "automating_templ_generate_in_neovim": blogs.AutomatingTemplGenerateInNeovim,
-	"test_blog_with_a_long_and_sensible_title_and_extending_it_to_test": blogs.Blog2,
 }
 
 func init() {

@@ -43,7 +43,7 @@ templ BlogLink(ref string, target string, class string, ariaLable string) {
 templ Code(lang string, code string) {
 	@templ.Raw(`
         <pre id="block-code">
-            <code class="` + lang + ` !pb-0 lg:!pb-0 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black shadow-[0_0_20px_-5px_rgba(0,0,0,0.3)] dark:shadow-[0_0_20px_-5px_rgba(0,0,0,1)]">` +
+            <code class="language-` + lang + ` !pb-0 lg:!pb-0 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black shadow-[0_0_20px_-5px_rgba(0,0,0,0.3)] dark:shadow-[0_0_20px_-5px_rgba(0,0,0,1)]">` +
 		code + `
             </code>
         </pre>
@@ -51,7 +51,7 @@ templ Code(lang string, code string) {
 }
 
 templ InlineCode(text string) {
-	<i class="px-1 py-0.5 bg-gray-800 border-2 border-dark rounded xl:rounded-md">{ text }</i>&nbsp;
+	<i class="px-2 pb-1 bg-gray-800 border-2 border-dark rounded-md xl:rounded-lg">{ text }</i>&nbsp;
 }
 
 // icon

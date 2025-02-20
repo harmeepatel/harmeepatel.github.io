@@ -29,7 +29,7 @@ templ Blog(title string, blogList iter.Seq[string]) {
 					{{ wrapper += " mt-8" }}
 				}
 				<div class={ wrapper }>
-					<time>{ getUploadDate("./main.go") }</time>
+					<time>{ getUploadDate("web/pages/blogs/" + bName + ".templ") }</time>
 					@components.BlogLink("blog/"+bName+".html", "", "", components.FixTitle(bName)) {
 						{ components.FixTitle(bName) }
 					}

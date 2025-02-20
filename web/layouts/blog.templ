@@ -14,7 +14,7 @@ templ BlogBase(title string) {
 			<title>{ components.FixTitle(title) }</title>
 			<link rel="stylesheet" href={ static + "/css/main.css" }/>
 		</head>
-		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-white">
+		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
 			<main id="blog" class="w-[-webkit-fill-available] md:w-4/5 h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6 text-pretty">
 				<h1 class="pb-3 md:pb-4 xl:pb-6">
@@ -24,13 +24,13 @@ templ BlogBase(title string) {
 			</main>
 			@components.Footer(static, "")
 			<link rel="stylesheet" href={ static + "/css/catppuccin_mocha.css" }/>
-			<link
-				rel="stylesheet"
-				type="text/css"
-				href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-				async
-				defer
-			/>
+			//<link
+			//	rel="stylesheet"
+			//	type="text/css"
+			//	href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+			//	async
+			//	defer
+			///>
 		</body>
 		<script src={ static + "/js/main.js" }></script>
 		{{ const highlight = static + "/js/highlight.min.js" }}

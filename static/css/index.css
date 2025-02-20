@@ -43,6 +43,9 @@
     p, ul, li, code, tbody {
         @apply font-[300] tracking-wide text-[0.80rem] md:text-base xl:text-lg
     }
+    ul>li>ul, ul>li>ul>li>ul {
+        @apply pl-6 md:pl-8
+    }
 
     a {
         @apply font-[300] tracking-wide text-2xs xs:text-xs md:text-sm xl:text-base
@@ -88,7 +91,14 @@
 }
 
 #blog>h1 {
-    @apply text-2xl md:text-4xl xl:text-5xl pb-4 xl:pb-8 font-black tracking-wide leading-tight md:leading-snug xl:leading-[3.5rem] text-left
+    @apply text-2xl md:text-4xl xl:text-5xl pb-2 md:pb-4 xl:pb-6 font-black tracking-wide leading-tight md:leading-snug xl:leading-[3.5rem] text-left
+}
+#blog>h2 {
+    @apply py-2 md:py-3 xl:py-5
+}
+
+#blog>h2>i {
+    @apply px-2 pb-1 md:pb-2
 }
 
 #blog>pre {
