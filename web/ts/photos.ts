@@ -162,4 +162,3 @@ photos.addEventListener("scroll", () => {
         }
     }
 })
-

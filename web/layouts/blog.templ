@@ -5,7 +5,7 @@ import "harmeepatel.dev/web/components"
 templ BlogBase(title string) {
 	{{ const static = "../static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true">
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
@@ -13,28 +13,36 @@ templ BlogBase(title string) {
 			<meta name="description" content={ components.FixTitle(title) }/>
 			<title>{ components.FixTitle(title) }</title>
 			<link rel="stylesheet" href={ static + "/css/main.css" }/>
+            <noscript>
+                <style>
+                    nav {
+                        backdrop-filter: blur(12px);
+                    }
+                    #block-code {
+                        padding-top: 1rem;
+                        margin-bottom: 1rem;
+                        border: 1px solid white;
+                        border-radius: 14px;
+                        overflow: scroll;
+                    }
+                    #block-code>code {
+                        box-shadow: 0 0 transparent;
+                    }
+                </style>
+            </noscript>
 		</head>
 		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
-			<main id="blog" class="w-[-webkit-fill-available] md:w-4/5 h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6 text-pretty">
-				<h1 class="pb-3 md:pb-4 xl:pb-6">
-					{ components.FixTitle(title) }
-				</h1>
+			<main id="blog" class="w-[-webkit-fill-available] h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6 text-pretty">
+				<h1> { components.FixTitle(title) } </h1>
 				{ children... }
 			</main>
 			@components.Footer(static, "")
 			<link rel="stylesheet" href={ static + "/css/catppuccin_mocha.css" }/>
-			//<link
-			//	rel="stylesheet"
-			//	type="text/css"
-			//	href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-			//	async
-			//	defer
-			///>
 		</body>
 		<script src={ static + "/js/main.js" }></script>
-		{{ const highlight = static + "/js/highlight.min.js" }}
-		<script src={ highlight }></script>
-		@templ.Raw(`<script>hljs.highlightAll();</script>`)
+		<script src={ static + "/js/highlight.min.js" }></script>
+		<script>hljs.highlightAll();</script>
+		<script src={ static + "/js/htmx.min.js" }></script>
 	</html>
 }

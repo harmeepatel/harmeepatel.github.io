@@ -3,19 +3,33 @@ package pages;
 import (
 	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/layouts"
+    "bytes"
+    "io"
 	"iter"
-	"log"
 	"os/exec"
 	"slices"
 	"strings"
 )
 
 func getUploadDate(blogPath string) string {
-	gitLogDates, err := exec.Command("git", "log", "--format=%as", blogPath).Output()
-	if err != nil {
-		log.Fatal(err)
-	}
-	dates := strings.Split(strings.Trim(string(gitLogDates), "\n"), "\n")
+	gitLogDates := exec.Command("git", "log", "--format=%as", blogPath)
+	dateCreated := exec.Command("tail", "-1")
+
+    r, w := io.Pipe()
+    gitLogDates.Stdout = w
+    dateCreated.Stdin = r
+
+    var buf bytes.Buffer
+    dateCreated.Stdout = &buf
+
+    gitLogDates.Start()
+    dateCreated.Start()
+    gitLogDates.Wait()
+    w.Close()
+    dateCreated.Wait()
+
+
+	dates := strings.Split(strings.Trim(string(buf.Bytes()), "\n"), "\n")
 	return dates[len(dates)-1]
 }
 
@@ -24,7 +38,7 @@ templ Blog(title string, blogList iter.Seq[string]) {
 	@layouts.Base(title) {
 		<main id="blog-list" class=" max-w-screen-sm h-vh mx-6 sm:mx-12 md:m-auto mt-4 sm:mt-6">
 			for i,bName:= range slices.Collect(blogList) {
-				{{ wrapper := "blog-li mb-8" }}
+				{{ wrapper := "blog-li mb-8 text-center" }}
 				if i == 0 {
 					{{ wrapper += " mt-8" }}
 				}

@@ -35,7 +35,7 @@ templ Section(id string, heading string) {
 }
 
 templ LangTag(lang string) {
-	<div class="inline-block">
+	<div class="inline-flex items-center gap-1">
 		if strings.ToLower(lang) == "nextjs" {
 			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
 		} else if strings.ToLower(lang) == "bash" {

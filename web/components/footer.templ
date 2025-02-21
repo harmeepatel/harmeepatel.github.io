@@ -13,24 +13,24 @@ templ Footer(static string, class string) {
 	>
 		<div class="py-3.5 px-6 md:py-5 md:px-10">
 			<div class="flex justify-center items-center gap-3 md:gap-6 pb-3 sm:pb-6">
-                @Link("/", "", infoLinkClass, "HP my name initials") {
+                <a href="/" target="" class={infoLinkClass} aria-label="HP my name initials">
                     @icons.HpBlack(icons.IconInfo{Width: 12, Class: "w-[14px] md:w-[20px] h-full opacity-60 hover:opacity-100", Alt: "My initials HP"})
-                }
-                @Link("tel:+16478321245", "_blank", infoLinkClass, "phone") {
+                </a>
+                <a href="tel:+16478321245" target="_blank" class={infoLinkClass} aria-label="phone">
                     @icons.Phone(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Phone icon"})
-                }
-                @Link("https://github.com/harmeepatel", "_blank", infoLinkClass, "github") {
+                </a>
+                <a href="https://github.com/harmeepatel" target="_blank" class={infoLinkClass} aria-label="github">
                     @icons.Github(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Github icon"})
-                }
-                @Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass, "linkedin") {
+                </a>
+                <a href="https://ca.linkedin.com/in/harmeepatel" target="_blank" class={infoLinkClass} aria-label="linkedin">
                     @icons.Linkedin(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Linkedin icon"})
-                }
-                @Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass, "email") {
+                </a>
+                <a href="mailto:harmeeworks@gmail.com" target="_blank" class={infoLinkClass} aria-label="email">
                     @icons.Email(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Email icon"})
-                }
-                @Link("https://www.instagram.com/harmee.png/", "_blank", infoLinkClass, "instagram") {
+                </a>
+                <a href="https://www.instagram.com/harmee.png/" target="_blank" class={infoLinkClass} aria-label="instagram">
                     @icons.Ig(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Instagram icon"})
-                }
+                </a>
 			</div>
 			<p class="text-center opacity-60">© 2024 Harmee Patel. All rights reserved.</p>
 		</div>

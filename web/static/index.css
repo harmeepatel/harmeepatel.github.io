@@ -1,12 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 @layer base {
-    * {
-        line-height: normal;
-    }
-
     b {
         @apply font-semibold text-black dark:text-white
     }
@@ -31,7 +26,7 @@
     h3 {
         @apply text-[0.92rem] md:text-lg xl:text-xl font-semibold
     }
-
+    
     span {
         @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
     }
@@ -45,10 +40,6 @@
     }
     ul>li>ul, ul>li>ul>li>ul {
         @apply pl-6 md:pl-8
-    }
-
-    a {
-        @apply font-[300] tracking-wide text-2xs xs:text-xs md:text-sm xl:text-base
     }
 
     nav>div>ul>li>a {
@@ -78,27 +69,32 @@
     .gaayab {
         @apply hidden
     }
+
+    .link {
+        @apply transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic 
+    }
+
 }
 
 
 /* #blog>:not(pre):not(.blog-li) { */
-#blog * {
-    @apply max-w-screen-sm mx-auto
+#blog {
+    @apply max-w-screen-sm
 }
 
 #blog>ul * {
-    @apply font-serif list-disc list-inside text-base md:text-lg xl:text-xl
+    @apply font-serif list-disc list-inside
 }
 
 #blog>h1 {
-    @apply text-2xl md:text-4xl xl:text-5xl pb-2 md:pb-4 xl:pb-6 font-black tracking-wide leading-tight md:leading-snug xl:leading-[3.5rem] text-left
+    @apply text-4xl md:text-5xl xl:text-6xl pb-2 md:pb-4 xl:pb-6 font-black tracking-wide leading-tight xl:leading-[3.2rem] text-left
 }
 #blog>h2 {
-    @apply py-2 md:py-3 xl:py-5 font-semibold
+    @apply pt-8 py-2 md:py-3 xl:py-5 font-semibold
 }
 
 #blog>h2>i {
-    @apply px-2 pb-1 md:pb-2
+    @apply px-2 pb-1 md:pb-1.5
 }
 
 #blog>pre {
@@ -110,7 +106,7 @@
 }
 
 #blog>p {
-    @apply font-serif font-light mb-4 tracking-wide text-base md:text-lg xl:text-xl leading-snug
+    @apply font-serif font-light mb-4 tracking-wide
 }
 
 @media print {

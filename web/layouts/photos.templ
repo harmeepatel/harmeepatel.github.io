@@ -5,7 +5,7 @@ import "harmeepatel.dev/web/components"
 templ PhotoBase(title string) {
 	{{ const static = "./static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true">
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
@@ -13,6 +13,13 @@ templ PhotoBase(title string) {
 			<meta name="description" content="Protfolio website with my resume and some useful blogs."/>
 			<title>{ title }</title>
 			<link rel="stylesheet" href={ static + "/css/main.css" }/>
+            <noscript>
+                <style>
+                    nav {
+                        backdrop-filter: blur(12px);
+                    }
+                </style>
+            </noscript>
 		</head>
 		<body class="max-w-screen-3xl m-auto text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
@@ -20,6 +27,7 @@ templ PhotoBase(title string) {
 			@components.Footer(static, "gaayab")
 		</body>
 		<script src={ static + "/js/main.js" }></script>
+		<script src={ static + "/js/htmx.min.js" }></script>
 		<script src={ static + "/js/photos.js" }></script>
 	</html>
 }

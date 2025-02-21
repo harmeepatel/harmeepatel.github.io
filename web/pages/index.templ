@@ -22,14 +22,14 @@ templ Index(title string) {
 			@academicProjects()
 			@projects()
 			@education()
-			<a href="./static/media/HarmeePatel-Resume.pdf" download="HarmeePatel-Resume">
+			<a href="./static/media/HarmeePatel-Resume.pdf" download="HarmeePatel-Resume" aria-label="download resume">
 				<button
 					type="submit"
 					id="download-resume-btn"
 					class={ "transition-all duration-[150ms] fixed z-[100] bottom-0 right-0 m-10 xl:m-16 w-10 md:w-12 aspect-square flex items-center justify-center rounded-xl xl:rounded-2xl bg-white/50 dark:bg-black/40 backdrop-blur-[3px] shadow-md ring-1 ring-accent-p md:ring-0 shadow-black/40 dark:shadow-white/30 hover:shadow-accent-p md:hover:ring-2 md:hover:scale-110 md:hover:shadow-xl" }
-                    aria-label="download resume button"
+					aria-label="download resume button"
 				>
-                @icons.ArrowDownTray(icons.IconInfo{Width: 12, Class: "w-[14px] md:w-[18px]", Alt: "Download button for my resume."})
+					@icons.ArrowDownTray(icons.IconInfo{Width: 12, Class: "w-[14px] md:w-[18px]", Alt: "Download button for my resume."})
 				</button>
 			</a>
 		</main>
@@ -60,28 +60,28 @@ templ summary() {
 // contact bar
 templ infoBar() {
 	{{
-        infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center"
+	infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center font-[300] tracking-wide text-2xs xs:text-xs md:text-sm xl:text-base link"
 	}}
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
-		@components.Link("tel:+16478321245", "_blank", infoLinkClass, "phone") {
-            @icons.Phone(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Phone icon"})
+		<a href="tel:+16478321245" target="_blank" class={ infoLinkClass } aria-label="phone">
+			@icons.Phone(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Phone icon"})
 			+1&hairsp;(647)&hairsp;832&hairsp;-&hairsp;1245
-		}
+		</a>
 		<span class="vertical-seperator"></span>
-		@components.Link("https://github.com/harmeepatel", "_blank", infoLinkClass, "github") {
-            @icons.Github(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Github icon"})
+		<a href="https://github.com/harmeepatel" target="_blank" class={ infoLinkClass } aria-label="github">
+			@icons.Github(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Github icon"})
 			Github
-		}
+		</a>
 		<span class="vertical-seperator"></span>
-		@components.Link("https://ca.linkedin.com/in/harmeepatel", "_blank", infoLinkClass, "linkedin") {
-            @icons.Linkedin(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Linkedin icon"})
+		<a href="https://ca.linkedin.com/in/harmeepatel" target="_blank" class={ infoLinkClass } aria-label="linkedin">
+			@icons.Linkedin(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Linkedin icon"})
 			Linkedin
-		}
+		</a>
 		<span class="vertical-seperator"></span>
-		@components.Link("mailto:harmeeworks@gmail.com", "_blank", infoLinkClass, "email") {
-            @icons.Email(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Email icon"})
+		<a href="mailto:harmeeworks@gmail.com" target="_blank" class={ infoLinkClass } aria-label="email">
+			@icons.Email(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Email icon"})
 			harmeeworks@gmail.com
-		}
+		</a>
 	</section>
 }
 
@@ -144,9 +144,9 @@ templ technicalSkills() {
 					{{ langs := []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
 					for i, lang := range langs {
 						@components.LangTag(lang)
-						if i < len(langs) - 1 { 
-                            ,
-                        }
+						if i < len(langs) - 1 {
+							,&nbsp;&nbsp;
+						}
 					}
 				</td>
 			</tr>
@@ -159,7 +159,7 @@ templ technicalSkills() {
 					for i, db := range dbs {
 						@components.LangTag(db)
 						if i < len(dbs) - 1 {
-                            ,
+							,&nbsp;&nbsp;
 						}
 					}
 				</td>
@@ -173,7 +173,7 @@ templ technicalSkills() {
 					for i, tech := range techs {
 						@components.LangTag(tech)
 						if i < len(techs) - 1 {
-                            ,
+							,&nbsp;&nbsp;
 						}
 					}
 				</td>
@@ -181,18 +181,6 @@ templ technicalSkills() {
 		</table>
 	}
 }
-
-// **Full-Stack Developer | AllEvents**
-// *September 2020 - August 2021*
-//
-// - **Built and maintained** a versatile ticketing platform using **PHP** and **jQuery** to support a wide range of events.
-// - **Redesigned the pricing page** as part of a broader website revamp, making it more user-friendly and visually appealing.
-// - **Created a publish event page** for hosts, working with **Figma** to design a smooth, intuitive experience that boosted engagement.
-// - **Developed a notification system** for the host dashboard, ensuring it was aligned with the platform's overall design.
-// - **Enhanced the user experience** by adding thoughtful features to event pages, which led to better user interaction and satisfaction.
-// - **Improved backend API performance**, cutting down payload size by **2%-5%** across several services, which made everything faster and more efficient.
-// - **Implemented a "Get Ticket" modal** on event pages to make ticket purchasing quick and easy for users.
-// - **Developed a recommendation system** that offered personalized suggestions based on user interests, helping people find events that matched their preferences.
 
 // work expression
 templ workex() {
@@ -207,16 +195,16 @@ templ workex() {
 				</li>
 				<li>
 					<b>Redesigned and implemented</b> a new 
-					@components.Link("https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing", "_blank", "text-[0.80rem] md:text-base xl:text-lg italic", "pricingPageOfAllEvents") {
+					<a href="https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing" target="_blank" class="link" aria-label="pricingPageOfAllEvents">
 						pricing page
-					}
+					</a>
 					, contributing to the website's overall design enhancement strategy.
 				</li>
 				<li>
 					<b>Created and designed</b> a user-friendly 
-					@components.Link("https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events", "_blank", "text-[0.80rem] md:text-base xl:text-lg", "publishEventPageOfAllEvents") {
+					<a href="https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events" target="_blank" class="link" aria-label="publishEventPageOfAllEvents">
 						publish event page
-					}
+					</a>
 					{ " for" } hosts, using <b>Figma</b> to design UI/UX, resulting in increased host engagement.
 				</li>
 				<li>
@@ -271,9 +259,9 @@ templ projects() {
 			@components.SectionItemHeader("Dockerized Go Website Template", "pb-0.5 xl:pb-1", "", "")
 			<ul class="list-disc list-inside">
 				<li>
-					@components.Link("https://github.com/harmeepatel/template-go-website", "_blank", "text-[0.80rem] md:text-base xl:text-lg", "goTemplateWebsite") {
+					<a href="https://github.com/harmeepatel/template-go-website" target="_blank" class="link" aria-label="goTemplateWebsite">
 						https://github.com/harmeepatel/template-go-website
-					}
+					</a>
 				</li>
 				<li>
 					Using <b>http</b> package in Go standerd library to create a simple http-server 
