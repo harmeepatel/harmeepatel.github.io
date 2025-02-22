@@ -1,0 +1,85 @@
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.lua .hll { background-color: #ffffcc }
+.lua { background: #282C34; color: #ABB2BF }
+.lua .c { color: #7F848E } /* Comment */
+.lua .err { color: #ABB2BF } /* Error */
+.lua .esc { color: #ABB2BF } /* Escape */
+.lua .g { color: #ABB2BF } /* Generic */
+.lua .k { color: #C678DD } /* Keyword */
+.lua .l { color: #ABB2BF } /* Literal */
+.lua .n { color: #E06C75 } /* Name */
+.lua .o { color: #56B6C2 } /* Operator */
+.lua .x { color: #ABB2BF } /* Other */
+.lua .p { color: #ABB2BF } /* Punctuation */
+.lua .ch { color: #7F848E } /* Comment.Hashbang */
+.lua .cm { color: #7F848E } /* Comment.Multiline */
+.lua .cp { color: #7F848E } /* Comment.Preproc */
+.lua .cpf { color: #7F848E } /* Comment.PreprocFile */
+.lua .c1 { color: #7F848E } /* Comment.Single */
+.lua .cs { color: #7F848E } /* Comment.Special */
+.lua .gd { color: #ABB2BF } /* Generic.Deleted */
+.lua .ge { color: #ABB2BF } /* Generic.Emph */
+.lua .ges { color: #ABB2BF } /* Generic.EmphStrong */
+.lua .gr { color: #ABB2BF } /* Generic.Error */
+.lua .gh { color: #ABB2BF } /* Generic.Heading */
+.lua .gi { color: #ABB2BF } /* Generic.Inserted */
+.lua .go { color: #ABB2BF } /* Generic.Output */
+.lua .gp { color: #ABB2BF } /* Generic.Prompt */
+.lua .gs { color: #ABB2BF } /* Generic.Strong */
+.lua .gu { color: #ABB2BF } /* Generic.Subheading */
+.lua .gt { color: #ABB2BF } /* Generic.Traceback */
+.lua .kc { color: #E5C07B } /* Keyword.Constant */
+.lua .kd { color: #C678DD } /* Keyword.Declaration */
+.lua .kn { color: #C678DD } /* Keyword.Namespace */
+.lua .kp { color: #C678DD } /* Keyword.Pseudo */
+.lua .kr { color: #C678DD } /* Keyword.Reserved */
+.lua .kt { color: #E5C07B } /* Keyword.Type */
+.lua .ld { color: #ABB2BF } /* Literal.Date */
+.lua .m { color: #D19A66 } /* Literal.Number */
+.lua .s { color: #98C379 } /* Literal.String */
+.lua .na { color: #E06C75 } /* Name.Attribute */
+.lua .nb { color: #E5C07B } /* Name.Builtin */
+.lua .nc { color: #E5C07B } /* Name.Class */
+.lua .no { color: #E06C75 } /* Name.Constant */
+.lua .nd { color: #61AFEF } /* Name.Decorator */
+.lua .ni { color: #E06C75 } /* Name.Entity */
+.lua .ne { color: #E06C75 } /* Name.Exception */
+.lua .nf { color: #61AFEF; font-weight: bold } /* Name.Function */
+.lua .nl { color: #E06C75 } /* Name.Label */
+.lua .nn { color: #E06C75 } /* Name.Namespace */
+.lua .nx { color: #E06C75 } /* Name.Other */
+.lua .py { color: #E06C75 } /* Name.Property */
+.lua .nt { color: #E06C75 } /* Name.Tag */
+.lua .nv { color: #E06C75 } /* Name.Variable */
+.lua .ow { color: #56B6C2 } /* Operator.Word */
+.lua .pm { color: #ABB2BF } /* Punctuation.Marker */
+.lua .w { color: #ABB2BF } /* Text.Whitespace */
+.lua .mb { color: #D19A66 } /* Literal.Number.Bin */
+.lua .mf { color: #D19A66 } /* Literal.Number.Float */
+.lua .mh { color: #D19A66 } /* Literal.Number.Hex */
+.lua .mi { color: #D19A66 } /* Literal.Number.Integer */
+.lua .mo { color: #D19A66 } /* Literal.Number.Oct */
+.lua .sa { color: #98C379 } /* Literal.String.Affix */
+.lua .sb { color: #98C379 } /* Literal.String.Backtick */
+.lua .sc { color: #98C379 } /* Literal.String.Char */
+.lua .dl { color: #98C379 } /* Literal.String.Delimiter */
+.lua .sd { color: #98C379 } /* Literal.String.Doc */
+.lua .s2 { color: #98C379 } /* Literal.String.Double */
+.lua .se { color: #98C379 } /* Literal.String.Escape */
+.lua .sh { color: #98C379 } /* Literal.String.Heredoc */
+.lua .si { color: #98C379 } /* Literal.String.Interpol */
+.lua .sx { color: #98C379 } /* Literal.String.Other */
+.lua .sr { color: #98C379 } /* Literal.String.Regex */
+.lua .s1 { color: #98C379 } /* Literal.String.Single */
+.lua .ss { color: #98C379 } /* Literal.String.Symbol */
+.lua .bp { color: #E5C07B } /* Name.Builtin.Pseudo */
+.lua .fm { color: #56B6C2; font-weight: bold } /* Name.Function.Magic */
+.lua .vc { color: #E06C75 } /* Name.Variable.Class */
+.lua .vg { color: #E06C75 } /* Name.Variable.Global */
+.lua .vi { color: #E06C75 } /* Name.Variable.Instance */
+.lua .vm { color: #E06C75 } /* Name.Variable.Magic */
+.lua .il { color: #D19A66 } /* Literal.Number.Integer.Long */
