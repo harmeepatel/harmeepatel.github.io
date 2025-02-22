@@ -23,7 +23,7 @@ templ BlogBase(title string) {
 		</head>
 		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
-			<main id="blog" class="h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6 text-pretty">
+			<main id="blog" class="mt-4 sm:mt-6 text-pretty">
 				<h1> { components.FixTitle(title) } </h1>
 				{ children... }
 			</main>
