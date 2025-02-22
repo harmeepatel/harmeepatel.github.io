@@ -27,7 +27,7 @@ templ PhotoBase(title string) {
 			@components.Footer(static, "gaayab")
 		</body>
 		<script src={ static + "/js/main.js" }></script>
-		<script src={ static + "/js/htmx.min.js" }></script>
 		<script src={ static + "/js/photos.js" }></script>
+		<script src={ static + "/js/htmx.min.js" } defer async></script>
 	</html>
 }

@@ -104,7 +104,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 			?
 		</h2>
 		<p>The structure of this website follows:</p>
-        <svg width="640" viewBox="0 0 640 124" fill="none" class="!max-w-full pb-4 md:pt-5 md:pb-8" xmlns="http://www.w3.org/2000/svg">
+        <svg width="640" viewBox="0 0 640 124" fill="none" class="!max-w-full mb-4 md:mt-5 md:mb-8" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="289" height="122" rx="14" stroke="currentColor" stroke-width="2"></rect>
             <text x="123" y="32" fill="currentColor" class="font-mono">Templ</text>
             <text x="15" y="64" fill="currentColor" class="font-mono">Templating enging to create</text>
@@ -139,6 +139,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 			</a>
 			&nbsp;provide an excellent way to automate this process.
 		</p>
+
 		<h2>Setting Up the Autocommand</h2>
 		<p>
 			We can automatically run templ generate after saving a 
@@ -146,6 +147,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 			file by adding the following autocommand to the Neovim configuration (e.g., init.lua 
 			or another Lua file):
 		</p>
+
 		{{
 	src := `vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     desc = 'Run templ generate on save',
@@ -157,6 +159,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 })`
 		}}
 		@components.Code("lua", string(src))
+
 		<p>
 			Replace 
 			@components.InlineCode("[your-group]")
@@ -171,6 +174,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 			</a>
 			&nbsp;to keep things organized. If you need to create one, use:
 		</p>
+
 		{{
 	src = "local templ_group = vim.api.nvim_create_augroup('TemplAutoGen', { clear = true })"
 		}}

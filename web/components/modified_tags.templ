@@ -1,11 +1,87 @@
 package components;
 
 import (
+	"bytes"
 	"fmt"
+	"log"
+	"os"
+	"os/exec"
+    "slices"
 	"strconv"
+    "strings"
+    "errors"
 )
 
 const underLineHeight = 0.18
+
+func AppendToFile(path string, str string) {
+    f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+    if err != nil {
+        panic(err)
+    }
+    defer f.Close()
+
+    if _, err = f.WriteString(str); err != nil {
+        panic(err)
+    }
+}
+
+func GetHighlighted(code string, lexer string) string {
+	// html gen
+    theme := "one-dark"
+	pygmentize := exec.Command("pygmentize", "-l", lexer, "-f", "html", "-O", "style="+theme)
+	pygmentize.Stdin = bytes.NewBufferString(code)
+
+	var out bytes.Buffer
+	pygmentize.Stdout = &out
+
+	if err := pygmentize.Run(); err != nil {
+		log.Fatal("trouble colorizing code for: " + lexer)
+	}
+
+    cleanHtml := strings.Replace(out.String(), `<div class="highlight">`, ``, 1)
+    cleanHtml = strings.Replace(cleanHtml, `</div>`, ``, 1)
+    cleanHtml = strings.Replace( cleanHtml, `<pre>`, fmt.Sprintf(`<pre class="%s"><code>`, lexer), 1)
+    cleanHtml = strings.Replace(cleanHtml, `</pre>`, `</code></pre>`, 1)
+
+	// css gen
+	// cwd: $HOME/Developer/projects/websites/harmeepatel.github.io/
+	renderCssFlag := false
+
+    pygment_langs_path := "./web/pygment_langs"
+    if _, err := os.Stat(pygment_langs_path); errors.Is(err, os.ErrNotExist) {
+        if _, err := os.Create(pygment_langs_path); err != nil {
+            panic("trouble creating pygment_langs file")
+        }
+    }
+
+	pygment_langs, err := os.ReadFile(pygment_langs_path)
+	if err != nil {
+		log.Fatal("trouble reading ./web/pygment_langs file: ", err)
+	}
+
+    if !slices.Contains(strings.Split(string(pygment_langs), "\n"), lexer) {
+        AppendToFile(pygment_langs_path, lexer+"\n")
+        renderCssFlag = true
+    }
+
+	if renderCssFlag {
+        var outCss bytes.Buffer
+        highlight_path := "./static/css/highlight.css"
+		pygmentizeCss := exec.Command("pygmentize", "-S", theme, "-f", "html", "-a", "."+lexer)
+		pygmentizeCss.Stdout = &outCss
+
+		if err := pygmentizeCss.Run(); err != nil {
+			log.Fatal("trouble generating css for: "+lexer+" with err: ", err)
+		}
+
+        AppendToFile(highlight_path, outCss.String())
+
+        renderCssFlag = false
+	}
+
+	return cleanHtml
+}
 
 templ NavLi(name string, ref string) {
 	<li class={ "flex items-center md:list-item md:mt-[" + fmt.Sprintf("%.3f", underLineHeight+0.02) + "rem]" }>
@@ -41,18 +117,12 @@ templ BlogLink(ref string, target string, class string, ariaLable string) {
 }
 
 templ Code(lang string, code string) {
-	@templ.Raw(`
-        <pre id="block-code">
-            <code class="language-` + 
-                lang + 
-                ` !pb-0 lg:!pb-0 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black shadow-[0_0_20px_-5px_rgba(0,0,0,0.3)] dark:shadow-[0_0_20px_-5px_rgba(0,0,0,1)]">` +code+ `
-            </code>
-        </pre>
-    `)
+	{{ highlight_code := GetHighlighted(code, lang) }}
+	@templ.Raw(highlight_code)
 }
 
 templ InlineCode(text string) {
-	<i class="px-1 py-0.5 font-mono text-[0.92rem] bg-black/10 dark:bg-white/10 border border-dark/50 dark:border-light/50 rounded xl:rounded-md">{ text }</i>&nbsp;
+	<i class={ "px-1 py-[1px] md:py-0.5 font-mono md:text-[0.92rem] bg-black/10 dark:bg-white/10 border border-dark/50 dark:border-light/50 rounded xl:rounded-md" }>{ text }</i>&nbsp;
 }
 
 // icon

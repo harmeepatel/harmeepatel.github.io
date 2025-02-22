@@ -18,31 +18,19 @@ templ BlogBase(title string) {
                     nav {
                         backdrop-filter: blur(12px);
                     }
-                    #block-code {
-                        padding-top: 1rem;
-                        margin-bottom: 1rem;
-                        border: 1px solid white;
-                        border-radius: 14px;
-                        overflow: scroll;
-                    }
-                    #block-code>code {
-                        box-shadow: 0 0 transparent;
-                    }
                 </style>
             </noscript>
 		</head>
 		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
-			<main id="blog" class="w-[-webkit-fill-available] h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6 text-pretty">
+			<main id="blog" class="h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 sm:mt-6 text-pretty">
 				<h1> { components.FixTitle(title) } </h1>
 				{ children... }
 			</main>
 			@components.Footer(static, "")
-			<link rel="stylesheet" href={ static + "/css/catppuccin_mocha.css" }/>
+			<link rel="stylesheet" href={ static + "/css/highlight.css" }/>
 		</body>
 		<script src={ static + "/js/main.js" }></script>
-		<script src={ static + "/js/highlight.min.js" }></script>
-		<script>hljs.highlightAll();</script>
 		<script src={ static + "/js/htmx.min.js" }></script>
 	</html>
 }

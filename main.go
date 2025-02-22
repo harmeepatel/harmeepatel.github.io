@@ -71,7 +71,7 @@ func getImages() [][]pages.ImgInfo {
 			width = im.Width
 			height = im.Height
 		} else {
-			log.Fatalf("Impossible to open the file: ", err)
+			log.Fatal("Impossible to open the file: ", err)
 		}
 
 		if strings.Contains(file.Name(), "@2x") {

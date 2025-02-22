@@ -57,9 +57,11 @@ modal.addEventListener("keydown", (e) => {
     });
     switch (e.code) {
         case "ArrowLeft":
+        case "KeyH":
             prevImg = imgArr[currImgId - 1];
             break;
         case "ArrowRight":
+        case "KeyL":
             prevImg = imgArr[currImgId + 1];
             break;
         default:
@@ -70,7 +72,7 @@ modal.addEventListener("keydown", (e) => {
         modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
-// -- touch modal --
+// -- modal on touch screens --
 const MOVE_THRESHOLD = 50;
 let initialX = 0;
 let moveX = 0;
