@@ -79,7 +79,7 @@
 
 /* #blog>:not(pre):not(.blog-li) { */
 #blog {
-    @apply max-w-screen-sm w-[-webkit-fill-available]
+    @apply max-w-screen-sm w-[-webkit-fill-available] m-auto
 }
 
 #blog>* {
