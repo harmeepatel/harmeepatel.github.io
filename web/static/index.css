@@ -1,14 +1,29 @@
 @import "tailwindcss";
+@import "./tag_colors.css";
 
 :root {
     color-scheme: light dark;
 }
 
+@keyframes bottomup {
+    0% {
+        transform: translateY(20%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 @theme {
-    --color-accent-p: light-dark(oklch(0.53 0.24 267.36), oklch(.52 .25 266.74));
+    --color-accent-p: light-dark(oklch(70.48% 0.188 49.23), oklch(61.33% 0.1863 41.61));
     --color-dark: oklch(16.83% 0.02 30.84);
     --color-light: oklch(98% 0 0);
 
+    --text-span-dark: var(--color-neutral-400);
+    --text-span-light: var(--color-neutral-600);
     --text-2xs: 0.435rem;
     --text-2xl--line-height: 0.7rem;
 
@@ -28,11 +43,11 @@
     }
 
     h1 {
-        @apply text-2xl md:text-4xl xl:text-5xl pb-2 xl:pb-4
+        @apply text-3xl md:text-5xl xl:text-6xl pb-2 xl:pb-4
     }
 
     h2 {
-        @apply text-xl md:text-3xl xl:text-4xl pb-[0.25rem] sm:pb-2 overflow-x-hidden
+        @apply text-2xl md:text-3xl xl:text-4xl leading-none pb-[0.25rem] sm:pb-2 overflow-x-hidden
     }
 
     h2.uh::after {
@@ -49,15 +64,15 @@
     }
 
     span {
-        @apply text-xs md:text-sm xl:text-base font-normal text-[#747474] dark:text-[#c5c5c5]
+        @apply text-xs md:text-sm xl:text-base font-normal text-(--text-span-light) dark:text-(--text-span-dark)
     }
 
     time {
-        @apply inline-block text-[0.55rem] md:text-xs xl:text-sm font-normal text-[#747474] dark:text-[#c5c5c5]
+        @apply block text-[0.55rem] md:text-xs xl:text-sm font-normal text-(--text-span-light) dark:text-(--text-span-dark)
     }
 
     p, ul, li, code, tbody {
-        @apply font-[300] tracking-wide text-[0.80rem] md:text-base xl:text-lg
+        @apply font-[300] tracking-wide text-base xl:text-lg
     }
 
     ul>li>ul, ul>li>ul>li>ul {
@@ -72,18 +87,6 @@
         @apply indent-[-17px] md:indent-[-21px] pl-[19px]
     }
 
-}
-
-@keyframes bottomup {
-    0% {
-        transform: translateY(20%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 @layer utilities {
@@ -105,15 +108,27 @@
     }
 
     .link {
-        @apply transition-all duration-75 underline underline-offset-2 decoration-1 md:decoration-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic
+        @apply transition-all duration-75 decoration-1 md:decoration-2 md:hover:decoration-wavy underline underline-offset-2 md:hover:underline-offset-5 md:hover:decoration-accent-p font-medium italic
     }
 
-    .list-anim {
-        animation-name: bottomup;
-        animation-duration: var(--list-anim-duration, 300ms);
-        animation-delay: calc(var(--anim-order) * var(--list-anim-delay, 30ms));
-        animation-fill-mode: both;
-        animation-timing-function: ease-in-out;
+    .tag {
+        background-color: color-mix(in oklab, var(--tag-bg) 20%, transparent);
+        border-color: color-mix(in oklab, var(--tag-border) 60%, transparent);
+        &:hover {
+            background-color: color-mix(in oklab, var(--tag-border) 50%, transparent);
+        }
+        @apply text-black dark:text-white px-1.25 py-0.25 md:px-2.5 md:py-0.5 mr-1 md:mr-2 text-2xs md:text-xs gap-2 rounded-full border-1 md:border-2 opacity-94 cursor-pointer select-none
+    }
+
+
+    @media(prefers-reduced-motion: no-preference) {
+        .list-anim {
+            animation-name: bottomup;
+            animation-duration: var(--list-anim-duration, 300ms);
+            animation-delay: calc(var(--anim-order) * var(--list-anim-delay, 30ms));
+            animation-fill-mode: both;
+            animation-timing-function: ease-in-out;
+        }
     }
 }
 
@@ -128,48 +143,54 @@ section {
 }
 
 .blog-li-a {
-    @apply w-fit transition-all duration-75 underline underline-offset-2 decoration-2 md:decoration-4 md:hover:decoration-wavy md:hover:underline-offset-[6px] md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-base xs:text-lg md:text-xl xl:text-2xl
+    @apply block mb-0.5 md:mb-1 mt-0.25 md:mt-0.5 w-fit transition-all duration-75 underline underline-offset-2 decoration-2 md:decoration-3 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-lg xs:text-xl md:text-2xl xl:text-3xl
 }
 
 #blog {
+    &>*:not(h1):not(h2):not(time):not(#tags) {
+        @apply mb-4
+    }
+
+    &>ul * {
+        @apply font-serif list-disc list-inside
+    }
+
+    & time {
+        @apply mb-1 md:mb-2
+    }
+
+    & .tag {
+        @apply mb-2 md:mb-4 xl:mb-6
+    }
+
+    &>h1 {
+        @apply !pb-0 font-black tracking-wide leading-9 md:leading-14 xl:leading-[4.2rem] text-left
+    }
+
+    &>h2 {
+        @apply pt-4 py-2 md:py-3 xl:py-5 font-semibold
+    }
+
+    &>h2>i {
+        @apply px-2 pb-0.5 text-xl md:text-3xl xl:text-4xl
+    }
+
+    &>pre {
+        @apply !bg-white dark:!bg-black overflow-scroll px-3 py-1.5 md:px-6 md:py-3 my-3 md:my-8 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black saturate-160 dark:saturate-100
+    }
+
+    &>#block-code>code, &>#block-code>code * {
+        @apply font-[100] tracking-wide text-base xl:text-lg 2xl:text-2xl !leading-tight
+    }
+
+    &>p {
+        @apply font-serif font-light tracking-wide
+    }
+
     @apply max-w-screen-sm w-[-webkit-fill-available] mx-6 sm:mx-12 md:ml-auto md:mr-auto
 }
 
-#blog>*:not(h1):not(time) {
-    @apply mb-4
-}
 
-#blog>ul * {
-    @apply font-serif list-disc list-inside
-}
-
-#blog>time {
-    @apply pb-2 md:pb-4 xl:pb-6
-}
-
-#blog>h1 {
-    @apply !pb-0 text-4xl md:text-5xl xl:text-6xl font-black tracking-wide leading-10 md:leading-14 xl:leading-[4.2rem] text-left
-}
-
-#blog>h2 {
-    @apply pt-4 py-2 md:py-3 xl:py-5 font-semibold
-}
-
-#blog>h2>i {
-    @apply px-2 pb-0.5 text-xl md:text-3xl xl:text-4xl
-}
-
-#blog>pre {
-    @apply !bg-white dark:!bg-black overflow-scroll px-3 py-1.5 md:px-6 md:py-3 my-3 md:my-8 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black saturate-160 dark:saturate-100
-}
-
-#blog>#block-code>code, #blog>#block-code>code * {
-    @apply font-[100] tracking-wide text-sm md:text-base xl:text-lg !leading-tight
-}
-
-#blog>p {
-    @apply font-serif font-light tracking-wide
-}
 
 @media print {
     body {
@@ -200,4 +221,3 @@ section {
         display: none !important;
     }
 }
-

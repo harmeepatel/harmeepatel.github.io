@@ -5,7 +5,6 @@ import (
 	"fmt"
 	image "golang.org/x/image/webp"
 	"log"
-	"maps"
 	"os"
 	"path/filepath"
 	"strings"
@@ -28,19 +27,22 @@ func generateFile(template templ.Component, path string) {
 	}
 }
 
-var blogList = map[string]interface{}{
-    "automating_templ_generate_in_neovim": blogs.AutomatingTemplGenerateInNeovim,
+var blogList = map[string]pages.BlogInfo{
+	"automating_templ_generate_in_neovim": {
+		Func: blogs.AutomatingTemplGenerateInNeovim,
+		Tags: []string{"neovim", "text-editor", "automation"},
+	},
 }
 
 func init() {
 	generateFile(pages.Index("HarmeePatel"), "index.html")
-	generateFile(pages.Blog("Blog", maps.Keys(blogList)), "blog.html")
+	generateFile(pages.Blog("Blog", blogList), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
 
-	for bName, bFunc := range blogList {
+	for bName, bInfo := range blogList {
 		switch bName {
 		default:
-			generateFile(bFunc.(func(string) templ.Component)(bName), "blog/"+bName+".html")
+			generateFile(bInfo.Func.(func(string, []string) templ.Component)(bName, bInfo.Tags), "blog/"+bName+".html")
 		}
 	}
 }
