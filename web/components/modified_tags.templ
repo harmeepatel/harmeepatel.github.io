@@ -2,33 +2,46 @@ package components;
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
-    "slices"
+	"slices"
 	"strconv"
-    "strings"
-    "errors"
+	"strings"
 )
 
-const underLineHeight = 0.18
-
 func AppendToFile(path string, str string) {
-    f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
-    if err != nil {
-        panic(err)
-    }
-    defer f.Close()
+	f, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
 
-    if _, err = f.WriteString(str); err != nil {
-        panic(err)
-    }
+	if _, err = f.WriteString(str); err != nil {
+		panic(err)
+	}
+}
+
+func CreatFileIfNotExist(path string) {
+	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
+		if _, err := os.Create(path); err != nil {
+			panic("trouble creating pygment_langs file")
+		}
+	}
 }
 
 func GetHighlighted(code string, lexer string) string {
+	// create file if dosen't exist
+	pygment_langs_path := "./web/pygment_langs"
+	CreatFileIfNotExist(pygment_langs_path)
+
+	highlight_path := "./static/css/highlight.css"
+	CreatFileIfNotExist(highlight_path)
+
 	// html gen
-    theme := "one-dark"
+	theme := "one-dark"
 	pygmentize := exec.Command("pygmentize", "-l", lexer, "-f", "html", "-O", "style="+theme)
 	pygmentize.Stdin = bytes.NewBufferString(code)
 
@@ -39,35 +52,26 @@ func GetHighlighted(code string, lexer string) string {
 		log.Fatal("trouble colorizing code for: " + lexer)
 	}
 
-    cleanHtml := strings.Replace(out.String(), `<div class="highlight">`, ``, 1)
-    cleanHtml = strings.Replace(cleanHtml, `</div>`, ``, 1)
-    cleanHtml = strings.Replace( cleanHtml, `<pre>`, fmt.Sprintf(`<pre class="%s"><code>`, lexer), 1)
-    cleanHtml = strings.Replace(cleanHtml, `</pre>`, `</code></pre>`, 1)
+	var cleanHtml string
+	cleanHtml = strings.Replace(out.String(), `<div class="highlight">`, ``, 1)
+	cleanHtml = strings.Replace(cleanHtml, `</div>`, ``, 1)
+	cleanHtml = strings.Replace(cleanHtml, `<pre>`, fmt.Sprintf(`<pre class="%s"><code>`, lexer), 1)
+	cleanHtml = strings.Replace(cleanHtml, `</pre>`, `</code></pre>`, 1)
 
 	// css gen
-	// cwd: $HOME/Developer/projects/websites/harmeepatel.github.io/
-	renderCssFlag := false
-
-    pygment_langs_path := "./web/pygment_langs"
-    if _, err := os.Stat(pygment_langs_path); errors.Is(err, os.ErrNotExist) {
-        if _, err := os.Create(pygment_langs_path); err != nil {
-            panic("trouble creating pygment_langs file")
-        }
-    }
-
+	renderFlag := false
 	pygment_langs, err := os.ReadFile(pygment_langs_path)
 	if err != nil {
 		log.Fatal("trouble reading ./web/pygment_langs file: ", err)
 	}
 
-    if !slices.Contains(strings.Split(string(pygment_langs), "\n"), lexer) {
-        AppendToFile(pygment_langs_path, lexer+"\n")
-        renderCssFlag = true
-    }
+	if !slices.Contains(strings.Split(string(pygment_langs), "\n"), lexer) {
+		AppendToFile(pygment_langs_path, lexer+"\n")
+		renderFlag = true
+	}
 
-	if renderCssFlag {
-        var outCss bytes.Buffer
-        highlight_path := "./static/css/highlight.css"
+	if renderFlag {
+		var outCss bytes.Buffer
 		pygmentizeCss := exec.Command("pygmentize", "-S", theme, "-f", "html", "-a", "."+lexer)
 		pygmentizeCss.Stdout = &outCss
 
@@ -75,45 +79,11 @@ func GetHighlighted(code string, lexer string) string {
 			log.Fatal("trouble generating css for: "+lexer+" with err: ", err)
 		}
 
-        AppendToFile(highlight_path, outCss.String())
+		AppendToFile(highlight_path, outCss.String())
 
-        renderCssFlag = false
+		renderFlag = false
 	}
-
 	return cleanHtml
-}
-
-templ NavLi(name string, ref string) {
-	<li class={ "flex items-center md:list-item md:mt-[" + fmt.Sprintf("%.3f", underLineHeight+0.02) + "rem]" }>
-		<a href={ templ.URL(ref) } class="font-normal group">
-			{ name }
-			<span
-				class={ "block max-w-0 group-hover:max-w-full h-[" + fmt.Sprintf("%.3f", underLineHeight) + "rem] rounded-md bg-accent-p transition-all duration-200" }
-			></span>
-		</a>
-	</li>
-}
-
-templ Link(ref string, target string, class string, ariaLable string) {
-	<a
-		href={ templ.URL(ref) }
-		target={ target }
-		class={ "transition-all duration-75 underline underline-offset-2 md:hover:decoration-wavy md:hover:underline-offset-4 md:hover:decoration-accent-p font-medium italic " + class }
-		aria-label={ ariaLable }
-	>
-		{ children... }
-	</a>
-}
-
-templ BlogLink(ref string, target string, class string, ariaLable string) {
-	<a
-		href={ templ.URL(ref) }
-		target={ target }
-		class={ "block transition-all duration-75 underline underline-offset-2 decoration-[12%] md:hover:decoration-wavy md:hover:underline-offset-[6px] md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-base xs:text-lg md:text-xl xl:text-2xl " + class }
-		aria-label={ ariaLable }
-	>
-		{ children... }
-	</a>
 }
 
 templ Code(lang string, code string) {

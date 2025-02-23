@@ -5,7 +5,7 @@ import "harmeepatel.dev/web/components"
 templ PhotoBase(title string) {
 	{{ const static = "./static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
@@ -28,6 +28,5 @@ templ PhotoBase(title string) {
 		</body>
 		<script src={ static + "/js/main.js" }></script>
 		<script src={ static + "/js/photos.js" }></script>
-		<script src={ static + "/js/htmx.min.js" } defer async></script>
 	</html>
 }

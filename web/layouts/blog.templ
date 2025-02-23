@@ -1,11 +1,15 @@
 package layouts;
 
-import "harmeepatel.dev/web/components"
+import (
+	"fmt"
+	"harmeepatel.dev/web"
+	"harmeepatel.dev/web/components"
+)
 
 templ BlogBase(title string) {
 	{{ const static = "../static" }}
 	<!DOCTYPE html>
-	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth" hx-boost="true">
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
@@ -13,24 +17,24 @@ templ BlogBase(title string) {
 			<meta name="description" content={ components.FixTitle(title) }/>
 			<title>{ components.FixTitle(title) }</title>
 			<link rel="stylesheet" href={ static + "/css/main.css" }/>
-            <noscript>
-                <style>
+			<noscript>
+				<style>
                     nav {
                         backdrop-filter: blur(12px);
                     }
                 </style>
-            </noscript>
+			</noscript>
 		</head>
 		<body class="max-w-screen-xl m-auto flex flex-col items-center text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
 			<main id="blog" class="mt-4 sm:mt-6 text-pretty">
-				<h1> { components.FixTitle(title) } </h1>
+				<h1>{ components.FixTitle(title) } </h1>
+				<time>{ web.GetUploadDate(fmt.Sprintf("web/pages/blogs/%s.templ", title)) }</time>
 				{ children... }
 			</main>
 			@components.Footer(static, "")
 			<link rel="stylesheet" href={ static + "/css/highlight.css" }/>
 		</body>
 		<script src={ static + "/js/main.js" }></script>
-		<script src={ static + "/js/htmx.min.js" }></script>
 	</html>
 }

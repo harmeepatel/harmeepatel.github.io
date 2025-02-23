@@ -1,52 +1,38 @@
 package pages;
 
 import (
+	"fmt"
+	"harmeepatel.dev/web"
 	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/layouts"
-    "bytes"
-    "io"
 	"iter"
-	"os/exec"
 	"slices"
+	"strconv"
 	"strings"
 )
 
-func getUploadDate(blogPath string) string {
-	gitLogDates := exec.Command("git", "log", "--format=%as", blogPath)
-	dateCreated := exec.Command("tail", "-1")
-
-    r, w := io.Pipe()
-    gitLogDates.Stdout = w
-    dateCreated.Stdin = r
-
-    var buf bytes.Buffer
-    dateCreated.Stdout = &buf
-
-    gitLogDates.Start()
-    dateCreated.Start()
-    gitLogDates.Wait()
-    w.Close()
-    dateCreated.Wait()
-
-
-	dates := strings.Split(strings.Trim(string(buf.Bytes()), "\n"), "\n")
-	return dates[len(dates)-1]
+var ao = 0
+css animOrder(o int) {
+	--anim-order: { strconv.Itoa(o) };
 }
 
-// "harmeepatel.dev/web/components"
 templ Blog(title string, blogList iter.Seq[string]) {
 	@layouts.Base(title) {
-		<main id="blog-list" class=" max-w-screen-sm h-vh mx-6 sm:mx-12 md:m-auto mt-4 sm:mt-6">
+		<main id="blog-list" class="max-w-screen-sm h-vh mx-6 sm:mx-12 md:m-auto mt-4 sm:mt-6">
 			for i,bName:= range slices.Collect(blogList) {
-				{{ wrapper := "blog-li mb-8 text-center" }}
+				{{	
+                    ao++
+                    mt8 := ""
+                    fixedTitle := strings.TrimSpace(components.FixTitle(bName))
+				}}
 				if i == 0 {
-					{{ wrapper += " mt-8" }}
+					{{ mt8 += "mt-8" }}
 				}
-				<div class={ wrapper }>
-					<time>{ getUploadDate("web/pages/blogs/" + bName + ".templ") }</time>
-					@components.BlogLink("blog/"+bName+".html", "", "", components.FixTitle(bName)) {
-						{ components.FixTitle(bName) }
-					}
+				<div class={ "blog-li mb-8 text-center flex flex-col items-center list-anim " + mt8, animOrder(ao) }>
+					<time>{ web.GetUploadDate(fmt.Sprintf("web/pages/blogs/%s.templ", bName)) }</time>
+					<a href={ templ.SafeURL("blog/" + bName + ".html") } class="blog-li-a" aria-label={ fixedTitle }>
+						{ fixedTitle }
+					</a>
 				</div>
 			}
 		</main>

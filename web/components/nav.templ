@@ -1,6 +1,8 @@
 package components;
 
-import "harmeepatel.dev/web/icons"
+import (
+	"harmeepatel.dev/web/icons"
+)
 
 templ Nav(static string) {
 	<nav
@@ -18,4 +20,17 @@ templ Nav(static string) {
 			</ul>
 		</div>
 	</nav>
+}
+
+const underLineHeight = 0.18
+
+templ NavLi(name string, ref string) {
+	<li class="flex items-center md:list-item md:mt-0.75">
+		<a href={ templ.URL(ref) } class="font-normal group">
+			{ name }
+			<span
+				class="block max-w-0 group-hover:max-w-full h-0.75 rounded-md bg-accent-p transition-all duration-200"
+			></span>
+		</a>
+	</li>
 }
