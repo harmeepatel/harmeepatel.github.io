@@ -1,11 +1,13 @@
 package pages;
 
 import (
+    "iter"
 	"fmt"
 	"harmeepatel.dev/web"
 	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/layouts"
 	"strconv"
+	"slices"
 	"strings"
 )
 
@@ -15,11 +17,10 @@ css animOrder(o int) {
 	--anim-order: { strconv.Itoa(o) };
 }
 
-templ Blog(title string, blogList map[string]BlogInfo) {
+templ Blog(title string, blogList iter.Seq[string]) {
 	@layouts.Base(title) {
 		<main id="blog-list" class="max-w-screen-sm h-vh mx-6 sm:mx-12 md:m-auto mt-4 sm:mt-6">
-			{{ i := 0 }}
-			for bName, bInfo:= range blogList {
+			for i, bName:= range slices.Collect(blogList) {
 				{{	
                     ao++
                     mt8 := ""
@@ -28,20 +29,12 @@ templ Blog(title string, blogList map[string]BlogInfo) {
 				if i == 0 {
 					{{ mt8 += "mt-4 md:mt-8" }}
 				}
-
 				<div class={ "blog-li mb-6 md:mb-8 list-anim " + mt8, animOrder(ao) }>
-                    <div id="tags" class="flex">
-                        for _, tName := range bInfo.Tags {
-                            <span class={ tName + " tag" }>{ tName }</span>
-                        }
-                    </div>
+                    <time>{ web.GetUploadDate(fmt.Sprintf("web/pages/blogs/%s.templ", bName)) }</time>
 					<a href={ templ.SafeURL("blog/" + bName + ".html") } class="blog-li-a" aria-label={ fixedTitle }>
 						{ fixedTitle }
 					</a>
-                    <time>{ web.GetUploadDate(fmt.Sprintf("web/pages/blogs/%s.templ", bName)) }</time>
 				</div>
-
-				{{ i++ }}
 			}
 		</main>
 	}

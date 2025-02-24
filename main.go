@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+    "maps"
 
 	"github.com/a-h/templ"
 	pages "harmeepatel.dev/web/pages"
@@ -27,22 +28,19 @@ func generateFile(template templ.Component, path string) {
 	}
 }
 
-var blogList = map[string]pages.BlogInfo{
-	"automating_templ_generate_in_neovim": {
-		Func: blogs.AutomatingTemplGenerateInNeovim,
-		Tags: []string{"neovim", "text-editor", "automation"},
-	},
+var blogList = map[string]interface{}{
+	"automating_templ_generate_in_neovim": blogs.AutomatingTemplGenerateInNeovim,
 }
 
 func init() {
 	generateFile(pages.Index("HarmeePatel"), "index.html")
-	generateFile(pages.Blog("Blog", blogList), "blog.html")
+	generateFile(pages.Blog("Blog", maps.Keys(blogList)), "blog.html")
 	generateFile(pages.Photos("Photos", getImages()), "photos.html")
 
 	for bName, bInfo := range blogList {
 		switch bName {
 		default:
-			generateFile(bInfo.Func.(func(string, []string) templ.Component)(bName, bInfo.Tags), "blog/"+bName+".html")
+			generateFile(bInfo.(func(string) templ.Component)(bName), "blog/"+bName+".html")
 		}
 	}
 }

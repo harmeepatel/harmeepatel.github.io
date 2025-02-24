@@ -143,7 +143,7 @@ section {
 }
 
 .blog-li-a {
-    @apply block mb-0.5 md:mb-1 mt-0.25 md:mt-0.5 w-fit transition-all duration-75 underline underline-offset-2 decoration-2 md:decoration-3 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-lg xs:text-xl md:text-2xl xl:text-3xl
+    @apply block w-fit transition-all duration-75 underline underline-offset-2 decoration-2 md:decoration-3 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-lg xs:text-xl md:text-2xl xl:text-3xl
 }
 
 #blog {

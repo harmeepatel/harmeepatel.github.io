@@ -6,7 +6,7 @@ import (
 	"harmeepatel.dev/web/components"
 )
 
-templ BlogBase(title string, tags []string) {
+templ BlogBase(title string) {
 	{{ const static = "../static" }}
 	<!DOCTYPE html>
 	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
@@ -30,11 +30,6 @@ templ BlogBase(title string, tags []string) {
 			<main id="blog" class="mt-4 sm:mt-6 text-pretty">
 				<h1>{ components.FixTitle(title) } </h1>
 				<time>{ web.GetUploadDate(fmt.Sprintf("web/pages/blogs/%s.templ", title)) }</time>
-                <div id="tags" class="flex">
-                    for _, tag := range tags {
-                        <span class={ tag + " tag" }>{tag}</span>
-                    }
-                </div>
 				{ children... }
 			</main>
 			@components.Footer(static, "")
