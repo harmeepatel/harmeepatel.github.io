@@ -133,25 +133,25 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 				href="https://neovim.io/doc/user/autocmd.html"
 				target="_blank"
 				class="link"
-				aria-label="Link to more information on neovim autocommands."
+				aria-label="Link to more information on neovim autocmd."
 			>
-				autocommands
+				autocmds
 			</a>
 			&nbsp;provide an excellent way to automate this process.
 		</p>
 
-		<h2>Setting Up the Autocommand</h2>
+		<h2>Setting Up the Autocmd</h2>
 		<p>
 			We can automatically run templ generate after saving a 
 			@components.InlineCode(".templ")
-			file by adding the following autocommand to the Neovim configuration (e.g., init.lua 
+			file by adding the following autocmd to the Neovim configuration (e.g., init.lua 
 			or another Lua file):
 		</p>
 
 		{{
 	src := `vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     desc = 'Run templ generate on save',
-    group = [your-group], -- Replace with your autocommand group or remove if unnecessary
+    group = [your-augroup], -- Replace with your autocmd group or remove if unnecessary
     pattern = { '*.templ' },
     callback = function()
         vim.cmd(':silent !templ generate')
@@ -159,24 +159,57 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 })`
 		}}
 		@components.Code("lua", string(src))
-
+        <p>Let's break this down. We're using 
+        @components.InlineCode("nvim_create_autocmd")
+        to create a new autocmd. As args it takes the following:</p>
+        <ul>
+            <li>
+                @components.InlineCode("events"):
+                The first argument is a table (Lua’s all-purpose data structure) that defines the 
+                events that trigger the callback. You can specify multiple events if needed. You can
+                find all the events 
+                <a 
+                    href="https://neovim.io/doc/user/autocmd.html#_5.-events" 
+                    target="_blank"
+                    class="link"
+                    aria-label="Link to more information on events for neovim autocmd."
+                >
+                    here
+                </a>.
+            </li>
+            <li>
+                @components.InlineCode("opts"):
+                The second argument includes various options, like the file pattern to match and 
+                the callback itself. The callback can be either a Lua function or a Vimscript 
+                function name as a string.
+                <a 
+                    href="https://neovim.io/doc/user/autocmd.html#_5.-events" 
+                    target="_blank"
+                    class="link"
+                    aria-label="Link to more information on events for neovim autocmd."
+                >
+                    here
+                </a>.
+            </li>
+        </ul>
 		<p>
 			Replace 
-			@components.InlineCode("[your-group]")
+			@components.InlineCode("[your-augroup]")
 			with an 
 			<a
 				href="https://neovim.io/doc/user/autocmd.html#_8.-groups"
 				target="_blank"
 				class="link"
-				aria-label="Link to more information on neovim autocommand groups."
+				aria-label="Link to more information on neovim autocmd groups."
 			>
-				autocommand group
+				autocmd group
 			</a>
-			&nbsp;to keep things organized. If you need to create one, use:
+			&nbsp;to keep things organized. This is useful for removing or executing a group of 
+            autocmds. If you need to create one, use:
 		</p>
 
 		{{
-	src = "local templ_group = vim.api.nvim_create_augroup('TemplAutoGen', { clear = true })"
+	src = "local templ_group = vim.api.nvim_create_augroup('[YourGroupName]', { clear = true })"
 		}}
 		@components.Code("lua", src)
 		<p>

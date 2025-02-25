@@ -171,12 +171,12 @@ section {
         @apply pt-4 py-2 md:py-3 xl:py-5 font-semibold
     }
 
-    &>h2>i {
+    &>h2>kbd {
         @apply px-2 pb-0.5 text-xl md:text-3xl xl:text-4xl
     }
 
     &>pre {
-        @apply !bg-white dark:!bg-black overflow-scroll px-3 py-1.5 md:px-6 md:py-3 my-3 md:my-8 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black saturate-160 dark:saturate-100
+        @apply !bg-white dark:!bg-black overflow-scroll px-3 py-1.5 md:px-6 md:py-3 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black saturate-160 dark:saturate-100
     }
 
     &>#block-code>code, &>#block-code>code * {
