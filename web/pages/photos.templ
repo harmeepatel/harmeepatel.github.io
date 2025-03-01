@@ -49,24 +49,30 @@ lgImgs := photos[1] }}
 			</form>
 			<div class="m-auto h-full flex flex-col items-center justify-evenly">
 				<img id="modal_image" class="max-h-[min(100%,94vh)] mx-8 self-center border-8 border-white duration-300 rounded-2xl" data-loading-class="bg-gray-100 opacity-80" src=""/>
-				<p class="text-white">(← → / h l)</p>
+				<p class="text-white">← / → | h / l</p>
 			</div>
 		</dialog>
 		// <main id="photos-sm" class="h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar">
 
 		<main id="photos" class="h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block">
+        {{ 
+            gap := "2"
+        }}
 			<div id="image-grid" class="hidden md:flex md:flex-wrap md:justify-center">
 				for i := 0; i < 4; i++ {
-					<div class="column px-[4px] sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]">
+					<div class={"column px-" + gap + " sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]"}>
 						for j := i; j < len(smImgs) ; j+=4 {
-							{{ img := smImgs[j] }}
+							{{ 
+                                img := smImgs[j] 
+                                img_class := "row inline-block mt-"+gap+" mb-"+gap+" align-center w-full rounded-2xl ring-2 ring-black dark:ring-white rounded-xl hover:duration-300 hover:scale-101 dark:hover:shadow-[0_0_24px_8px_rgba(0,0,0,0.7)] hover:shadow-[0_0_24px_8px_rgba(0,0,0,0.3)]"
+                            }}
 							<img
 								id={ strconv.Itoa(j) }
 								src={ img.Name }
 								if j == 0 || j == 1 || j == 2 || j == 3 {
-									class={ addAspectRatio(img, "row align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
+									class={ addAspectRatio(img, img_class) }
 								} else {
-									class={ addAspectRatio(img, "row mt-[8px] align-center w-full rounded-2xl border-2 border-black dark:border-white md:rounded-xl xl:rounded-lg md:hover:duration-300 md:hover:translate-y-2 md:hover:scale-110 dark:md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,1)] md:hover:shadow-[0_16px_70px_4px_rgba(0,0,0,0.4)]") }
+									class={ addAspectRatio(img, img_class) }
 								}
 								onclick="openImageModal(this)"
 								if img.IsWide() {
