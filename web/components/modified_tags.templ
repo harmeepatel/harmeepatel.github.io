@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"harmeepatel.dev/web/icons"
 	"log"
 	"os"
 	"os/exec"
@@ -55,7 +56,7 @@ func GetHighlighted(code string, lexer string) string {
 	var cleanHtml string
 	cleanHtml = strings.Replace(out.String(), `<div class="highlight">`, ``, 1)
 	cleanHtml = strings.Replace(cleanHtml, `</div>`, ``, 1)
-	cleanHtml = strings.Replace(cleanHtml, `<pre>`, fmt.Sprintf(`<pre class="%s"><code>`, lexer), 1)
+	cleanHtml = strings.Replace(cleanHtml, `<pre>`, fmt.Sprintf(`<pre class="%s overflow-scroll"><code>`, lexer), 1)
 	cleanHtml = strings.Replace(cleanHtml, `</pre>`, `</code></pre>`, 1)
 
 	// css gen
@@ -86,13 +87,79 @@ func GetHighlighted(code string, lexer string) string {
 	return cleanHtml
 }
 
-templ Code(lang string, code string) {
+var copyToClipboardHandle = templ.NewOnceHandle()
+templ Code(lang string, fileName string, code string) {
 	{{ highlight_code := GetHighlighted(code, lang) }}
-	@templ.Raw(highlight_code)
+    @copyToClipboardHandle.Once(){
+        <script>
+const up = "!animate-up";
+const down = "!animate-down";
+function addUp(classList, time) {
+    setTimeout(() => {
+        classList.add(up);
+    }, time)
+}
+function addDown(classList, time) {
+    setTimeout(() => {
+        classList.add(down);
+    }, time)
+}
+function removeUp(classList, time) {
+    setTimeout(() => {
+        classList.remove(up);
+    }, time)
+}
+function removeDown(classList, time) {
+    setTimeout(() => {
+        classList.remove(down);
+    }, time)
+}
+function copyToClipboard(code) {
+    navigator.clipboard.writeText(code);
+    const clipboard = document.querySelector(`[alt="Clipboard icon"]`);
+    const checkmark = document.querySelector(`[alt="CheckInCircle icon"]`);
+
+    var time = +window.getComputedStyle(document.body).getPropertyValue("--copy-to-clipboard-duration");
+
+    addUp(checkmark.classList, time);
+    addDown(clipboard.classList, time);
+
+
+    setTimeout(() => {
+        addUp(clipboard.classList, time * 4);
+        addDown(checkmark.classList, time * 4);
+
+        removeUp(checkmark.classList, time * 4);
+        removeDown(clipboard.classList, time * 4);
+    }, time/3);
+
+    removeUp(clipboard.classList, time * 6);
+    removeDown(checkmark.classList, time * 6);
+}
+        </script>
+    }
+	<div class="rounded-xl">
+		<div class="rounded-xl xl:rounded-2xl p-1.5 text-sm inset-ring inset-ring-dark/20 dark:inset-ring-light/20 !bg-light-code dark:!bg-dark-code">
+			<div class="px-3 pt-0.5 pb-1.5 flex items-center">
+				if fileName != "" {
+					<div class="font-mono">
+						{ fileName }
+					</div>
+				}
+				<button class="flex items-center ml-auto relative" onclick={ templ.JSFuncCall("copyToClipboard", code) }>
+					@icons.Clipboard(icons.IconInfo{Width: 24, Class: "w-full opacity-80 hover:opacity-100", Alt: "Clipboard icon"})
+					@icons.CheckInCircle(icons.IconInfo{Width: 24, Class: "w-full !opacity-100 absolute left-0 scale-0", Alt: "CheckInCircle icon"})
+				</button>
+			</div>
+			<div class="overflow-scroll *:px-3 *:py-1.5 *:md:px-6 *:md:py-3 rounded-lg xl:rounded-xl *:!bg-light dark:*:!bg-dark">
+				@templ.Raw(highlight_code)
+			</div>
+		</div>
+	</div>
 }
 
 templ InlineCode(text string) {
-	<kbd class={ "px-1 py-[1px] md:py-0.5 font-mono md:text-[0.92rem] bg-black/10 dark:bg-white/10 border border-dark/50 dark:border-light/50 rounded-xs xl:rounded-sm" }>{ text }</kbd>&nbsp;
+	<code class={ "px-1 py-[1px] md:py-0.5 !font-mono md:text-[0.92rem] bg-black/10 dark:bg-white/10 border border-dark/50 dark:border-light/50 rounded-sm xl:rounded" }>{ text }</code>&nbsp;
 }
 
 // icon
