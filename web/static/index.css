@@ -1,29 +1,20 @@
+@config "../tailwind.config.js";
 @import "tailwindcss";
 @import "./tag_colors.css";
 
 :root {
     color-scheme: light dark;
-}
-
-@keyframes bottomup {
-    0% {
-        transform: translateY(20%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    --copy-to-clipboard-duration: 360;
+    --easing: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 @theme {
-    --color-accent-p: light-dark(oklch(70.48% 0.188 49.23), oklch(61.33% 0.1863 41.61));
-    --color-dark: oklch(16.83% 0.02 30.84);
+    --color-accent-p: light-dark(oklch(0.54 0.2 268.67), oklch(0.54 0.2 268.67));
+    --color-dark: oklch(0.17 0.03 40);
+    --color-code: light-dark(color-mix(in oklch, var(--color-light) 86%, var(--color-accent-p)), color-mix(in oklch, var(--color-dark) 86%, var(--color-accent-p)));
     --color-light: oklch(98% 0 0);
+    --color-span: light-dark(var(--color-neutral-600), var(--color-neutral-400));
 
-    --text-span-dark: var(--color-neutral-400);
-    --text-span-light: var(--color-neutral-600);
     --text-2xs: 0.435rem;
     --text-2xl--line-height: 0.7rem;
 
@@ -35,6 +26,34 @@
 
     --breakpoint-xs: 532px;
     --breakpoint-3xl: 1792px;
+
+
+    @keyframes down {
+        0% {
+            scale: 1;
+            opacity: 1;
+        }
+
+        100% {
+            scale: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes up {
+        0% {
+            scale: 0;
+            opacity: 0;
+        }
+
+        100% {
+            scale: 1;
+            opacity: 1;
+        }
+    }
+
+    --animate-up :up calc(var(--copy-to-clipboard-duration) * 1ms) var(--easing) forwards;
+    --animate-down: down calc(var(--copy-to-clipboard-duration) * 1ms) var(--easing) forwards;
 }
 
 @layer base {
@@ -64,11 +83,11 @@
     }
 
     span {
-        @apply text-xs md:text-sm xl:text-base font-normal text-(--text-span-light) dark:text-(--text-span-dark)
+        @apply text-xs md:text-sm xl:text-base font-normal text-span
     }
 
     time {
-        @apply block text-[0.55rem] md:text-xs xl:text-sm font-normal text-(--text-span-light) dark:text-(--text-span-dark)
+        @apply block text-[0.55rem] md:text-xs xl:text-sm font-normal text-span
     }
 
     p, ul, li, code, tbody {
@@ -87,6 +106,18 @@
         @apply indent-[-17px] md:indent-[-21px] pl-[19px]
     }
 
+}
+
+@keyframes bottomup {
+    0% {
+        transform: translateY(20%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @layer utilities {
@@ -114,9 +145,11 @@
     .tag {
         background-color: color-mix(in oklab, var(--tag-bg) 20%, transparent);
         border-color: color-mix(in oklab, var(--tag-border) 60%, transparent);
+
         &:hover {
             background-color: color-mix(in oklab, var(--tag-border) 50%, transparent);
         }
+
         @apply text-black dark:text-white px-1.25 py-0.25 md:px-2.5 md:py-0.5 mr-1 md:mr-2 text-2xs md:text-xs gap-2 rounded-full border-1 md:border-2 opacity-94 cursor-pointer select-none
     }
 
@@ -171,12 +204,12 @@ section {
         @apply pt-4 py-2 md:py-3 xl:py-5 font-semibold
     }
 
-    &>h2>kbd {
+    &>h2>code {
         @apply px-2 pb-0.5 text-xl md:text-3xl xl:text-4xl
     }
 
-    &>pre {
-        @apply !bg-white dark:!bg-black overflow-scroll px-3 py-1.5 md:px-6 md:py-3 rounded-xl xl:rounded-2xl ring-1 dark:ring-white/80 ring-black saturate-160 dark:saturate-100
+    & code span {
+        @apply text-sm xl:text-base
     }
 
     &>#block-code>code, &>#block-code>code * {

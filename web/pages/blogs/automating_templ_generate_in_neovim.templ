@@ -158,7 +158,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
     end
 })`
 		}}
-		@components.Code("lua", string(src))
+		@components.Code("lua", "init.lua",string(src))
         <p>Let's break this down. We're using 
         @components.InlineCode("nvim_create_autocmd")
         to create a new autocmd. As args it takes the following:</p>
@@ -211,7 +211,7 @@ templ AutomatingTemplGenerateInNeovim(title string) {
 		{{
 	src = "local templ_group = vim.api.nvim_create_augroup('[YourGroupName]', { clear = true })"
 		}}
-		@components.Code("lua", src)
+		@components.Code("lua", "",src)
 		<p>
 			If you work with Templ frequently, this small automation can save time and streamline 
 			your workflow. Just set it up once, and let Neovim take care of the rest.

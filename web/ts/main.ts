@@ -47,7 +47,6 @@
         "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]",
         "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]",
         "backdrop-blur-md",
-        "duration-200"
     ]
     window.addEventListener("load", () => {
         if (window.scrollY > scrollOffset) {
@@ -70,19 +69,29 @@
         }
     })
 
+    // -- toggle animation on touch screens
+    // const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
+    // const downloadBtnImg = downloadResumeBtn.querySelector("svg")!;
+    // if (("ontouchstart" in window) || navigator.maxTouchPoints == 0) {
+    //     // group-hover:mt-1 group-hover:animate-bounce
+    // }
+    // console.log("touch")
+    // downloadResumeBtn.addEventListener("mouseover", () => {
+    //     downloadBtnImg.classList.toggle('mt-1')
+    //     downloadBtnImg.classList.toggle('animate-bounce')
+    // })
+
     // -- remove animation on touch screens
-    const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
-    if (downloadResumeBtn != null) {
-        const downloadBtnImg = downloadResumeBtn.childNodes[0] as HTMLElement
-        if (!("ontouchstart" in window) || navigator.maxTouchPoints == 0) {
-            downloadResumeBtn.addEventListener("mouseover", () => {
-                downloadBtnImg.classList.add('mt-1')
-                downloadBtnImg.classList.add('animate-bounce')
-            })
-            downloadResumeBtn.addEventListener("mouseout", () => {
-                downloadBtnImg.classList.remove('mt-1')
-                downloadBtnImg.classList.remove('animate-bounce')
-            })
-        }
-    }
+    // const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
+    //     const downloadBtnImg = downloadResumeBtn.querySelector("svg")!;
+    //     if (!("ontouchstart" in window) || navigator.maxTouchPoints == 0) {
+    //         downloadResumeBtn.addEventListener("mouseover", () => {
+    //             downloadBtnImg.classList.add('mt-1')
+    //             downloadBtnImg.classList.add('animate-bounce')
+    //         })
+    //         downloadResumeBtn.addEventListener("mouseout", () => {
+    //             downloadBtnImg.classList.remove('mt-1')
+    //             downloadBtnImg.classList.remove('animate-bounce')
+    //         })
+    // }
 })();
