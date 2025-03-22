@@ -29,7 +29,7 @@ templ Index(title string) {
 					class={ "group transition-all duration-150 fixed z-[100] bottom-0 right-0 mx-6 my-12 md:mx-14 md:my-14 w-10 md:w-12 aspect-square flex items-center justify-center rounded-xl xl:rounded-2xl bg-white/50 dark:bg-black/40 backdrop-blur-[3px] shadow-md ring-1 ring-accent-p md:ring-0 shadow-black/40 dark:shadow-white/30 hover:shadow-accent-p md:hover:ring-2 md:hover:scale-105 md:hover:shadow-lg" }
 					aria-label="download resume button"
 				>
-					@icons.ArrowDownTray(icons.IconInfo{Width: 12, Class: "w-4 md:w-5 group-hover:mt-1 group-hover:animate-bounce ", Alt: "Download button for my resume."})
+					@icons.ArrowDownTray( 12, "w-4 md:w-5 group-hover:mt-1 group-hover:animate-bounce ", "Download button for my resume.")
 				</button>
 			</a>
 		</main>
@@ -64,22 +64,22 @@ templ infoBar() {
 	}}
 	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
 		<a href="tel:+16478321245" target="_blank" class={ infoLinkClass } aria-label="phone">
-			@icons.Phone(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Phone icon"})
+			@icons.Phone( 12, iconClass, "Phone icon")
 			+1&hairsp;(647)&hairsp;832&hairsp;-&hairsp;1245
 		</a>
 		<span class="vertical-seperator"></span>
 		<a href="https://github.com/harmeepatel" target="_blank" class={ infoLinkClass } aria-label="github">
-			@icons.Github(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Github icon"})
+			@icons.Github( 12, iconClass, "Github icon")
 			Github
 		</a>
 		<span class="vertical-seperator"></span>
 		<a href="https://ca.linkedin.com/in/harmeepatel" target="_blank" class={ infoLinkClass } aria-label="linkedin">
-			@icons.Linkedin(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Linkedin icon"})
+			@icons.Linkedin( 12, iconClass, "Linkedin icon")
 			Linkedin
 		</a>
 		<span class="vertical-seperator"></span>
 		<a href="mailto:harmeeworks@gmail.com" target="_blank" class={ infoLinkClass } aria-label="email">
-			@icons.Email(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Email icon"})
+			@icons.Email( 12, iconClass, "Email icon")
 			harmeeworks@gmail.com
 		</a>
 	</section>
@@ -129,10 +129,23 @@ templ education() {
 }
 
 // technical skills
+var techIconSize = 20
+var techIconClass = "inline "
+templ techLoop (arr []string) {
+    for i, item := range arr {
+        <div class="inline-flex items-center" style="display: inline flex; align-items: center;">
+            @icons.Tech(item, techIconSize, techIconClass, item + " logo")
+            &nbsp;{ item }
+            if i < len(arr) - 1 {
+                ,&nbsp;&nbsp;
+            }
+        </div>
+    }
+}
 templ technicalSkills() {
 	{{
-	thClass := "text-left align-baseline "
-	tdClass := "pl-8 "
+        thClass := "text-left align-baseline "
+        tdClass := "pl-8 "
 	}}
 	@components.Section("tech-skills", "Technical Skills") {
 		<table>
@@ -141,13 +154,8 @@ templ technicalSkills() {
 					<h3 class="inline-block">Languages</h3>
 				</th>
 				<td class={ tdClass + "pb-4 md:pb-3" }>
-					{{ langs := []string{"JavaScript", "TypeScript", "PHP", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
-					for i, lang := range langs {
-						@components.LangTag(lang)
-						if i < len(langs) - 1 {
-							,&nbsp;&nbsp;
-						}
-					}
+					{{ langs := []string{"Javascript", "Typescript", "Php", "Python", "Go", "Zig", "C", "Lua", "Bash"} }}
+                    @techLoop(langs)
 				</td>
 			</tr>
 			<tr>
@@ -155,13 +163,8 @@ templ technicalSkills() {
 					<h3 class="inline-block">Database</h3>
 				</th>
 				<td class={ tdClass + "pb-4 md:pb-3" }>
-					{{ dbs := []string{"MySQL", "SQLite", "PostgreSQL"} }}
-					for i, db := range dbs {
-						@components.LangTag(db)
-						if i < len(dbs) - 1 {
-							,&nbsp;&nbsp;
-						}
-					}
+					{{ dbs := []string{"Mysql", "Sqlite", "Postgresql"} }}
+                    @techLoop(dbs)
 				</td>
 			</tr>
 			<tr>
@@ -169,13 +172,8 @@ templ technicalSkills() {
 					<h3 class="inline-block">Technologies</h3>
 				</th>
 				<td class={ tdClass }>
-					{{ techs := []string{"AngularJs", "Astro", "CSS3", "Git", "GithubActions", "HTML5", "JSON", "jQuery", "Keras", "Laravel", "NextJs", "NodeJs", "NumPy", "Pandas", "React", "Redux", "TailwindCSS", "Tensorflow"} }}
-					for i, tech := range techs {
-						@components.LangTag(tech)
-						if i < len(techs) - 1 {
-							,&nbsp;&nbsp;
-						}
-					}
+					{{ techs := []string{"AngularJs", "Astro", "Css3", "Git", "Github", "Githubactions", "Html5", "Json", "Jquery", "Keras", "Laravel", "Nextjs", "Nodejs", "Numpy", "Pandas", "React", "Redux", "Tailwindcss", "Tensorflow"} }}
+                    @techLoop(techs)
 				</td>
 			</tr>
 		</table>

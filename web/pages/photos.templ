@@ -35,8 +35,10 @@ type ImgInfo struct {
 
 // "harmeepatel.dev/web/components"
 templ Photos(title string, photos [][]ImgInfo) {
-	{{ smImgs := photos[0]
-lgImgs := photos[1] }}
+	{{ 
+        smImgs := photos[0]
+        lgImgs := photos[1] 
+    }}
 	@layouts.PhotoBase(title) {
 		<dialog id="image_modal" class="m-auto h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
 			<form method="dialog">
@@ -123,27 +125,27 @@ lgImgs := photos[1] }}
 
 			<footer
 				id="footer"
-				class="max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/60 ring-black/60 rounded-xl xl:rounded-2xl"
+				class="photos-footer max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/60 ring-black/60 rounded-xl xl:rounded-2xl"
 			>
 				<div class="py-3.5 px-6 md:py-5 md:px-10">
 					<div class="flex justify-center items-center gap-3 md:gap-6 pb-3 sm:pb-6">
 						<a href="/" target="" class={infoLinkClass} aria-label="HP my name initials">
-                            @icons.HpBlack(icons.IconInfo{Width: 12, Class: "w-[14px] md:w-[20px] h-full opacity-60 hover:opacity-100", Alt: "My initials HP"})
+                            @icons.HpBlack( 12, "w-[14px] md:w-[20px] h-full opacity-60 hover:opacity-100", "My initials HP")
 						</a>
 						<a href="tel:+16478321245" target="_blank" class={infoLinkClass} aria-label="phone">
-                            @icons.Phone(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Phone icon"})
+                            @icons.Phone( 12, iconClass, "Phone icon")
 						</a>
 						<a href="https://github.com/harmeepatel" target="_blank" class={infoLinkClass} aria-label="github">
-                            @icons.Github(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Github icon"})
+                            @icons.Github( 12, iconClass, "Github icon")
 						</a>
 						<a href="https://ca.linkedin.com/in/harmeepatel" target="_blank" class={infoLinkClass} aria-label="linkedin">
-                            @icons.Linkedin(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Linkedin icon"})
+                            @icons.Linkedin( 12, iconClass, "Linkedin icon")
 						</a>
 						<a href="mailto:harmeeworks@gmail.com" target="_blank" class={infoLinkClass} aria-label="email">
-                            @icons.Email(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Email icon"})
+                            @icons.Email( 12, iconClass, "Email icon")
 						</a>
 						<a href="https://www.instagram.com/harmee.png/" target="_blank" class={infoLinkClass} aria-label="instagram">
-                            @icons.Ig(icons.IconInfo{Width: 12, Class: iconClass, Alt: "Instagram icon"})
+                            @icons.Ig( 12, iconClass, "Instagram icon")
 						</a>
 					</div>
 					<p class="text-center opacity-60">© 2024 Harmee Patel. All rights reserved.</p>

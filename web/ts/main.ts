@@ -6,13 +6,7 @@
     const navLi = Array.from(nav.getElementsByTagName("li"))
     const navA = navLi.map((elem) => elem.firstChild)
     const underlineSpan = navLi.map((elem): ChildNode => {
-        if (elem.lastChild == null) {
-            throw new Error("nav>ul>li>a not found")
-        }
-        if (elem.lastChild.lastChild == null) {
-            throw new Error("nav>ul>li>a>span not found")
-        }
-        return elem.lastChild.lastChild
+        return elem.lastChild!.lastChild!
     })
 
     window.addEventListener("load", () => {
@@ -27,71 +21,27 @@
         }
         if (window.innerWidth > resizeOffset) {
             navA.forEach((a, i) => {
-                if (a == null) {
-                    throw new Error("nav>ul>li>a not found")
-                }
-                a.appendChild(underlineSpan[i])
+                a!.appendChild(underlineSpan[i])
             })
         }
     });
 
-
     // -- on scroll add nav shadow, blur and ring --
     const scrollOffset = 8
-    const navScrollClasses = [
-        "bg-white/40",
-        "dark:bg-black/40",
+    const navScrollClass = [
         "ring-1",
-        "dark:ring-white/80",
-        "ring-black/60",
-        "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]",
-        "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]",
-        "backdrop-blur-md",
     ]
     window.addEventListener("load", () => {
         if (window.scrollY > scrollOffset) {
-            for (let i = 0; i < navScrollClasses.length; i++) {
-                nav.classList.add(navScrollClasses[i]);
-            }
+            nav.classList.add(...navScrollClass);
         }
     });
 
     window.addEventListener("scroll", () => {
         if (window.scrollY > scrollOffset) {
-            for (let i = 0; i < navScrollClasses.length; i++) {
-                nav.classList.add(navScrollClasses[i]);
-            }
-        }
-        if (window.scrollY < scrollOffset) {
-            for (let i = 0; i < navScrollClasses.length; i++) {
-                nav.classList.remove(navScrollClasses[i]);
-            }
+            nav.classList.add(...navScrollClass);
+        } else {
+            nav.classList.remove(...navScrollClass);
         }
     })
-
-    // -- toggle animation on touch screens
-    // const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
-    // const downloadBtnImg = downloadResumeBtn.querySelector("svg")!;
-    // if (("ontouchstart" in window) || navigator.maxTouchPoints == 0) {
-    //     // group-hover:mt-1 group-hover:animate-bounce
-    // }
-    // console.log("touch")
-    // downloadResumeBtn.addEventListener("mouseover", () => {
-    //     downloadBtnImg.classList.toggle('mt-1')
-    //     downloadBtnImg.classList.toggle('animate-bounce')
-    // })
-
-    // -- remove animation on touch screens
-    // const downloadResumeBtn: HTMLButtonElement = document.getElementById("download-resume-btn")! as HTMLButtonElement
-    //     const downloadBtnImg = downloadResumeBtn.querySelector("svg")!;
-    //     if (!("ontouchstart" in window) || navigator.maxTouchPoints == 0) {
-    //         downloadResumeBtn.addEventListener("mouseover", () => {
-    //             downloadBtnImg.classList.add('mt-1')
-    //             downloadBtnImg.classList.add('animate-bounce')
-    //         })
-    //         downloadResumeBtn.addEventListener("mouseout", () => {
-    //             downloadBtnImg.classList.remove('mt-1')
-    //             downloadBtnImg.classList.remove('animate-bounce')
-    //         })
-    // }
 })();

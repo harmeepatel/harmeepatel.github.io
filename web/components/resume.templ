@@ -1,8 +1,7 @@
 package components;
 
 import (
-"strings"
-"strconv"
+    "strconv"
 )
 
 // sections
@@ -32,21 +31,4 @@ templ Section(id string, heading string) {
 		//@templ.Raw(hr)
 		{ children... }
 	</section>
-}
-
-templ LangTag(lang string) {
-	<div class="inline-flex items-center gap-1">
-		if strings.ToLower(lang) == "nextjs" {
-			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
-		} else if strings.ToLower(lang) == "bash" {
-			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
-		} else if strings.ToLower(lang) == "pandas" {
-			<i class={ "devicon-" + strings.ToLower(lang) + "-plain" }></i>
-		} else if strings.ToLower(lang) == "tensorflow" {
-			<i class={ "devicon-" + strings.ToLower(lang) + "-original colored" }></i>
-		} else {
-			<i class={ "devicon-" + strings.ToLower(lang) + "-plain colored" }></i>
-		}
-		{ lang }
-	</div>
 }

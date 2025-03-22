@@ -1,6 +1,10 @@
 package layouts;
 
-import "harmeepatel.dev/web/components"
+import (
+    "os"
+    "errors"
+    "harmeepatel.dev/web/components"
+)
 
 templ PhotoBase(title string) {
 	{{ const static = "./static" }}
@@ -20,11 +24,59 @@ templ PhotoBase(title string) {
                     }
                 </style>
             </noscript>
+            if _, err := os.Stat( static + "/css/main.css" ); errors.Is(err, os.ErrNotExist) {
+                <style>
+
+                    body {
+                        padding: 0 5%;
+                    }
+                    nav svg{
+                        width: 22px;
+                    }
+                    #image-grid {
+                        display: none;
+                    }
+                    #image-grid-mobile {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .photos-footer {
+                        display: none;
+                    }
+
+                    @media (min-width: 850px) {
+                        body {
+                            padding: 0 15%;
+                        }
+                        nav svg{
+                            width: 28px;
+                        }
+                        #image-grid {
+                            display: flex;
+                            flex-wrap: wrap;
+                        }
+                        #image-grid-mobile {
+                            display: none;
+                        }
+                    }
+
+                    @media (min-width: 1280px) {
+                        body {
+                            padding: 0 25%;
+                        }
+                        nav svg{
+                            width: 36px;
+                        }
+
+                    }
+                </style>
+            }
 		</head>
 		<body class="max-w-screen-3xl m-auto text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
 			{ children... }
-			@components.Footer(static, "gaayab")
+			@components.Footer(static, "hidden")
 		</body>
 		<script src={ static + "/js/main.min.js" }></script>
 		<script src={ static + "/js/photos.min.js" }></script>

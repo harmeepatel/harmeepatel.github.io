@@ -124,7 +124,7 @@ function copyToClipboard(self, code) {
     const checkmark = self.querySelector(`[alt="CheckInCircle icon"]`);
 
     var time = +window.getComputedStyle(document.body).getPropertyValue("--copy-to-clipboard-duration");
-    const holdTime = 10;
+    const holdTime = time/4;
 
     addUp(checkmark.classList, time);
     addDown(clipboard.classList, time);
@@ -150,8 +150,8 @@ function copyToClipboard(self, code) {
 					<span class="font-mono text-base text-black dark:text-light"> { fileName } </span>
 				}
 				<button class="flex items-center ml-auto relative" onclick={ templ.JSFuncCall("copyToClipboard", templ.JSExpression("this"), code) }>
-					@icons.Clipboard(icons.IconInfo{Width: 20, Class: "w-full opacity-80 hover:opacity-100", Alt: "Clipboard icon"})
-					@icons.CheckInCircle(icons.IconInfo{Width: 20, Class: "w-full !opacity-100 absolute left-0 scale-0", Alt: "CheckInCircle icon"})
+					@icons.Clipboard( 20, "w-full opacity-80 hover:opacity-100", "Clipboard icon")
+					@icons.CheckInCircle( 20, "w-full !opacity-100 absolute left-0 scale-0", "CheckInCircle icon")
 				</button>
 			</div>
 			<div class="overflow-scroll *:px-3 *:py-1.5 *:md:px-6 *:md:py-3 rounded-lg xl:rounded-xl *:!bg-light dark:*:!bg-dark">
@@ -162,7 +162,10 @@ function copyToClipboard(self, code) {
 }
 
 templ InlineCode(text string) {
-	<code class={ "px-1 py-[1px] md:py-0.5 !font-mono md:text-[0.92rem] bg-black/10 dark:bg-white/10 border border-dark/50 dark:border-light/50 rounded-sm xl:rounded" }>{ text }</code>&nbsp;
+	<code class={ "px-1 py-[1px] md:py-0.5 !font-mono md:text-[0.92rem] bg-black/10 dark:bg-white/10 border border-dark/50 dark:border-light/50 rounded-sm xl:rounded" }>
+    {text}
+    {children...}
+    </code>&nbsp;
 }
 
 // icon

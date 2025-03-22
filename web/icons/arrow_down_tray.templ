@@ -2,16 +2,16 @@ package icons;
 
 import "strconv"
 
-templ ArrowDownTray(info IconInfo) {
+templ ArrowDownTray(width int, class string, alt string) {
 	<svg
-		width={ strconv.Itoa(info.Width) }
+		width={ strconv.Itoa(width) }
+		class={ class }
+		alt={ alt }
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
 		viewBox="0 0 24 24"
 		stroke-width="2"
 		stroke="currentColor"
-		class={"size-6 " + info.Class}
-		alt={ info.Alt }
 	>
 		<path
 			stroke-linecap="round"

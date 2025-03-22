@@ -1,5 +1,5 @@
-module.export =  {
+module.exports = {
     content: [
-        '**/*.{js,ts,templ}',
-    ],
+        "./**/*/{ts,templ,html}"
+    ]
 }

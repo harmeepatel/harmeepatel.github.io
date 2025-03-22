@@ -1,19 +1,16 @@
 package components;
 
-import (
-	"harmeepatel.dev/web/icons"
-)
+import "harmeepatel.dev/web/icons"
 
 templ Nav(static string) {
 	<nav
 		id="nav"
-		class={ "max-w-screen-lg w-4/5 mx-auto my-0 mt-4 md:m-auto py-3.5 px-6 md:py-5 md:px-10 flex sticky z-[100] top-4 rounded-xl xl:rounded-2xl" }
-	>
-		<div class="w-full flex justify-between items-center">
+		class="max-w-screen-lg w-4/5 mx-auto my-0 mt-4 md:m-auto py-3.5 px-6 md:py-5 md:px-10 flex sticky z-[100] top-4 rounded-xl xl:rounded-2xl backdrop-blur-md bg-white/30 dark:bg-black/30 ui-ring-color " >
+		<div class="w-full flex justify-between items-center" style="display:flex; flex-direction:row;align-items:center;justify-content:space-between;">
 			<a class="" href="/" aria-label="HP my name initials">
-				@icons.HpBlack(icons.IconInfo{Width: 12, Class: "w-[1.5rem] md:w-[2.6rem] h-full", Alt: "My initials HP"})
+				@icons.HpBlack(12, "w-[1.5rem] md:w-[2.6rem] h-full", "My initials HP")
 			</a>
-			<ul class="flex justify-evenly items-center self-center gap-4 md:gap-8 xl:gap-10">
+			<ul class="flex justify-evenly items-center self-center gap-4 md:gap-8 xl:gap-10" style="display: flex;gap: 1rem; list-style:none;">
 				@NavLi("Resume", "/")
 				@NavLi("Blogs", "/blog.html")
 				@NavLi("Photos", "/photos.html")
