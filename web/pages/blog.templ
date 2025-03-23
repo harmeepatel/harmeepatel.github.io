@@ -2,13 +2,10 @@ package pages;
 
 import (
     "iter"
-	"fmt"
 	"harmeepatel.dev/web"
-	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/layouts"
 	"strconv"
 	"slices"
-	"strings"
 )
 
 var ao = 0
@@ -24,13 +21,13 @@ templ Blog(title string, blogList iter.Seq[string]) {
 				{{	
                     ao++
                     mt8 := ""
-                    fixedTitle := strings.TrimSpace(components.FixTitle(bName))
+                    fixedTitle := web.GetFromKey(web.Title, bName)
 				}}
 				if i == 0 {
 					{{ mt8 += "mt-4 md:mt-8" }}
 				}
 				<div class={ "blog-li mb-6 md:mb-8 list-anim " + mt8, animOrder(ao) }>
-                    <time>{ web.GetUploadDate(fmt.Sprintf("web/pages/blogs/%s.templ", bName)) }</time>
+                    <time>{ web.GetFromKey(web.Date, bName) }</time>
 					<a href={ templ.SafeURL("blog/" + bName + ".html") } class="blog-li-a" aria-label={ fixedTitle }>
 						{ fixedTitle }
 					</a>

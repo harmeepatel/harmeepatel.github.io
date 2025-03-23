@@ -186,7 +186,7 @@ section {
     }
 
     & time {
-        @apply mb-1 md:mb-2
+        @apply my-1 md:my-2
     }
 
     & .tag {
