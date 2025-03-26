@@ -54,7 +54,7 @@ type ImageInfo = {
     width: number
     height: number
 }
-let imgCollection = document.getElementsByClassName("row")
+let imgCollection = document.querySelectorAll("figure>img")!
 let imgArr = Array.from(imgCollection).sort(imageSorter) as HTMLImageElement[]
 let prevImg = imgArr[0] as HTMLImageElement;
 
@@ -125,16 +125,16 @@ modal.addEventListener("touchend", () => {
 
 });
 
-const lgMainClasses = "h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block"
-const smMainClasses = "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y no-scrollbar"
-const photos = document.getElementById("photos")!
-function mainPhotosClasses() {
-    if (window.innerWidth < closeDialogThreshold) {
-        photos.classList.value = smMainClasses
-    } else {
-        photos.classList.value = lgMainClasses
-    }
-}
+// const lgMainClasses = "h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block"
+// const smMainClasses = "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y no-scrollbar"
+const photos = document.getElementById("image-grid")!
+// function mainPhotosClasses() {
+//     if (window.innerWidth < closeDialogThreshold) {
+//         photos.classList.value = smMainClasses
+//     } else {
+//         photos.classList.value = lgMainClasses
+//     }
+// }
 window.addEventListener("resize", () => {
     // remove modal if screen size less than 768px
     if (window.innerWidth < closeDialogThreshold) {
@@ -142,25 +142,30 @@ window.addEventListener("resize", () => {
             modal.close()
         }
     }
-    mainPhotosClasses()
+    // mainPhotosClasses()
 })
 
-window.addEventListener("load", () => {
-    mainPhotosClasses()
-})
+// window.addEventListener("load", () => {
+//     mainPhotosClasses()
+// })
 
 photos.addEventListener("scroll", () => {
     const nav: HTMLElement = document.getElementById("nav")!
     const scrollOffset = 8
-    const navScrollClasses = ["ring-1", "dark:ring-white/80", "ring-black/60", "dark:shadow-[0_0_50px_-12px_rgba(0,0,0,1)]", "shadow-[0_0_50px_-12px_rgba(0,0,0,0.6)]", "backdrop-blur", "duration-200"]
+    const navScrollClasses = ["ring-1"]
     if (photos.scrollTop > scrollOffset) {
-        for (let i = 0; i < navScrollClasses.length; i++) {
-            nav.classList.add(navScrollClasses[i]);
-        }
+        nav.classList.add(...navScrollClasses);
     }
     if (photos.scrollTop < scrollOffset) {
         for (let i = 0; i < navScrollClasses.length; i++) {
-            nav.classList.remove(navScrollClasses[i]);
+            nav.classList.remove(...navScrollClasses);
         }
     }
+})
+
+// mobile scroll indication
+photos.addEventListener("scroll", () => {
+    const arrowLeft = document.getElementById("arrow-left")!
+    const arrowRight = document.getElementById("arrow-right")!
+    console.log(arrowLeft, arrowRight)
 })

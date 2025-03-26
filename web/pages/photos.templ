@@ -2,9 +2,10 @@ package pages;
 
 import (
 	"harmeepatel.dev/web/layouts"
-	"harmeepatel.dev/web/icons"
+	//"harmeepatel.dev/web/icons"
 	"strconv"
 	"strings"
+    "math/rand"
 )
 
 // const imgPath = "./static/media/images/gallery/"
@@ -23,21 +24,21 @@ func addAspectRatio(image ImgInfo, class string) string {
 	}
 }
 
-func (img ImgInfo) IsWide() bool {
-	return img.Width > img.Height
-}
-
 type ImgInfo struct {
 	Name   string
 	Width  int
 	Height int
 }
+func (img ImgInfo) IsWide() bool {
+	return img.Width > img.Height
+}
+
 
 // "harmeepatel.dev/web/components"
 templ Photos(title string, photos [][]ImgInfo) {
 	{{ 
         smImgs := photos[0]
-        lgImgs := photos[1] 
+        //lgImgs := photos[1] 
     }}
 	@layouts.PhotoBase(title) {
 		<dialog id="image_modal" class="m-auto h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
@@ -54,103 +55,47 @@ templ Photos(title string, photos [][]ImgInfo) {
 				<p class="text-white">← / → | h / l</p>
 			</div>
 		</dialog>
-		// <main id="photos-sm" class="h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y touch-pan-y no-scrollbar">
 
-		<main id="photos" class="h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block">
-        {{ 
-            gap := "2"
-        }}
-			<div id="image-grid" class="hidden md:flex md:flex-wrap md:justify-center">
-				for i := 0; i < 4; i++ {
-					<div class={"column px-" + gap + " sm:flex-[100%] sm:max-w-full md:flex-[50%] md:max-w[50%] xl:flex-[25%] xl:max-w-[25%]"}>
-						for j := i; j < len(smImgs) ; j+=4 {
-							{{ 
-                                img := smImgs[j] 
-                                img_class := "row inline-block mt-"+gap+" mb-"+gap+" align-center w-full rounded-2xl ring-2 ring-black dark:ring-white rounded-xl hover:duration-300 hover:scale-101 dark:hover:shadow-[0_0_24px_8px_rgba(0,0,0,0.7)] hover:shadow-[0_0_24px_8px_rgba(0,0,0,0.3)]"
-                            }}
-							<img
-								id={ strconv.Itoa(j) }
-								src={ img.Name }
-								if j == 0 || j == 1 || j == 2 || j == 3 {
-									class={ addAspectRatio(img, img_class) }
-								} else {
-									class={ addAspectRatio(img, img_class) }
-								}
-								onclick="openImageModal(this)"
-								if img.IsWide() {
-									width="500"
-									height="400"
-								} else {
-									width="400"
-									height="500"
-								}
-								alt={ strings.Replace(generateAlt(img.Name), "-", " ", -1) }
-							/>
-						}
-					</div>
-				}
-			</div>
+        <aside class="flex justify-center pt-8">
+            <div id="arrow-left" class="md:hidden">←</div>
+            <div id="arrow-right" class="md:hidden">→</div>
+        </aside>
+        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 my-6 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
+            {{
+                randSource := rand.NewSource(100) 
+                r := rand.New(randSource)
+            }}
+            for j := 0; j < len(smImgs) ; j+=1 {
+                {{ 
+                    img := smImgs[j] 
+                    figSpan := ""
+                    _ = figSpan
+                    if (r.Float32() < 0.3) {
+                        if img.IsWide() {
+                            figSpan = "md:row-span-2 md:col-span-3 "
+                        } else {
+                            figSpan = "md:row-span-2 md:col-span-2 "
+                        }
+                    }
+                }}
 
-			{{ imgClass := "m-auto w-full xs:w-4/5 lg:w-full align-center rounded-xl ring-2 ring-black dark:ring-white" }}
-			<div id="image-grid-mobile" class="md:hidden">
-				for i, img := range(lgImgs) {
-					<div class="img-wraper mx-4 my-[5.5rem] snap-center snap-normal">
-						<img
-							id={ strconv.Itoa(i) }
-							src={ img.Name }
-							if i == 0 {
-								class={ "mt-[8.5rem] " + imgClass }
-							} else {
-								class={ imgClass }
-							}
-							if img.IsWide() {
-								width="500"
-								height="400"
-							} else {
-								width="400"
-								height="500"
-							}
-							onclick="openImageModal(this)"
-							alt={ strings.Replace(generateAlt(smImgs[i].Name), "-", " ", -1) }
-							loading="lazy"
-						/>
-					</div>
-				}
-			</div>
-
-			{{
-                iconClass := "w-[12px] md:w-[16px] opacity-60 hover:opacity-100"
-                infoLinkClass := "!text-black dark:!text-white flex items-center"
-			}}
-
-			<footer
-				id="footer"
-				class="photos-footer max-w-screen-lg w-4/5 m-auto my-4 lg:my-8 bg-light dark:bg-dark ring-1 dark:ring-white/60 ring-black/60 rounded-xl xl:rounded-2xl"
-			>
-				<div class="py-3.5 px-6 md:py-5 md:px-10">
-					<div class="flex justify-center items-center gap-3 md:gap-6 pb-3 sm:pb-6">
-						<a href="/" target="" class={infoLinkClass} aria-label="HP my name initials">
-                            @icons.HpBlack( 12, "w-[14px] md:w-[20px] h-full opacity-60 hover:opacity-100", "My initials HP")
-						</a>
-						<a href="tel:+16478321245" target="_blank" class={infoLinkClass} aria-label="phone">
-                            @icons.Phone( 12, iconClass, "Phone icon")
-						</a>
-						<a href="https://github.com/harmeepatel" target="_blank" class={infoLinkClass} aria-label="github">
-                            @icons.Github( 12, iconClass, "Github icon")
-						</a>
-						<a href="https://ca.linkedin.com/in/harmeepatel" target="_blank" class={infoLinkClass} aria-label="linkedin">
-                            @icons.Linkedin( 12, iconClass, "Linkedin icon")
-						</a>
-						<a href="mailto:harmeeworks@gmail.com" target="_blank" class={infoLinkClass} aria-label="email">
-                            @icons.Email( 12, iconClass, "Email icon")
-						</a>
-						<a href="https://www.instagram.com/harmee.png/" target="_blank" class={infoLinkClass} aria-label="instagram">
-                            @icons.Ig( 12, iconClass, "Instagram icon")
-						</a>
-					</div>
-					<p class="text-center opacity-60">© 2024 Harmee Patel. All rights reserved.</p>
-				</div>
-			</footer>
-		</main>
+                <figure class={ figSpan + "min-w-full rounded-lg md:border-1 group snap-always snap-center" }>
+                    <img
+                        id={ strconv.Itoa(j) }
+                        src={ img.Name }
+                        class={ addAspectRatio(img, " [inline-size:100%] border-1 md:border-0 transition-all duration-200 m-auto object-cover rounded-lg md:rounded-none md:[block-size:100%] md:group-hover:scale-103") }
+                        onclick="openImageModal(this)"
+                        if img.IsWide() {
+                            width="500"
+                            height="400"
+                        } else {
+                            width="400"
+                            height="500"
+                        }
+                        alt={ strings.Replace(generateAlt(img.Name), "-", " ", -1) }
+                    >
+                </figure>
+            }
+        </main>
 	}
 }

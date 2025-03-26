@@ -76,7 +76,7 @@ templ PhotoBase(title string) {
 		<body class="max-w-screen-3xl m-auto text-black bg-light dark:bg-dark dark:text-light">
 			@components.Nav(static)
 			{ children... }
-			@components.Footer(static, "hidden")
+			@components.Footer(static, "")
 		</body>
 		<script src={ static + "/js/main.min.js" }></script>
 		<script src={ static + "/js/photos.min.js" }></script>
