@@ -1,7 +1,7 @@
 # css-gen:
 # 	sass -w ./static/css/index.scss ./static/css/index.css
 
-compress-js:
+compress:
 	uglifyjs --compress 'pure_funcs' --mangle -o ../static/js/main.min.js -- ../static/js/main.js
 	uglifyjs --compress 'pure_funcs' --mangle -o ../static/js/photos.min.js -- ../static/js/photos.js
 
@@ -10,5 +10,5 @@ css-input:
 tsc:
 	tsc -w
 
-dev: compress-js
+dev: 
 	make -j 2 css-input tsc

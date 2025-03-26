@@ -38,7 +38,7 @@ func (img ImgInfo) IsWide() bool {
 templ Photos(title string, photos [][]ImgInfo) {
 	{{ 
         smImgs := photos[0]
-        //lgImgs := photos[1] 
+        lgImgs := photos[1] 
     }}
 	@layouts.PhotoBase(title) {
 		<dialog id="image_modal" class="m-auto h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
@@ -56,11 +56,7 @@ templ Photos(title string, photos [][]ImgInfo) {
 			</div>
 		</dialog>
 
-        <aside class="flex justify-center pt-8">
-            <div id="arrow-left" class="md:hidden">←</div>
-            <div id="arrow-right" class="md:hidden">→</div>
-        </aside>
-        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 my-6 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
+        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-4 mt-8 md:my-8 px-4 md:px-0 snap-x snap-mandatory overflow-x-scroll flex gap-8 md:grid md:gap-2">
             {{
                 randSource := rand.NewSource(100) 
                 r := rand.New(randSource)
@@ -69,8 +65,8 @@ templ Photos(title string, photos [][]ImgInfo) {
                 {{ 
                     img := smImgs[j] 
                     figSpan := ""
-                    _ = figSpan
                     if (r.Float32() < 0.3) {
+                        img = lgImgs[j] 
                         if img.IsWide() {
                             figSpan = "md:row-span-2 md:col-span-3 "
                         } else {
@@ -97,5 +93,10 @@ templ Photos(title string, photos [][]ImgInfo) {
                 </figure>
             }
         </main>
+
+        <aside class="flex justify-center md:hidden">
+            <div id="arrow-left" class="">←</div>
+            <div id="arrow-right" class="hidden">→</div>
+        </aside>
 	}
 }

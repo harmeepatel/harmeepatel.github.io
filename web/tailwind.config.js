@@ -1,5 +1,5 @@
 module.exports = {
     content: [
-        "./**/*/{ts,templ,html}"
+        "./**/*/{ts,js,templ,html}"
     ]
 }

@@ -16,14 +16,13 @@ function addUpscaleSuffix(name) {
 function stripUpscaleSuffix(name) {
     return name.replace("@2x.webp", ".webp");
 }
-// -- utils -- 
 // open modal on clicking on an image if the screen is bigger than 1024px
 const modal = document.getElementById("image_modal");
 const modalImg = modal.querySelector("#modal_image");
-const closeDialogThreshold = 768;
+const mdScreen = 768;
 let currImgId = -1;
 function openImageModal(e) {
-    if (window.innerWidth >= closeDialogThreshold) {
+    if (window.innerWidth >= mdScreen) {
         currImgId = parseInt(e.id);
         modalImg.src = addUpscaleSuffix(e.src);
         modal.showModal();
@@ -104,28 +103,7 @@ modal.addEventListener("touchend", () => {
         modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
-// const lgMainClasses = "h-vh md:mx-14 3xl:mx-0 mt-6 md:mt-8 md:block"
-// const smMainClasses = "h-[100dvh] absolute top-0 flex flex-col items-center overflow-x-none overflow-y-scroll snap-y no-scrollbar"
 const photos = document.getElementById("image-grid");
-// function mainPhotosClasses() {
-//     if (window.innerWidth < closeDialogThreshold) {
-//         photos.classList.value = smMainClasses
-//     } else {
-//         photos.classList.value = lgMainClasses
-//     }
-// }
-window.addEventListener("resize", () => {
-    // remove modal if screen size less than 768px
-    if (window.innerWidth < closeDialogThreshold) {
-        if (modal.open) {
-            modal.close();
-        }
-    }
-    // mainPhotosClasses()
-});
-// window.addEventListener("load", () => {
-//     mainPhotosClasses()
-// })
 photos.addEventListener("scroll", () => {
     const nav = document.getElementById("nav");
     const scrollOffset = 8;
@@ -139,9 +117,29 @@ photos.addEventListener("scroll", () => {
         }
     }
 });
+window.addEventListener("resize", () => {
+    if (window.innerWidth < mdScreen) {
+        // close open modal
+        if (modal.open) {
+            modal.close();
+        }
+    }
+});
 // mobile scroll indication
 photos.addEventListener("scroll", () => {
     const arrowLeft = document.getElementById("arrow-left");
     const arrowRight = document.getElementById("arrow-right");
-    console.log(arrowLeft, arrowRight);
+    if (photos.scrollLeft == 0) {
+        arrowRight.classList.add("hidden");
+        arrowLeft.classList.remove("hidden");
+    }
+    else if (photos.scrollLeft >= photos.scrollWidth - mdScreen) {
+        console.log(photos.scrollLeft >= photos.scrollWidth - mdScreen);
+        arrowRight.classList.remove("hidden");
+        arrowLeft.classList.add("hidden");
+    }
+    else {
+        arrowRight.classList.remove("hidden");
+        arrowLeft.classList.remove("hidden");
+    }
 });
