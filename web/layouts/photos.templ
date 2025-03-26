@@ -1,0 +1,84 @@
+package layouts;
+
+import (
+    "os"
+    "errors"
+    "harmeepatel.dev/web/components"
+)
+
+templ PhotoBase(title string) {
+	{{ const static = "./static" }}
+	<!DOCTYPE html>
+	<html id="main-html" lang="en" data-theme="dark" class="scroll-smooth">
+		<head>
+			<meta charset="utf-8"/>
+			<link rel="icon" href={ static + "/media/icons/favicon.ico" }/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<meta name="description" content="Protfolio website with my resume and some useful blogs."/>
+			<title>{ title }</title>
+			<link rel="stylesheet" href={ static + "/css/main.css" }/>
+            <noscript>
+                <style>
+                    nav {
+                        backdrop-filter: blur(12px);
+                    }
+                </style>
+            </noscript>
+            if _, err := os.Stat( static + "/css/main.css" ); errors.Is(err, os.ErrNotExist) {
+                <style>
+
+                    body {
+                        padding: 0 5%;
+                    }
+                    nav svg{
+                        width: 22px;
+                    }
+                    #image-grid {
+                        display: none;
+                    }
+                    #image-grid-mobile {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .photos-footer {
+                        display: none;
+                    }
+
+                    @media (min-width: 850px) {
+                        body {
+                            padding: 0 15%;
+                        }
+                        nav svg{
+                            width: 28px;
+                        }
+                        #image-grid {
+                            display: flex;
+                            flex-wrap: wrap;
+                        }
+                        #image-grid-mobile {
+                            display: none;
+                        }
+                    }
+
+                    @media (min-width: 1280px) {
+                        body {
+                            padding: 0 25%;
+                        }
+                        nav svg{
+                            width: 36px;
+                        }
+
+                    }
+                </style>
+            }
+		</head>
+		<body class="max-w-screen-3xl m-auto text-black bg-light dark:bg-dark dark:text-light">
+			@components.Nav(static)
+			{ children... }
+			@components.Footer(static, "")
+		</body>
+		<script src={ static + "/js/main.min.js" }></script>
+		<script src={ static + "/js/photos.min.js" }></script>
+	</html>
+}
