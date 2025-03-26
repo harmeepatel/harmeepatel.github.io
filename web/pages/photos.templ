@@ -56,7 +56,13 @@ templ Photos(title string, photos [][]ImgInfo) {
 			</div>
 		</dialog>
 
-        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-4 mt-8 md:my-8 px-4 md:px-0 snap-x snap-mandatory overflow-x-scroll flex gap-8 md:grid md:gap-2">
+
+        <aside class="flex justify-center mt-4 md:hidden">
+            <div id="arrow-left" class="px-2 animate-bounce-left">←</div>
+            <div id="arrow-right" class="px-2 hidden">→</div>
+        </aside>
+
+        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-5 mt-10 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
             {{
                 randSource := rand.NewSource(100) 
                 r := rand.New(randSource)
@@ -93,10 +99,5 @@ templ Photos(title string, photos [][]ImgInfo) {
                 </figure>
             }
         </main>
-
-        <aside class="flex justify-center md:hidden">
-            <div id="arrow-left" class="">←</div>
-            <div id="arrow-right" class="hidden">→</div>
-        </aside>
 	}
 }

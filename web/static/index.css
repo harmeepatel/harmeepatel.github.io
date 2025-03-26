@@ -3,7 +3,8 @@
 
 :root {
     color-scheme: light dark;
-    --copy-to-clipboard-duration: 280;
+    --duration-copy-to-clipboard: 280;
+    --duration-photos-arrow: 600;
     --easing: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
@@ -26,19 +27,7 @@
     --breakpoint-xs: 532px;
     --breakpoint-3xl: 1792px;
 
-    @keyframes down {
-        0% {
-            scale: 1;
-            opacity: 1;
-        }
-
-        100% {
-            scale: 0;
-            opacity: 0;
-        }
-    }
-
-    @keyframes up {
+    @keyframes scale-up {
         0% {
             scale: 0;
             opacity: 0;
@@ -49,9 +38,44 @@
             opacity: 1;
         }
     }
+    --animate-scale-up : scale-up calc(var(--duration-copy-to-clipboard) * 1ms) var(--easing) forwards;
 
-    --animate-up :up calc(var(--copy-to-clipboard-duration) * 1ms) var(--easing) forwards;
-    --animate-down: down calc(var(--copy-to-clipboard-duration) * 1ms) var(--easing) forwards;
+    @keyframes scale-down {
+        0% {
+            scale: 1;
+            opacity: 1;
+        }
+
+        100% {
+            scale: 0;
+            opacity: 0;
+        }
+    }
+    --animate-scale-down: scale-down calc(var(--duration-copy-to-clipboard) * 1ms) var(--easing) forwards;
+    
+    @keyframes bounce-left {
+        0%, 100% {
+            transform: translateX(0%)
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+        50% {
+            transform: translateX(10%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+    }
+    --animate-bounce-left: bounce-left calc(var(--duration-photos-arrow) * 1ms) var(--easing) infinite;
+
+    @keyframes bounce-right {
+        0%, 100% {
+            transform: translateX(0%);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+        50% {
+            transform: translateX(-20%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+    }
+    --animate-bounce-right: bounce-right calc(var(--duration-photos-arrow) * 1ms) var(--easing) infinite;
 }
 
 @layer base {

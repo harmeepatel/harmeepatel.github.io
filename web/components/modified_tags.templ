@@ -92,29 +92,29 @@ templ Code(lang string, fileName string, code string) {
 	{{ highlight_code := GetHighlighted(code, lang) }}
     @copyToClipboardHandle.Once(){
         <script>
-const up = "!animate-up";
-const down = "!animate-down";
+const scaleUp = "!animate-scale-up";
+const scaleDown = "!animate-scale-down";
 function addUp(classList, time) {
     const timer = setTimeout(() => {
-        classList.add(up);
+        classList.add(scaleUp);
         clearTimeout(timer);
     }, time)
 }
 function addDown(classList, time) {
     const timer = setTimeout(() => {
-        classList.add(down);
+        classList.add(scaleDown);
         clearTimeout(timer);
     }, time)
 }
 function removeUp(classList, time) {
     const timer = setTimeout(() => {
-        classList.remove(up);
+        classList.remove(scaleUp);
         clearTimeout(timer);
     }, time)
 }
 function removeDown(classList, time) {
     const timer = setTimeout(() => {
-        classList.remove(down);
+        classList.remove(scaleDown);
         clearTimeout(timer);
     }, time)
 }
@@ -123,7 +123,7 @@ function copyToClipboard(self, code) {
     const clipboard = self.querySelector(`[alt="Clipboard icon"]`);
     const checkmark = self.querySelector(`[alt="CheckInCircle icon"]`);
 
-    var time = +window.getComputedStyle(document.body).getPropertyValue("--copy-to-clipboard-duration");
+    var time = +window.getComputedStyle(document.body).getPropertyValue("--duration-copy-to-clipboard");
     const holdTime = time/4;
 
     addUp(checkmark.classList, time);

@@ -126,20 +126,37 @@ window.addEventListener("resize", () => {
     }
 });
 // mobile scroll indication
+const arrowLeft = document.getElementById("arrow-left");
+const arrowRight = document.getElementById("arrow-right");
+const arc = arrowRight.classList;
+const alc = arrowLeft.classList;
 photos.addEventListener("scroll", () => {
-    const arrowLeft = document.getElementById("arrow-left");
-    const arrowRight = document.getElementById("arrow-right");
-    if (photos.scrollLeft == 0) {
-        arrowRight.classList.add("hidden");
-        arrowLeft.classList.remove("hidden");
+    const isBegining = photos.scrollLeft == 0;
+    const isEnd = photos.scrollLeft >= photos.scrollWidth - mdScreen;
+    if (isBegining) {
+        console.log("start");
+        // r
+        arc.add("hidden");
+        // l
+        alc.remove("hidden");
+        alc.add("animate-bounce-left");
     }
-    else if (photos.scrollLeft >= photos.scrollWidth - mdScreen) {
-        console.log(photos.scrollLeft >= photos.scrollWidth - mdScreen);
-        arrowRight.classList.remove("hidden");
-        arrowLeft.classList.add("hidden");
+    else if (isEnd) {
+        console.log("end");
+        // r
+        arc.remove("hidden");
+        arc.add("animate-bounce-right");
+        // l
+        alc.add("hidden");
+        alc.remove("animate-bounce-left");
     }
     else {
-        arrowRight.classList.remove("hidden");
-        arrowLeft.classList.remove("hidden");
+        console.log("middle");
+        // r
+        arc.remove("hidden");
+        arc.remove("animate-bounce-right");
+        // l
+        alc.remove("hidden");
+        alc.remove("animate-bounce-left");
     }
 });
