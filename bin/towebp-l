@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# ------ change this!! ------
+
+if [ ! -z $1 ]; then
+    IMAGE_DIR=$1
+else
+    echo
+    echo "Please provide a directory eg: ./"
+    exit 1
+fi
+if [ ! -d $IMAGE_DIR ]; then
+    echo "$IMAGE_DIR does not exist!!!"
+    echo
+    exit
+fi
+
+if [ ! -z $2 ]; then
+    FILE_SIZE=$2
+else
+    echo
+    echo "Please provide size in bytes eg: 512000 (512kb)"
+    exit 1
+fi
+
+echo "---- converting ' ' -> '-' ----"
+echo
+for w in $IMAGE_DIR/*; do
+    if [ -d $w ]; then
+        continue
+    fi
+    nw=$(echo $w | sed "s/\ /\-/g")
+    mv "$w" "$nw"
+done
+
+update_count=0
+for w in $IMAGE_DIR/*; do
+    if [ ! -f "$w" ] || [ -d $w ] || [ $w == ".DS_Store" ]; then
+        continue
+    fi
+
+    filename=$(basename -- "$w" | sed 's/ /\-/g')
+    extension="${filename##*.}"
+    filename="${filename%.*}" # remove extension at the end | abc.png -> abc
+
+    if [[ $extension == "webp" || $extension == "heic" ]]; then
+        continue
+    fi
+
+    ((update_count++))
+    echo "converting:   $w"
+    cwebp -size $2 -q 64 -mt -sns 80 -quiet "$w" -o $IMAGE_DIR/$filename.webp
+    if [[ $? -eq 0 ]]; then
+            echo "removing:     $w"
+            if ! command trash &> /dev/null; then
+                rm -rf "$w" # --- might have to change this
+            else
+                trash "$w"
+            fi
+        fi
+done
+
+if [ $update_count -eq 0 ]; then
+    echo "Nothing to do..."
+fi
+echo
