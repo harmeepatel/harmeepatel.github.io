@@ -26,9 +26,12 @@ const mdScreen = 768
 let currImgId = -1;
 function openImageModal(e: HTMLImageElement) {
     if (window.innerWidth >= mdScreen) {
-        currImgId = parseInt(e.id)
-        modalImg.src = addUpscaleSuffix(e.src)
-        modal.showModal()
+        if (e.src.includes("@2x")) {
+            modalImg.src = e.src;
+        } else {
+            modalImg.src = addUpscaleSuffix(e.src);
+        }
+        modal.showModal();
     }
 }
 function closeImageModal(e: HTMLButtonElement) {
@@ -57,10 +60,27 @@ let imgCollection = document.querySelectorAll("figure>img")!
 let imgArr = Array.from(imgCollection).sort(imageSorter) as HTMLImageElement[]
 let prevImg = imgArr[0] as HTMLImageElement;
 
+
+const photos = document.getElementById("image-grid")!
+
+if (window.innerWidth < mdScreen) {
+    const imgs = photos.querySelectorAll("img");
+    console.log(imgs);
+    for (let i = 0; i < imgs.length; i++) {
+        const img = imgs[i];
+        if (img.src.includes("@2x")) {
+            continue;
+        }
+        img.src = addUpscaleSuffix(img.src)
+    }
+}
+
+// -- EVENT LISTENERS --
+
 modal.addEventListener("keydown", (e) => {
     imgArr.forEach((elem) => {
         let img = elem as HTMLImageElement
-        if (img.src === stripUpscaleSuffix(modalImg.src)) {
+        if (stripUpscaleSuffix(img.src) === stripUpscaleSuffix(modalImg.src)) {
             currImgId = parseInt(img.id)
         }
     })
@@ -81,7 +101,11 @@ modal.addEventListener("keydown", (e) => {
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached")
 
     if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src)
+        if (prevImg.src.includes("@2x")) {
+            modalImg.src = prevImg.src;
+        } else {
+            modalImg.src = addUpscaleSuffix(prevImg.src);
+        }
     }
 });
 
@@ -119,12 +143,14 @@ modal.addEventListener("touchend", () => {
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached")
 
     if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src)
+        if (prevImg.src.includes("@2x")) {
+            modalImg.src = prevImg.src;
+        } else {
+            modalImg.src = addUpscaleSuffix(prevImg.src);
+        }
     }
 
 });
-
-const photos = document.getElementById("image-grid")!
 
 photos.addEventListener("scroll", () => {
     const nav: HTMLElement = document.getElementById("nav")!
@@ -159,14 +185,12 @@ photos.addEventListener("scroll", () => {
     const isEnd = photos.scrollLeft >= photos.scrollWidth - mdScreen
 
     if (isBegining) {
-        console.log("start")
         // r
         arc.add("hidden");
         // l
         alc.remove("hidden");
         alc.add("animate-bounce-left");
     } else if (isEnd) {
-        console.log("end")
         // r
         arc.remove("hidden");
         arc.add("animate-bounce-right");
@@ -174,7 +198,6 @@ photos.addEventListener("scroll", () => {
         alc.add("hidden");
         alc.remove("animate-bounce-left");
     } else {
-        console.log("middle")
         // r
         arc.remove("hidden");
         arc.remove("animate-bounce-right");

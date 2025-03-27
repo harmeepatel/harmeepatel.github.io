@@ -58,11 +58,11 @@ templ Photos(title string, photos [][]ImgInfo) {
 
 
         <aside class="flex justify-center mt-4 md:hidden">
-            <div id="arrow-left" class="px-2 animate-bounce-left">←</div>
-            <div id="arrow-right" class="px-2 hidden">→</div>
+            <div id="arrow-left" class="px-2 animate-bounce-left text-2xl font-extralight">←</div>
+            <div id="arrow-right" class="px-2 hidden text-2xl font-extralight">→</div>
         </aside>
 
-        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-5 mt-10 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
+        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-10 mt-10 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
             {{
                 randSource := rand.NewSource(100) 
                 r := rand.New(randSource)
@@ -81,11 +81,11 @@ templ Photos(title string, photos [][]ImgInfo) {
                     }
                 }}
 
-                <figure class={ figSpan + "min-w-full rounded-lg md:border-1 group snap-always snap-center" }>
+                <figure class={ figSpan + "min-w-full rounded-xl md:border-1 group snap-always snap-center" }>
                     <img
                         id={ strconv.Itoa(j) }
                         src={ img.Name }
-                        class={ addAspectRatio(img, " [inline-size:100%] border-1 md:border-0 transition-all duration-200 m-auto object-cover rounded-lg md:rounded-none md:[block-size:100%] md:group-hover:scale-103") }
+                        class={ addAspectRatio(img, " [inline-size:100%] border-4 md:border-0 transition-all duration-200 m-auto object-cover rounded-xl md:rounded-none md:[block-size:100%] md:group-hover:scale-103") }
                         onclick="openImageModal(this)"
                         if img.IsWide() {
                             width="500"
