@@ -87,7 +87,12 @@ modal.addEventListener("keydown", (e) => {
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
     if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src);
+        if (prevImg.src.includes("@2x")) {
+            modalImg.src = prevImg.src;
+        }
+        else {
+            modalImg.src = addUpscaleSuffix(prevImg.src);
+        }
     }
 });
 // -- modal on touch screens --
@@ -123,7 +128,12 @@ modal.addEventListener("touchend", () => {
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
     if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src);
+        if (prevImg.src.includes("@2x")) {
+            modalImg.src = prevImg.src;
+        }
+        else {
+            modalImg.src = addUpscaleSuffix(prevImg.src);
+        }
     }
 });
 photos.addEventListener("scroll", () => {
