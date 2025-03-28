@@ -27,20 +27,22 @@ function isImgWide(img: HTMLImageElement): boolean {
 }
 
 // open modal on clicking on an image if the screen is bigger than 1024px
-const modal = document.getElementById("image_modal")! as HTMLDialogElement
-const modalImg = modal.querySelector("#modal_image") as HTMLImageElement
+const modal = document.getElementById("image-modal")! as HTMLDialogElement
+const modalImg = modal.querySelector("#modal-image") as HTMLImageElement
+const modalTitle = modal.querySelector("#modal-title") as HTMLElement
 const mdScreen = 768
 
 let currImgId = -1;
 function openImageModal(e: HTMLImageElement) {
     if (window.innerWidth >= mdScreen) {
         modalImg.src = addUpscaleSuffix(e.src);
+        modalTitle.innerHTML = e.dataset.title!;
         modal.showModal();
     }
 }
 function closeImageModal(e: HTMLButtonElement) {
     const parent = e.parentNode!.parentNode
-    const img = parent!.querySelector("#modal_image") as HTMLImageElement
+    const img = parent!.querySelector("#modal-image") as HTMLImageElement
     img.src = ""
 }
 
@@ -67,6 +69,7 @@ let prevImg = imgArr[0] as HTMLImageElement;
 
 const photos = document.getElementById("image-grid")!
 
+// double img res on mobile
 if (window.innerWidth < mdScreen) {
     const imgs = photos.querySelectorAll("img");
     for (let i = 0; i < imgs.length; i++) {

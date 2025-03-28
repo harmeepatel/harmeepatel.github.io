@@ -33,7 +33,7 @@ func (img ImgInfo) IsWide() bool {
 func (img ImgInfo) GetTitle() string {
     var nameSplit = strings.Split(img.Name, "/");
     var title = strings.TrimSuffix(nameSplit[len(nameSplit)-1], ".webp")
-    return strings.ReplaceAll(title, "-", " ")
+    return web.FixTitle(strings.ReplaceAll(title, "-", " "))
 }
 
 
@@ -44,7 +44,7 @@ templ Photos(title string, photos [][]ImgInfo) {
         //lgImgs := photos[1] 
     }}
 	@layouts.PhotoBase(title) {
-		<dialog id="image_modal" class="m-auto h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
+		<dialog id="image-modal" class="m-auto h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
 			<form method="dialog">
 				<button 
                     class="w-8 h-8 ring-2 ring-white duration-100 rounded-full text-white fixed right-4 top-4 md:right-8 md:top-8 backdrop-blur-xs hover:backdrop-blur-md select-none"
@@ -54,7 +54,8 @@ templ Photos(title string, photos [][]ImgInfo) {
                 </button>
 			</form>
 			<div class="m-auto h-full flex flex-col items-center justify-evenly">
-				<img id="modal_image" class="max-h-[min(100%,94vh)] mx-8 self-center border-8 border-white duration-300 rounded-2xl" data-loading-class="bg-gray-100 opacity-80" src=""/>
+                <h3 id="modal-title" class="font-mono font-thin"></h3>
+				<img id="modal-image" class="max-h-[min(100%,90vh)] mx-8 self-center border-8 border-white duration-300 rounded-2xl" data-loading-class="bg-gray-100 opacity-80" src=""/>
 				<p class="text-white">← / → | h / l</p>
 			</div>
 		</dialog>
@@ -85,9 +86,10 @@ templ Photos(title string, photos [][]ImgInfo) {
                             height="500"
                         }
                         alt={ strings.Replace(generateAlt(img.Name), "-", " ", -1) }
+                        data-title={ img.GetTitle() }
                     >
 
-                    {{ class := "hidden @md:block [grid-area:1/1/-1/-1] self-baseline backdrop-blur-md bg-black/15 px-4 py-2 z-10" }}
+                    {{ class := "flex justify-center md:hidden [grid-area:1/1/-1/-1] self-baseline backdrop-blur-md bg-black/15 mx-auto md:mx-0 md:px-4 py-4 md:py-2 z-10" }}
                     <figcaption
                         if img.IsWide() {
                             class={ class }
@@ -95,7 +97,7 @@ templ Photos(title string, photos [][]ImgInfo) {
                             class={ class + "" }
                         }
                     >
-                        <p class="text-white font-mono text-xs">{ web.FixTitle(img.GetTitle()) }</p>
+                        <p class="text-white font-mono text-[10px] @md:text-sm">{ img.GetTitle() }</p>
                     </figcaption>
                 </figure>
 
