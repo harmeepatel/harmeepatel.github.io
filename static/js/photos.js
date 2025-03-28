@@ -25,19 +25,21 @@ function isImgWide(img) {
     return img.naturalWidth > img.naturalHeight;
 }
 // open modal on clicking on an image if the screen is bigger than 1024px
-const modal = document.getElementById("image_modal");
-const modalImg = modal.querySelector("#modal_image");
+const modal = document.getElementById("image-modal");
+const modalImg = modal.querySelector("#modal-image");
+const modalTitle = modal.querySelector("#modal-title");
 const mdScreen = 768;
 let currImgId = -1;
 function openImageModal(e) {
     if (window.innerWidth >= mdScreen) {
         modalImg.src = addUpscaleSuffix(e.src);
+        modalTitle.innerHTML = e.dataset.title;
         modal.showModal();
     }
 }
 function closeImageModal(e) {
     const parent = e.parentNode.parentNode;
-    const img = parent.querySelector("#modal_image");
+    const img = parent.querySelector("#modal-image");
     img.src = "";
 }
 function imageSorter(a, b) {
@@ -55,6 +57,7 @@ let imgCollection = document.querySelectorAll("figure>img");
 let imgArr = Array.from(imgCollection).sort(imageSorter);
 let prevImg = imgArr[0];
 const photos = document.getElementById("image-grid");
+// double img res on mobile
 if (window.innerWidth < mdScreen) {
     const imgs = photos.querySelectorAll("img");
     for (let i = 0; i < imgs.length; i++) {
@@ -87,12 +90,7 @@ modal.addEventListener("keydown", (e) => {
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
     if (prevImg != undefined) {
-        if (prevImg.src.includes("@2x")) {
-            modalImg.src = prevImg.src;
-        }
-        else {
-            modalImg.src = addUpscaleSuffix(prevImg.src);
-        }
+        modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
 // -- modal on touch screens --
@@ -128,12 +126,7 @@ modal.addEventListener("touchend", () => {
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
     if (prevImg != undefined) {
-        if (prevImg.src.includes("@2x")) {
-            modalImg.src = prevImg.src;
-        }
-        else {
-            modalImg.src = addUpscaleSuffix(prevImg.src);
-        }
+        modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
 photos.addEventListener("scroll", () => {
