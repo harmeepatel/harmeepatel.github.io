@@ -11,10 +11,18 @@ function removeClasses(elem, classes) {
     }
 }
 function addUpscaleSuffix(name) {
-    return name.replace(".webp", "@2x.webp");
+    if (name.includes("@2x")) {
+        return name;
+    }
+    else {
+        return name.replace(".webp", "@2x.webp");
+    }
 }
 function stripUpscaleSuffix(name) {
     return name.replace("@2x.webp", ".webp");
+}
+function isImgWide(img) {
+    return img.naturalWidth > img.naturalHeight;
 }
 // open modal on clicking on an image if the screen is bigger than 1024px
 const modal = document.getElementById("image_modal");
@@ -23,12 +31,7 @@ const mdScreen = 768;
 let currImgId = -1;
 function openImageModal(e) {
     if (window.innerWidth >= mdScreen) {
-        if (e.src.includes("@2x")) {
-            modalImg.src = e.src;
-        }
-        else {
-            modalImg.src = addUpscaleSuffix(e.src);
-        }
+        modalImg.src = addUpscaleSuffix(e.src);
         modal.showModal();
     }
 }
@@ -54,7 +57,6 @@ let prevImg = imgArr[0];
 const photos = document.getElementById("image-grid");
 if (window.innerWidth < mdScreen) {
     const imgs = photos.querySelectorAll("img");
-    console.log(imgs);
     for (let i = 0; i < imgs.length; i++) {
         const img = imgs[i];
         if (img.src.includes("@2x")) {
@@ -85,12 +87,7 @@ modal.addEventListener("keydown", (e) => {
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
     if (prevImg != undefined) {
-        if (prevImg.src.includes("@2x")) {
-            modalImg.src = prevImg.src;
-        }
-        else {
-            modalImg.src = addUpscaleSuffix(prevImg.src);
-        }
+        modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
 // -- modal on touch screens --
@@ -100,10 +97,14 @@ let moveX = 0;
 let isDeleteButtonOpen = false;
 modal.addEventListener("touchstart", e => {
     initialX = e.touches[0].pageX;
+}, {
+    passive: true,
 });
 modal.addEventListener("touchmove", e => {
     let currentX = e.touches[0].pageX;
     moveX = currentX - initialX;
+}, {
+    passive: true,
 });
 modal.addEventListener("touchend", () => {
     imgArr.forEach((elem) => {
@@ -122,12 +123,7 @@ modal.addEventListener("touchend", () => {
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
     if (prevImg != undefined) {
-        if (prevImg.src.includes("@2x")) {
-            modalImg.src = prevImg.src;
-        }
-        else {
-            modalImg.src = addUpscaleSuffix(prevImg.src);
-        }
+        modalImg.src = addUpscaleSuffix(prevImg.src);
     }
 });
 photos.addEventListener("scroll", () => {
@@ -140,6 +136,22 @@ photos.addEventListener("scroll", () => {
     if (photos.scrollTop < scrollOffset) {
         for (let i = 0; i < navScrollClasses.length; i++) {
             nav.classList.remove(...navScrollClasses);
+        }
+    }
+});
+window.addEventListener("load", () => {
+    const figures = photos.querySelectorAll("figure");
+    for (let i = 0; i < figures.length; i++) {
+        const figure = figures[i];
+        const img = figure.querySelector("img");
+        if (Math.random() < 0.25) {
+            if (isImgWide(img)) {
+                figure.classList.add("md:row-span-2", "md:col-span-3");
+            }
+            else {
+                figure.classList.add("md:row-span-2", "md:col-span-2");
+            }
+            img.src = addUpscaleSuffix(img.src);
         }
     }
 });

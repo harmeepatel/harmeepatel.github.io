@@ -17,7 +17,7 @@ func FixTitle(title string) string {
     articles := []string{ "a", "and", "as", "at", "but", "by", "down", "for", "from", "if", "in", "into", "like", "near", "nor", "of", "off ", "on", "once", "onto", "or", "over", "past", "so", "than", "that", "to", "upon", "when", "with", "yet", } 
     var s strings.Builder
     word: 
-        for _, word := range strings.Split(title, "_") {
+        for _, word := range strings.Split(title, " ") {
             for _, a := range articles {
                 if word == a {
                     s.WriteString(word)
@@ -40,10 +40,11 @@ func GetFromKey(get int, dt string) string {
 	switch get {
 	case Date:
         date := split[0]
-        date = strings.Replace(date, "_", " ", -1)
+        date = strings.ReplaceAll(date, "_", " ")
         return date
 	case Title:
         title := split[1]
+        title = strings.ReplaceAll(title, "_", " ")
         return FixTitle(title)
 	default:
 		fmt.Println("unreachable")

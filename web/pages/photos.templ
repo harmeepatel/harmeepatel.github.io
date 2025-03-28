@@ -2,13 +2,10 @@ package pages;
 
 import (
 	"harmeepatel.dev/web/layouts"
-	//"harmeepatel.dev/web/icons"
+	"harmeepatel.dev/web"
 	"strconv"
 	"strings"
-    "math/rand"
 )
-
-// const imgPath = "./static/media/images/gallery/"
 
 func generateAlt(s string) string {
 	before, _ := strings.CutSuffix(s, ".webp")
@@ -33,12 +30,18 @@ func (img ImgInfo) IsWide() bool {
 	return img.Width > img.Height
 }
 
+func (img ImgInfo) GetTitle() string {
+    var nameSplit = strings.Split(img.Name, "/");
+    var title = strings.TrimSuffix(nameSplit[len(nameSplit)-1], ".webp")
+    return strings.ReplaceAll(title, "-", " ")
+}
+
 
 // "harmeepatel.dev/web/components"
 templ Photos(title string, photos [][]ImgInfo) {
 	{{ 
         smImgs := photos[0]
-        lgImgs := photos[1] 
+        //lgImgs := photos[1] 
     }}
 	@layouts.PhotoBase(title) {
 		<dialog id="image_modal" class="m-auto h-screen bg-transparent backdrop:bg-black/90 dark:backdrop:bg-black/20 backdrop:backdrop-blur-lg">
@@ -63,29 +66,16 @@ templ Photos(title string, photos [][]ImgInfo) {
         </aside>
 
         <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-10 mt-10 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
-            {{
-                randSource := rand.NewSource(100) 
-                r := rand.New(randSource)
-            }}
             for j := 0; j < len(smImgs) ; j+=1 {
                 {{ 
                     img := smImgs[j] 
-                    figSpan := ""
-                    if (r.Float32() < 0.3) {
-                        img = lgImgs[j] 
-                        if img.IsWide() {
-                            figSpan = "md:row-span-2 md:col-span-3 "
-                        } else {
-                            figSpan = "md:row-span-2 md:col-span-2 "
-                        }
-                    }
                 }}
 
-                <figure class={ figSpan + "min-w-full rounded-xl md:border-1 group snap-always snap-center" }>
+                <figure class={ "m-auto md:m-0 md:grid min-w-full rounded-xl md:border-1 group snap-always snap-center @container" }>
                     <img
                         id={ strconv.Itoa(j) }
                         src={ img.Name }
-                        class={ addAspectRatio(img, " [inline-size:100%] border-4 md:border-0 transition-all duration-200 m-auto object-cover rounded-xl md:rounded-none md:[block-size:100%] md:group-hover:scale-103") }
+                        class={ addAspectRatio(img, " [inline-size:100%] [grid-area:1/1/-1/-1] border-4 md:border-0 transition-all duration-200 object-cover rounded-xl md:rounded-none md:[block-size:100%] md:group-hover:scale-103") }
                         onclick="openImageModal(this)"
                         if img.IsWide() {
                             width="500"
@@ -96,7 +86,19 @@ templ Photos(title string, photos [][]ImgInfo) {
                         }
                         alt={ strings.Replace(generateAlt(img.Name), "-", " ", -1) }
                     >
+
+                    {{ class := "hidden @md:block [grid-area:1/1/-1/-1] self-baseline backdrop-blur-md bg-black/15 px-4 py-2 z-10" }}
+                    <figcaption
+                        if img.IsWide() {
+                            class={ class }
+                        } else {
+                            class={ class + "" }
+                        }
+                    >
+                        <p class="text-white font-mono text-xs">{ web.FixTitle(img.GetTitle()) }</p>
+                    </figcaption>
                 </figure>
+
             }
         </main>
 	}
