@@ -32,7 +32,7 @@ const modalImg = modal.querySelector("#modal-image") as HTMLImageElement
 const modalTitle = modal.querySelector("#modal-title") as HTMLElement
 const mdScreen = 768
 
-let currImgId = -1;
+// handler: open image modal 
 function openImageModal(e: HTMLImageElement) {
     if (window.innerWidth >= mdScreen) {
         modalImg.src = addUpscaleSuffix(e.src);
@@ -40,12 +40,14 @@ function openImageModal(e: HTMLImageElement) {
         modal.showModal();
     }
 }
+// handler: close image modal 
 function closeImageModal(e: HTMLButtonElement) {
     const parent = e.parentNode!.parentNode
     const img = parent!.querySelector("#modal-image") as HTMLImageElement
     img.src = ""
 }
 
+// image sorter
 function imageSorter(a: Element, b: Element) {
     const aNum = parseInt(a.id)
     const bNum = parseInt(b.id)
@@ -56,16 +58,6 @@ function imageSorter(a: Element, b: Element) {
     }
     return 0;
 }
-
-type ImageInfo = {
-    name: string
-    width: number
-    height: number
-}
-let imgCollection = document.querySelectorAll("figure>img")!
-let imgArr = Array.from(imgCollection).sort(imageSorter) as HTMLImageElement[]
-let prevImg = imgArr[0] as HTMLImageElement;
-
 
 const photos = document.getElementById("image-grid")!
 
@@ -83,6 +75,17 @@ if (window.innerWidth < mdScreen) {
 
 // -- EVENT LISTENERS --
 
+// image modal
+type ImageInfo = {
+    name: string
+    width: number
+    height: number
+}
+let imgCollection = document.querySelectorAll("figure>img")!
+let imgArr = Array.from(imgCollection).sort(imageSorter) as HTMLImageElement[]
+let nextImg = imgArr[0] as HTMLImageElement;
+
+let currImgId = -1;
 modal.addEventListener("keydown", (e) => {
     imgArr.forEach((elem) => {
         let img = elem as HTMLImageElement
@@ -94,11 +97,11 @@ modal.addEventListener("keydown", (e) => {
     switch (e.code) {
         case "ArrowLeft":
         case "KeyH":
-            prevImg = imgArr[currImgId - 1]
+            nextImg = imgArr[currImgId - 1]
             break;
         case "ArrowRight":
         case "KeyL":
-            prevImg = imgArr[currImgId + 1]
+            nextImg = imgArr[currImgId + 1]
             break;
         default:
             break;
@@ -106,10 +109,13 @@ modal.addEventListener("keydown", (e) => {
 
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached")
 
-    if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src);
+    console.log(nextImg.dataset.title!)
+    if (nextImg != undefined) {
+        modalImg.src = addUpscaleSuffix(nextImg.src);
+        modalTitle.innerHTML = nextImg.dataset.title!;
     }
 });
+// End
 
 // -- modal on touch screens --
 const MOVE_THRESHOLD = 50;
@@ -140,16 +146,16 @@ modal.addEventListener("touchend", () => {
 
     if (Math.abs(moveX) > MOVE_THRESHOLD && modal.open) {
         if (moveX < 0) { // right
-            prevImg = imgArr[currImgId + 1]
+            nextImg = imgArr[currImgId + 1]
         } else { // left
-            prevImg = imgArr[currImgId - 1]
+            nextImg = imgArr[currImgId - 1]
         }
     }
 
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached")
 
-    if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src);
+    if (nextImg != undefined) {
+        modalImg.src = addUpscaleSuffix(nextImg.src);
     }
 
 });
@@ -168,6 +174,7 @@ photos.addEventListener("scroll", () => {
     }
 })
 
+// random image enhancement
 window.addEventListener("load", () => {
     const figures = photos.querySelectorAll("figure")
     for (let i = 0; i < figures.length; i++) {

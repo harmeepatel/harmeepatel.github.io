@@ -29,7 +29,7 @@ const modal = document.getElementById("image-modal");
 const modalImg = modal.querySelector("#modal-image");
 const modalTitle = modal.querySelector("#modal-title");
 const mdScreen = 768;
-let currImgId = -1;
+// handler: open image modal 
 function openImageModal(e) {
     if (window.innerWidth >= mdScreen) {
         modalImg.src = addUpscaleSuffix(e.src);
@@ -37,11 +37,13 @@ function openImageModal(e) {
         modal.showModal();
     }
 }
+// handler: close image modal 
 function closeImageModal(e) {
     const parent = e.parentNode.parentNode;
     const img = parent.querySelector("#modal-image");
     img.src = "";
 }
+// image sorter
 function imageSorter(a, b) {
     const aNum = parseInt(a.id);
     const bNum = parseInt(b.id);
@@ -53,9 +55,6 @@ function imageSorter(a, b) {
     }
     return 0;
 }
-let imgCollection = document.querySelectorAll("figure>img");
-let imgArr = Array.from(imgCollection).sort(imageSorter);
-let prevImg = imgArr[0];
 const photos = document.getElementById("image-grid");
 // double img res on mobile
 if (window.innerWidth < mdScreen) {
@@ -68,7 +67,10 @@ if (window.innerWidth < mdScreen) {
         img.src = addUpscaleSuffix(img.src);
     }
 }
-// -- EVENT LISTENERS --
+let imgCollection = document.querySelectorAll("figure>img");
+let imgArr = Array.from(imgCollection).sort(imageSorter);
+let nextImg = imgArr[0];
+let currImgId = -1;
 modal.addEventListener("keydown", (e) => {
     imgArr.forEach((elem) => {
         let img = elem;
@@ -79,20 +81,23 @@ modal.addEventListener("keydown", (e) => {
     switch (e.code) {
         case "ArrowLeft":
         case "KeyH":
-            prevImg = imgArr[currImgId - 1];
+            nextImg = imgArr[currImgId - 1];
             break;
         case "ArrowRight":
         case "KeyL":
-            prevImg = imgArr[currImgId + 1];
+            nextImg = imgArr[currImgId + 1];
             break;
         default:
             break;
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
-    if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src);
+    console.log(nextImg.dataset.title);
+    if (nextImg != undefined) {
+        modalImg.src = addUpscaleSuffix(nextImg.src);
+        modalTitle.innerHTML = nextImg.dataset.title;
     }
 });
+// End
 // -- modal on touch screens --
 const MOVE_THRESHOLD = 50;
 let initialX = 0;
@@ -118,15 +123,15 @@ modal.addEventListener("touchend", () => {
     });
     if (Math.abs(moveX) > MOVE_THRESHOLD && modal.open) {
         if (moveX < 0) { // right
-            prevImg = imgArr[currImgId + 1];
+            nextImg = imgArr[currImgId + 1];
         }
         else { // left
-            prevImg = imgArr[currImgId - 1];
+            nextImg = imgArr[currImgId - 1];
         }
     }
     console.assert(0 <= currImgId || currImgId < imgArr.length, "edge reached");
-    if (prevImg != undefined) {
-        modalImg.src = addUpscaleSuffix(prevImg.src);
+    if (nextImg != undefined) {
+        modalImg.src = addUpscaleSuffix(nextImg.src);
     }
 });
 photos.addEventListener("scroll", () => {
@@ -142,6 +147,7 @@ photos.addEventListener("scroll", () => {
         }
     }
 });
+// random image enhancement
 window.addEventListener("load", () => {
     const figures = photos.querySelectorAll("figure");
     for (let i = 0; i < figures.length; i++) {
