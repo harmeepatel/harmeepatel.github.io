@@ -66,18 +66,18 @@ templ Photos(title string, photos [][]ImgInfo) {
             <div id="arrow-right" class="px-2 hidden text-2xl font-extralight">→</div>
         </aside>
 
-        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-10 mt-10 md:my-8 px-4 md:px-0 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-2">
+        <main id="image-grid" class="h-vh md:mx-14 3xl:mx-0 mb-10 mt-10 md:my-8 px-4 md:p-2 snap-x snap-proximity overflow-x-scroll flex gap-8 md:grid md:gap-4">
             for j := 0; j < len(smImgs) ; j+=1 {
                 {{ 
                     img := smImgs[j] 
                 }}
 
-                <figure class={ "m-auto md:m-0 md:grid min-w-full rounded-xl md:border-1 group snap-always snap-center @container" }>
+                <figure class={ "m-auto md:m-0 md:grid min-w-full rounded-xl md:ring-1 ring-opacity-20 group snap-always snap-center cursor-pointer @container" }>
                     <img
                         id={ strconv.Itoa(j) }
                         src={ img.Name }
                         class={ addAspectRatio(img, ` [inline-size:100%] [grid-area:1/1/-1/-1]
-                        border-4 md:border-0 transition-all duration-200 object-cover rounded-xl
+                        border-3 md:border-0 transition-all duration-200 object-cover rounded-xl
                         md:rounded-none md:[block-size:100%] md:group-hover:scale-103`) }
                         onclick="openImageModal(this)"
                         if img.IsWide() {

@@ -177,16 +177,32 @@ photos.addEventListener("scroll", () => {
 // random image enhancement
 window.addEventListener("load", () => {
     const figures = photos.querySelectorAll("figure")
-    for (let i = 0; i < figures.length; i++) {
+    for (let i = 0; i < Math.floor(figures.length/2); i++) {
         const figure = figures[i];
         const img = figure.querySelector("img")!;
-        if (Math.random() < 0.25) {
+        if (Math.random() < 0.35) {
             if (isImgWide(img)) {
                 figure.classList.add("md:row-span-2", "md:col-span-3")
             } else {
                 figure.classList.add("md:row-span-2", "md:col-span-2")
             }
             img.src = addUpscaleSuffix(img.src)
+        } else {
+            figure.classList.add("md:opacity-80")
+        }
+    }
+    for (let i = Math.floor(figures.length/2); i < figures.length; i++) {
+        const figure = figures[i];
+        const img = figure.querySelector("img")!;
+        if (Math.random() < 0.15) {
+            if (isImgWide(img)) {
+                figure.classList.add("md:row-span-2", "md:col-span-3")
+            } else {
+                figure.classList.add("md:row-span-2", "md:col-span-2")
+            }
+            img.src = addUpscaleSuffix(img.src)
+        } else {
+            figure.classList.add("md:opacity-80")
         }
     }
 });

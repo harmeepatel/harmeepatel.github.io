@@ -157,7 +157,7 @@
     }
 
     .link {
-        @apply transition-all duration-75 decoration-1 md:decoration-2 md:hover:decoration-wavy underline underline-offset-2 md:hover:underline-offset-5 md:hover:decoration-accent-p font-medium italic
+        @apply transition-all duration-75 underline decoration-accent-p decoration-1 md:decoration-3 hover:decoration-2 md:hover:decoration-wavy underline-offset-4 md:hover:underline-offset-6 md:hover:decoration-light font-medium italic
     }
 
     .tag {

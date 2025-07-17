@@ -5,10 +5,10 @@ import (
 	"fmt"
 	image "golang.org/x/image/webp"
 	"log"
+	"maps"
 	"os"
 	"path/filepath"
 	"strings"
-    "maps"
 
 	"github.com/a-h/templ"
 	pages "harmeepatel.dev/web/pages"
@@ -17,10 +17,10 @@ import (
 
 func generateFile(template templ.Component, path string) {
 	f, err := os.Create(path)
-	defer f.Close()
 	if err != nil {
-		log.Fatalf("failed to create output file: %v", err)
+		panic(fmt.Sprintf("something went wrong generating file: %s with err:\n%v", path, err))
 	}
+	defer f.Close()
 
 	err = template.Render(context.Background(), f)
 	if err != nil {
@@ -28,9 +28,9 @@ func generateFile(template templ.Component, path string) {
 	}
 }
 
-var blogList = map[string]interface{}{
+var blogList = map[string]any{
 	"February_18,_2025 automating_templ_generate_in_neovim": blogs.AutomatingTemplGenerateInNeovim,
-	"March_22,_2025 polymorphic_executables": blogs.PolymorphicExecutables,
+	"March_22,_2025 polymorphic_executables":                blogs.PolymorphicExecutables,
 }
 
 func init() {
