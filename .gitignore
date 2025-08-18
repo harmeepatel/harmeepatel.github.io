@@ -1,0 +1,16 @@
+.DS_Store
+
+tmp/
+.air/
+
+bun.lockb
+*.fiber.gz
+
+node_modules/
+package-lock.json
+
+.env*
+
+web/**/*_templ.go
+bin/main
+**/*.html
