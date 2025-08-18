@@ -31,6 +31,7 @@ func generateFile(template templ.Component, path string) {
 var blogList = map[string]any{
 	"February_18,_2025 automating_templ_generate_in_neovim": blogs.AutomatingTemplGenerateInNeovim,
 	"March_22,_2025 polymorphic_executables":                blogs.PolymorphicExecutables,
+	"August_18,_2025 datastar_examples":                     blogs.DatastarExamples,
 }
 
 func init() {

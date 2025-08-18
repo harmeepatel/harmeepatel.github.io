@@ -1,0 +1,485 @@
+package blogs;
+
+import (
+    "strconv"
+	"harmeepatel.dev/web/components"
+	"harmeepatel.dev/web/icons"
+	"harmeepatel.dev/web/layouts"
+)
+
+templ serverCode() {
+	<details>
+		<summary class="mb-4">Backend Code</summary>
+		{ children... }
+	</details>
+}
+
+templ warn(size int) {
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class={"size-" + strconv.Itoa(size) +" stroke-amber-400"}
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+        ></path>
+    </svg>
+}
+
+
+templ DatastarExamples(title string) {
+	@layouts.BlogBase(title) {
+		<span class="flex gap-4 items-center">
+            @warn(10)
+			Some sections don't work as they require a backend to stream events, and this
+			is hosted on github pages.
+		</span>
+		<script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
+		<a href="https://github.com/harmeepatel/example-data-star" class="flex gap-2 link"
+        target="_blank">
+			@icons.Github(16, "", "Github icon")
+			Github
+		</a>
+		<div>
+			Go Dependencies:&nbsp;
+			<a href="https://templ.guide" class="link" target="_blank">Templ</a>
+			<a href="https://bunrouter.uptrace.dev/" class={ "link" , "pl-4" } target="_blank">BunRouter</a>
+			<a href="https://data-star.dev" class={ "link" , "pl-4" } target="_blank">DataStar</a>
+		</div>
+		// ----------------------------------------------------------------------------------------
+        <hr class="opacity-30"/>
+		<h2>styles and data bindings</h2>
+		<p>signal: $foo</p>
+		<input data-bind-foo style="display: block"/>
+		<button class="button" data-show="$foo != ''" data-on-click="alert('clicked')">1</button>
+		<button class="button" data-style-background-color="$foo == '' ? 'red' : 'green'">2</button>
+		<button class="button" data-class={ `{green: $foo=='' , 'red' : $foo.length> 3}` }>3</button>
+		<div data-text="$foo" style="height: 1em"></div>
+		<div data-text="$foo.toUpperCase()" style="height: 1em"></div>
+		<div data-computed-repeat="$foo.repeat(2)" data-text="$repeat" style="height: 1em"></div>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>special element tag (with properties like an element in js)</h2>
+		<div id="foo" style="overflow-wrap: anywhere" data-text="el.baseURI"></div>
+		length: <span id="foo" data-text="$foo.length"></span>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>local signals</h2>
+		<input data-bind-_foo style="display: block"/>
+		$_foo: <span data-text="$_foo" style="height: 1em"></span>
+		<br/>
+		$foo: <span data-text="$foo" style="height: 1em"></span>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>data-attr</h2>
+		<input data-bind-bar/>
+		<button class="button" data-attr-disabled="$bar == ''">Save</button>
+		<button class="button" data-attr="{disabled: $bar == '', title: $bar}">Hover me for tool tip $foo</button>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>data-signals</h2>
+        </div>
+		<div data-signals-sig="1"></div>
+		<input data-bind-sig data-value="$sig"/>
+		<h4>TODO: data-signals-sig.one="1" not working, check the code</h4>
+		//<div data-signals-sig.one="1"></div>
+		//<input data-bind="sig.one" data-value="$sig.one" />
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>data-on</h2>
+		<input data-bind-eventlistner/>
+		<button class="button" type="text" data-on-click="$eventlistner = $eventlistner.toUpperCase()">upper case</button>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>interval</h2>
+		<div>
+			interval__duration.1s:
+			<span style="height: 1em" data-on-interval__duration.1s="$count1++" data-text="$count1 || 0"></span>
+		</div>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>drag and drop list</h2>
+		<div data-signals-order-info="'Initial order'" data-text="$orderInfo"></div>
+		<div id="sortContainer" data-on-reordered="$orderInfo = event.detail.orderInfo">
+			<button class="button">Item 1</button>
+			<button class="button">Item 2</button>
+			<button class="button">Item 3</button>
+			<button class="button">Item 4</button>
+			<button class="button">Item 5</button>
+		</div>
+		<script type="module">
+    import Sortable from 'https://cdn.jsdelivr.net/npm/sortablejs/+esm'
+    new Sortable(sortContainer, {
+        animation: 150,
+        ghostClass: 'opacity-25',
+        onEnd: (evt) => {
+            sortContainer.dispatchEvent(
+                new CustomEvent('reordered', {
+                    detail: {
+                        orderInfo: `Moved from position ${evt.oldIndex + 1} to ${evt.newIndex + 1}`
+                    }
+                })
+            )
+        }
+    })
+</script>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>change styles</h2>
+		<div data-signals="{&quot;fontSize&quot;: 16}">
+			<div></div>
+			<div>
+				<div class="mb-2">
+					<button class="button" type="button" data-on-click="$fontSize += 1">
+						+
+					</button>
+					<button class="button" type="button" data-on-click="$fontSize >= 0; $fontSize -= 1">
+						‒
+					</button>
+					<button class="button" type="button" data-on-click="$fontSize = 16">
+						reset
+					</button>
+				</div>
+				<span data-style-font-size="$fontSize + 'px'" style="font-size: 16px;" data-highlighted="yes">
+					Hello,
+					World!
+				</span>
+			</div>
+		</div>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>external js</h2>
+		<script>
+    function myfunc(data) {
+        return `from myfunc: ${data}`;
+    }
+    function donot(data) {
+        return `this should not happen: ${data}`;
+    }
+</script>
+		<div data-signals-result>
+			// NOTE: changing "myfunc" to "donot" in the browser inspector calles the "donot" function
+			<input data-bind-myfunc_arg data-on-input="$myfunc_result = myfunc($myfunc_arg)"/>
+			<span data-text="$myfunc_arg.length > 0 ? $myfunc_result : '...'" style="height; 1em"></span>
+		</div>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>external async js</h2>
+        </div>
+		<h4>TODO: does not work</h4>
+		<script>
+    async function myAsyncFunc(element, data) {
+        const value = await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(`You entered: ${data}`)
+                console.log("myAsyncFunc", element, data)
+            }, 4000);
+        });
+        element.dispatchEvent(
+            new CustomEvent('asyncevent', {detail: {value}})
+        );
+    }
+</script>
+		<div data-signals-async_result>
+			<input
+				data-bind-async_arg
+				data-on-input="myAsyncFunc(el, $async_arg)"
+				data-on-asyncevent__window="$async_result = evt.detail.value"
+			/>
+			<span data-text="$async_result"></span>
+		</div>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>webcomponents</h2>
+		<script>
+    class MyComponent extends HTMLElement {
+        static get observedAttributes() {
+            return ['src'];
+        }
+
+        attributeChangedCallback(name, oldValue, newValue) {
+            const value = `You entered: ${newValue}`;
+            this.dispatchEvent(
+                new CustomEvent('mycustomevent', {detail: {value}})
+            );
+        }
+    }
+
+    customElements.define('my-component', MyComponent);
+</script>
+		<div data-signals-result="''">
+			<input data-bind-wc/>
+			<my-component data-attr-src="$wc" data-on-mycustomevent="$result = evt.detail.value"></my-component>
+			<span data-text="$wc.length > 0 ? $result : '...'"></span>
+		</div>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+		<h2>modal</h2>
+        <script>
+            function showModal() {
+                const modal = document.querySelector('#myDialog')
+                modal.showModal();
+                modal.style.top = (window.innerHeight - modal.clientHeight) / 2 + 'px'
+                modal.style.left = (window.innerWidth - modal.clientWidth) / 2 + 'px'
+            }
+        </script>
+		<button class="button" data-on-click="showModal()">show modal</button>
+		<dialog id="myDialog">
+			<p>Hello from a dialog!</p> <button class="button" data-on-click="el.parentElement.close()">Close</button>
+		</dialog>
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>get templ fragment</h2>
+        </div>
+		<button class="button" data-on-click="@get('/templ-response')">Open the pod bay doors, HAL.</button>
+		<div id="hal" style="height: 1em"></div>
+		@serverCode() {
+			{{
+src := `router := bunrouter.New()
+router.GET("/templ-response", func(w http.ResponseWriter, req bunrouter.Request) error {
+    sse := datastar.NewSSE(w, req.Request)
+
+    sse.PatchElementTempl(hal())
+    time.Sleep(1 * time.Second)
+    sse.PatchElementTempl(halWait())
+
+    templ.Handler(Index()).ServeHTTPBufferedFragment(w, req.Request)
+    return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>get with signal</h2>
+        </div>
+		<button class="button" data-on-click="@get('/baz-signal')">Save</button>
+		<div data-text="$baz" style="height: 1em">asdf</div>
+		@serverCode() {
+			{{
+src := `
+router.GET("/baz-signal", func(w http.ResponseWriter, req bunrouter.Request) error {
+    sse := datastar.NewSSE(w, req.Request)
+    sse.MarshalAndPatchSignals(struct {
+        Baz string 'json:"baz"'
+    }{
+        Baz: "this is a response from signal",
+    })
+    return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>signal and on-click</h2>
+        </div>
+		<div data-signals-hal="'...'">
+			<button class="button" data-on-click="@get('/backend-signal')">
+				HAL, do you read me?
+			</button>
+			<div data-text="$hal"></div>
+		</div>
+		@serverCode() {
+			{{
+src := `
+router.GET("/backend-signal", func(w http.ResponseWriter, req bunrouter.Request) error {
+    sse := datastar.NewSSE(w, req.Request)
+
+    type hal struct {
+        Hal string 'json:"hal"'
+    }
+
+    sse.MarshalAndPatchSignals(hal{
+        Hal: "He's home.",
+    })
+    time.Sleep(time.Second)
+    sse.MarshalAndPatchSignals(hal{
+        Hal: "...",
+    })
+return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>operators</h2>
+        </div>
+		// Output one of two values, depending on the truthiness of a signal
+		<div data-text="$landingGearRetracted ? 'Ready' : 'Waiting'"></div>
+		// Show a countdown if the signal is truthy or the time remaining is less than 10 seconds
+		<div>
+			Countdown (12 → 0):
+			<span
+				data-show={ `$landingGearRetracted || $timeRemaining <=10` }
+				data-text={ `$timeRemaining=="" ? '...' :
+        $timeRemaining` }
+			></span>
+		</div>
+		// Only send a request if the signal is truthy
+		<div>
+			<button
+				class="button"
+				data-attr-disabled="$timeRemaining > 0"
+				data-on-click="@post('/launch/true', {openWhenHidden: true}) && $landingGearRetracted"
+			>
+				Run in
+				background
+			</button>
+			<button
+				class="button"
+				data-attr-disabled="$timeRemaining > 0"
+				data-on-click="@post('/launch/true') && $landingGearRetracted"
+			>
+				Reset
+				on tab visibility
+			</button>
+			<button
+				class="button"
+				data-attr-disabled="$timeRemaining > 0"
+				data-on-click="$landingGearRetracted = true; @post('/launch/false', {openWhenHidden: true})"
+			>
+				Force signal
+			</button>
+		</div>
+		@serverCode() {
+			{{
+src := `router.POST("/launch/:truthy", func(w http.ResponseWriter, req bunrouter.Request) error {
+    sse := datastar.NewSSE(w, req.Request)
+    type l struct {
+        L bool 'json:"landingGearRetracted"'
+    }
+    type t struct {
+        T int 'json:"timeRemaining"'
+    }
+    aa := &l{}
+    datastar.ReadSignals(req.Request, aa)
+    for i := 12; i >= 0; i-- {
+        sse.MarshalAndPatchSignals(t{T: i})
+        time.Sleep(time.Second)
+    }
+    sse.MarshalAndPatchSignals(l{L: true})
+    w.Header().Set("Cache-Control", "max-age=100")
+    return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>loading</h2>
+        </div>
+		<div style="display: flex">
+			<button class="button" data-on-click="@get('/delay')" data-indicator-fetching>
+				5 second delay
+			</button>
+			<img
+				style="padding-left: 1em"
+				data-class-loading="$fetching"
+				src="/static/media/images/loading.svg"
+				alt="Indicator"
+				width="24"
+				data-show="$fetching"
+			/>
+		</div>
+		@serverCode() {
+			{{
+src := `router.GET("/delay", func(w http.ResponseWriter, req bunrouter.Request) error {
+    time.Sleep(time.Second * 5)
+    return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>request js from backend</h2>
+        </div>
+		<button class="button" data-on-click="@get('/backjs')">
+			get global signals
+		</button>
+		@serverCode() {
+			{{
+src := `router.GET("/backjs", func(w http.ResponseWriter, req bunrouter.Request) error {
+sse := datastar.NewSSE(w, req.Request)
+// NOTE: default response on ExecuteScript
+//
+<script data-effect="el.remove()">
+    // alert('...')
+    // </script
+    sse.ExecuteScript(
+        fmt.Sprintf(
+            "alert('global_signals: ${JSON.stringify(JSON.parse(decodeURIComponent('%s')), null, '  ')}')",
+            req.URL.Query().Get("datastar"),
+        ),
+    )
+    return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+		// ----------------------------------------------------------------------------------------
+		<hr class="opacity-30"/>
+        <div class="flex items-center gap-2">
+            @warn(6)
+            <h2>filter signals and custom headers</h2>
+        </div>
+		<h4>
+			NOTE: not recommended to send filtered signals as backend should know the complete
+			state of the frontend for better state sync between client and server
+		</h4>
+		<button
+			class="button"
+			data-signals-backjs
+			data-on-click="@get('/backjs', {
+                filterSignals: {include: /async.*/},
+                headers: {
+                    'X-Csrf-Token': 'customeHeader',
+                },
+            })"
+		>
+			get async signals
+		</button>
+		@serverCode() {
+			{{
+src := `router.GET("/backjs", func(w http.ResponseWriter, req bunrouter.Request) error {
+    sse := datastar.NewSSE(w, req.Request)
+    // NOTE: default response on ExecuteScript
+    // <script data-effect="el.remove()">
+    // alert('...')
+    // </script
+    sse.ExecuteScript(
+        fmt.Sprintf(
+            "alert('global_signals: ${JSON.stringify(JSON.parse(decodeURIComponent('%s')), null, '  ')}')",
+            req.URL.Query().Get("datastar"),
+        ),
+    )
+    return nil
+})`
+			}}
+			@components.Code("go", "", src)
+		}
+	}
+}

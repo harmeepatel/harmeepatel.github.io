@@ -39,6 +39,7 @@
             opacity: 1;
         }
     }
+
     --animate-scale-up : scale-up calc(var(--duration-copy-to-clipboard) * 1ms) var(--easing) forwards;
 
     @keyframes scale-down {
@@ -52,29 +53,38 @@
             opacity: 0;
         }
     }
+
     --animate-scale-down: scale-down calc(var(--duration-copy-to-clipboard) * 1ms) var(--easing) forwards;
-    
+
     @keyframes bounce-left {
-        0%, 100% {
-            transform: translateX(0%)
-            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+        0%,
+        100% {
+            transform: translateX(0%) animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
         }
+
         50% {
             transform: translateX(var(--bounce-length));
             animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-        } }
+        }
+    }
+
     --animate-bounce-left: bounce-left calc(var(--duration-photos-arrow) * 1ms) infinite;
 
     @keyframes bounce-right {
-        0%, 100% {
+
+        0%,
+        100% {
             transform: translateX(0%);
             animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
         }
+
         50% {
             transform: translateX(calc(var(--bounce-length) * -1));
             animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
         }
     }
+
     --animate-bounce-right: bounce-right calc(var(--duration-photos-arrow) * 1ms) infinite;
 }
 
@@ -122,6 +132,19 @@
 
     nav>div>ul>li>a {
         @apply font-[300] tracking-wide text-xs md:text-base xl:text-lg
+    }
+
+    input {
+        @apply border-2 rounded-md
+    }
+
+
+    dialog {
+        /* top: 50%; */
+        /* left: calc(50% - 6rem); */
+        background-color: #444;
+        padding: 0.75rem 1rem;
+        @apply rounded-lg
     }
 
     .list-disc li {
@@ -197,7 +220,7 @@ section {
 }
 
 .blog-li-a {
-    @apply block w-fit transition-all duration-75 underline underline-offset-2 decoration-2 md:decoration-3 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:!leading-[1.5] italic text-pretty text-lg xs:text-xl md:text-2xl xl:text-3xl
+    @apply block w-fit transition-all duration-75 underline underline-offset-2 decoration-2 md:decoration-3 md:hover:decoration-wavy md:hover:underline-offset-8 md:hover:decoration-accent-p font-black tracking-wide md:tracking-wider leading-snug md:leading-[1.5]! italic text-pretty text-lg xs:text-xl md:text-2xl xl:text-3xl
 }
 
 #blog {
@@ -283,4 +306,16 @@ section {
 
 #image-grid figure {
     overflow: hidden;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.button {
+    @apply px-4 py-2 border-1 rounded-md hover:bg-[#444]
 }
