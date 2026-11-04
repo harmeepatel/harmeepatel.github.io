@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "esnext",
-        "moduleResolution": "node10",
+        "moduleResolution": "bundler",
         "rootDir": "./ts",
         "outDir": "./../static/js/",
         "forceConsistentCasingInFileNames": true,

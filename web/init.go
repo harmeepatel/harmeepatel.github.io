@@ -2,9 +2,9 @@ package web
 
 import (
 	"fmt"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 	"strings"
-    "golang.org/x/text/cases"
-    "golang.org/x/text/language"
 )
 
 const (
@@ -13,39 +13,40 @@ const (
 )
 
 var caser = cases.Title(language.English)
+
 func FixTitle(title string) string {
-    articles := []string{ "a", "and", "as", "at", "but", "by", "down", "for", "from", "if", "in", "into", "like", "near", "nor", "of", "off ", "on", "once", "onto", "or", "over", "past", "so", "than", "that", "to", "upon", "when", "with", "yet", } 
-    var s strings.Builder
-    word: 
-        for _, word := range strings.Split(title, " ") {
-            for _, a := range articles {
-                if word == a {
-                    s.WriteString(word)
-                    s.WriteString(" ")
-                    continue word
-                }
-            }
-            s.WriteString(caser.String(word))
-            s.WriteString(" ")
-        }
+	articles := []string{"a", "and", "as", "at", "but", "by", "down", "for", "from", "if", "in", "into", "like", "near", "nor", "of", "off ", "on", "once", "onto", "or", "over", "past", "so", "than", "that", "to", "upon", "when", "with", "yet"}
+	var s strings.Builder
+word:
+	for _, word := range strings.Split(title, " ") {
+		for _, a := range articles {
+			if word == a {
+				s.WriteString(word)
+				s.WriteString(" ")
+				continue word
+			}
+		}
+		s.WriteString(caser.String(word))
+		s.WriteString(" ")
+	}
 	return s.String()
 }
 
 func TitleCase(str string) string {
-    return caser.String(str)
+	return caser.String(str)
 }
 
 func GetFromKey(get int, dt string) string {
 	split := strings.Split(dt, " ")
 	switch get {
 	case Date:
-        date := split[0]
-        date = strings.ReplaceAll(date, "_", " ")
-        return date
+		date := split[0]
+		date = strings.ReplaceAll(date, "_", " ")
+		return date
 	case Title:
-        title := split[1]
-        title = strings.ReplaceAll(title, "_", " ")
-        return FixTitle(title)
+		title := split[1]
+		title = strings.ReplaceAll(title, "_", " ")
+		return FixTitle(title)
 	default:
 		fmt.Println("unreachable")
 	}

@@ -1,10 +1,10 @@
 package blogs;
 
 import (
-    "strconv"
 	"harmeepatel.dev/web/components"
 	"harmeepatel.dev/web/icons"
 	"harmeepatel.dev/web/layouts"
+	"strconv"
 )
 
 templ serverCode() {
@@ -15,33 +15,35 @@ templ serverCode() {
 }
 
 templ warn(size int) {
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class={"size-" + strconv.Itoa(size) +" stroke-amber-400"}
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
-        ></path>
-    </svg>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		fill="none"
+		viewBox="0 0 24 24"
+		stroke-width="1.5"
+		stroke="currentColor"
+		class={ "w-" + strconv.Itoa(size) + " stroke-amber-400" }
+	>
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+		></path>
+	</svg>
 }
-
 
 templ DatastarExamples(title string) {
 	@layouts.BlogBase(title) {
 		<span class="flex gap-4 items-center">
-            @warn(10)
+			@warn(6)
 			Some sections don't work as they require a backend to stream events, and this
 			is hosted on github pages.
 		</span>
 		<script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
-		<a href="https://github.com/harmeepatel/example-data-star" class="flex gap-2 link"
-        target="_blank">
+		<a
+			href="https://github.com/harmeepatel/example-data-star"
+			class="flex gap-2 link"
+			target="_blank"
+		>
 			@icons.Github(16, "", "Github icon")
 			Github
 		</a>
@@ -52,7 +54,7 @@ templ DatastarExamples(title string) {
 			<a href="https://data-star.dev" class={ "link" , "pl-4" } target="_blank">DataStar</a>
 		</div>
 		// ----------------------------------------------------------------------------------------
-        <hr class="opacity-30"/>
+		<hr class="opacity-30"/>
 		<h2>styles and data bindings</h2>
 		<p>signal: $foo</p>
 		<input data-bind-foo style="display: block"/>
@@ -82,10 +84,10 @@ templ DatastarExamples(title string) {
 		<button class="button" data-attr="{disabled: $bar == '', title: $bar}">Hover me for tool tip $foo</button>
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>data-signals</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>data-signals</h2>
+		</div>
 		<div data-signals-sig="1"></div>
 		<input data-bind-sig data-value="$sig"/>
 		<h4>TODO: data-signals-sig.one="1" not working, check the code</h4>
@@ -171,10 +173,10 @@ templ DatastarExamples(title string) {
 		</div>
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>external async js</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>external async js</h2>
+		</div>
 		<h4>TODO: does not work</h4>
 		<script>
     async function myAsyncFunc(element, data) {
@@ -224,7 +226,7 @@ templ DatastarExamples(title string) {
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
 		<h2>modal</h2>
-        <script>
+		<script>
             function showModal() {
                 const modal = document.querySelector('#myDialog')
                 modal.showModal();
@@ -238,15 +240,15 @@ templ DatastarExamples(title string) {
 		</dialog>
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>get templ fragment</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>get templ fragment</h2>
+		</div>
 		<button class="button" data-on-click="@get('/templ-response')">Open the pod bay doors, HAL.</button>
 		<div id="hal" style="height: 1em"></div>
 		@serverCode() {
 			{{
-src := `router := bunrouter.New()
+				src := `router := bunrouter.New()
 router.GET("/templ-response", func(w http.ResponseWriter, req bunrouter.Request) error {
     sse := datastar.NewSSE(w, req.Request)
 
@@ -262,15 +264,15 @@ router.GET("/templ-response", func(w http.ResponseWriter, req bunrouter.Request)
 		}
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>get with signal</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>get with signal</h2>
+		</div>
 		<button class="button" data-on-click="@get('/baz-signal')">Save</button>
 		<div data-text="$baz" style="height: 1em">asdf</div>
 		@serverCode() {
 			{{
-src := `
+				src := `
 router.GET("/baz-signal", func(w http.ResponseWriter, req bunrouter.Request) error {
     sse := datastar.NewSSE(w, req.Request)
     sse.MarshalAndPatchSignals(struct {
@@ -285,10 +287,10 @@ router.GET("/baz-signal", func(w http.ResponseWriter, req bunrouter.Request) err
 		}
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>signal and on-click</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>signal and on-click</h2>
+		</div>
 		<div data-signals-hal="'...'">
 			<button class="button" data-on-click="@get('/backend-signal')">
 				HAL, do you read me?
@@ -297,7 +299,7 @@ router.GET("/baz-signal", func(w http.ResponseWriter, req bunrouter.Request) err
 		</div>
 		@serverCode() {
 			{{
-src := `
+				src := `
 router.GET("/backend-signal", func(w http.ResponseWriter, req bunrouter.Request) error {
     sse := datastar.NewSSE(w, req.Request)
 
@@ -319,10 +321,10 @@ return nil
 		}
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>operators</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>operators</h2>
+		</div>
 		// Output one of two values, depending on the truthiness of a signal
 		<div data-text="$landingGearRetracted ? 'Ready' : 'Waiting'"></div>
 		// Show a countdown if the signal is truthy or the time remaining is less than 10 seconds
@@ -362,7 +364,7 @@ return nil
 		</div>
 		@serverCode() {
 			{{
-src := `router.POST("/launch/:truthy", func(w http.ResponseWriter, req bunrouter.Request) error {
+				src := `router.POST("/launch/:truthy", func(w http.ResponseWriter, req bunrouter.Request) error {
     sse := datastar.NewSSE(w, req.Request)
     type l struct {
         L bool 'json:"landingGearRetracted"'
@@ -385,10 +387,10 @@ src := `router.POST("/launch/:truthy", func(w http.ResponseWriter, req bunrouter
 		}
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>loading</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>loading</h2>
+		</div>
 		<div style="display: flex">
 			<button class="button" data-on-click="@get('/delay')" data-indicator-fetching>
 				5 second delay
@@ -404,7 +406,7 @@ src := `router.POST("/launch/:truthy", func(w http.ResponseWriter, req bunrouter
 		</div>
 		@serverCode() {
 			{{
-src := `router.GET("/delay", func(w http.ResponseWriter, req bunrouter.Request) error {
+				src := `router.GET("/delay", func(w http.ResponseWriter, req bunrouter.Request) error {
     time.Sleep(time.Second * 5)
     return nil
 })`
@@ -413,16 +415,16 @@ src := `router.GET("/delay", func(w http.ResponseWriter, req bunrouter.Request) 
 		}
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>request js from backend</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>request js from backend</h2>
+		</div>
 		<button class="button" data-on-click="@get('/backjs')">
 			get global signals
 		</button>
 		@serverCode() {
 			{{
-src := `router.GET("/backjs", func(w http.ResponseWriter, req bunrouter.Request) error {
+				src := `router.GET("/backjs", func(w http.ResponseWriter, req bunrouter.Request) error {
 sse := datastar.NewSSE(w, req.Request)
 // NOTE: default response on ExecuteScript
 //
@@ -442,10 +444,10 @@ sse := datastar.NewSSE(w, req.Request)
 		}
 		// ----------------------------------------------------------------------------------------
 		<hr class="opacity-30"/>
-        <div class="flex items-center gap-2">
-            @warn(6)
-            <h2>filter signals and custom headers</h2>
-        </div>
+		<div class="flex items-center gap-2">
+			@warn(6)
+			<h2>filter signals and custom headers</h2>
+		</div>
 		<h4>
 			NOTE: not recommended to send filtered signals as backend should know the complete
 			state of the frontend for better state sync between client and server
@@ -464,7 +466,7 @@ sse := datastar.NewSSE(w, req.Request)
 		</button>
 		@serverCode() {
 			{{
-src := `router.GET("/backjs", func(w http.ResponseWriter, req bunrouter.Request) error {
+				src := `router.GET("/backjs", func(w http.ResponseWriter, req bunrouter.Request) error {
     sse := datastar.NewSSE(w, req.Request)
     // NOTE: default response on ExecuteScript
     // <script data-effect="el.remove()">

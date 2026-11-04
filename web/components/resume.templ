@@ -1,32 +1,32 @@
 package components;
 
-import (
-    "strconv"
-)
+import "strconv"
 
 // sections
 templ SectionItemHeader(left string, leftClass string, right string, rightClass string) {
-	<h3 class={ " " + leftClass }>
+	<h3 class={ "flex items-center justify-between " + leftClass }>
 		{ left }
 		<span class={ rightClass }>{ right }</span>
 	</h3>
 }
 
 templ SectionContent(divClass string) {
-	<div class={ divClass }>
+	<div class={ "pb-2 xl:pb-4 " + divClass }>
 		{ children... }
 	</div>
 }
 
 const hr = "<hr class=\"border-[0.5px] border-black dark:border-white\"/>"
 
-var ao = 0;
+var ao = 0
+
 css animOrder(o int) {
-    --anim-order: {strconv.Itoa(o)};
+	--anim-order: { strconv.Itoa(o) };
 }
+
 templ Section(id string, heading string) {
-    {{ ao++ }}
-	<section id={ id } class={"pb-4 md:pb-6 xl:pb-8 list-anim", animOrder(ao)}>
+	{{ ao++ }}
+	<section id={ id } class={ "pb-4 md:pb-6 xl:pb-8 list-anim", animOrder(ao) }>
 		<h2 class="uh">{ heading }</h2>
 		//@templ.Raw(hr)
 		{ children... }

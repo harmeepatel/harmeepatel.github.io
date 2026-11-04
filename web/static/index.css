@@ -98,7 +98,7 @@
     }
 
     h2 {
-        @apply text-2xl md:text-3xl xl:text-4xl leading-none pb-[0.25rem] sm:pb-2 overflow-x-hidden
+        @apply text-2xl md:text-3xl xl:text-4xl leading-none pb-1.5 sm:pb-4 overflow-x-hidden
     }
 
     h2.uh::after {
