@@ -1,0 +1,260 @@
+package pages;
+
+import (
+	"harmeepatel.dev/web/components"
+	"harmeepatel.dev/web/icons"
+	"harmeepatel.dev/web/layouts"
+)
+
+const (
+	iconPath  = "./static/media/icons/"
+	iconClass = "w-[12px] sm:w-[14px] xl:w-[18px]"
+)
+
+templ Index(title string) {
+	@layouts.Base(title) {
+		<main id="resume" class="h-vh mx-6 sm:mx-12 3xl:mx-0 mt-4 md:mt-6">
+			<h1 class="text-center">Harmee Patel</h1>
+			@infoBar()
+			@summary()
+			@technicalSkills()
+			@workex()
+			@projects()
+			@education()
+			<a href="./static/media/Resume-HarmeePatel.pdf" download="Resume-HarmeePatel" aria-label="download resume">
+				<button
+					type="submit"
+					id="download-resume-btn"
+					class={ "group transition-all duration-150 fixed z-[100] bottom-0 right-0 mx-6 my-12 md:mx-14 md:my-14 w-10 md:w-12 aspect-square flex items-center justify-center rounded-xl xl:rounded-2xl bg-white/50 dark:bg-black/40 backdrop-blur-[3px] shadow-md ring-1 ring-accent-p md:ring-0 shadow-black/40 dark:shadow-white/30 hover:shadow-accent-p md:hover:ring-2 md:hover:scale-105 md:hover:shadow-lg" }
+					aria-label="download resume button"
+				>
+					@icons.ArrowDownTray(12, "w-4 md:w-5 group-hover:mt-1 group-hover:animate-bounce ", "Download button for my resume.")
+				</button>
+			</a>
+		</main>
+	}
+}
+
+// summary
+templ summary() {
+	@components.Section("summary", "Summary") {
+		@components.SectionContent("") {
+			<p>
+				Software developer with <b>full-stack experience at AllEvents</b> and projects spanning <b>web, mobile and desktop applications</b>. Recent work includes <b>business invoicing software, hotel workflow automation, an offline music player and photography tools</b>.
+			</p>
+		}
+	}
+}
+
+// contact bar
+templ infoBar() {
+	{{ infoLinkClass := "!text-black dark:!text-white flex gap-1 lg:gap-2 items-center font-[300] tracking-wide text-2xs xs:text-xs md:text-sm xl:text-base link" }}
+	<section id="contact-bar" class="flex justify-center items-center gap-2 md:gap-4 pb-3 sm:pb-6">
+		<a href="tel:+919824876508" target="_blank" class={ infoLinkClass } aria-label="phone">
+			@icons.Phone(12, iconClass, "Phone icon")
+			+91&hairsp;98248&hairsp;76508
+		</a>
+		<span class="vertical-seperator"></span>
+		<a href="https://github.com/harmeepatel" target="_blank" class={ infoLinkClass } aria-label="github">
+			@icons.Github(12, iconClass, "Github icon")
+			GitHub
+		</a>
+		<span class="vertical-seperator"></span>
+		<a href="https://linkedin.com/in/harmeepatel" target="_blank" class={ infoLinkClass } aria-label="linkedin">
+			@icons.Linkedin(12, iconClass, "Linkedin icon")
+			LinkedIn
+		</a>
+		<span class="vertical-seperator"></span>
+		<a href="mailto:harmeeworks@gmail.com" target="_blank" class={ infoLinkClass } aria-label="email">
+			@icons.Email(12, iconClass, "Email icon")
+			harmeeworks@gmail.com
+		</a>
+		<span class="vertical-seperator"></span>
+		<a href="https://harmeepatel.dev" target="_blank" class={ infoLinkClass } aria-label="website">
+			harmeepatel.dev
+		</a>
+	</section>
+}
+
+// technical skills
+var techIconSize = 20
+var techIconClass = "inline "
+
+templ techLoop(arr []string) {
+	for i, item := range arr {
+		<div class="inline-flex items-center" style="display: inline flex; align-items: center;">
+			@icons.Tech(item, techIconSize, techIconClass, item+" logo")
+			&nbsp;{ item }
+			if i < len(arr) - 1 {
+				,&nbsp;&nbsp;
+			}
+		</div>
+	}
+}
+
+templ technicalSkills() {
+	{{
+		thClass := "text-left align-baseline "
+		tdClass := "pl-8 "
+	}}
+	@components.Section("tech-skills", "Technical Skills") {
+		{{ var items []string }}
+		@components.SectionContent("") {
+			<table>
+				<tr>
+					<th class={ thClass }>
+						<h3 class="inline-block">Languages</h3>
+					</th>
+					<td class={ tdClass + "pb-4 md:pb-3" }>
+						{{ items = []string{"Go", "Rust", "JavaScript", "TypeScript", "Python", "PHP", "Dart"} }}
+						@techLoop(items)
+					</td>
+				</tr>
+				<tr>
+					<th class={ thClass }>
+						<h3 class="inline-block">Web</h3>
+					</th>
+					<td class={ tdClass + "pb-4 md:pb-3" }>
+						{{ items = []string{"React", "Node.js", "Templ", "HTML", "CSS", "Tailwind CSS", "Three.js"} }}
+						@techLoop(items)
+					</td>
+				</tr>
+				<tr>
+					<th class={ thClass }>
+						<h3 class="inline-block">Mobile &amp; Desktop</h3>
+					</th>
+					<td class={ tdClass + "pb-4 md:pb-3" }>
+						{{ items = []string{"Flutter", "Dioxus"} }}
+						@techLoop(items)
+					</td>
+				</tr>
+				<tr>
+					<th class={ thClass }>
+						<h3 class="inline-block">Database &amp; Tools</h3>
+					</th>
+					<td class={ tdClass }>
+						{{ items = []string{"PostgreSQL", "Git", "Docker", "Linux", "Figma", "Affinity"} }}
+						@techLoop(items)
+					</td>
+				</tr>
+			</table>
+		}
+	}
+}
+
+// work expression
+templ workex() {
+	@components.Section("work-ex", "Work Experience") {
+		{{ leftClass := "pb-0.5 xl:pb-1" }}
+		@components.SectionContent("") {
+			@components.SectionItemHeader("Web Developer | Wechitra Creative House", leftClass, "May 2026 - Jul 2026", "")
+			<ul class="list-disc list-inside">
+				<li>
+					<b>Built and delivered</b> the studio’s website using Go, templ and JavaScript, combining categorized project galleries, video content and a Three.js hero element.
+				</li>
+				<li>
+					<b>Created a build and deployment pipeline</b> using Bun bundling, minification and Brotli compression, publishing the site to GitHub Pages with a custom domain.
+				</li>
+				<li>
+					<b>Diagnosed video playback failures</b> by checking encoding and playback behavior, traced the cause to Git LFS pointer files, and restored delivery by removing videos from LFS.
+				</li>
+			</ul>
+		}
+		@components.SectionContent("") {
+			@components.SectionItemHeader("Independent Developer | Voucha", leftClass, "Feb 2025 - Mar 2025", "")
+			<ul class="list-disc list-inside">
+				<li>
+					<b>Built and delivered</b> a Rust/Dioxus desktop application for The Superior Inn Hotel and Conference Centre in Thunder Bay, Canada, translating a manual voucher-preparation workflow into a software tool.
+				</li>
+				<li>
+					<b>Converted guest CSV exports</b> from the hotel’s property management system into printable meal vouchers, connecting an existing data source to the hotel’s printing workflow.
+				</li>
+				<li>
+					<b>Designed layouts</b> fitting 16 vouchers per sheet, accounting for front-to-back alignment in double-sided printing.
+				</li>
+			</ul>
+		}
+		@components.SectionContent("") {
+			@components.SectionItemHeader("Full-Stack Developer | AllEvents", leftClass, "Sept 2020 - Dec 2020", "")
+			<ul class="list-disc list-inside">
+				<li>
+					<b>Developed ticket booking features and host dashboard notifications</b> using PHP and jQuery, working across backend functionality and user-facing interfaces.
+				</li>
+				<li>
+					Took 
+					<a
+						href="https://web.archive.org/web/20201125141125/www.allevents.in/pages/pricing"
+						class="link"
+					>
+						pricing
+					</a> and 
+					<a
+						href="https://web.archive.org/web/20210107101329/https://allevents.in/pages/publish-events"
+						class="link"
+					>
+						event-publishing pages
+					</a> from <b>Figma designs</b> to implementation, connecting interface design with the platform’s existing functionality.
+				</li>
+				<li>
+					<b>Reduced API response payload sizes</b> across multiple backend services and implemented <b>event search and recommendations</b> based on user interests.
+				</li>
+			</ul>
+		}
+	}
+}
+
+templ projects() {
+	@components.Section("projects", "Projects") {
+		@components.SectionContent("") {
+			@components.SectionItemHeader("AE | Invoice Management Application", "pb-0.5 xl:pb-1", "Jan 2026 - present", "")
+			<ul class="list-disc list-inside">
+				<li>
+					Ported a Go/templ invoicing tool to Rust/Dioxus, adapting server-based functionality to a reactive desktop interface with SQLite persistence.
+				</li>
+				<li>
+					Implemented dependent field validation, discounts and GST calculations, invoice previews and PDF export.
+				</li>
+			</ul>
+		}
+		@components.SectionContent("") {
+			@components.SectionItemHeader("Kosh | Offline Music Player", "pb-0.5 xl:pb-1", "Aug 2026 - present", "")
+			<ul class="list-disc list-inside">
+				<li>
+					Built offline playback in Flutter/Dart with local audio discovery, artwork, queues and background controls, sharing state across mini and full-screen players using ValueNotifier.
+				</li>
+				<li>
+					Replaced a third-party UI package with Flutter’s drawing, animation and blur APIs, and resolved a compositing issue through widget-tree changes.
+				</li>
+			</ul>
+		}
+		@components.SectionContent("") {
+			@components.SectionItemHeader("Cull | Photo Organizer", "pb-0.5 xl:pb-1", "May 2026", "")
+			<ul class="list-disc list-inside">
+				<li>
+					Built a Rust/Dioxus desktop app that reads EXIF capture dates and sorts photos into year/month/day folders, with copy and move modes.
+				</li>
+				<li>
+					Added drag-and-drop, progress feedback and a JSON-backed history of the 16 most recently used folders.
+				</li>
+			</ul>
+		}
+	}
+}
+
+// education
+templ education() {
+	@components.Section("education", "Education") {
+		@components.SectionContent("pb-3 xl:pb-5") {
+			@components.SectionItemHeader("Master's in Computer Science", "", "2021 - 2023", "")
+			<p class="w-1/2">
+				Lakehead University
+			</p>
+		}
+		@components.SectionContent("pb-3 xl:pb-5") {
+			@components.SectionItemHeader("Bachelor’s in Computer Engineering", "", "2016 - 2020", "")
+			<p class="w-1/2">
+				LDRP Institute of Technology and Research
+			</p>
+		}
+	}
+}
