@@ -18,9 +18,14 @@ import (
 func generateFile(template templ.Component, path string) {
 	path = strings.ReplaceAll(path, " ", "_")
 
+	err := os.MkdirAll(filepath.Dir(path), 0755)
+	if err != nil {
+		panic(fmt.Sprintf("os.MkdirAll failed for: %s with err:\n%v", path, err))
+	}
+
 	f, err := os.Create(path)
 	if err != nil {
-		panic(fmt.Sprintf("something went wrong generating file: %s with err:\n%v", path, err))
+		panic(fmt.Sprintf("os.Create failed for: %s with err:\n%v", path, err))
 	}
 	defer f.Close()
 
